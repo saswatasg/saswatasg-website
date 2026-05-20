@@ -38,7 +38,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-canvas text-ink/85 font-sans antialiased;
+    @apply bg-canvas text-ink font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
   }

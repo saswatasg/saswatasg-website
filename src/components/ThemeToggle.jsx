@@ -19,7 +19,7 @@ const ThemeToggle = () => {
 
   return (
     <div
-      className={`relative flex items-center w-14 h-8 rounded-full cursor-pointer transition-colors duration-300 ${
+        className={`relative flex items-center w-14 h-8 rounded-full cursor-pointer transition-all duration-300 hover:opacity-80 hover:scale-105 ${
         isLight ? 'bg-primary/20' : 'bg-muted/80'
       }`}
       onClick={toggleTheme}

@@ -15,8 +15,8 @@ const XIcon = (props) => (
 );
 
 const socialLinks = [
-  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/918777875140?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Would%20love%20to%20connect!', color: 'hover:text-[#25D366]' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99', color: 'hover:text-[#0A66C2]' },
+  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/919836312162?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Would%20love%20to%20connect!', color: 'hover:text-[#25D366]' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99/', color: 'hover:text-[#0A66C2]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/saswatasg99/', color: 'hover:text-[#E4405F]' },
   { name: 'Twitter', icon: XIcon, href: 'https://twitter.com/saswatasg', color: 'hover:text-ink' },
   { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/saswatasubhra.sengupta', color: 'hover:text-[#1877F2]' },
@@ -62,31 +62,31 @@ const ContactForm = () => {
     if (error) {
       toast({ title: 'Uh oh! Something went wrong.', description: 'There was a problem with your request. Please try again.', variant: 'destructive', duration: 5000 });
     } else {
-      toast({ title: 'Message Sent! ✨', description: 'Thanks for reaching out. I\'ll get back to you soon!', duration: 5000 });
+      toast({ title: 'Message Sent!', description: 'Thanks for reaching out. I\'ll get back to you soon!', duration: 5000 });
       setName(''); setEmail(''); setPhone(''); setMessage(''); setEmailError('');
     }
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="bg-canvas rounded-card p-8 md:p-14 w-full max-w-2xl mx-auto border border-ink/10">
-        <h2 className="text-2xl font-display font-bold text-ink mb-2">Send me a message</h2>
-        <p className="text-sm text-ink/60 mb-8">I'll get back to you as soon as possible.</p>
+      <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 w-full max-w-2xl mx-auto">
+        <h2 className="text-xl font-display font-black text-ink mb-1">Send me a message</h2>
+        <p className="text-sm text-ink/70 font-medium mb-8">I'll get back to you as soon as possible.</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required aria-label="Your name" className="rounded-pill border-ink/20" />
-            <Input type="email" placeholder="Your email" value={email} onChange={(e) => { setEmail(e.target.value); if (emailError) validateEmail(e.target.value); }} onBlur={handleEmailBlur} required aria-label="Your email" className={cn("rounded-pill border-ink/20", emailError && "border-red-500")} />
+            <Input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required aria-label="Your name" className="rounded-lg border-2 border-black" />
+            <Input type="email" placeholder="Your email" value={email} onChange={(e) => { setEmail(e.target.value); if (emailError) validateEmail(e.target.value); }} onBlur={handleEmailBlur} required aria-label="Your email" className={cn("rounded-lg border-2 border-black", emailError && "border-red-500")} />
           </div>
-          {emailError && <p className="text-red-500 text-xs">{emailError}</p>}
-          <Input type="tel" placeholder="Your phone (optional)" value={phone} onChange={handlePhoneChange} aria-label="Your phone" className="rounded-pill border-ink/20" />
-          <Textarea placeholder="Your message... (min 10 characters)" rows={5} value={message} onChange={handleMessageChange} required aria-label="Your message" className="rounded-card border-ink/20" />
-          <div className="text-xs text-ink/40 text-right">{message.length} / {MAX_MESSAGE_LENGTH} characters</div>
+          {emailError && <p className="text-red-500 text-xs font-bold">{emailError}</p>}
+          <Input type="tel" placeholder="Your phone (optional)" value={phone} onChange={handlePhoneChange} aria-label="Your phone" className="rounded-lg border-2 border-black" />
+          <Textarea placeholder="Your message... (min 10 characters)" rows={5} value={message} onChange={handleMessageChange} required aria-label="Your message" className="rounded-xl border-2 border-black" />
+          <div className="text-xs font-bold text-ink/40 text-right">{message.length} / {MAX_MESSAGE_LENGTH} characters</div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
             <TooltipProvider>
@@ -94,7 +94,7 @@ const ContactForm = () => {
                 {socialLinks.map((social, index) => (
                   <Tooltip key={index} delayDuration={100}>
                     <TooltipTrigger asChild>
-                      <motion.a href={social.href} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.15, y: -3 }} whileTap={{ scale: 0.95 }} className={cn('h-10 w-10 flex items-center justify-center rounded-lg bg-ink/5 text-ink/60 transition-colors duration-300', social.color)} aria-label={`Visit my ${social.name} profile`}>
+                      <motion.a href={social.href} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={cn('h-10 w-10 flex items-center justify-center rounded-lg bg-white text-ink/50 border-2 border-black transition-colors', social.color)} aria-label={`Visit my ${social.name} profile`}>
                         <social.icon className="h-5 w-5" />
                       </motion.a>
                     </TooltipTrigger>
@@ -104,13 +104,16 @@ const ContactForm = () => {
               </div>
             </TooltipProvider>
 
-            <button type="submit" disabled={isSubmitting || !isFormValid} className="bg-ink text-white rounded-pill px-6 py-3 min-h-[44px] text-sm font-medium inline-flex items-center gap-2 hover:bg-lemon hover:text-ink transition-all duration-300 disabled:opacity-50">
-              {isSubmitting ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
-              ) : (
-                <>Send Message <ArrowRight className="w-4 h-4" /></>
-              )}
-            </button>
+            <div className="relative inline-flex group">
+              <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
+              <button type="submit" disabled={isSubmitting || !isFormValid} className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px] disabled:opacity-50">
+                {isSubmitting ? (
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
+                ) : (
+                  <>Send Message <ArrowRight className="w-4 h-4" /></>
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </div>

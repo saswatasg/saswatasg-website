@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
-import { Phone, Mail, Globe, MapPin, Copy, ExternalLink, ChevronRight, Eye, EyeOff, MessageSquare, Linkedin, Instagram, Facebook, FileText, Download, Calendar } from 'lucide-react';
+import { Phone, Mail, Globe, MapPin, Copy, ExternalLink, ChevronRight, Eye, EyeOff, MessageSquare, Linkedin, Instagram, Facebook, FileText, Download, Calendar, X } from 'lucide-react';
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const XIcon = (props) => (
@@ -14,7 +14,7 @@ const XIcon = (props) => (
 );
 
 const socialLinks = [
-  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/918777875140?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Can%20we%20chat%3F', color: 'hover:text-[#25D366]' },
+  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/919836312162?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Can%20we%20chat%3F', color: 'hover:text-[#25D366]' },
   { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99', color: 'hover:text-[#0A66C2]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/saswatasg99/', color: 'hover:text-[#E4405F]' },
   { name: 'Twitter', icon: XIcon, href: 'https://twitter.com/saswatasg', color: 'hover:text-ink' },
@@ -24,6 +24,7 @@ const socialLinks = [
 const ContactPanel = ({ custom }) => {
   const { toast } = useToast();
   const [phoneVisible, setPhoneVisible] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
   const phoneNumber = '+91 87778 75140';
   const isMobile = useMediaQuery("(max-width: 640px)");
 
@@ -59,7 +60,7 @@ const ContactPanel = ({ custom }) => {
       <p className="font-medium text-ink text-lg text-center">{phoneNumber}</p>
       <div className="grid grid-cols-3 gap-2 pt-4">
         <a href={`tel:${phoneNumber}`} className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><Phone className="h-4 w-4" /> Call</a>
-        <a href={`https://wa.me/918777875140`} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><MessageSquare className="h-4 w-4" /> WhatsApp</a>
+        <a href={`https://wa.me/919836312162`} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><MessageSquare className="h-4 w-4" /> WhatsApp</a>
         <button onClick={() => handleCopy(phoneNumber, 'Number')} className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><Copy className="h-4 w-4" /> Copy</button>
       </div>
     </>
@@ -95,7 +96,7 @@ const ContactPanel = ({ custom }) => {
               {phoneVisible ? <p className="font-medium text-ink">{phoneNumber}</p> : <p className="font-medium text-ink">Click to reveal & copy</p>}
             </ContactItem>
           )}
-          <ContactItem icon={<Mail />} label="Email" value="hi@saswatasg.com" href="mailto:hi@saswatasg.com" onCopy={() => handleCopy('hi@saswatasg.com', 'Email')} />
+          <ContactItem icon={<Mail />} label="Email" value="saswatasg@gmail.com" href="mailto:saswatasg@gmail.com" onCopy={() => handleCopy('saswatasg@gmail.com', 'Email')} />
           <ContactItem icon={<Globe />} label="Website" value="saswatasg.com" href="https://saswatasg.com" />
           <ContactItem icon={<MapPin />} label="Address" value="Kolkata, India" />
         </div>
@@ -109,9 +110,9 @@ const ContactPanel = ({ custom }) => {
             <a href="/assets/Saswata_Sengupta.vcf" download className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center gap-3 justify-start">
               <Download className="h-4 w-4" /> Save Contact
             </a>
-            <a href="https://calendly.com/saswatasg/30min" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center gap-3 justify-start">
+            <button onClick={() => setShowCalendar(true)} className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center gap-3 justify-start">
               <Calendar className="h-4 w-4" /> Book a meeting
-            </a>
+            </button>
           </div>
         </div>
 
@@ -133,6 +134,40 @@ const ContactPanel = ({ custom }) => {
           </TooltipProvider>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showCalendar && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 p-4"
+            onClick={() => setShowCalendar(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white border-2 border-black rounded-2xl w-full max-w-[700px] max-h-[85vh] overflow-hidden relative"
+              style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
+                <span className="font-bold text-sm">Book a Meeting</span>
+                <button onClick={() => setShowCalendar(false)} className="hover:text-pink transition-colors">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <iframe
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
+                className="w-full h-[600px]"
+                title="Schedule a meeting"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
     </div>
   );
 };
