@@ -4,7 +4,6 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const bgColors = ['bg-blush', 'bg-sky', 'bg-mint', 'bg-blush', 'bg-sky', 'bg-mint', 'bg-blush', 'bg-sky'];
-const accentColors = ['bg-ink/5', 'bg-ink/5', 'bg-ink/5', 'bg-ink/5', 'bg-ink/5', 'bg-ink/5', 'bg-ink/5', 'bg-ink/5'];
 
 const ProjectCard = ({ title, description, tags, result, caseStudyUrl, index }) => {
   const navigate = useNavigate();
@@ -26,11 +25,11 @@ const ProjectCard = ({ title, description, tags, result, caseStudyUrl, index }) 
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       onClick={handleCardClick}
-      whileHover={isClickable ? { y: -4 } : {}}
-      className={`rounded-card p-6 md:p-8 border border-ink/10 flex flex-col h-full transition-all duration-200 ${bgColors[colorIndex]} ${isClickable ? 'cursor-pointer' : ''}`}
+      whileHover={isClickable ? { y: -4 } : { y: -2 }}
+      className={`rounded-card p-6 md:p-8 border border-ink/10 flex flex-col h-full transition-all duration-300 hover:scale-[1.01] ${bgColors[colorIndex]} ${isClickable ? 'cursor-pointer' : ''}`}
     >
-      <div className={`w-full h-36 rounded-card mb-5 ${accentColors[colorIndex]} flex items-center justify-center overflow-hidden`}>
-        <span className="text-5xl font-black font-display text-ink/20">{initial}</span>
+      <div className="w-full h-36 rounded-card mb-5 bg-ink/5 flex items-center justify-center overflow-hidden">
+        <span className="text-5xl font-black font-display text-ink/15">{initial}</span>
       </div>
 
       <h3 className="text-lg font-display font-bold text-ink mb-2">{title}</h3>
@@ -55,7 +54,7 @@ const ProjectCard = ({ title, description, tags, result, caseStudyUrl, index }) 
       )}
 
       {isClickable && (
-        <div className="mt-auto pt-2 flex items-center text-ink font-medium text-sm gap-1.5">
+        <div className="mt-auto pt-2 flex items-center text-ink font-medium text-sm gap-1.5 transition-all duration-300 group-hover:gap-2">
           View case study
           <ArrowRight className="w-3.5 h-3.5" />
         </div>

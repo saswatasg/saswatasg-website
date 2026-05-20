@@ -38,7 +38,7 @@ const SkillCard = ({ skill, index }) => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4 }}
-      className={`rounded-card p-6 md:p-8 ${cardColors[index % cardColors.length]} border border-ink/10`}
+      className={`rounded-card p-6 md:p-8 ${cardColors[index % cardColors.length]} border border-ink/10 transition-all duration-300 hover:scale-[1.02]`}
     >
       <motion.div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-ink mb-4" whileHover={{ scale: 1.15 }}>
         {skill.icon}
@@ -56,7 +56,7 @@ const WhatIDoSection = () => {
   const sectionInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
-    <section id="work-section" aria-labelledby="skills-heading" className="max-w-[1200px] mx-auto px-4 md:px-6 mt-4">
+    <section id="work-section" aria-labelledby="skills-heading" className="max-w-[1200px] mx-auto px-4 md:px-6 mt-6">
       <motion.div
         ref={sectionRef}
         initial={{ opacity: 0, y: 40 }}
@@ -69,20 +69,20 @@ const WhatIDoSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-8"
+          className="text-center mb-10"
         >
           <span className="inline-block px-4 py-1.5 rounded-pill bg-lemon/30 text-ink text-sm font-medium mb-4 border border-ink/10">
             How I Work
           </span>
-          <h2 id="skills-heading" className="text-ink text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="text-ink">
             Product Management, <span className="text-ink/60">End to End</span>
           </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base">
+          <p className="mt-3 max-w-2xl mx-auto">
             From discovery to delivery — I own the full product lifecycle and measure everything by impact.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-6">
           {skills.map((skill, index) => (
             <SkillCard key={index} skill={skill} index={index} />
           ))}
@@ -93,11 +93,11 @@ const WhatIDoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="text-center mt-8"
+          className="text-center mt-10"
         >
           <a
             href="/experience"
-            className="inline-flex items-center gap-2 text-ink/70 hover:text-ink font-medium transition-all text-sm"
+            className="inline-flex items-center gap-2 text-ink/60 hover:text-ink font-medium transition-all duration-300 text-sm hover:gap-3"
           >
             View my experience <ArrowRight className="w-4 h-4" />
           </a>

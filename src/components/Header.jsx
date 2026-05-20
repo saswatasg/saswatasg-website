@@ -67,7 +67,7 @@ const Header = () => {
             href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-lemon text-ink rounded-pill px-5 py-2.5 font-medium text-sm flex items-center gap-2"
+            className="bg-lemon text-ink rounded-pill px-5 py-2.5 min-h-[44px] font-medium text-sm flex items-center gap-2"
             animate={{ scale: [1, 1.03, 1] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
             whileHover={{ scale: 1.05 }}
@@ -90,7 +90,7 @@ const Header = () => {
 
           <motion.button
             onClick={toggleMenu}
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-lemon text-ink"
+            className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center bg-lemon text-ink"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             whileTap={{ scale: 0.95 }}
           >

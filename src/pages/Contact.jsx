@@ -52,7 +52,7 @@ const Contact = () => {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={handleBookingClick}
-                className="bg-ink text-white rounded-pill px-6 py-3 text-sm font-medium inline-flex items-center gap-2 hover:bg-white hover:text-ink hover:border-ink hover:border-2 border-2 border-transparent transition-all duration-200"
+                className="bg-ink text-white rounded-pill px-6 py-3 min-h-[44px] text-sm font-medium inline-flex items-center gap-2 hover:bg-white hover:text-ink hover:border-ink hover:border-2 border-2 border-transparent transition-all duration-300"
               >
                 <Calendar size={18} />
                 Book a Meeting
@@ -62,7 +62,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <div className="mt-4">
+        <div className="mt-6">
           <ContactForm />
         </div>
       </div>

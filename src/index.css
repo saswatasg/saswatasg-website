@@ -38,22 +38,22 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-canvas text-ink font-sans antialiased;
+    @apply bg-canvas text-ink/85 font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
   }
 
   h1 {
-    @apply text-5xl md:text-7xl font-display font-black tracking-tight leading-[1.05];
+    @apply text-5xl md:text-6xl xl:text-7xl font-display font-black tracking-tighter leading-[1.05];
   }
   h2 {
-    @apply text-4xl md:text-5xl font-display font-bold tracking-tight;
+    @apply text-3xl md:text-4xl xl:text-5xl font-display font-bold tracking-tight leading-[1.15];
   }
   h3 {
-    @apply text-2xl font-display font-bold;
+    @apply text-xl md:text-2xl font-display font-bold tracking-tight leading-[1.2];
   }
   p {
-    @apply text-base text-ink/80 leading-relaxed;
+    @apply text-[15px] md:text-base text-ink/75 leading-relaxed;
   }
 }
 

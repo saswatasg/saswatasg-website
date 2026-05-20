@@ -199,7 +199,7 @@ function Experience() {
           </p>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {roles.map((role, index) => (
             <ExperienceCard key={index} role={role} index={index} />
           ))}

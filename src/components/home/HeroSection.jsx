@@ -47,7 +47,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-6 pt-20 md:pt-28">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32">
       <motion.div
         className="bg-canvas rounded-card p-8 md:p-14 relative overflow-hidden border border-ink/10"
         variants={containerVariants}
@@ -108,12 +108,12 @@ const HeroSection = () => {
               From AI agent discovery at Upcore to checkout flow overhauls at Sierra Living Concepts — I find the signal, build the solution, and ship the outcome.
             </motion.p>
 
-            <motion.div variants={childVariants} className="flex flex-col sm:flex-row items-stretch justify-center md:justify-start gap-3 w-full sm:w-auto mt-6">
+            <motion.div variants={childVariants} className="flex flex-col sm:flex-row items-stretch justify-center md:justify-start gap-4 w-full sm:w-auto mt-8">
               <a
                 href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-ink text-white rounded-pill px-5 py-2.5 text-sm font-medium inline-flex items-center gap-2 hover:bg-lemon hover:text-ink transition-all duration-200"
+                className="bg-ink text-white rounded-pill px-6 py-3 text-sm font-medium inline-flex items-center gap-2 min-h-[44px] hover:bg-lemon hover:text-ink transition-all duration-300"
               >
                 <Calendar className="w-4 h-4" />
                 Book a Meeting
@@ -121,14 +121,14 @@ const HeroSection = () => {
               </a>
               <button
                 onClick={handleScrollToWork}
-                className="bg-white border-2 border-ink text-ink rounded-pill px-5 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200"
+                className="bg-white border-2 border-ink text-ink rounded-pill px-6 py-3 text-sm font-medium uppercase tracking-wide min-h-[44px] hover:bg-ink hover:text-white transition-all duration-300"
               >
                 See My Work
                 <ChevronDown className="w-4 h-4 inline-block ml-1.5" />
               </button>
             </motion.div>
 
-            <motion.div variants={childVariants} className="flex flex-wrap gap-2 mt-6 justify-center md:justify-start">
+            <motion.div variants={childVariants} className="flex flex-wrap gap-2 mt-8 justify-center md:justify-start">
               {['B2B SaaS', 'D2C', 'E-Commerce', 'AI Products', 'Product Discovery', 'Analytics'].map((tag) => (
                 <span key={tag} className="px-3 py-1 rounded-pill text-xs font-medium bg-white border border-ink/10 text-ink/60">
                   {tag}

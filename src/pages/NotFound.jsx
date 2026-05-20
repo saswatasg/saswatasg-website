@@ -22,7 +22,7 @@ const NotFound = () => {
           <p className="mt-4 max-w-md mb-8">
             The page you're looking for doesn't exist, has been removed, or is temporarily unavailable.
           </p>
-          <Link to="/" className="bg-ink text-white rounded-pill px-6 py-3 text-sm font-medium inline-flex items-center gap-2 hover:bg-lemon hover:text-ink transition-all duration-200">
+          <Link to="/" className="bg-ink text-white rounded-pill px-6 py-3 min-h-[44px] text-sm font-medium inline-flex items-center gap-2 hover:bg-lemon hover:text-ink transition-all duration-300">
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>

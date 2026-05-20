@@ -37,7 +37,7 @@ function Footer() {
   return (
     <footer className="bg-canvas mt-16">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="font-display font-black text-xl tracking-tight text-ink">
               Saswata
@@ -70,7 +70,7 @@ function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-ink/10">
           <p className="text-xs text-ink/40">© {currentYear} Saswata S. Sengupta. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             {[
               { icon: Linkedin, href: "https://linkedin.com/in/sss99" },
               { icon: Github, href: "https://github.com/sss99" },

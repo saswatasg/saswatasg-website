@@ -74,7 +74,7 @@ function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={factsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6"
         >
           {[
             { icon: <Briefcase className="w-5 h-5" />, value: "3+", label: "Years in Product" },
@@ -103,7 +103,7 @@ function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={bioInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-canvas rounded-card p-8 md:p-14 mt-4 border border-ink/10"
+          className="bg-canvas rounded-card p-8 md:p-14 mt-6 border border-ink/10"
         >
           <div className="space-y-6 max-w-3xl">
             <p>
@@ -126,7 +126,7 @@ function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={thinkInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4"
+          className="mt-6"
         >
           <div className="bg-canvas rounded-card p-8 md:p-14 border border-ink/10">
             <div className="mb-8">

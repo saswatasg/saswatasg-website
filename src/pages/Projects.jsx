@@ -114,7 +114,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-canvas rounded-card p-8 md:p-14 mb-4 border border-ink/10"
+          className="bg-canvas rounded-card p-8 md:p-14 mb-6 border border-ink/10"
         >
           <span className="block text-center mb-4">
             <span className="inline-block px-4 py-1.5 rounded-pill bg-lemon/30 text-ink text-sm font-medium border border-ink/10">

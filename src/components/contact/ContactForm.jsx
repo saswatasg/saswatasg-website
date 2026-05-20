@@ -104,7 +104,7 @@ const ContactForm = () => {
               </div>
             </TooltipProvider>
 
-            <button type="submit" disabled={isSubmitting || !isFormValid} className="bg-ink text-white rounded-pill px-6 py-2.5 text-sm font-medium inline-flex items-center gap-2 hover:bg-lemon hover:text-ink transition-all duration-200 disabled:opacity-50">
+            <button type="submit" disabled={isSubmitting || !isFormValid} className="bg-ink text-white rounded-pill px-6 py-3 min-h-[44px] text-sm font-medium inline-flex items-center gap-2 hover:bg-lemon hover:text-ink transition-all duration-300 disabled:opacity-50">
               {isSubmitting ? (
                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
               ) : (
