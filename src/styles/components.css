@@ -1,0 +1,131 @@
+.interactive-card {
+  @apply p-6 rounded-[var(--radius)] border border-border/50 relative overflow-hidden transition-all duration-300;
+  background: hsl(var(--card));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  border-radius: var(--radius);
+}
+
+.interactive-card:hover::before {
+  opacity: 0.05;
+}
+
+.interactive-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.tag {
+  @apply px-3 py-1 rounded-[calc(var(--radius)-0.25rem)] text-sm font-medium;
+  background: linear-gradient(135deg, hsl(var(--primary)/0.1), hsl(var(--secondary)/0.1));
+  color: hsl(var(--primary));
+  transition: all 0.3s ease;
+  border: 1px solid hsl(var(--primary)/0.1);
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, hsl(var(--primary)/0.15), hsl(var(--secondary)/0.15));
+  border-color: hsl(var(--primary)/0.2);
+}
+
+.skill-tag {
+  @apply inline-block px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300;
+  @apply bg-primary/10 text-primary border border-primary/20;
+  @apply hover:bg-primary/20 hover:scale-105;
+}
+
+.read-more-btn {
+  @apply mt-4 w-full flex items-center justify-center gap-2 text-foreground/80 hover:text-primary transition-colors duration-300;
+}
+
+.social-link {
+  @apply transition-all duration-300 hover:scale-105 hover:text-primary;
+}
+
+.timeline-line {
+  @apply absolute left-0 top-0 h-full w-px;
+  background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--secondary)));
+  margin-left: 1.45rem;
+}
+
+.experience-icon {
+  @apply absolute left-0 top-0 w-12 h-12 rounded-full bg-card border-2 border-primary flex items-center justify-center;
+  transition: all 0.3s ease;
+  z-index: 1;
+  box-shadow: 0 0 20px hsl(var(--primary)/0.2);
+}
+
+.experience-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px hsl(var(--primary)/0.3);
+}
+
+.experience-card,
+.project-card,
+.education-card {
+  @apply p-6 rounded-[var(--radius)] border border-border/50 relative overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--card)/0.95));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.experience-card:hover,
+.project-card:hover,
+.education-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+  border-color: hsl(var(--primary)/0.2);
+}
+
+.service-card {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: hsl(var(--primary)/0.3);
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 0 0 hsl(var(--primary)/0.2);
+}
+
+.service-card:hover::after {
+  box-shadow: 0 0 25px 5px hsl(var(--primary)/0.15);
+}
+
+.button-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-md hover:saturate-150 transition-all duration-300;
+}
+
+.button-ghost {
+  @apply text-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-300;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

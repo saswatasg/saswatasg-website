@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Amber/Gold Palette - Light Mode */
+    --primary: 38 75% 40%;
+    --secondary: 40 15% 94%;
+    --muted: 40 15% 94%;
+    --accent: 40 15% 94%;
+    --background: 40 5% 97%;
+    --foreground: 0 0% 9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    
+    --primary-foreground: 40 5% 97%;
+    --secondary-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 45%;
+    --accent-foreground: 0 0% 9%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 5% 97%;
+    
+    --border: 40 5% 90%;
+    --input: 40 5% 90%;
+    --ring: 38 75% 40%;
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Amber/Gold Palette - Dark Mode */
+    --primary: 38 80% 56%;
+    --secondary: 38 50% 18%;
+    --muted: 0 0% 10%;
+    --accent: 38 70% 65%;
+    --background: 0 0% 4%;
+    --foreground: 40 5% 92%;
+    
+    --card: 0 0% 8%;
+    --card-foreground: 40 5% 92%;
+    
+    --popover: 0 0% 8%;
+    --popover-foreground: 40 5% 92%;
+    
+    --primary-foreground: 0 0% 6%;
+    --secondary-foreground: 40 5% 85%;
+    --muted-foreground: 0 0% 54%;
+    --accent-foreground: 0 0% 4%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 5% 92%;
+    
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 38 80% 56%;
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: 'Poppins', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex-grow: 1;
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    @apply absolute p-3 bg-background text-foreground rounded-md shadow-md;
+    left: -9999px;
+    top: 1rem;
+    z-index: 9999;
+  }
+  .skip-link:focus {
+    @apply left-4 ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}

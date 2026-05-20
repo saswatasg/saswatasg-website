@@ -1,0 +1,66 @@
+import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Linkedin, Instagram, Facebook, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+
+const XIcon = (props) => (
+  <svg {...props} viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1058.01 1148.81H895.408L569.165 687.854V687.828Z" fill="currentColor"/>
+  </svg>
+);
+
+const socialLinks = [
+  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/918777875140?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Would%20love%20to%20connect!', color: 'hover:text-[#25D366]' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99', color: 'hover:text-[#0A66C2]' },
+  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/saswatasg99/', color: 'hover:text-[#E4405F]' },
+  { name: 'Twitter', icon: XIcon, href: 'https://twitter.com/saswatasg', color: 'hover:text-white' },
+  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/saswatasubhra.sengupta', color: 'hover:text-[#1877F2]' },
+];
+
+const SocialCard = ({ custom }) => {
+  const handleAnalytics = (platform) => {
+    console.log(`Analytics Event: contact_social_clicked, Platform: ${platform}`);
+  };
+
+  return (
+    <Card custom={custom}>
+      <CardHeader>
+        <CardTitle>Social</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <TooltipProvider>
+          <div className="flex justify-center sm:justify-start gap-2 overflow-x-auto pb-2 -mx-6 px-6 no-scrollbar">
+            {socialLinks.map((social, index) => (
+              <Tooltip key={index} delayDuration={100}>
+                <TooltipTrigger asChild>
+                  <motion.a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleAnalytics(social.name)}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={cn(
+                      'flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-2xl bg-secondary/50 text-muted-foreground transition-colors duration-300',
+                      social.color
+                    )}
+                    aria-label={`Visit Saswata's ${social.name} profile`}
+                  >
+                    <social.icon className="h-7 w-7" />
+                  </motion.a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{social.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </div>
+        </TooltipProvider>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default SocialCard;

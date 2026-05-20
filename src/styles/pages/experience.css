@@ -1,0 +1,52 @@
+.experience-timeline {
+  position: relative;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: calc(1.5rem - 1px); 
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--secondary)));
+  z-index: 0;
+}
+
+.experience-item {
+  position: relative;
+  padding-left: 4rem; 
+  margin-bottom: 2rem;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-icon-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3rem; 
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(var(--card));
+  border: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.experience-item:hover .experience-icon-wrapper {
+  transform: scale(1.1);
+}
+
+.experience-content h3 {
+  color: hsl(var(--primary));
+}
+
+.education-card h3 {
+  color: hsl(var(--primary));
+}

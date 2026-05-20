@@ -1,0 +1,85 @@
+.home-page-wrapper {
+  position: relative;
+  overflow: hidden; 
+}
+
+.home-page-wrapper::before,
+.home-page-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; 
+}
+
+.home-page-wrapper::before {
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    hsla(var(--primary-hsl), 0.2),
+    transparent 40%
+  );
+  opacity: 0; 
+  animation: fadeInBackground 1s ease-out forwards;
+  transform: translate(calc((50% - var(--mouse-x)) / 20), calc((50% - var(--mouse-y)) / 20));
+}
+
+.home-page-wrapper::after {
+  background: radial-gradient(
+    circle at calc(100% - var(--mouse-x)) calc(100% - var(--mouse-y)),
+    hsla(var(--secondary-hsl), 0.15),
+    transparent 40%
+  );
+  opacity: 0;
+  animation: fadeInBackground 1s 0.2s ease-out forwards; 
+  transform: translate(calc((var(--mouse-x) - 50%) / 20), calc((var(--mouse-y) - 50%) / 20));
+}
+
+
+@keyframes fadeInBackground {
+  to {
+    opacity: 1;
+  }
+}
+
+.profile-image-container {
+  position: relative;
+  z-index: 10;
+}
+
+.profile-image {
+  border-color: transparent !important;
+  box-shadow: 0 0 30px 5px hsla(var(--primary-hsl), 0.2), 0 0 50px 10px hsla(var(--secondary-hsl), 0.15);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.profile-image-container:hover .profile-image,
+.profile-image-container:focus-within .profile-image {
+  transform: scale(1.08) translateY(-5px);
+   box-shadow: 
+    0 0 20px 0px hsla(var(--primary-hsl), 0.3), 
+    0 0 40px 5px hsla(var(--primary-hsl), 0.2), 
+    0 0 60px 15px hsla(var(--secondary-hsl), 0.15),
+    0 0 0 4px hsla(var(--background-hsl), 0.5);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-alt)) 100%);
+  padding-top: 10rem;
+  padding-bottom: 6rem;
+}
+
+.hero-name {
+  color: hsl(var(--foreground));
+}
+
+.hero-subtitle {
+  color: hsl(var(--muted-foreground));
+}
+
+.hero-highlight {
+  color: hsl(var(--primary));
+}

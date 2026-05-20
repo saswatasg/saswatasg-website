@@ -1,0 +1,8 @@
+.about-page-content img {
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px hsla(var(--primary-hsl), 0.1);
+}
+
+.about-page-content h2 {
+  color: hsl(var(--primary));
+}

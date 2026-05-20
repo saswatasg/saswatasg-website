@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Saswata Subhra Sengupta
+N:Sengupta;Saswata Subhra;;;
+TITLE:Growth Product Manager;E-commerce Growth Consultant
+TEL;TYPE=CELL,VOICE;PREF=1:+918777875140
+EMAIL;TYPE=INTERNET,PREF=1:hi@saswatasg.com
+URL:https://saswatasg.com
+ADR;TYPE=HOME:;;;Kolkata;;;India
+PHOTO;MEDIATYPE=image/jpeg:https://i.postimg.cc/DfNsm99f/DP-Linkedin.jpg
+ORG:Saswata SG
+END:VCARD

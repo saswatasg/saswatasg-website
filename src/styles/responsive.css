@@ -1,0 +1,28 @@
+@media (max-width: 768px) {
+  .hero-gradient {
+    @apply min-h-[calc(100vh-8rem)]; 
+  }
+  .home-page-wrapper::before,
+  .home-page-wrapper::after {
+    filter: blur(60px); 
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-gradient {
+    @apply px-4;
+  }
+  
+  .hero-name {
+    @apply text-3xl;
+  }
+  
+  .education-card {
+    @apply text-sm p-4; 
+  }
+
+  .profile-image {
+    width: 128px; 
+    height: 128px;
+  }
+}
