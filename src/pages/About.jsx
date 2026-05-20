@@ -3,40 +3,21 @@ import { motion, useInView } from 'framer-motion';
 import { MapPin, Award, GraduationCap, Briefcase } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 
-const SectionTitle = ({ children }) => (
-  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">{children}</h2>
-);
-
-const SectionSubtitle = ({ children }) => (
-  <p className="text-muted-foreground mb-8">{children}</p>
-);
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { type: 'spring', stiffness: 80, damping: 15, delay: i * 0.1 }
-  })
-};
-
 const PhilosophyCard = ({ item, index }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <motion.div
       ref={ref}
-      custom={index}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={fadeUp}
-      whileHover={{ y: -5 }}
-      className="group bg-card rounded-xl border border-border/50 p-6 relative overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ rotate: -1, y: -4 }}
+      className="bg-blush rounded-card p-8 border border-ink/10"
     >
-      <div className="absolute -top-4 -left-2 text-8xl text-primary/10 font-serif leading-none select-none" aria-hidden="true">"</div>
-      <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-primary transition-colors">{item.statement}</h3>
-      <p className="text-sm text-muted-foreground relative z-10 leading-relaxed">{item.explanation}</p>
+      <h3 className="text-xl font-display font-bold text-ink mb-3">{item.statement}</h3>
+      <p className="text-sm text-ink/70 leading-relaxed">{item.explanation}</p>
     </motion.div>
   );
 };
@@ -59,97 +40,106 @@ const howIThink = [
 function About() {
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true });
+  const bioRef = useRef(null);
+  const bioInView = useInView(bioRef, { once: true, margin: '-80px' });
+  const factsRef = useRef(null);
+  const factsInView = useInView(factsRef, { once: true, margin: '-80px' });
+  const thinkRef = useRef(null);
+  const thinkInView = useInView(thinkRef, { once: true, margin: '-80px' });
 
   return (
     <>
       <PageMeta />
-      <div className="max-w-4xl mx-auto py-12 px-4 flex-grow">
-        {/* Page Header */}
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16">
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ type: 'spring', stiffness: 80 }}
-          className="text-center md:text-left mb-12"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-canvas rounded-card p-8 md:p-14 border border-ink/10"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
+          <span className="inline-block px-4 py-1.5 rounded-pill bg-lemon/30 text-ink text-sm font-medium mb-4 border border-ink/10">
             About Me
           </span>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Product Manager by day, <span className="text-primary">problem solver</span> by nature.
+          <h1 className="text-ink">
+            Product Manager by day, <span className="text-ink/60">problem solver</span> by nature.
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <p className="mt-4 max-w-2xl">
             IIT Jodhpur MBA. 3+ years shipping products across B2B SaaS, D2C, and e-commerce.
           </p>
         </motion.div>
 
-        {/* Quick Facts */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
+          ref={factsRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={factsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"
         >
           {[
-            { icon: <Briefcase className="w-4 h-4" />, value: "3+", label: "Years in Product" },
-            { icon: <Award className="w-4 h-4" />, value: "70+", label: "Product Changes Shipped" },
-            { icon: <GraduationCap className="w-4 h-4" />, value: "IIT Jodhpur", label: "MBA" },
-            { icon: <MapPin className="w-4 h-4" />, value: "Kolkata", label: "Based in India" },
+            { icon: <Briefcase className="w-5 h-5" />, value: "3+", label: "Years in Product" },
+            { icon: <Award className="w-5 h-5" />, value: "70+", label: "Product Changes Shipped" },
+            { icon: <GraduationCap className="w-5 h-5" />, value: "IIT Jodhpur", label: "MBA" },
+            { icon: <MapPin className="w-5 h-5" />, value: "Kolkata", label: "Based in India" },
           ].map((fact, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -4, scale: 1.02 }}
-              className="bg-card border border-border/50 rounded-xl p-5 text-center hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              transition={{ delay: i * 0.08 }}
+              whileHover={{ y: -4 }}
+              className="bg-sky rounded-card p-6 text-center border border-ink/10"
             >
-              <div className="flex justify-center mb-2 text-primary">{fact.icon}</div>
-              <span className="text-xl font-bold text-primary block">{fact.value}</span>
-              <span className="text-xs text-muted-foreground">{fact.label}</span>
+              <div className="flex justify-center mb-2 text-ink">{fact.icon}</div>
+              <span className="text-xl font-black font-display text-ink block">{fact.value}</span>
+              <span className="text-xs text-ink/60">{fact.label}</span>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Narrative Bio */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-6 text-foreground/80 leading-relaxed text-lg mb-20"
+          ref={bioRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={bioInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-canvas rounded-card p-8 md:p-14 mt-4 border border-ink/10"
         >
-          <p>
-            I've spent the last 3 years building products across B2B SaaS, D2C e-commerce, and AI — from a US-based furniture brand doing $3M+ monthly to an IndiaMART company serving Indian SMBs, and now at Upcore Technologies where I lead product discovery for AI agent solutions.
-          </p>
-          <p>
-            My MBA from IIT Jodhpur gave me the business strategy and analytics layer. The product work at Sierra Living Concepts gave me hands-on experience shipping features that moved real revenue — cart abandonment from 84% to 63%, lead submissions doubled, $329K/month recovered. At LiveKeeping, I diagnosed adoption gaps that nobody had flagged and built the executive narrative to get them fixed.
-          </p>
-          <p>
-            I care more about UX than UI, more about why than what, and more about the problem space than the solution space. I've shipped 70+ product changes — some were big swings, most were small precise interventions that moved a number that mattered.
-          </p>
-          <p>
-            Outside of work, I explore digital products the way some people explore cities — with genuine curiosity about what's working and why. I cook, I shoot photography, I watch films with the same analytical brain I bring to work. I also mentor early-career PMs, because the things that trip people up on their way into product are usually fixable — and mostly nobody tells them.
-          </p>
+          <div className="space-y-6 max-w-3xl">
+            <p>
+              I've spent the last 3 years building products across B2B SaaS, D2C e-commerce, and AI — from a US-based furniture brand doing $3M+ monthly to an IndiaMART company serving Indian SMBs, and now at Upcore Technologies where I lead product discovery for AI agent solutions.
+            </p>
+            <p>
+              My MBA from IIT Jodhpur gave me the business strategy and analytics layer. The product work at Sierra Living Concepts gave me hands-on experience shipping features that moved real revenue — cart abandonment from 84% to 63%, lead submissions doubled, $329K/month recovered. At LiveKeeping, I diagnosed adoption gaps that nobody had flagged and built the executive narrative to get them fixed.
+            </p>
+            <p>
+              I care more about UX than UI, more about why than what, and more about the problem space than the solution space. I've shipped 70+ product changes — some were big swings, most were small precise interventions that moved a number that mattered.
+            </p>
+            <p>
+              Outside of work, I explore digital products the way some people explore cities — with genuine curiosity about what's working and why. I cook, I shoot photography, I watch films with the same analytical brain I bring to work. I also mentor early-career PMs, because the things that trip people up on their way into product are usually fixable — and mostly nobody tells them.
+            </p>
+          </div>
         </motion.div>
 
-        {/* How I Think */}
-        <div className="mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center md:text-left mb-8"
-          >
-            <SectionTitle>How I think</SectionTitle>
-            <SectionSubtitle>Three things I believe, stated plainly.</SectionSubtitle>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {howIThink.map((item, i) => (
-              <PhilosophyCard key={i} item={item} index={i} />
-            ))}
+        <motion.div
+          ref={thinkRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={thinkInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4"
+        >
+          <div className="bg-canvas rounded-card p-8 md:p-14 border border-ink/10">
+            <div className="mb-8">
+              <h2 className="text-ink">How I think</h2>
+              <p className="mt-2">Three things I believe, stated plainly.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {howIThink.map((item, i) => (
+                <PhilosophyCard key={i} item={item} index={i} />
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

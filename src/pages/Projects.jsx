@@ -1,5 +1,5 @@
-import React, { useMemo, useEffect, useRef } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Rocket, Armchair } from 'lucide-react';
 import ProjectCard from '@/components/projects/ProjectCard';
@@ -90,118 +90,78 @@ const TABS = [
 
 const Projects = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
   const activeTab = searchParams.get('tab') || 'livekeeping';
-  const scrollContainerRef = useRef(null);
-  const sectionRef = useRef(null);
 
   const handleTabChange = (value) => {
     setSearchParams({ tab: value });
   };
 
-  useEffect(() => {
-    if (!scrollContainerRef.current) return;
-    const activeElement = scrollContainerRef.current.querySelector(`[data-tab-id="${activeTab}"]`);
-    if (activeElement) {
-      const container = scrollContainerRef.current;
-      const scrollLeft = activeElement.offsetLeft - container.offsetWidth / 2 + activeElement.offsetWidth / 2;
-      container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-    }
-  }, [activeTab]);
-
   const { projects, banner } = useMemo(() => {
     switch (activeTab) {
       case 'sierra':
-        return {
-          projects: sierraProjects,
-          banner: "Sierra Living Concepts · Product Manager (Growth) · May 2024–Jan 2026 · US D2C furniture brand"
-        };
+        return { projects: sierraProjects, banner: "Sierra Living Concepts · Product Manager (Growth) · May 2024–Jan 2026 · US D2C furniture brand" };
       case 'livekeeping':
       default:
-        return {
-          projects: liveKeepingProjects,
-          banner: "LiveKeeping · Associate Product Manager · Jan–Apr 2026 · B2B SaaS, GST compliance for Indian SMBs"
-        };
+        return { projects: liveKeepingProjects, banner: "LiveKeeping · Associate Product Manager · Jan–Apr 2026 · B2B SaaS, GST compliance for Indian SMBs" };
     }
   }, [activeTab]);
 
   return (
     <>
       <PageMeta />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full pb-16"
-      >
-        <div className="container mx-auto px-4 pt-16" ref={sectionRef}>
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-canvas rounded-card p-8 md:p-14 mb-4 border border-ink/10"
+        >
           <span className="block text-center mb-4">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
+            <span className="inline-block px-4 py-1.5 rounded-pill bg-lemon/30 text-ink text-sm font-medium border border-ink/10">
               My Work
             </span>
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground">
+          <h1 className="text-center text-ink">
             Projects & Product Work
           </h1>
-          <p className="text-lg md:text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+          <p className="text-center mt-4 max-w-3xl mx-auto">
             Every project grounded in a real problem, a real approach, and a real outcome.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Tab Navigation */}
-        <div className="tab-nav-wrapper">
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div 
-              ref={scrollContainerRef}
-              className="flex justify-start md:justify-center gap-2 md:gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory w-full pb-px"
-            >
-              {TABS.map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                
-                return (
-                  <button
-                    key={tab.id}
-                    data-tab-id={tab.id}
-                    onClick={() => handleTabChange(tab.id)}
-                    className={`tab-button snap-start ${isActive ? 'active' : ''}`}
-                    aria-selected={isActive}
-                    role="tab"
-                  >
-                    <Icon className="w-5 h-5 flex-shrink-0" />
-                    <span>{tab.label}</span>
-                    
-                    {isActive && (
-                      <motion.div
-                        layoutId="active-tab-underline"
-                        className="tab-indicator"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+        <div className="bg-canvas rounded-card p-8 md:p-14 border border-ink/10">
+          <div className="flex justify-center gap-2 mb-8">
+            {TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabChange(tab.id)}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-pill text-sm font-medium transition-all ${
+                    isActive ? 'bg-ink text-white' : 'bg-white text-ink/60 border border-ink/10 hover:bg-ink/5'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
-        </div>
 
-        {/* Content */}
-        <div className="container mx-auto px-4 max-w-5xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="w-full"
+              transition={{ duration: 0.3 }}
             >
-              <div className="w-full bg-primary/10 border border-primary/20 rounded-lg p-5 mb-10 text-center text-primary font-medium text-sm md:text-base shadow-sm tracking-wide">
+              <div className="w-full bg-mint rounded-card p-4 mb-8 text-center text-ink font-medium text-sm border border-ink/10">
                 {banner}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-4">
                 {projects.map((project, index) => (
                   <ProjectCard key={index} index={index} {...project} />
                 ))}
@@ -209,7 +169,7 @@ const Projects = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };

@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import PageMeta from '@/components/PageMeta';
 import ContactForm from '@/components/contact/ContactForm';
-import { Button } from '@/components/ui/button';
 import { ArrowRight, Calendar } from 'lucide-react';
+import { WavingHand, StarSparkle } from '@/components/Mascots';
 
 const Contact = () => {
   const headerRef = useRef(null);
@@ -17,37 +17,54 @@ const Contact = () => {
   return (
     <>
       <PageMeta />
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex-grow">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16 flex-grow">
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ type: 'spring', stiffness: 80, damping: 15 }}
-          className="text-center"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-lemon rounded-card p-8 md:p-14 relative overflow-hidden border border-ink/10"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
-            Get in Touch
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground pb-2">
-            Let's <span className="text-primary">talk</span>
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Whether you have a project in mind, a collaboration idea, or just want to say hello — I'd love to hear from you.
-          </p>
-          <div className="mt-10 flex justify-center">
-            <Button
-              onClick={handleBookingClick}
-              size="lg"
-              className="w-full sm:w-auto min-w-fit rounded-full flex items-center justify-center gap-2.5 group shadow-lg hover:shadow-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-              aria-label="Schedule a meeting with Saswata"
-            >
-              <Calendar size={20} aria-hidden="true" />
-              Book a Meeting <ArrowRight size={20} aria-hidden="true" className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
-            </Button>
+          <WavingHand className="absolute bottom-4 right-4 z-10" />
+          <StarSparkle className="absolute top-6 right-12 z-10" />
+          <StarSparkle className="absolute top-10 right-20 z-10" />
+
+          <motion.svg
+            className="absolute top-0 right-0 w-32 h-32 text-ink/10 -z-0"
+            viewBox="0 0 100 100"
+            initial={{ strokeDashoffset: 1000 }}
+            animate={{ strokeDashoffset: 0 }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+          >
+            <path d="M10 90 Q 30 10, 50 50 T 90 10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="200" />
+          </motion.svg>
+
+          <div className="text-center relative z-10">
+            <span className="inline-block px-4 py-1.5 rounded-pill bg-white/50 text-ink text-sm font-medium mb-4 border border-ink/10">
+              Get in Touch
+            </span>
+            <h1 className="text-ink">
+              Let's <span className="text-ink/60">talk</span>
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto">
+              Whether you have a project in mind, a collaboration idea, or just want to say hello — I'd love to hear from you.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <button
+                onClick={handleBookingClick}
+                className="bg-ink text-white rounded-pill px-6 py-3 text-sm font-medium inline-flex items-center gap-2 hover:bg-white hover:text-ink hover:border-ink hover:border-2 border-2 border-transparent transition-all duration-200"
+              >
+                <Calendar size={18} />
+                Book a Meeting
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
+              </button>
+            </div>
           </div>
         </motion.div>
 
-        <ContactForm />
+        <div className="mt-4">
+          <ContactForm />
+        </div>
       </div>
     </>
   );

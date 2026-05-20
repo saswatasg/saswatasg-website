@@ -7,15 +7,14 @@ module.exports = {
     './src/**/*.{js,jsx}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
+        canvas: '#F5F2EC',
+        ink: '#0A0A0A',
+        lemon: '#F4EC4A',
+        mint: '#3DDC91',
+        blush: '#F5C9E0',
+        sky: '#D8E4FA',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -51,9 +50,15 @@ module.exports = {
         },
       },
       borderRadius: {
+        card: '22px',
+        pill: '999px',
         lg: "var(--radius)",
         md: "calc(var(--radius) - 4px)",
         sm: "calc(var(--radius) - 8px)",
+      },
+      fontFamily: {
+        display: ['"Satoshi"', '"General Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {

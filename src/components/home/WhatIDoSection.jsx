@@ -25,27 +25,26 @@ const skills = [
   }
 ];
 
+const cardColors = ['bg-mint', 'bg-blush', 'bg-sky', 'bg-lemon'];
+
 const SkillCard = ({ skill, index }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40, rotateX: 10 }}
-      animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.15, type: 'spring', stiffness: 80 }}
-      whileHover={{ y: -8, scale: 1.02 }}
-      className="group relative bg-card rounded-2xl border border-border/50 p-8 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -4 }}
+      className={`rounded-card p-6 md:p-8 ${cardColors[index % cardColors.length]} border border-ink/10`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="relative z-10">
-        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-          {skill.icon}
-        </div>
-        <h3 className="text-xl font-bold mb-3 text-foreground">{skill.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">{skill.description}</p>
-      </div>
+      <motion.div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-ink mb-4" whileHover={{ scale: 1.15 }}>
+        {skill.icon}
+      </motion.div>
+      <h3 className="text-xl font-display font-bold text-ink mb-2">{skill.title}</h3>
+      <p className="text-sm text-ink/70 leading-relaxed">{skill.description}</p>
     </motion.div>
   );
 };
@@ -53,33 +52,37 @@ const SkillCard = ({ skill, index }) => {
 const WhatIDoSection = () => {
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true });
+  const sectionRef = useRef(null);
+  const sectionInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
-    <motion.section
-      id="work-section"
-      aria-labelledby="skills-heading"
-      className="py-16 md:py-24"
-    >
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section id="work-section" aria-labelledby="skills-heading" className="max-w-[1200px] mx-auto px-4 md:px-6 mt-4">
+      <motion.div
+        ref={sectionRef}
+        initial={{ opacity: 0, y: 40 }}
+        animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="bg-canvas rounded-card p-8 md:p-14 border border-ink/10"
+      >
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center mb-8"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
+          <span className="inline-block px-4 py-1.5 rounded-pill bg-lemon/30 text-ink text-sm font-medium mb-4 border border-ink/10">
             How I Work
           </span>
-          <h2 id="skills-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Product Management, <span className="text-primary">End to End</span>
+          <h2 id="skills-heading" className="text-ink text-3xl md:text-4xl lg:text-5xl">
+            Product Management, <span className="text-ink/60">End to End</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base">
             From discovery to delivery — I own the full product lifecycle and measure everything by impact.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-4">
           {skills.map((skill, index) => (
             <SkillCard key={index} skill={skill} index={index} />
           ))}
@@ -90,17 +93,17 @@ const WhatIDoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="text-center mt-12"
+          className="text-center mt-8"
         >
           <a
             href="/experience"
-            className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-ink/70 hover:text-ink font-medium transition-all text-sm"
           >
             View my experience <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 };
 
