@@ -10,10 +10,12 @@ const Home = () => {
       <PageMeta />
       <div className="flex-grow flex flex-col">
         <HeroSection />
-        <div className="mt-1">
+        <div className="mt-6">
           <Marquee />
         </div>
-        <WhatIDoSection />
+        <div className="pb-16">
+          <WhatIDoSection />
+        </div>
       </div>
     </>
   );
