@@ -13,7 +13,7 @@ const Home = () => {
         <div className="mt-6">
           <Marquee />
         </div>
-        <div className="pb-16">
+        <div className="mt-6 pb-16">
           <WhatIDoSection />
         </div>
       </div>
