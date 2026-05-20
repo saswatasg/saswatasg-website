@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Calendar, Star, FileText, X } from 'lucide-react';
+import { ArrowRight, Calendar, Star, X } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -65,13 +65,6 @@ const HeroSection = () => {
                 <motion.h1 variants={childVariants} className="text-ink text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-black tracking-tighter leading-[1.05] mt-1">
                   Saswata S. Sengupta
                 </motion.h1>
-                <motion.span variants={childVariants} className="flex items-center gap-2 mb-1">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                  </span>
-                  <span className="text-xs font-bold text-ink/50">Open to opportunities</span>
-                </motion.span>
                 <motion.p variants={childVariants} className="text-base md:text-lg text-ink/60 font-display font-bold tracking-tight mt-1">
                   I ship products that move metrics.
                 </motion.p>
@@ -101,25 +94,17 @@ const HeroSection = () => {
                       See My Work
                     </button>
                   </div>
-                  <div className="relative inline-flex group">
-                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-purple translate-x-[3px] translate-y-[3px]" />
-                    <a
-                      href="/assets/resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-5 py-2.5 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
-                    >
-                      <FileText className="w-4 h-4" />
-                      Resume
-                    </a>
-                  </div>
                 </motion.div>
 
                 <motion.div variants={childVariants} className="flex flex-wrap gap-2 mt-6">
                   {['B2B SaaS', 'D2C', 'E-Commerce', 'AI Products', 'Product Discovery', 'Analytics'].map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 rounded-lg text-xs font-bold bg-canvas text-ink border-2 border-black">
+                    <motion.span
+                      key={tag}
+                      whileHover={{ scale: 1.08, rotate: [0, -2, 2, 0], transition: { duration: 0.2 } }}
+                      className="px-2.5 py-1 rounded-lg text-xs font-bold bg-canvas text-ink border-2 border-black cursor-default"
+                    >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
                 </motion.div>
               </div>
@@ -131,47 +116,54 @@ const HeroSection = () => {
 
           <motion.div
             variants={childVariants}
-            whileHover={{ scale: 1.01, rotate: 0.5, transition: { duration: 0.2 } }}
-            className="bg-mint border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden"
+            whileHover={{ scale: 1.01, rotate: 0.3, transition: { duration: 0.2 } }}
+            className="bg-mint border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden"
             style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
             <div className="relative z-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mb-3">
-                Impact
-              </span>
-              <div className="mt-2 space-y-3">
-                <div>
-                  <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
-                  <p className="text-xs text-ink/60 font-bold">monthly revenue recovered from checkout, pricing & automation</p>
-                </div>
-                <div className="pt-3 border-t-2 border-black/20">
-                  <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <div className="text-lg font-black text-ink">70+</div>
-                      <p className="text-[10px] text-ink/60 font-bold">Products shipped</p>
-                    </div>
-                    <div>
-                      <div className="text-lg font-black text-ink">63%</div>
-                      <p className="text-[10px] text-ink/60 font-bold">Cart abandon. (was 84%)</p>
-                    </div>
-                    <div>
-                      <div className="text-lg font-black text-ink">+105%</div>
-                      <p className="text-[10px] text-ink/60 font-bold">Lead submissions</p>
-                    </div>
-                    <div>
-                      <div className="text-lg font-black text-ink">+$152K</div>
-                      <p className="text-[10px] text-ink/60 font-bold">Pricing tools /mo</p>
-                    </div>
-                    <div>
-                      <div className="text-lg font-black text-ink">+$113K</div>
-                      <p className="text-[10px] text-ink/60 font-bold">CRM automation /mo</p>
-                    </div>
-                    <div>
-                      <div className="text-lg font-black text-ink">71.6%</div>
-                      <p className="text-[10px] text-ink/60 font-bold">AI lead close rate</p>
-                    </div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
+                  Impact
+                </span>
+                <span className="text-[10px] font-bold text-ink/40">Sierra Living Concepts</span>
+              </div>
+
+              <div className="bg-white border-2 border-black rounded-xl p-5 mb-4 -rotate-[0.3deg] hover:rotate-0 transition-all duration-200">
+                <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
+                <p className="text-xs text-ink/60 font-bold">monthly revenue recovered</p>
+                <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                  <div className="bg-pink/30 rounded-lg p-2 border border-black">
+                    <div className="text-sm font-black text-ink">$329K</div>
+                    <p className="text-[9px] font-bold text-ink/60">Checkout</p>
+                  </div>
+                  <div className="bg-lemon/40 rounded-lg p-2 border border-black">
+                    <div className="text-sm font-black text-ink">$152K</div>
+                    <p className="text-[9px] font-bold text-ink/60">Pricing</p>
+                  </div>
+                  <div className="bg-purple/20 rounded-lg p-2 border border-black">
+                    <div className="text-sm font-black text-ink">$113K</div>
+                    <p className="text-[9px] font-bold text-ink/60">CRM</p>
                   </div>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
+                  <div className="text-lg font-black text-ink">70+</div>
+                  <p className="text-[10px] font-bold text-ink/60">Products shipped</p>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
+                  <div className="text-lg font-black text-ink">84% → 63%</div>
+                  <p className="text-[10px] font-bold text-ink/60">Cart abandonment</p>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
+                  <div className="text-lg font-black text-ink">+105%</div>
+                  <p className="text-[10px] font-bold text-ink/60">Lead submissions</p>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
+                  <div className="text-lg font-black text-ink">71.6%</div>
+                  <p className="text-[10px] font-bold text-ink/60">AI lead close rate</p>
+                </motion.div>
               </div>
             </div>
             <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-purple border-2 border-black rounded-lg -rotate-12 hidden md:block" />

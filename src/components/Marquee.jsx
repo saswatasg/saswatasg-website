@@ -17,12 +17,13 @@ const Marquee = () => {
         transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
       >
         {infinite.map((tag, i) => (
-          <span
+          <motion.span
             key={i}
-            className="inline-flex items-center px-3 py-1 rounded-lg bg-pink text-ink text-xs font-bold border-2 border-black"
+            whileHover={{ scale: 1.1, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
+            className="inline-flex items-center px-3 py-1 rounded-lg bg-pink text-ink text-xs font-bold border-2 border-black cursor-default"
           >
             {tag}
-          </span>
+          </motion.span>
         ))}
       </motion.div>
     </div>

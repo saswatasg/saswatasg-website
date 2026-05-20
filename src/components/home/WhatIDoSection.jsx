@@ -44,7 +44,9 @@ const SkillCard = ({ skill, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className={`${style.bg} border-2 border-black rounded-2xl p-6 md:p-8 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:rotate-[0.5deg] active:scale-[0.98]`}
+      whileHover={{ y: -4, scale: 1.02, rotate: 0.3, transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.98 }}
+      className={`${style.bg} border-2 border-black rounded-2xl p-6 md:p-8`}
       style={{ boxShadow: style.shadow }}
     >
       <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-ink mb-4 border-2 border-black">

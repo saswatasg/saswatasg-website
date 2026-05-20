@@ -21,6 +21,7 @@ const PhilosophyCard = ({ item, index }) => {
       transition={{ duration: 0.4, delay: index * 0.08 }}
       className={`${colors[index]} border-2 border-black rounded-2xl p-6 md:p-8 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:rotate-[0.5deg] active:scale-[0.98]`}
       style={{ boxShadow: shadows[index] }}
+      whileHover={{ y: -4, scale: 1.02, rotate: 0.3, transition: { duration: 0.2 } }}
     >
       <Quote className="w-6 h-6 text-ink/40 mb-3" />
       <h3 className="text-base font-display font-black text-ink mb-2">{item.statement}</h3>
@@ -66,6 +67,7 @@ function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -2, transition: { duration: 0.2 } }}
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14"
           style={{ boxShadow: '10px 10px 0px 0px #FF90E8' }}
         >
@@ -89,13 +91,14 @@ function About() {
           ].map((fact, i) => {
             const c = statColors[i];
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className={`${c.bg} border-2 border-black rounded-2xl p-6 text-center transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] hover:rotate-[0.5deg] active:scale-[0.97]`}
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08 }}
+            whileHover={{ y: -3, scale: 1.03, rotate: 0.3, transition: { duration: 0.2 } }}
+            className={`${c.bg} border-2 border-black rounded-2xl p-6 text-center`}
                 style={{ boxShadow: c.shadow }}
               >
                 <div className="flex justify-center mb-2 text-ink">{fact.icon}</div>
@@ -126,10 +129,11 @@ function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={bioInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -2, transition: { duration: 0.2 } }}
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mt-6"
           style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
         >
-          <div className="bg-pink border-2 border-black rounded-xl p-4 md:p-6 mb-8 -rotate-[0.5deg]">
+          <div className="bg-pink border-2 border-black rounded-xl p-4 md:p-6 mb-8 -rotate-[0.5deg] hover:rotate-0 transition-all duration-200">
             <p className="text-base md:text-lg font-black text-ink font-display tracking-tight">
               "I don't just ship features — I ship outcomes that move metrics."
             </p>
@@ -175,7 +179,11 @@ function About() {
         </motion.div>
 
         <div className="mt-6">
-          <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14">
+          <motion.div
+            whileHover={{ y: -2, transition: { duration: 0.2 } }}
+            className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14"
+            style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
+          >
             <div className="mb-6">
               <h2 className="text-ink text-2xl md:text-3xl font-display font-black tracking-tight">How I think</h2>
               <p className="mt-1 text-sm text-ink/70 font-medium">Three things I believe, stated plainly.</p>
@@ -185,7 +193,7 @@ function About() {
                 <PhilosophyCard key={i} item={item} index={i} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

@@ -29,18 +29,19 @@ const ExperienceCard = ({ role, index }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: '-80px' }}
     transition={{ duration: 0.4, delay: index * 0.08 }}
-    className={`${cardColors[index % cardColors.length]} border-2 border-black rounded-2xl p-8 md:p-10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.005] hover:rotate-[0.2deg] active:scale-[0.99]`}
+    className={`${cardColors[index % cardColors.length]} border-2 border-black rounded-2xl p-8 md:p-10 relative overflow-hidden group`}
     style={{ boxShadow: cardShadows[index % cardShadows.length] }}
   >
+    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300" />
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
       <div className="flex items-center gap-2 text-sm font-bold text-ink/60">
         <Calendar className="w-4 h-4 text-ink" />
         <span>{role.period}</span>
       </div>
       {role.type && (
-        <span className="self-start sm:self-auto px-3 py-1 rounded-lg text-xs font-bold bg-white text-ink border-2 border-black">
+        <motion.span whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0], transition: { duration: 0.15 } }} className="self-start sm:self-auto px-3 py-1 rounded-lg text-xs font-bold bg-white text-ink border-2 border-black cursor-default">
           {role.type}
-        </span>
+        </motion.span>
       )}
     </div>
 
@@ -60,9 +61,9 @@ const ExperienceCard = ({ role, index }) => (
     {role.tags && (
       <div className="flex flex-wrap gap-2 mb-6">
         {role.tags.map((tag, idx) => (
-          <span key={idx} className="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-ink border-2 border-black">
+          <motion.span key={idx} whileHover={{ scale: 1.08, rotate: [0, -2, 2, 0], transition: { duration: 0.15 } }} className="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-ink border-2 border-black cursor-default">
             {tag}
-          </span>
+          </motion.span>
         ))}
       </div>
     )}
@@ -76,6 +77,7 @@ const ExperienceCard = ({ role, index }) => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.05 }}
+            whileHover={{ x: 3, scale: 1.005, transition: { duration: 0.15 } }}
             className="flex items-start gap-3 p-4 rounded-xl bg-white border-2 border-black"
           >
             <div className="mt-0.5 text-ink flex-shrink-0 bg-canvas p-1.5 rounded-lg border-2 border-black">
@@ -194,6 +196,7 @@ function Experience() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -2, transition: { duration: 0.2 } }}
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mb-6"
           style={{ boxShadow: '10px 10px 0px 0px #FF90E8' }}
         >

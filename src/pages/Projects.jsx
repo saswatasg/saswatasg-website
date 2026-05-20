@@ -114,8 +114,9 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mb-6"
-          style={{ boxShadow: '10px 10px 0px 0px #FF90E8' }}
+          whileHover={{ y: -2, transition: { duration: 0.2 } }}
+          className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14"
+          style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
         >
           <span className="block text-center mb-3">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black">
@@ -130,7 +131,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14">
+        <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mt-6">
           <div className="flex justify-center gap-2 mb-8">
             {TABS.map((tab) => {
               const Icon = tab.icon;

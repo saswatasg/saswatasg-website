@@ -7,11 +7,6 @@ import { ArrowRight, Calendar, X } from 'lucide-react';
 const Contact = () => {
   const [showCalendar, setShowCalendar] = useState(false);
 
-  const handleBookingClick = (e) => {
-    e.preventDefault();
-    window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true', '_blank');
-  };
-
   return (
     <>
       <PageMeta />
@@ -20,6 +15,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -2, transition: { duration: 0.2 } }}
           className="bg-mint border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 text-center"
           style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
         >
