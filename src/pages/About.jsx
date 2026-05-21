@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { MapPin, Award, GraduationCap, Briefcase, FileText, Quote } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
@@ -87,11 +88,21 @@ function About() {
                 At Sierra Living Concepts, I spent a year and a half inside a D2C furniture business, watching how people shop for things that cost real money — sofas, beds, dining sets — and rebuilt the experience around what their behaviour was actually telling us. At LiveKeeping, I landed inside a compliance software company and found a gap nobody had flagged: users were bypassing the product entirely for a workaround. I traced it through the data, surfaced it to leadership, and watched it turn into a company-wide initiative. Now at Upcore, I'm working on something newer — building how enterprises discover and deploy AI agents, from first conversation to production.
               </p>
 
-
+              <div className="flex flex-wrap gap-2 mt-5">
+                <Link to="/case-studies/cart-checkout" className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors">
+                  Checkout optimisation &rarr;
+                </Link>
+                <Link to="/case-studies/livekeeping-compliance-gap" className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors">
+                  Compliance gap diagnosis &rarr;
+                </Link>
+                <Link to="/case-studies/upcore-lead-scoring" className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors">
+                  AI lead scoring &rarr;
+                </Link>
+              </div>
             </div>
 
             <div className="mt-8 bg-blush border-2 border-black rounded-xl p-5">
-              <p className="text-xs font-bold text-ink/60 uppercase tracking-wider mb-2">Beyond Work</p>
+              <h2 className="text-xs font-bold text-ink/60 uppercase tracking-wider mb-2">Beyond Work</h2>
               <p className="text-sm font-medium text-ink/70 leading-relaxed">
                 I explore digital products with genuine curiosity, cook, shoot photography, watch films analytically, and mentor early-career PMs.
               </p>
@@ -106,6 +117,7 @@ function About() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6"
         >
+          <h2 className="text-sm font-bold text-ink/60 uppercase tracking-wider mb-3">Education</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
             <motion.div
               whileHover={{ y: -4, transition: { duration: 0.2 } }}

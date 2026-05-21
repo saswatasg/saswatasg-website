@@ -69,7 +69,7 @@ const SierraLeadAllocation = () => {
       </motion.div>
 
       {/* SECTION 1: THE PROBLEM */}
-      <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+      <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</h2>
 
       <Card>
         <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -78,7 +78,7 @@ const SierraLeadAllocation = () => {
       </Card>
 
       <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
-        <p className="text-white text-xs uppercase tracking-widest font-black mb-4">What 3 months of data showed</p>
+        <h3 className="text-white text-xs uppercase tracking-widest font-black mb-4">What 3 months of data showed</h3>
         {[
           'Leslie · Best at: Sideboard & Buffets (42.9%) · Struggling: Dining Tables (0%)',
           'Angela · Best at: General inquiries (69%) · Struggling: Sideboard & Buffets (0%)',
@@ -94,7 +94,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 2: THE DATA */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DISCOVERY</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DISCOVERY</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-6">Six lead sources. Wildly different conversion rates. Zero differentiation in how they were handled.</p>
@@ -125,7 +125,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 3: THE ROUTING SYSTEM */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-4">Three-tier routing system</p>
@@ -159,7 +159,7 @@ const SierraLeadAllocation = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-mint border-2 border-black rounded-2xl p-6 mt-4">
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3">Routing changes by day of week</p>
+          <h3 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3">Routing changes by day of week</h3>
           {[
             'Mon–Wed (full team): GOLD → Leslie → Larry → Mollie · SILVER → Angela → Mollie · BRONZE → automation',
             'Thursday (limited — only Angela + Larry available): GOLD → hold queue for Friday Leslie · SILVER → Angela → Larry · BRONZE → max automation',
@@ -179,10 +179,10 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 4: RISK & PILOT PLAN */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW WE ROLLED IT OUT</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW WE ROLLED IT OUT</h2>
 
         <Card>
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Risk Matrix</p>
+          <h3 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Risk Matrix</h3>
           {[
             { risk: 'Thursday Coverage Gap', prob: 'High', impact: 'High', mitigation: 'Hold queue + management backup for Gold leads' },
             { risk: 'Leslie Absence', prob: 'Medium', impact: 'High', mitigation: 'Larry as primary backup, postpone non-urgent Gold leads' },
@@ -198,7 +198,7 @@ const SierraLeadAllocation = () => {
         </Card>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Pilot Plan — 30 Days</p>
+          <h3 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Pilot Plan — 30 Days</h3>
           <div className="space-y-2">
             <p className="text-sm text-ink/80 font-medium"><strong>Week 1 (10% of leads):</strong> Route only Friday website leads to Leslie. Track conversion improvement. Gather agent feedback.</p>
             <p className="text-sm text-ink/80 font-medium"><strong>Weeks 2-3 (25% of leads):</strong> Add Thursday hold queue. Implement chat automation for Mollie. Include Larry in Gold routing.</p>
@@ -209,7 +209,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 5: RESULTS */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS UNLOCKED</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS UNLOCKED</h2>
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
@@ -236,7 +236,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 6: RETROSPECTIVE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">

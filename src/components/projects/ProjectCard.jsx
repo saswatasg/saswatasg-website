@@ -24,7 +24,7 @@ const ProjectCard = ({ title, description, tags, result, index, caseStudyLink, c
   const ci = index % cardColors.length;
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
@@ -78,7 +78,7 @@ const ProjectCard = ({ title, description, tags, result, index, caseStudyLink, c
           <ArrowRight className="w-3 h-3" />
         </Link>
       )}
-    </motion.div>
+    </motion.article>
   );
 };
 

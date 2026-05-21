@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Calendar, Map, Layers, GitBranch, Target, Brain, Lightbulb,
@@ -93,6 +94,18 @@ const ExperienceCard = ({ role, index }) => (
         ))}
       </div>
     )}
+    {role.caseStudies && role.caseStudies.length > 0 && (
+      <div className="mt-4 pt-4 border-t-2 border-black/10">
+        <p className="text-xs font-bold text-ink/40 uppercase tracking-widest mb-2">Related Case Studies</p>
+        <div className="flex flex-wrap gap-2">
+          {role.caseStudies.map((cs, i) => (
+            <Link key={i} to={cs.to} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-canvas transition-colors">
+              {cs.label} &rarr;
+            </Link>
+          ))}
+        </div>
+      </div>
+    )}
   </motion.div>
 );
 
@@ -111,6 +124,9 @@ const roles = [
       { text: "Produced a 16-page 'State of AI Agents' report covering market sizing, tooling landscape, adoption maturity curve, and 8+ case studies across industries.", icon: <FileText className="w-4 h-4" />, metric: "16 pages" },
       { text: "Built revenue model and pricing strategy for AI agent services and partnered with CEO on securing pre-seed funding.", icon: <DollarSign className="w-4 h-4" /> },
       { text: "Built market intelligence across verticals — tracking agentic AI tooling, competitor positioning, and industry-specific automation trends.", icon: <Brain className="w-4 h-4" /> }
+    ],
+    caseStudies: [
+      { to: '/case-studies/upcore-lead-scoring', label: 'Lead Scoring System' }
     ]
   },
   {
@@ -125,6 +141,11 @@ const roles = [
       { text: "Identified a similar 19:1 E-Invoice adoption gap between Tally and LiveKeeping, feeding analysis into C-suite reporting.", icon: <FileText className="w-4 h-4" />, metric: "19:1" },
       { text: "Built an automated weekly CEO report tracking GST rejection errors across compliance products — replaced manual data pulls with structured, recurring insights.", icon: <BarChart2 className="w-4 h-4" /> },
       { text: "Led a company-wide notification strategy overhaul covering all user segments, plan tiers, renewal journeys, and conflict resolution logic across the complete product suite.", icon: <Bell className="w-4 h-4" /> }
+    ],
+    caseStudies: [
+      { to: '/case-studies/livekeeping-compliance-gap', label: 'Compliance Gap' },
+      { to: '/case-studies/livekeeping-notifications', label: 'Notification Strategy' },
+      { to: '/case-studies/livekeeping-report-automation', label: 'Report Automation' }
     ]
   },
   {
@@ -143,6 +164,12 @@ const roles = [
       { text: "Built 5 pricing configuration tools — custom orders up 34%, +$120K/month", icon: <Target className="w-4 h-4" />, metric: "+$120K" },
       { text: "Automated Salesforce CRM journeys — +$113K/month recurring revenue", icon: <Zap className="w-4 h-4" />, metric: "+$113K" },
       { text: "Led 70+ product rollouts collaborating with design, engineering, and sales teams.", icon: <Users className="w-4 h-4" />, metric: "70+" }
+    ],
+    caseStudies: [
+      { to: '/case-studies/cart-checkout', label: 'Checkout Optimisation' },
+      { to: '/case-studies/lead-form', label: 'Lead Form Overhaul' },
+      { to: '/case-studies/category-discovery', label: 'Category Redesign' },
+      { to: '/case-studies/sierra-lead-allocation', label: 'Lead Allocation' }
     ]
   },
   {

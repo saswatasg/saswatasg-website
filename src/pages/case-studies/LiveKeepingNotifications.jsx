@@ -70,7 +70,7 @@ const LiveKeepingNotifications = () => {
 
       {/* SECTION 1: THE PROBLEM */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</h2>
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -92,7 +92,7 @@ const LiveKeepingNotifications = () => {
 
       {/* SECTION 2: THE ARCHITECTURE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE SYSTEM I DESIGNED</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE SYSTEM I DESIGNED</h2>
 
         <p className="text-sm font-medium text-ink/60 mb-4">I built this as a layered system — priority tiers, slot management, geo-segmentation, conflict resolution, and per-plan rules. Every notification type has a defined place in the hierarchy.</p>
 
@@ -158,7 +158,7 @@ const LiveKeepingNotifications = () => {
 
       {/* SECTION 3: COPY PRINCIPLES */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT GOOD NOTIFICATION COPY LOOKS LIKE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT GOOD NOTIFICATION COPY LOOKS LIKE</h2>
 
         <Card>
           <p className="text-sm text-ink/80 font-medium mb-6">Every notification was written with a specific trigger, audience, and action in mind. I wrote all copy. Two examples that show the principle:</p>
@@ -192,7 +192,7 @@ const LiveKeepingNotifications = () => {
 
       {/* SECTION 4: RESULTS */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS SYSTEM ENABLES</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS SYSTEM ENABLES</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed mb-6">
@@ -217,7 +217,7 @@ const LiveKeepingNotifications = () => {
 
       {/* SECTION 5: RETROSPECTIVE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">

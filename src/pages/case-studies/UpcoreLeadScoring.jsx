@@ -70,7 +70,7 @@ const UpcoreLeadScoring = () => {
 
       {/* SECTION 1: BEFORE STATE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</h2>
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -93,7 +93,7 @@ const UpcoreLeadScoring = () => {
 
       {/* SECTION 2: HOW I FOUND IT */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DISCOVERY</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DISCOVERY</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-6">Audited 3 months of lead data. Two patterns changed everything.</p>
@@ -121,7 +121,7 @@ const UpcoreLeadScoring = () => {
 
       {/* SECTION 3: WHAT WE BUILT */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT WE BUILT</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT WE BUILT</h2>
 
         <Card>
           <p className="text-lg font-display font-black text-ink mb-6">Two-stage scoring engine. AI-powered. Human-verified. Built to learn from every interaction.</p>
@@ -154,7 +154,7 @@ const UpcoreLeadScoring = () => {
 
       {/* SECTION 4: OUTCOME */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</h2>
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
@@ -181,7 +181,7 @@ const UpcoreLeadScoring = () => {
 
       {/* SECTION 5: RETROSPECTIVE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">

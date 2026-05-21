@@ -70,7 +70,7 @@ const LiveKeepingComplianceGap = () => {
 
       {/* SECTION 1: THE PROBLEM */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</h2>
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -93,7 +93,7 @@ const LiveKeepingComplianceGap = () => {
 
       {/* SECTION 2: THE DIAGNOSIS */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW I FOUND IT</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW I FOUND IT</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-6">I built the measurement from scratch.</p>
@@ -122,7 +122,7 @@ const LiveKeepingComplianceGap = () => {
 
       {/* SECTION 3: WHAT I PRESENTED */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DECK</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DECK</h2>
 
         <Card>
           <p className="text-lg font-display font-black text-ink mb-6">Built for VP/CEO. Structured as a business case, not a bug report.</p>
@@ -150,7 +150,7 @@ const LiveKeepingComplianceGap = () => {
 
       {/* SECTION 4: PARALLEL TRACK */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">PARALLEL TRACK</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">PARALLEL TRACK</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <p className="text-lg font-display font-black text-ink mb-4">While the investigation was running, I also fixed the compliance journey reliability.</p>
@@ -178,7 +178,7 @@ const LiveKeepingComplianceGap = () => {
 
       {/* SECTION 5: RETROSPECTIVE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">

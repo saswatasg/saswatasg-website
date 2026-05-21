@@ -221,6 +221,10 @@ const HeroSection = () => {
                   <img
                     src="https://i.postimg.cc/Kv5xF852/DP-Linkedin.jpg"
                     alt="Saswata S. Sengupta"
+                    loading="eager"
+                    fetchpriority="high"
+                    width="176"
+                    height="176"
                     className="w-full h-full object-cover"
                   />
                 </div>

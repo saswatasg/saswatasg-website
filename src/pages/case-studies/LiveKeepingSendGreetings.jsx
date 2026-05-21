@@ -70,7 +70,7 @@ const LiveKeepingSendGreetings = () => {
 
       {/* SECTION 1: THE PROBLEM */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</h2>
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -92,7 +92,7 @@ const LiveKeepingSendGreetings = () => {
 
       {/* SECTION 2: THE INTEGRATION */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT NANO BANANA DOES</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT NANO BANANA DOES</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-7">
           <p className="text-white text-lg font-display font-black mb-4">
@@ -113,7 +113,7 @@ const LiveKeepingSendGreetings = () => {
 
       {/* SECTION 3: WHAT WE BUILT */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
@@ -138,7 +138,7 @@ const LiveKeepingSendGreetings = () => {
 
       {/* SECTION 4: UX DESIGN DECISIONS */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT I GOT SPECIFIC ABOUT</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT I GOT SPECIFIC ABOUT</h2>
 
         <Card>
           <div className="space-y-4">
@@ -160,7 +160,7 @@ const LiveKeepingSendGreetings = () => {
 
       {/* SECTION 5: RESULTS */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">OUTCOME</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">OUTCOME</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-white border-2 border-black rounded-2xl p-10 text-center">
           <div className="font-display font-black text-7xl text-ink">+168%</div>
@@ -184,7 +184,7 @@ const LiveKeepingSendGreetings = () => {
 
       {/* SECTION 6: RETROSPECTIVE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">

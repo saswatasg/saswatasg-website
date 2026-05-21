@@ -25,6 +25,7 @@ function Footer() {
                 { to: '/about', label: 'About' },
                 { to: '/experience', label: 'Experience' },
                 { to: '/projects', label: 'Projects' },
+                { to: '/case-studies', label: 'Case Studies' },
                 { to: '/contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.label}>

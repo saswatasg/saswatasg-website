@@ -70,7 +70,7 @@ const LiveKeepingReportAutomation = () => {
 
       {/* SECTION 1: THE PROBLEM */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</h2>
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -100,7 +100,7 @@ const LiveKeepingReportAutomation = () => {
 
       {/* SECTION 2: THE ARCHITECTURE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT I DESIGNED</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT I DESIGNED</h2>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6">
           <p className="text-white font-display font-black text-lg mb-4">One Apps Script function. Runs at 11 AM. Fills the next empty column.</p>
@@ -137,7 +137,7 @@ const LiveKeepingReportAutomation = () => {
 
       {/* SECTION 3: WHAT I BUILT */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE SCAFFOLD</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE SCAFFOLD</h2>
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed mb-6">
@@ -164,7 +164,7 @@ const LiveKeepingReportAutomation = () => {
 
       {/* SECTION 4: IMPACT */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</p>
+        <h2 className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</h2>
 
         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[

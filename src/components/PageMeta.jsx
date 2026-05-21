@@ -85,7 +85,7 @@ const PageMeta = ({ title, description, noindex = false }) => {
   const siteUrl = "https://saswatasg.com/";
   
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
-  const finalUrl = `${siteUrl}${cleanPath ? cleanPath + '/' : ''}`;
+  const finalUrl = `${siteUrl}${cleanPath || ''}`;
   
   const ogImage = "https://i.postimg.cc/Kv5xF852/DP-Linkedin.jpg";
 
@@ -100,13 +100,18 @@ const PageMeta = ({ title, description, noindex = false }) => {
       <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={finalUrl} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:alt" content="Saswata S. Sengupta — Product Manager" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Saswata S. Sengupta" />
+      <meta property="og:locale" content="en_US" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content="Saswata S. Sengupta — Product Manager" />
+      <meta name="twitter:site" content="@saswatasg" />
+      <meta name="twitter:creator" content="@saswatasg" />
     </Helmet>
   );
 };

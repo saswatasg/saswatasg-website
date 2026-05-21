@@ -214,6 +214,7 @@ const Projects = () => {
           transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 mt-6"
         >
+          <h2 className="sr-only">Filter projects by company</h2>
           <div className="flex overflow-x-auto gap-1.5 pb-1 md:pb-0 -mb-1 md:mb-0 scrollbar-none mb-6 md:mb-8">
               {FILTERS.map((f) => {
                 const isActive = activeFilter === f.id;
