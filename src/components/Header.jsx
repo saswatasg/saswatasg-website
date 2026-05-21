@@ -43,7 +43,7 @@ const Header = () => {
         <div className="max-w-[1200px] mx-auto w-full flex items-center justify-between px-4 md:px-6 h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2" aria-label="Home">
             <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200">
-              Saswata
+              Home
             </span>
           </Link>
 
@@ -83,7 +83,7 @@ const Header = () => {
         <div className="flex items-center justify-between px-4 h-14">
           <Link to="/" className="flex items-center gap-2" aria-label="Home">
             <span className="font-display font-black text-base text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black inline-block hover:scale-105 transition-all duration-200">
-              Saswata
+              Home
             </span>
           </Link>
 
