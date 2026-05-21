@@ -57,7 +57,7 @@ const HeroSection = () => {
           <div className="grid grid-cols-2 gap-2">
             {[
               { value: '70+', label: 'Products shipped' },
-              { value: '73.1%→53.9%', label: 'Cart abandonment' },
+              { value: '73%→54%', label: 'Cart abandonment' },
               { value: '+105%', label: 'Lead submissions' },
               { value: '71.6%', label: 'AI close rate' },
             ].map((g, i) => (
@@ -106,7 +106,7 @@ const HeroSection = () => {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.06, y: -1 }}
-                className={`rounded-xl border border-black p-2.5 text-center ${i === 0 ? 'bg-lemon/40' : i === 1 ? 'bg-purple/20' : 'bg-pink/30'}`}
+                className={`rounded-xl border border-black p-2 text-center ${i === 0 ? 'bg-lemon/40' : i === 1 ? 'bg-purple/20' : 'bg-pink/30'}`}
               >
                 <div className="text-sm font-black text-ink">{b.value}</div>
                 <p className="text-[10px] font-bold text-ink/60">{b.label}</p>
@@ -216,8 +216,8 @@ const HeroSection = () => {
                   <Star className="w-3 h-3" fill="currentColor" />
                   Product Manager · AI & Growth
                 </motion.span>
-                <motion.h1 variants={childVariants} className="text-ink text-2xl md:text-3xl font-display font-black tracking-tighter leading-[1.05] mt-2">
-                  Saswata S.<br />Sengupta
+                <motion.h1 variants={childVariants} className="text-ink text-xl md:text-2xl font-display font-black tracking-tighter leading-none mt-2">
+                  Saswata S. Sengupta
                 </motion.h1>
               </div>
 
@@ -227,7 +227,7 @@ const HeroSection = () => {
                 </motion.p>
 
                 <motion.p variants={childVariants} className="mt-3 text-ink/70 text-sm md:text-base">
-                  3+ years across AI agents (Upcore), D2C e-commerce (73.1% → 53.9% checkout fix at Sierra), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
+                   3+ years across AI agents (Upcore), D2C e-commerce (73% → 54% checkout fix at Sierra Living Concepts), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
                 </motion.p>
 
                 <motion.div variants={childVariants} className="flex flex-wrap gap-3 mt-5">
@@ -267,8 +267,9 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="absolute -top-6 -right-6 w-12 h-12 bg-pink border-2 border-black rounded-lg rotate-12 hidden md:block" />
-            <div className="absolute top-12 right-8 w-8 h-8 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
+            <div className="absolute -top-6 -right-4 w-12 h-12 bg-pink border-2 border-black rounded-lg rotate-12 hidden md:block" />
+            <div className="absolute top-12 right-4 w-8 h-8 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
+            <div className="absolute -bottom-8 -left-4 w-16 h-16 rounded-full bg-canvas border-2 border-black hidden md:block" />
           </motion.div>
 
           <motion.div

@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import HeroSection from '@/components/home/HeroSection';
 import WhatIDoSection from '@/components/home/WhatIDoSection';
 import Marquee from '@/components/Marquee';
+import TestimonialCarousel from '@/components/home/TestimonialCarousel';
 import PageMeta from '@/components/PageMeta';
 
 const Home = () => {
@@ -41,25 +42,8 @@ const Home = () => {
         <div className="mt-6">
           <Marquee />
         </div>
-        <div className="w-full bg-white border-y-2 border-black py-5">
-          <div className="max-w-[1200px] mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0">
-            <div className="text-center">
-              <div className="font-display font-black text-2xl md:text-3xl text-ink text-center">73.1% → 53.9%</div>
-              <p className="text-xs font-bold text-ink/40 text-center mt-0.5">Cart abandonment · Sierra Living</p>
-            </div>
-            <div className="hidden md:block h-10 w-px bg-ink/10 mx-10" />
-            <div className="text-center">
-              <div className="font-display font-black text-2xl md:text-3xl text-ink text-center">17 : 1</div>
-              <p className="text-xs font-bold text-ink/40 text-center mt-0.5">Adoption gap diagnosed · LiveKeeping</p>
-            </div>
-            <div className="hidden md:block h-10 w-px bg-ink/10 mx-10" />
-            <div className="text-center">
-              <div className="font-display font-black text-2xl md:text-3xl text-ink text-center">478 / mo</div>
-              <p className="text-xs font-bold text-ink/40 text-center mt-0.5">Webinar sign-ups · Upcore</p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-6 pb-16">
+        <TestimonialCarousel />
+        <div className="pb-16">
           <WhatIDoSection />
         </div>
       </div>
