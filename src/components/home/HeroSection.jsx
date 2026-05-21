@@ -243,7 +243,7 @@ const HeroSection = () => {
           <motion.div
             variants={childVariants}
             whileHover={{ scale: 1.01, rotate: 0.3, transition: { duration: 0.2 } }}
-            className={`${slides[slideIndex].cardBg} border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden min-h-[400px]`}
+            className={`${slides[slideIndex].cardBg} border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden h-[400px]`}
             style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
             <div className="relative z-10 flex-1 flex flex-col">
@@ -272,9 +272,11 @@ const HeroSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex-1 flex flex-col"
+                  className="flex-1 flex flex-col min-h-0"
                 >
-                  {slides[slideIndex].content}
+                  <div className="flex-1 overflow-y-auto">
+                    {slides[slideIndex].content}
+                  </div>
                 </motion.div>
               </AnimatePresence>
 
