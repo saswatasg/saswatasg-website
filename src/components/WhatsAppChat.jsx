@@ -272,9 +272,6 @@ const ChatBot = () => {
                 <span className="font-bold text-sm">Chat with Saswata</span>
               </div>
               <div className="flex items-center gap-2">
-                <button onClick={openWhatsApp} aria-label="Chat on WhatsApp" className="hover:text-coral transition-colors duration-200">
-                  <MessageCircle className="w-4 h-4" />
-                </button>
                 <button onClick={() => setIsOpen(false)} aria-label="Close chat panel" className="hover:text-coral transition-colors duration-200">
                   <X className="w-5 h-5" />
                 </button>
