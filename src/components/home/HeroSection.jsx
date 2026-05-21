@@ -243,7 +243,7 @@ const HeroSection = () => {
           <motion.div
             variants={childVariants}
             whileHover={{ scale: 1.01, rotate: 0.3, transition: { duration: 0.2 } }}
-            className={`${slides[slideIndex].cardBg} border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden`}
+            className={`${slides[slideIndex].cardBg} border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden min-h-[400px]`}
             style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
             <div className="relative z-10 flex-1 flex flex-col">
