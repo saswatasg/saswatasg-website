@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Star, MessageSquare, X, Target, Layers, GitBranch, Lightbulb } from 'lucide-react';
+import { Calendar, Star, MessageSquare, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -83,34 +83,42 @@ const HeroSection = () => {
       content: (
         <div className="flex flex-col gap-3">
           <div className="bg-white border-2 border-black rounded-xl p-4 transition-all duration-200">
-            <div className="flex items-baseline gap-2">
-              <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">17:1</div>
-              <span className="text-xs font-bold text-ink/50">adoption gap</span>
+            <div className="grid grid-cols-2 gap-3">
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-2.5">
+                <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">17:1</div>
+                <p className="text-[10px] font-bold text-ink/60">adoption gap</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-pink/30 border border-black p-2.5">
+                <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">160%</div>
+                <p className="text-[10px] font-bold text-ink/60">re-engagement lift</p>
+              </motion.div>
             </div>
-            <p className="text-xs text-ink/60 font-bold mb-2">diagnosed & escalated to CPO</p>
-            <div className="flex gap-1.5">
-              {[
-                { value: '19:1', label: 'E-Invoice gap' },
-                { value: '160%', label: 'Re-engagement' },
-                { value: 'CEO', label: 'Weekly reporting' },
-              ].map((b, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05, y: -1 }}
-                  className={`flex-1 rounded-lg border border-black p-1.5 text-center ${i === 0 ? 'bg-indigo/20' : i === 1 ? 'bg-pink/30' : 'bg-lemon/40'}`}
-                >
-                  <div className="text-sm font-black text-ink">{b.value}</div>
-                  <p className="text-[9px] font-bold text-ink/60">{b.label}</p>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-xs text-ink/60 font-bold text-center mt-2.5">
+              Gap diagnosed & escalated to CPO with weekly CEO-ready reporting
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-1.5">
+            {[
+              { value: '19:1', label: 'E-Invoice' },
+              { value: 'CEO', label: 'Reporting' },
+              { value: 'PRO+', label: 'Plan focus' },
+            ].map((b, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.06, y: -1 }}
+                className={`rounded-lg border border-black p-1.5 text-center ${i === 0 ? 'bg-lemon/40' : i === 1 ? 'bg-purple/20' : 'bg-pink/30'}`}
+              >
+                <div className="text-xs font-black text-ink">{b.value}</div>
+                <p className="text-[8px] font-bold text-ink/60">{b.label}</p>
+              </motion.div>
+            ))}
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {['PRO+ Plan', 'GST Compliance', 'B2B SaaS', 'SMB India'].map((tag, i) => (
+            {['PRO+ Plan', 'GST', 'B2B SaaS', 'India SMB'].map((tag, i) => (
               <motion.span
                 key={i}
                 whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
-                className="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-white border-2 border-black"
+                className="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-white border-2 border-black"
               >
                 {tag}
               </motion.span>
@@ -126,26 +134,41 @@ const HeroSection = () => {
       company: 'Upcore Technologies',
       companyColor: 'text-pink-dark',
       content: (
-        <div className="flex flex-col gap-2">
-          <div className="grid grid-cols-2 gap-2">
+        <div className="flex flex-col gap-3 h-full justify-center">
+          <div className="grid grid-cols-4 gap-1.5">
             {[
-              { icon: <Target className="w-3 h-3" />, text: 'End-to-end product discovery with enterprise clients' },
-              { icon: <Layers className="w-3 h-3" />, text: 'Translate business problems into AI agent briefs' },
-              { icon: <GitBranch className="w-3 h-3" />, text: 'Own roadmap prioritization across 12 verticals' },
-              { icon: <Lightbulb className="w-3 h-3" />, text: 'GTM strategy for AI launches & market intelligence' },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.15 } }}
-                className="flex items-start gap-2 bg-white/80 border-2 border-black rounded-xl p-2.5"
-              >
-                <span className="mt-0.5 w-6 h-6 rounded-lg bg-purple/20 border border-black flex items-center justify-center flex-shrink-0 text-purple">
-                  {item.icon}
-                </span>
-                <p className="text-[11px] font-medium text-ink/80 leading-snug">{item.text}</p>
-              </motion.div>
+              { icon: <Search className="w-3.5 h-3.5" />, label: 'Discovery' },
+              { icon: <FileText className="w-3.5 h-3.5" />, label: 'Briefing' },
+              { icon: <Route className="w-3.5 h-3.5" />, label: 'Roadmap' },
+              { icon: <Rocket className="w-3.5 h-3.5" />, label: 'GTM' },
+            ].map((step, i) => (
+              <div key={i} className="flex items-center">
+                <motion.div
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  className="flex-1 bg-white border-2 border-black rounded-xl p-2 text-center"
+                >
+                  <span className="w-7 h-7 rounded-lg bg-purple/20 border border-black flex items-center justify-center mx-auto text-purple mb-0.5">
+                    {step.icon}
+                  </span>
+                  <p className="text-[9px] font-bold text-ink/70">{step.label}</p>
+                </motion.div>
+                {i < 3 && (
+                  <ArrowRight className="w-3 h-3 text-ink/30 mx-0.5 flex-shrink-0" />
+                )}
+              </div>
             ))}
           </div>
+          <p className="text-[11px] font-medium text-ink/70 text-center leading-snug">
+            End-to-end product lifecycle — from enterprise discovery and AI solution briefs to roadmap prioritization across 12 verticals and GTM launches.
+          </p>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="flex items-center justify-center gap-2 bg-white/80 border-2 border-black rounded-xl p-2"
+          >
+            <Target className="w-3 h-3 text-purple" />
+            <span className="text-[10px] font-bold text-ink/60">AI agentic product strategy</span>
+            <Layers className="w-3 h-3 text-purple" />
+          </motion.div>
         </div>
       ),
     },
