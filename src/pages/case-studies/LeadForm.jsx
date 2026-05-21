@@ -136,14 +136,6 @@ const LeadForm = () => {
         </p>
       </motion.div>
 
-      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-        <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
-        <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-          I would have added form-level event tracking (field focus time, field abandonment rate, error trigger frequency) earlier. The rage-click maps told us where users were frustrated, but field-level analytics would have told us exactly which fields caused the most abandonment without needing to correlate session recordings manually.
-        </p>
-      </Card>
-
       <BottomNav prev="category-discovery" next="upcore-lead-scoring" />
     </motion.div>
   );

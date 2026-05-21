@@ -136,14 +136,6 @@ const CartCheckout = () => {
         </p>
       </motion.div>
 
-      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-        <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
-        <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-          I would have instrumented the checkout funnel on day one, not after the problem became visible in GMV. The data was always there to collect — we just weren't looking at the right events. Session-level instrumentation should be a prerequisite for any checkout optimisation work, not a diagnostic step taken after the fact.
-        </p>
-      </Card>
-
       <BottomNav next="category-discovery" />
     </motion.div>
   );

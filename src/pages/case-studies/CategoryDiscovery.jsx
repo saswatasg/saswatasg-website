@@ -136,14 +136,6 @@ const CategoryDiscovery = () => {
         </p>
       </motion.div>
 
-      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-        <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
-        <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-          I would have run the Clarity heatmap and scroll map audit earlier — before the UX backlog grew to 30+ items. A monthly category page health check using the same instrumentation would have caught regressions sooner and reduced the fix batch size.
-        </p>
-      </Card>
-
       <BottomNav prev="cart-checkout" next="lead-form" />
     </motion.div>
   );

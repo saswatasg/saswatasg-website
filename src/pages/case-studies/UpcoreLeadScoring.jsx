@@ -136,14 +136,6 @@ const UpcoreLeadScoring = () => {
         </p>
       </motion.div>
 
-      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-        <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
-        <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-          I'd have added a lead scoring dashboard for the BDR team from day one, not as a post-launch addition. Giving the team visibility into why each lead received its score would have reduced initial skepticism and accelerated the feedback loop.
-        </p>
-      </Card>
-
       <BottomNav prev="lead-form" next="sierra-lead-allocation" />
     </motion.div>
   );

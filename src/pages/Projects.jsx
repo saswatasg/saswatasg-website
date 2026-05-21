@@ -177,7 +177,7 @@ const Projects = () => {
         data = { projects: liveKeepingProjects, banner: "LiveKeeping · Associate Product Manager · Jan–Apr 2026 · B2B SaaS, GST compliance for Indian SMBs" };
         break;
     }
-    const sorted = [...data.projects].sort((a, b) => (a.caseStudyLink ? 1 : 0) - (b.caseStudyLink ? 1 : 0));
+    const sorted = [...data.projects].sort((a, b) => (a.caseStudyLink ? 0 : 1) - (b.caseStudyLink ? 0 : 1));
     return { projects: sorted, banner: data.banner };
   }, [activeTab]);
 

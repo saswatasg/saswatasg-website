@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { supabase } from '@/lib/supabaseClient';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
@@ -57,7 +56,23 @@ const ContactForm = () => {
     e.preventDefault();
     if (!isFormValid) return;
     setIsSubmitting(true);
-    const { error } = await supabase.from('contact_submissions').insert([{ name, email, phone, message }]);
+    let error = null;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          name,
+          email,
+          phone,
+          message,
+        }),
+      });
+      if (!res.ok) error = new Error('Failed to send');
+    } catch (e) {
+      error = e;
+    }
     setIsSubmitting(false);
     if (error) {
       toast({ title: 'Uh oh! Something went wrong.', description: 'There was a problem with your request. Please try again.', variant: 'destructive', duration: 5000 });

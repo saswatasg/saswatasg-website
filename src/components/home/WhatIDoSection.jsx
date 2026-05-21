@@ -63,7 +63,7 @@ const WhatIDoSection = () => {
   const inView = useInView(ref, { once: true });
 
   return (
-    <section id="work-section" className="w-full">
+    <section id="work-section" className="w-full pt-14 md:pt-18">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
