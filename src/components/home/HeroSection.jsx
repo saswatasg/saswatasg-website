@@ -32,27 +32,26 @@ const HeroSection = () => {
       id: 'sierra',
       title: 'Revenue Impact',
       cardBg: 'bg-mint',
-      cardShadow: '0px 0px #0A0A0A',
       company: 'Sierra Living Concepts',
       companyColor: 'text-purple',
       content: (
-        <div className="flex-1 flex flex-col">
-          <div className="bg-white border-2 border-black rounded-xl p-5 mb-4 -rotate-[0.3deg] hover:rotate-0 transition-all duration-200">
+        <div className="flex flex-col gap-3">
+          <div className="bg-white border-2 border-black rounded-xl p-4 -rotate-[0.3deg] group-hover:rotate-0 transition-all duration-200">
             <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
-            <p className="text-xs text-ink/60 font-bold">monthly revenue recovered</p>
-            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-lg bg-pink/30 border border-black p-2">
+            <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue recovered</p>
+            <div className="flex gap-1.5">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-pink/30 border border-black p-1.5 text-center">
                 <div className="text-sm font-black text-ink">$329K</div>
                 <p className="text-[9px] font-bold text-ink/60">Checkout</p>
-              </div>
-              <div className="rounded-lg bg-lemon/40 border border-black p-2">
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-lemon/40 border border-black p-1.5 text-center">
                 <div className="text-sm font-black text-ink">$152K</div>
                 <p className="text-[9px] font-bold text-ink/60">Pricing</p>
-              </div>
-              <div className="rounded-lg bg-purple/20 border border-black p-2">
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-purple/20 border border-black p-1.5 text-center">
                 <div className="text-sm font-black text-ink">$113K</div>
                 <p className="text-[9px] font-bold text-ink/60">CRM</p>
-              </div>
+              </motion.div>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -62,7 +61,11 @@ const HeroSection = () => {
               { value: '+105%', label: 'Lead submissions' },
               { value: '71.6%', label: 'AI close rate' },
             ].map((g, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05, backgroundColor: '#ffffff' }}
+                className="bg-white border-2 border-black rounded-xl p-2.5"
+              >
                 <div className="text-lg font-black text-ink">{g.value}</div>
                 <p className="text-[10px] font-bold text-ink/60">{g.label}</p>
               </motion.div>
@@ -75,36 +78,39 @@ const HeroSection = () => {
       id: 'livekeeping',
       title: 'Adoption Impact',
       cardBg: 'bg-sky',
-      cardShadow: '0px 0px #0A0A0A',
       company: 'LiveKeeping (IndiaMART)',
       companyColor: 'text-ink/70',
       content: (
-        <div className="flex-1 flex flex-col">
-          <div className="bg-white border-2 border-black rounded-xl p-5 mb-4 hover:rotate-0 transition-all duration-200">
+        <div className="flex flex-col gap-3">
+          <div className="bg-white border-2 border-black rounded-xl p-4 transition-all duration-200">
             <div className="flex items-baseline gap-2">
               <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">17:1</div>
               <span className="text-xs font-bold text-ink/50">adoption gap</span>
             </div>
-            <p className="text-xs text-ink/60 font-bold mb-3">diagnosed & escalated to CPO</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="text-xs text-ink/60 font-bold mb-2">diagnosed & escalated to CPO</p>
+            <div className="flex gap-1.5">
               {[
                 { value: '19:1', label: 'E-Invoice gap' },
                 { value: '160%', label: 'Re-engagement' },
                 { value: 'CEO', label: 'Weekly reporting' },
               ].map((b, i) => (
-                <div key={i} className={`flex-1 min-w-[80px] rounded-lg border border-black p-2 text-center ${i === 0 ? 'bg-indigo/20' : i === 1 ? 'bg-pink/30' : 'bg-lemon/40'}`}>
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  className={`flex-1 rounded-lg border border-black p-1.5 text-center ${i === 0 ? 'bg-indigo/20' : i === 1 ? 'bg-pink/30' : 'bg-lemon/40'}`}
+                >
                   <div className="text-sm font-black text-ink">{b.value}</div>
                   <p className="text-[9px] font-bold text-ink/60">{b.label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <div className="flex flex-wrap gap-1.5">
             {['PRO+ Plan', 'GST Compliance', 'B2B SaaS', 'SMB India'].map((tag, i) => (
               <motion.span
                 key={i}
-                whileHover={{ scale: 1.06, rotate: [0, -2, 2, 0], transition: { duration: 0.15 } }}
-                className="px-3 py-1.5 rounded-lg text-xs font-bold bg-white border-2 border-black"
+                whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
+                className="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-white border-2 border-black"
               >
                 {tag}
               </motion.span>
@@ -117,28 +123,26 @@ const HeroSection = () => {
       id: 'upcore',
       title: 'Role & Scope',
       cardBg: 'bg-blush',
-      cardShadow: '0px 0px #0A0A0A',
       company: 'Upcore Technologies',
       companyColor: 'text-pink-dark',
       content: (
-        <div className="flex-1 flex flex-col">
-          <p className="text-[11px] font-bold text-ink/50 uppercase tracking-wider mb-3">What I own day-to-day</p>
-          <div className="grid grid-cols-1 gap-2">
+        <div className="flex flex-col gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {[
-              { icon: <Target className="w-3.5 h-3.5" />, text: 'End-to-end product discovery with enterprise clients — mapping workflows, diagnosing bottlenecks.' },
-              { icon: <Layers className="w-3.5 h-3.5" />, text: 'Translate business problems into AI agent solution briefs for engineering.' },
-              { icon: <GitBranch className="w-3.5 h-3.5" />, text: 'Own roadmap prioritization across 12 verticals by severity, feasibility, and ROI.' },
-              { icon: <Lightbulb className="w-3.5 h-3.5" />, text: 'GTM strategy for AI launches and market intelligence on agentic AI tooling.' },
+              { icon: <Target className="w-3 h-3" />, text: 'End-to-end product discovery with enterprise clients' },
+              { icon: <Layers className="w-3 h-3" />, text: 'Translate business problems into AI agent briefs' },
+              { icon: <GitBranch className="w-3 h-3" />, text: 'Own roadmap prioritization across 12 verticals' },
+              { icon: <Lightbulb className="w-3 h-3" />, text: 'GTM strategy for AI launches & market intelligence' },
             ].map((item, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.01, x: 2, transition: { duration: 0.12 } }}
-                className="flex items-start gap-2.5 bg-white/80 border-2 border-black rounded-xl p-3"
+                whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.15 } }}
+                className="flex items-start gap-2 bg-white/80 border-2 border-black rounded-xl p-2.5"
               >
-                <span className="mt-0.5 w-7 h-7 rounded-lg bg-purple/20 border border-black flex items-center justify-center flex-shrink-0 text-purple">
+                <span className="mt-0.5 w-6 h-6 rounded-lg bg-purple/20 border border-black flex items-center justify-center flex-shrink-0 text-purple">
                   {item.icon}
                 </span>
-                <p className="text-xs font-medium text-ink/80 leading-snug">{item.text}</p>
+                <p className="text-[11px] font-medium text-ink/80 leading-snug">{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -242,13 +246,20 @@ const HeroSection = () => {
 
           <motion.div
             variants={childVariants}
-            whileHover={{ scale: 1.01, rotate: 0.3, transition: { duration: 0.2 } }}
-            className={`${slides[slideIndex].cardBg} border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden h-[480px]`}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className={`${slides[slideIndex].cardBg} group border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden h-[480px] transition-colors duration-500`}
             style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
+            <motion.div
+              key={slideIndex}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 5, ease: 'linear' }}
+              className="absolute top-0 left-0 h-1 bg-ink/80"
+            />
             <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black group-hover:scale-105 transition-transform duration-200">
                   {slides[slideIndex].title}
                 </span>
                 <AnimatePresence mode="wait">
@@ -258,7 +269,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.25 }}
-                    className={`text-[10px] font-bold ${slides[slideIndex].companyColor}`}
+                    className={`text-[10px] font-bold ${slides[slideIndex].companyColor} group-hover:underline decoration-dotted underline-offset-2 transition-all duration-200`}
                   >
                     {slides[slideIndex].company}
                   </motion.span>
@@ -272,27 +283,27 @@ const HeroSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex-1 flex flex-col min-h-0"
+                  className="flex-1"
                 >
-                  <div className="flex-1 overflow-y-auto">
-                    {slides[slideIndex].content}
-                  </div>
+                  {slides[slideIndex].content}
                 </motion.div>
               </AnimatePresence>
 
-              <div className="flex justify-center gap-1.5 mt-4">
+              <div className="flex justify-center gap-2 mt-4">
                 {slides.map((_, i) => (
-                  <button
+                  <motion.button
                     key={i}
                     onClick={() => setSlideIndex(i)}
-                    className={`w-2 h-2 rounded-full border border-black transition-all duration-300 ${
-                      i === slideIndex ? 'bg-ink scale-125' : 'bg-white'
+                    whileHover={{ scale: 1.5 }}
+                    whileTap={{ scale: 0.8 }}
+                    className={`w-2.5 h-2.5 rounded-full border border-black transition-all duration-300 ${
+                      i === slideIndex ? 'bg-ink scale-110' : 'bg-white hover:bg-ink/30'
                     }`}
                   />
                 ))}
               </div>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-purple border-2 border-black rounded-lg -rotate-12 hidden md:block" />
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-purple/60 border-2 border-black rounded-lg -rotate-12 hidden md:block group-hover:rotate-[-8deg] group-hover:scale-110 transition-all duration-300" />
           </motion.div>
         </motion.div>
 
