@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageMeta from '@/components/PageMeta';
 import ContactForm from '@/components/contact/ContactForm';
@@ -14,6 +14,19 @@ const Contact = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [iframeError, setIframeError] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
+
+  useEffect(() => {
+    if (!showCalendar) {
+      setIframeLoading(true);
+      setIframeError(false);
+      return;
+    }
+    const timer = setTimeout(() => {
+      setIframeLoading(false);
+      setIframeError(true);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, [showCalendar]);
 
   return (
     <>
@@ -135,12 +148,9 @@ const Contact = () => {
                     <X className="w-5 h-5" />
                   </button>
                 </div>
-                {iframeLoading && !iframeError && (
-                  <div className="flex items-center justify-center h-[600px] text-sm font-medium text-ink/50">Loading booking calendar...</div>
-                )}
-                {iframeError && (
+                {(iframeLoading || iframeError) && (
                   <div className="flex items-center justify-center h-[600px] text-sm font-medium text-ink/50 flex-col gap-3">
-                    <span>Could not load the booking calendar.</span>
+                    <span>{iframeError ? 'Could not load the booking calendar.' : 'Loading booking calendar...'}</span>
                     <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true" target="_blank" rel="noopener noreferrer" className="bg-ink text-white px-4 py-2 rounded-lg border-2 border-black text-sm font-bold hover:bg-ink/80 transition-colors">
                       Open booking page
                     </a>
