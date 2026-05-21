@@ -44,8 +44,8 @@ const Home = () => {
         <div className="w-full bg-white border-y-2 border-black py-5">
           <div className="max-w-[1200px] mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0">
             <div className="text-center">
-              <div className="font-display font-black text-2xl md:text-3xl text-ink text-center">–26%</div>
-              <p className="text-xs font-bold text-ink/40 text-center mt-0.5">Checkout Abandonment · 480K sessions</p>
+              <div className="font-display font-black text-2xl md:text-3xl text-ink text-center">73.1% → 53.9%</div>
+              <p className="text-xs font-bold text-ink/40 text-center mt-0.5">Cart abandonment · Sierra Living</p>
             </div>
             <div className="hidden md:block h-10 w-px bg-ink/10 mx-10" />
             <div className="text-center">

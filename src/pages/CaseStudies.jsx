@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
@@ -198,6 +198,8 @@ const cardVariants = {
 };
 
 const CaseStudies = () => {
+  const navigate = useNavigate();
+
   const getRowLayout = (index) => {
     if (index === 0 || index === 1) return 'md:grid-cols-3';
     return 'md:grid-cols-4';
@@ -241,7 +243,11 @@ const CaseStudies = () => {
               key={cs.id}
               variants={cardVariants}
               whileHover={{ y: -4, scale: 1.005, transition: { duration: 0.2 } }}
-              className={`${cs.bg} border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden group`}
+              onClick={() => navigate(`/case-studies/${cs.slug}`)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate(`/case-studies/${cs.slug}`); }}
+              tabIndex={0}
+              role="button"
+              className={`${cs.bg} border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden group cursor-pointer`}
               style={{ boxShadow: `8px 8px 0px 0px ${cs.shadowColor}` }}
             >
               <div className="absolute -top-4 -right-4 w-12 h-12 bg-white/30 border-2 border-black rounded-lg rotate-12 hidden md:block group-hover:rotate-[20deg] transition-all duration-300" />
@@ -281,14 +287,13 @@ const CaseStudies = () => {
                 ))}
               </div>
 
-              <Link
-                to={`/case-studies/${cs.slug}`}
+              <span
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-ink hover:text-ink/60 transition-colors relative z-10 group/link"
                 style={cs.bg === 'bg-ink' ? { color: 'white' } : {}}
               >
                 Read Full Case Study
                 <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-              </Link>
+              </span>
             </motion.div>
           ))}
         </div>

@@ -82,7 +82,7 @@ const LiveKeepingComplianceGap = () => {
       {/* CONTEXT BAR */}
       <motion.div
         variants={itemVariants}
-        className="mt-6 bg-white/10 bg-ink border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-white/70"
+        className="mt-6 bg-ink border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-white/70"
       >
         <span>Role: Associate PM — Solo diagnosis, executive presentation, stakeholder alignment</span>
         <span className="hidden md:block">|</span>

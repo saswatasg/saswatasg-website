@@ -96,7 +96,6 @@ const SierraLeadAllocation = () => {
       </motion.div>
 
       {/* SECTION 1: THE PROBLEM */}
-      <SectionLabel color="#0A0A0A" />
       <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
 
       <Card className="bg-white">
@@ -122,7 +121,6 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 2: THE DATA */}
       <div className="mt-8">
-        <SectionLabel color="#0A0A0A" />
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">DISCOVERY</p>
 
         <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-8">
@@ -154,7 +152,6 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 3: THE ROUTING SYSTEM */}
       <div className="mt-8">
-        <SectionLabel color="#0A0A0A" />
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</p>
 
         <motion.div variants={itemVariants} className="bg-sky border-2 border-black rounded-2xl p-8">
@@ -209,7 +206,6 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 4: RISK & PILOT PLAN */}
       <div className="mt-8">
-        <SectionLabel color="#0A0A0A" />
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW WE ROLLED IT OUT</p>
 
         <Card className="bg-white">
@@ -240,7 +236,6 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 5: RESULTS */}
       <div className="mt-8">
-        <SectionLabel color="#0A0A0A" />
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS UNLOCKED</p>
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -268,7 +263,6 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 6: RETROSPECTIVE */}
       <div className="mt-8">
-        <SectionLabel color="#0A0A0A" />
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
 
         <motion.div variants={itemVariants} className="bg-blush border-2 border-black rounded-2xl p-7">
