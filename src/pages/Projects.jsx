@@ -11,7 +11,7 @@ const upcoreProjects = [
     description: "Redesigned the full-funnel webinar experience — landing page, email sequence, and post-session nurture. Mapped drop-off points across registration, attendance, and follow-up before rebuilding each touchpoint from the data up.",
     tags: ["Funnel Design", "Email Strategy", "Growth", "Landing Pages"],
     result: "478 sign-ups/month · +51% from baseline",
-    caseStudyLink: "/case-studies#upcore-webinar"
+    caseStudyLink: "/case-studies/upcore-webinar"
   },
   {
     title: "Enterprise Outreach Optimization",
@@ -45,7 +45,7 @@ const liveKeepingProjects = [
     description: "Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative to greenlight feature improvements.",
     tags: ["Data Analytics", "B2B SaaS", "User Behavior", "Executive Reporting"],
     result: "17:1 adoption gap diagnosed and presented to VP/CEO",
-    caseStudyLink: "/case-studies#livekeeping-gap"
+    caseStudyLink: "/case-studies/livekeeping-gap"
   },
   {
     title: "E-Invoice Adoption Diagnosis",
@@ -115,7 +115,7 @@ const sierraProjects = [
     description: "Ran a friction audit combining GA4 step funnels and Clarity session evidence. Simplified fields, clarified trust signals, and adjusted error/validation UX.",
     tags: ["Checkout UX", "GA4", "Trust Signals", "A/B Testing"],
     result: "Cart abandonment: 84.47% → 63.26%; revenue recovered: $329K/month",
-    caseStudyLink: "/case-studies#sierra-cart"
+    caseStudyLink: "/case-studies/sierra-cart"
   }
 ];
 
