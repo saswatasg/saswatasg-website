@@ -299,11 +299,11 @@ const Stickman = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -5, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-[120px] left-1/2 -translate-x-1/2 bg-white border-2 border-black rounded-2xl px-3.5 py-2.5 text-xs font-bold text-ink max-w-[320px] text-center break-words leading-relaxed"
+            className="absolute bottom-[120px] left-1/2 -translate-x-1/2 bg-white border-2 border-black rounded-2xl px-3.5 py-2.5 text-xs font-bold text-ink w-[220px] text-center leading-relaxed"
             style={{ boxShadow: '4px 4px 0px 0px #E85D3A' }}
           >
             <div className="absolute -bottom-[8px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-r-2 border-b-2 border-black rotate-45" />
-            {bubble.text}
+            <div className="max-w-[200px] mx-auto break-words">{bubble.text}</div>
           </motion.div>
         )}
       </AnimatePresence>

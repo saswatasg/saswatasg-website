@@ -212,7 +212,7 @@ const HeroSection = () => {
           <motion.div
             variants={childVariants}
             whileHover={{ scale: 1.005, transition: { duration: 0.2 } }}
-            className="lg:col-span-2 bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden"
+            className="lg:col-span-2 bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden lg:h-[480px]"
             style={{ boxShadow: '10px 10px 0px 0px #E85D3A' }}
           >
             <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 relative z-10">
@@ -236,9 +236,6 @@ const HeroSection = () => {
                 <motion.h1 variants={childVariants} className="text-ink text-2xl md:text-3xl font-display font-black tracking-tighter leading-none mt-3">
                   Saswata S. Sengupta
                 </motion.h1>
-                <motion.p variants={childVariants} className="text-ink/50 text-[11px] md:text-xs font-bold tracking-wider uppercase mt-1.5">
-                  Building AI Products That Move Metrics
-                </motion.p>
               </div>
 
               <div className="md:col-span-2">
@@ -331,14 +328,14 @@ Book a Meet
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex-1"
+                    className="flex-1 min-h-[200px] overflow-hidden"
                     aria-live="polite"
                   >
                     {slides[slideIndex].content}
                   </motion.div>
                 </AnimatePresence>
 
-              <div className="flex items-center justify-center gap-2 mt-4">
+              <div className="flex items-center justify-center gap-2 pt-4">
                 <motion.button
                   onClick={() => setSlidePaused(!slidePaused)}
                   whileHover={{ scale: 1.2 }}
