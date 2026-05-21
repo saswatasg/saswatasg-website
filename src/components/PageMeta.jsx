@@ -4,17 +4,17 @@ import { useLocation } from 'react-router-dom';
 
 const defaultMeta = {
   title: "Saswata S. Sengupta | Product Manager — Building Products That Move Metrics",
-  description: "Product Manager with experience across B2B SaaS, D2C, and e-commerce. I ship products that solve real problems — from AI agent discovery to cart checkout redesigns.",
+  description: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata.",
   ogTitle: "Saswata S. Sengupta | Product Manager",
-  ogDescription: "Product Manager with experience across B2B SaaS, D2C, and e-commerce. I ship products that solve real problems.",
+  ogDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered.",
   twitterTitle: "Saswata S. Sengupta | Product Manager",
-  twitterDescription: "Product Manager shipping products across B2B SaaS, D2C, and e-commerce."
+  twitterDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered."
 };
 
 const pageSpecificMeta = {
   '/': {
-    title: "Saswata S. Sengupta | Product Manager — Building Products That Move Metrics",
-    description: "Product Manager with experience across B2B SaaS, D2C, and e-commerce. I ship products that solve real problems — from AI agent discovery to cart checkout redesigns."
+    title: "Saswata S. Sengupta | Product Manager — AI Agents, D2C Growth & B2B SaaS",
+    description: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata."
   },
   '/about': {
     title: "About Me | Saswata S. Sengupta — Product Manager",

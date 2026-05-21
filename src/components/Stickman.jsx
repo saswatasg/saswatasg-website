@@ -87,7 +87,7 @@ const Stickman = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => setEntered(true), 100);
+    setTimeout(() => setEntered(true), 5000);
     showBubble(welcomeMsgs[Math.floor(Math.random() * welcomeMsgs.length)], 5000);
   }, [showBubble]);
 
@@ -247,7 +247,7 @@ const Stickman = () => {
         animate={roaming
           ? { x: roamPos.x, y: roamPos.y, transition: { duration: 3, ease: 'easeInOut' } }
           : entered
-            ? { x: 0, y: 0, opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 15, delay: 0.5 } }
+              ? { x: 0, y: 0, opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 15, delay: 0 } }
             : { y: 120, opacity: 0, scale: 0.5 }
         }
         style={{ pointerEvents: 'auto' }}

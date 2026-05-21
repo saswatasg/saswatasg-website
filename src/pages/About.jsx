@@ -113,7 +113,7 @@ function About() {
           <div className="relative inline-flex group">
             <div className="absolute inset-0 rounded-lg border-2 border-black bg-purple translate-x-[3px] translate-y-[3px]" />
             <a
-              href="/assets/resume.pdf"
+              href="https://drive.google.com/file/d/1z4QJfKgGbVUGM1N3tXtTfPlamug49gGY/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-5 py-2.5 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
@@ -123,6 +123,46 @@ function About() {
             </a>
           </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6"
+        >
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black mb-4">
+            Education
+          </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+            <motion.div
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="bg-lemon border-2 border-black rounded-2xl p-6 md:p-8"
+              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
+            >
+              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
+                <GraduationCap className="w-4 h-4 text-ink" />
+              </span>
+              <h3 className="font-display font-black text-base md:text-lg text-ink">Indian Institute of Technology Jodhpur</h3>
+              <p className="text-sm font-bold text-ink/80 mt-1">MBA — Marketing & Analytics</p>
+              <p className="text-xs font-bold text-ink/50 mt-1">2022 – 2024</p>
+              <span className="px-2.5 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mt-3 inline-block">CAT 2021 · 97.69 Percentile</span>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="bg-blush border-2 border-black rounded-2xl p-6 md:p-8"
+              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
+            >
+              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
+                <GraduationCap className="w-4 h-4 text-ink" />
+              </span>
+              <h3 className="font-display font-black text-base md:text-lg text-ink">Jalpaiguri Government Engineering College</h3>
+              <p className="text-sm font-bold text-ink/80 mt-1">B.Tech — Mechanical Engineering</p>
+              <p className="text-xs font-bold text-ink/50 mt-1">2017 – 2021</p>
+              <p className="text-xs text-ink/60 mt-2">Foundation in systems thinking and engineering problem-solving</p>
+            </motion.div>
+          </div>
+        </motion.div>
 
         <motion.div
           ref={bioRef}
@@ -142,13 +182,13 @@ function About() {
           <div className="grid md:grid-cols-5 gap-6">
             <div className="md:col-span-3 space-y-4">
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                I've spent the last 3 years building products across B2B SaaS, D2C e-commerce, and AI — from a US-based furniture brand doing $3M+ monthly to an IndiaMART company serving Indian SMBs, and now at Upcore Technologies where I lead product discovery for AI agent solutions.
+                I'm a Product Manager with 3+ years shipping across AI agents, US D2C e-commerce, and B2B SaaS for Indian SMBs. My work sits at the intersection of discovery, analytics, and execution — I find the problem others haven't quantified, and build the fix with a measurable before/after.
               </p>
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                My MBA from IIT Jodhpur gave me the business strategy and analytics layer. At Sierra Living Concepts, I shipped features that moved real revenue: cart abandonment from 84% to 63% ($329K/month recovered), lead submissions doubled (+105%), and pricing tools generating $152K/month. At LiveKeeping, I diagnosed a 17:1 adoption gap between Tally and LiveKeeping's native module — went unnoticed until I quantified it and presented the case to the VP/CEO.
+                At Sierra Living Concepts I recovered $329K/month through checkout redesign and cut cart abandonment from 84% to 63%. At LiveKeeping I diagnosed a 17:1 adoption gap that went directly to the CPO. At Upcore I'm now building discovery-to-deployment pipelines for enterprise AI agents.
               </p>
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                I care more about UX than UI, more about why than what, and more about the problem space than the solution space. I've shipped 70+ product changes — from checkout redesigns that moved conversion by 8 points to CRM automation that unlocked $113K/month recurring revenue.
+                IIT Jodhpur MBA. Based in Kolkata. I mentor early-career PMs and write about product craft on LinkedIn.
               </p>
             </div>
             <div className="md:col-span-2 space-y-3">
@@ -195,6 +235,41 @@ function About() {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          whileHover={{ y: -2, transition: { duration: 0.2 } }}
+          className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mt-6"
+          style={{ boxShadow: '10px 10px 0px 0px #3DDC91' }}
+        >
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-mint text-ink text-xs font-bold border-2 border-black mb-3">
+            Stack & Tools
+          </span>
+          <h2 className="text-ink text-xl md:text-2xl font-display font-black tracking-tight">What I reach for when the problem needs solving.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+            {[
+              { category: 'Analytics & Data', badges: ['GA4', 'GTM', 'Looker Studio', 'Microsoft Clarity', 'Mixpanel', 'Excel / Sheets'] },
+              { category: 'Product Tooling', badges: ['Figma', 'Jira', 'Notion', 'Linear', 'Trello'] },
+              { category: 'CRM & Automation', badges: ['Salesforce', 'Google Apps Script', 'Zapier'] },
+              { category: 'Research', badges: ['User interviews', 'Hotjar', 'Survey design', 'Funnel analysis'] },
+              { category: 'AI / LLM', badges: ['Prompt engineering', 'Agent workflow design', 'Claude', 'ChatGPT'] },
+              { category: 'Dev Fluency', badges: ['React / JSX (read)', 'SQL basics', 'API documentation'] },
+            ].map((cluster) => (
+              <div key={cluster.category}>
+                <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2">{cluster.category}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cluster.badges.map((badge) => (
+                    <span
+                      key={badge}
+                      className="px-2.5 py-1 rounded-lg bg-white border-2 border-black text-xs font-bold text-ink hover:bg-ink hover:text-white transition-colors cursor-default"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </>
   );

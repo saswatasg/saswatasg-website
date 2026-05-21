@@ -182,7 +182,6 @@ const ContactPanel = ({ custom }) => {
         )}
       </AnimatePresence>
     </div>
-    </div>
   );
 };
 

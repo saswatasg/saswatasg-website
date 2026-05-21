@@ -96,8 +96,7 @@ const ChatBot = () => {
       }, 400);
     } else {
       setTimeout(() => {
-        addBotMsg("I'll connect you on WhatsApp to answer that properly!");
-        sendToWhatsApp(text);
+        addBotMsg("That's a good one — drop me a message directly and I'll get back to you personally.");
       }, 400);
     }
   };

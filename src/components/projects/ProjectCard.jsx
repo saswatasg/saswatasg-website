@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const cardColors = ['bg-blush', 'bg-sky', 'bg-mint', 'bg-lemon', 'bg-blush', 'bg-sky', 'bg-mint', 'bg-lemon'];
 const cardShadows = [
@@ -13,7 +15,7 @@ const cardShadows = [
   '6px 6px 0px 0px #3DDC91',
 ];
 
-const ProjectCard = ({ title, description, tags, result, index }) => {
+const ProjectCard = ({ title, description, tags, result, index, caseStudyLink }) => {
   const ci = index % cardColors.length;
 
   return (
@@ -49,6 +51,16 @@ const ProjectCard = ({ title, description, tags, result, index }) => {
             {result}
           </p>
         </div>
+      )}
+
+      {caseStudyLink && (
+        <Link
+          to={caseStudyLink}
+          className="text-xs font-bold text-purple hover:text-ink inline-flex items-center gap-1 mt-3 transition-colors"
+        >
+          Read Full Case Study
+          <ArrowRight className="w-3 h-3" />
+        </Link>
       )}
     </motion.div>
   );

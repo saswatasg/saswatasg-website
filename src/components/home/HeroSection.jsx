@@ -38,7 +38,7 @@ const HeroSection = () => {
         <div className="flex flex-col gap-3">
           <div className="bg-white border-2 border-black rounded-xl p-4 -rotate-[0.3deg] group-hover:rotate-0 transition-all duration-200">
             <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
-            <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue recovered</p>
+            <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue impact</p>
             <div className="flex gap-1.5">
               <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-pink/30 border border-black p-1.5 text-center">
                 <div className="text-sm font-black text-ink">$329K</div>
@@ -205,7 +205,7 @@ const HeroSection = () => {
           >
             <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 relative z-10">
               <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
-                <div className="w-28 h-28 md:w-32 md:h-32 overflow-hidden rounded-xl border-2 border-black mx-auto md:mx-0">
+                <div className="w-36 h-36 md:w-44 md:h-44 overflow-hidden rounded-2xl border-2 border-black rotate-[-1deg] mx-auto md:mx-0" style={{ boxShadow: '6px 6px 0px 0px #FF90E8' }}>
                   <img
                     src="https://i.postimg.cc/Kv5xF852/DP-Linkedin.jpg"
                     alt="Saswata S. Sengupta"
@@ -217,7 +217,7 @@ const HeroSection = () => {
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black mt-4"
                 >
                   <Star className="w-3 h-3" fill="currentColor" />
-                  Product Manager
+                  Product Manager · AI & Growth
                 </motion.span>
                 <motion.h1 variants={childVariants} className="text-ink text-2xl md:text-3xl font-display font-black tracking-tighter leading-[1.05] mt-2">
                   Saswata S.<br />Sengupta
@@ -226,11 +226,11 @@ const HeroSection = () => {
 
               <div className="md:col-span-2">
                 <motion.p variants={childVariants} className="text-base md:text-lg text-ink/60 font-display font-bold tracking-tight">
-                  I ship products that move metrics.
+                  I find the problem nobody's measuring, then ship the fix that moves the number that matters.
                 </motion.p>
 
                 <motion.p variants={childVariants} className="mt-3 text-ink/70 text-sm md:text-base">
-                  Product Manager with 3+ years across B2B SaaS, D2C, and e-commerce. From AI agent discovery at Upcore to checkout redesigns that recovered $329K/month at Sierra Living Concepts.
+                  3+ years across AI agents (Upcore), D2C e-commerce ($329K/mo recovered at Sierra), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
                 </motion.p>
 
                 <motion.div variants={childVariants} className="flex flex-wrap gap-3 mt-5">

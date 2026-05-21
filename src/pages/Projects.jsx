@@ -1,16 +1,51 @@
 import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Armchair } from 'lucide-react';
+import { Rocket, Armchair, Brain, ArrowRight } from 'lucide-react';
 import ProjectCard from '@/components/projects/ProjectCard';
 import PageMeta from '@/components/PageMeta';
+
+const upcoreProjects = [
+  {
+    title: "Webinar Sales Engine Redesign",
+    description: "Redesigned the full-funnel webinar experience — landing page, email sequence, and post-session nurture. Mapped drop-off points across registration, attendance, and follow-up before rebuilding each touchpoint from the data up.",
+    tags: ["Funnel Design", "Email Strategy", "Growth", "Landing Pages"],
+    result: "478 sign-ups/month · +51% from baseline",
+    caseStudyLink: "/case-studies#upcore-webinar"
+  },
+  {
+    title: "Enterprise Outreach Optimization",
+    description: "Transitioned from manual LinkedIn prospecting to a structured outbound system with lead scoring, BDR capacity planning, and a tiered qualification framework based on company size, vertical, and AI readiness signals.",
+    tags: ["Outbound", "Lead Scoring", "B2B GTM", "Sales Ops"],
+    result: "Cost-to-book reduced by 36%"
+  },
+  {
+    title: "AI Agent Market Intelligence Report",
+    description: "Produced a 16-page research report covering the agentic AI tooling landscape, market sizing, adoption maturity curve, and 8+ enterprise case studies across manufacturing, legal, logistics, and finance verticals.",
+    tags: ["Market Research", "AI Agents", "Competitive Intel", "Strategy"],
+    result: "16-page whitepaper · 12 verticals mapped"
+  },
+  {
+    title: "Revenue Model & Pricing Strategy",
+    description: "Built the revenue architecture and tiered pricing model for Upcore's AI agent services. Partnered with the CEO on financial modelling and the investor narrative as part of pre-seed fundraising preparation.",
+    tags: ["Pricing Strategy", "Revenue Modelling", "Fundraising", "GTM"],
+    result: "Supported $1.2M pre-seed line secured"
+  },
+  {
+    title: "Enterprise Discovery Sprints",
+    description: "Conducted structured discovery interviews with 20+ prospective clients across 12 verticals. Synthesised findings into a prioritised opportunity brief identifying the top-3 agentic AI use cases by severity, ROI, and buildability.",
+    tags: ["Product Discovery", "User Research", "AI Strategy", "Enterprise"],
+    result: "20+ interviews · Top-3 opportunity brief delivered"
+  }
+];
 
 const liveKeepingProjects = [
   {
     title: "E-Way Bill Adoption Diagnosis",
     description: "Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative to greenlight feature improvements.",
     tags: ["Data Analytics", "B2B SaaS", "User Behavior", "Executive Reporting"],
-    result: "17:1 adoption gap diagnosed and presented to VP/CEO"
+    result: "17:1 adoption gap diagnosed and presented to VP/CEO",
+    caseStudyLink: "/case-studies#livekeeping-gap"
   },
   {
     title: "E-Invoice Adoption Diagnosis",
@@ -79,18 +114,20 @@ const sierraProjects = [
     title: "Cart & Checkout Flow Redesign",
     description: "Ran a friction audit combining GA4 step funnels and Clarity session evidence. Simplified fields, clarified trust signals, and adjusted error/validation UX.",
     tags: ["Checkout UX", "GA4", "Trust Signals", "A/B Testing"],
-    result: "Cart abandonment: 84.47% → 63.26%; revenue recovered: $329K/month"
+    result: "Cart abandonment: 84.47% → 63.26%; revenue recovered: $329K/month",
+    caseStudyLink: "/case-studies#sierra-cart"
   }
 ];
 
 const TABS = [
+  { id: 'upcore', label: 'Upcore Technologies', icon: Brain },
   { id: 'livekeeping', label: 'LiveKeeping', icon: Rocket },
   { id: 'sierra', label: 'Sierra Living Concepts', icon: Armchair }
 ];
 
 const Projects = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'livekeeping';
+  const activeTab = searchParams.get('tab') || 'upcore';
 
   const handleTabChange = (value) => {
     setSearchParams({ tab: value });
@@ -98,6 +135,8 @@ const Projects = () => {
 
   const { projects, banner } = useMemo(() => {
     switch (activeTab) {
+      case 'upcore':
+        return { projects: upcoreProjects, banner: "Upcore Technologies · Product Manager · April 2026–Present · AI agent discovery & enterprise deployment" };
       case 'sierra':
         return { projects: sierraProjects, banner: "Sierra Living Concepts · Product Manager (Growth) · May 2024–Jan 2026 · US D2C furniture brand" };
       case 'livekeeping':
@@ -132,6 +171,7 @@ const Projects = () => {
         </motion.div>
 
         <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mt-6">
+          <p className="text-sm font-medium text-ink/50 text-center mb-6">These aren't just features I shipped — they're problems I diagnosed. Each one started with data that told an incomplete story.</p>
           <div className="flex justify-center gap-2 mb-8">
             {TABS.map((tab) => {
               const Icon = tab.icon;

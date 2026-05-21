@@ -6,6 +6,7 @@ const Home = React.lazy(() => import('@/pages/Home'));
 const About = React.lazy(() => import('@/pages/About'));
 const Experience = React.lazy(() => import('@/pages/Experience'));
 const Projects = React.lazy(() => import('@/pages/Projects'));
+const CaseStudies = React.lazy(() => import('@/pages/CaseStudies'));
 const Contact = React.lazy(() => import('@/pages/Contact'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
 
@@ -40,6 +41,7 @@ const RoutesConfig = () => {
           <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
           <Route path="/experience" element={<AnimatedPage><Experience /></AnimatedPage>} />
           <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
+          <Route path="/case-studies" element={<AnimatedPage><CaseStudies /></AnimatedPage>} />
           <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
           <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
         </Routes>
