@@ -8,14 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: '#F4F4F0',
+        canvas: '#F5F2EC',
         ink: '#0A0A0A',
-        pink: '#FF90E8',
-        purple: '#625BF6',
-        lemon: '#F4EC4A',
-        mint: '#3DDC91',
-        blush: '#F5C9E0',
-        sky: '#D8E4FA',
+        coral: '#E85D3A',
+        purple: '#6D28D9',
+        lemon: '#F59E0B',
+        mint: '#059669',
+        blush: '#FFF4ED',
+        sky: '#EEF2FF',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Star, MessageSquare, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket } from 'lucide-react';
+import { Calendar, Star, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -38,10 +39,6 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [showCalendar]);
 
-  const handleWhatsApp = () => {
-    window.dispatchEvent(new CustomEvent('openWhatsApp'));
-  };
-
   const slides = [
     {
       id: 'sierra',
@@ -55,7 +52,7 @@ const HeroSection = () => {
             <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
             <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue impact</p>
             <div className="flex gap-1.5">
-              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-pink/30 border border-black p-1.5 text-center">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-coral/30 border border-black p-1.5 text-center">
                 <div className="text-sm font-black text-ink">53.9%</div>
                 <p className="text-[9px] font-bold text-ink/60">Checkout</p>
               </motion.div>
@@ -104,7 +101,7 @@ const HeroSection = () => {
                 <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">17:1</div>
                 <p className="text-[10px] font-bold text-ink/60">E-Way Bill gap</p>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-pink/30 border border-black p-2.5">
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-coral/30 border border-black p-2.5">
                 <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">19:1</div>
                 <p className="text-[10px] font-bold text-ink/60">E-Invoice gap</p>
               </motion.div>
@@ -147,7 +144,7 @@ const HeroSection = () => {
       title: 'Role & Scope',
       cardBg: 'bg-blush',
       company: 'Upcore Technologies',
-      companyColor: 'text-pink-dark',
+      companyColor: 'text-coral-dark',
       content: (
         <div className="flex flex-col gap-2.5 h-full">
           <div className="grid grid-cols-2 gap-2">
@@ -213,27 +210,32 @@ const HeroSection = () => {
             variants={childVariants}
             whileHover={{ scale: 1.005, transition: { duration: 0.2 } }}
             className="lg:col-span-2 bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden"
-            style={{ boxShadow: '10px 10px 0px 0px #FF90E8' }}
+            style={{ boxShadow: '10px 10px 0px 0px #E85D3A' }}
           >
             <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 relative z-10">
               <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
-                <div className="w-36 h-36 md:w-44 md:h-44 overflow-hidden rounded-2xl border-2 border-black rotate-[-1deg] mx-auto md:mx-0" style={{ boxShadow: '6px 6px 0px 0px #FF90E8' }}>
+                <div className="w-36 h-36 md:w-44 md:h-44 overflow-hidden rounded-2xl border-2 border-black rotate-[-1deg] mx-auto md:mx-0" style={{ boxShadow: '6px 6px 0px 0px #E85D3A' }}>
                   <img
                     src="https://i.postimg.cc/Kv5xF852/DP-Linkedin.jpg"
                     alt="Saswata S. Sengupta"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <motion.span
-                  variants={childVariants}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black mt-4"
-                >
-                  <Star className="w-3 h-3" fill="currentColor" />
-                  Product Manager · AI & Growth
-                </motion.span>
-                <motion.h1 variants={childVariants} className="text-ink text-xl md:text-2xl font-display font-black tracking-tighter leading-none mt-2">
+                <motion.div variants={childVariants} className="flex flex-wrap items-center justify-center md:justify-start gap-2 mt-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
+                    <Star className="w-3 h-3 text-coral" fill="currentColor" />
+                    Product Manager
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-coral text-ink text-[10px] font-bold border-2 border-black">
+                    AI & Growth
+                  </span>
+                </motion.div>
+                <motion.h1 variants={childVariants} className="text-ink text-2xl md:text-3xl font-display font-black tracking-tighter leading-none mt-3">
                   Saswata S. Sengupta
                 </motion.h1>
+                <motion.p variants={childVariants} className="text-ink/50 text-[11px] md:text-xs font-bold tracking-wider uppercase mt-1.5">
+                  Building AI Products That Move Metrics
+                </motion.p>
               </div>
 
               <div className="md:col-span-2">
@@ -245,26 +247,26 @@ const HeroSection = () => {
                    3+ years across AI agents (Upcore), D2C e-commerce (73% → 54% checkout fix at Sierra Living Concepts), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
                 </motion.p>
 
-                <motion.div variants={childVariants} className="flex flex-wrap gap-3 mt-5">
+                <motion.div variants={childVariants} className="flex flex-wrap gap-2 md:gap-3 mt-5">
                   <div className="relative inline-flex group">
-                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
+                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
                     <button
               onClick={() => setShowCalendar(true)}
-              className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold inline-flex items-center gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+              className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold inline-flex items-center gap-1.5 md:gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
             >
-              <Calendar className="w-4 h-4" aria-hidden="true" />
-                      Book a Meeting
+              <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4" aria-hidden="true" />
+Book a Meet
                     </button>
                   </div>
                   <div className="relative inline-flex group">
-                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-[#25D366] translate-x-[3px] translate-y-[3px]" />
-                    <button
-                      onClick={handleWhatsApp}
-                      className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-lemon translate-x-[3px] translate-y-[3px]" />
+                    <Link
+                      to="/case-studies"
+                      className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold min-h-[44px] inline-flex items-center gap-1.5 md:gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
                     >
-                      <MessageSquare className="w-4 h-4" />
-                      WhatsApp
-                    </button>
+                      <FileText className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                      View Case Studies
+                    </Link>
                   </div>
                 </motion.div>
 
@@ -282,7 +284,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="absolute -top-6 -right-4 w-12 h-12 bg-pink border-2 border-black rounded-lg rotate-12 hidden md:block" />
+            <div className="absolute -top-6 -right-4 w-12 h-12 bg-coral border-2 border-black rounded-lg rotate-12 hidden md:block" />
             <div className="absolute top-12 right-4 w-8 h-8 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
             <div className="absolute -bottom-8 -left-4 w-16 h-16 rounded-full bg-canvas border-2 border-black hidden md:block" />
           </motion.div>
@@ -373,7 +375,7 @@ const HeroSection = () => {
               >
                 <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
                   <span className="font-bold text-sm">Book a Meeting</span>
-                  <button onClick={() => setShowCalendar(false)} className="hover:text-pink transition-colors">
+                  <button onClick={() => setShowCalendar(false)} className="hover:text-coral transition-colors">
                     <X className="w-5 h-5" />
                   </button>
                 </div>

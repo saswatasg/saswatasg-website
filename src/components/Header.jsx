@@ -67,7 +67,7 @@ const Header = () => {
 
           <div className="flex items-center gap-3">
             <div className="relative inline-flex group">
-              <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
+              <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <button
                 onClick={() => setShowCalendar(true)}
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
@@ -88,7 +88,7 @@ const Header = () => {
           </Link>
 
           <div className="relative inline-flex group">
-            <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
+            <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
             <motion.button
               onClick={toggleMenu}
               className="relative z-10 w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg flex items-center justify-center bg-ink text-white border-2 border-black transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
@@ -154,7 +154,7 @@ const Header = () => {
             >
               <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
                 <span className="font-bold text-sm">Book a Meeting</span>
-                <button onClick={() => setShowCalendar(false)} className="hover:text-pink transition-colors">
+                <button onClick={() => setShowCalendar(false)} className="hover:text-coral transition-colors">
                   <X className="w-5 h-5" />
                 </button>
               </div>

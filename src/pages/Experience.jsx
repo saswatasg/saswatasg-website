@@ -16,11 +16,11 @@ const MetricTag = ({ children }) => (
 const cardColors = ['bg-blush', 'bg-sky', 'bg-mint', 'bg-lemon', 'bg-blush', 'bg-sky'];
 const cardShadows = [
   '6px 6px 0px 0px #F4EC4A',
-  '6px 6px 0px 0px #FF90E8',
+  '6px 6px 0px 0px #E85D3A',
   '6px 6px 0px 0px #625BF6',
   '6px 6px 0px 0px #3DDC91',
   '6px 6px 0px 0px #F4EC4A',
-  '6px 6px 0px 0px #FF90E8',
+  '6px 6px 0px 0px #E85D3A',
 ];
 
 const ExperienceCard = ({ role, index }) => (
@@ -198,7 +198,7 @@ function Experience() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ y: -2, transition: { duration: 0.2 } }}
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 mb-6"
-          style={{ boxShadow: '10px 10px 0px 0px #FF90E8' }}
+          style={{ boxShadow: '10px 10px 0px 0px #E85D3A' }}
         >
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black mb-3">
             Career
@@ -220,7 +220,7 @@ function Experience() {
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 mb-6 relative overflow-hidden"
           style={{ boxShadow: '8px 8px 0px 0px #0A0A0A' }}
         >
-          <div className="absolute -top-4 -right-4 w-10 h-10 bg-pink border-2 border-black rounded-lg rotate-12 hidden md:block" />
+          <div className="absolute -top-4 -right-4 w-10 h-10 bg-coral border-2 border-black rounded-lg rotate-12 hidden md:block" />
           <div className="absolute bottom-6 left-6 w-6 h-6 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
 
           <div className="flex items-center gap-2 mb-6">

@@ -6,11 +6,11 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink text-white mt-auto border-t-4 border-pink">
+    <footer className="bg-ink text-white mt-auto border-t-4 border-coral">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="font-display font-black text-xl tracking-tight text-white bg-pink px-2 py-0.5 rounded-lg border-2 border-white inline-block -rotate-1 hover:scale-105 hover:-rotate-2 transition-all duration-200">
+            <Link to="/" className="font-display font-black text-xl tracking-tight text-white bg-coral px-2 py-0.5 rounded-lg border-2 border-white inline-block -rotate-1 hover:scale-105 hover:-rotate-2 transition-all duration-200">
               Saswata
             </Link>
             <p className="text-sm text-white/60 font-medium mt-2 max-w-[200px]">
@@ -86,7 +86,7 @@ function Footer() {
               { icon: Github, href: 'https://github.com/saswatasg', label: 'GitHub' },
               { icon: Twitter, href: 'https://twitter.com/saswatasg', label: 'Twitter' },
             ].map((social) => (
-              <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.label} profile`} className="text-white/40 hover:text-pink transition-colors border-2 border-transparent hover:border-pink rounded-lg p-1.5">
+              <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.label} profile`} className="text-white/40 hover:text-coral transition-colors border-2 border-transparent hover:border-coral rounded-lg p-1.5">
                 <social.icon className="w-4 h-4" />
               </a>
             ))}

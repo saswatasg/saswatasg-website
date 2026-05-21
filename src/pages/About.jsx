@@ -5,7 +5,7 @@ import PageMeta from '@/components/PageMeta';
 
 const statColors = [
   { bg: 'bg-blush', shadow: '6px 6px 0px 0px #F4EC4A' },
-  { bg: 'bg-sky', shadow: '6px 6px 0px 0px #FF90E8' },
+  { bg: 'bg-sky', shadow: '6px 6px 0px 0px #E85D3A' },
   { bg: 'bg-mint', shadow: '6px 6px 0px 0px #625BF6' },
   { bg: 'bg-lemon', shadow: '6px 6px 0px 0px #3DDC91' },
 ];
@@ -25,7 +25,7 @@ function About() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ y: -2, transition: { duration: 0.2 } }}
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14"
-          style={{ boxShadow: '10px 10px 0px 0px #FF90E8' }}
+          style={{ boxShadow: '10px 10px 0px 0px #E85D3A' }}
         >
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black mb-3">
             About Me

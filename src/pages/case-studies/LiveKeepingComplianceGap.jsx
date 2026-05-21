@@ -32,7 +32,7 @@ const LiveKeepingComplianceGap = () => {
       <motion.div
         variants={itemVariants}
         className="bg-ink border-2 border-black rounded-2xl p-10 md:p-16"
-        style={{ boxShadow: '12px 12px 0px 0px #FF90E8' }}
+        style={{ boxShadow: '12px 12px 0px 0px #E85D3A' }}
       >
         <ContextBar company="LiveKeeping · An IndiaMART Company" period="Jan–Mar 2026" tags={['B2B SaaS', '50,000+ Users']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-white leading-tight">
@@ -43,7 +43,7 @@ const LiveKeepingComplianceGap = () => {
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '17 : 1', label: 'E-Way Bill Gap', sub: 'Tally vs LiveKeeping (PRO+)', color: 'text-pink' },
+            { value: '17 : 1', label: 'E-Way Bill Gap', sub: 'Tally vs LiveKeeping (PRO+)', color: 'text-coral' },
             { value: '19 : 1', label: 'E-Invoice Gap', sub: 'Same methodology, second module', color: 'text-white' },
             { value: '100K+', label: 'API Logs Analysed', sub: 'To validate the gap quantitatively', color: 'text-white' },
             { value: 'C-Suite', label: 'Escalation Level', sub: 'Greenlit roadmap investigation', color: 'text-white' },

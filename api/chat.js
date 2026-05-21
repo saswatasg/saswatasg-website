@@ -14,7 +14,7 @@ SKILLS: Product discovery, shipping & execution, data & analytics (GA4, GTM, Loo
 CONTACT:
 - Email: saswatasg@gmail.com
 - Website: saswatasg.com
-- Phone: +91 87778 75140
+- Phone: +91 9836312162
 - LinkedIn: linkedin.com/in/sss99
 - GitHub: github.com/saswatasg
 - Location: Kolkata, India`;

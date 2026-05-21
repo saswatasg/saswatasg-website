@@ -5,7 +5,6 @@ import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { containerVariants, itemVariants } from '@/components/case-studies/animations';
 import Card from '@/components/case-studies/Card';
-import SectionLabel from '@/components/case-studies/SectionLabel';
 import ContextBar from '@/components/case-studies/ContextBar';
 import BottomNav from '@/components/case-studies/BottomNav';
 
@@ -70,7 +69,7 @@ const SierraLeadAllocation = () => {
       </motion.div>
 
       {/* SECTION 1: THE PROBLEM */}
-      <SectionLabel>BEFORE STATE</SectionLabel>
+      <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
 
       <Card>
         <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
@@ -95,7 +94,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 2: THE DATA */}
       <div className="mt-8">
-        <SectionLabel>DISCOVERY</SectionLabel>
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DISCOVERY</p>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-6">Six lead sources. Wildly different conversion rates. Zero differentiation in how they were handled.</p>
@@ -126,7 +125,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 3: THE ROUTING SYSTEM */}
       <div className="mt-8">
-        <SectionLabel>SOLUTION</SectionLabel>
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</p>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-4">Three-tier routing system</p>
@@ -180,10 +179,10 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 4: RISK & PILOT PLAN */}
       <div className="mt-8">
-        <SectionLabel>HOW WE ROLLED IT OUT</SectionLabel>
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW WE ROLLED IT OUT</p>
 
         <Card>
-          <SectionLabel>Risk Matrix</SectionLabel>
+          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Risk Matrix</p>
           {[
             { risk: 'Thursday Coverage Gap', prob: 'High', impact: 'High', mitigation: 'Hold queue + management backup for Gold leads' },
             { risk: 'Leslie Absence', prob: 'Medium', impact: 'High', mitigation: 'Larry as primary backup, postpone non-urgent Gold leads' },
@@ -199,7 +198,7 @@ const SierraLeadAllocation = () => {
         </Card>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
-          <SectionLabel>Pilot Plan — 30 Days</SectionLabel>
+          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Pilot Plan — 30 Days</p>
           <div className="space-y-2">
             <p className="text-sm text-ink/80 font-medium"><strong>Week 1 (10% of leads):</strong> Route only Friday website leads to Leslie. Track conversion improvement. Gather agent feedback.</p>
             <p className="text-sm text-ink/80 font-medium"><strong>Weeks 2-3 (25% of leads):</strong> Add Thursday hold queue. Implement chat automation for Mollie. Include Larry in Gold routing.</p>
@@ -210,7 +209,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 5: RESULTS */}
       <div className="mt-8">
-        <SectionLabel>WHAT THIS UNLOCKED</SectionLabel>
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS UNLOCKED</p>
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
@@ -231,13 +230,13 @@ const SierraLeadAllocation = () => {
           <p className="text-white/70 text-sm mt-2 leading-relaxed">
             Each Gold lead misrouted to a non-specialist agent instead of Leslie represented ~$2,000 in lower expected conversion revenue at Sierra&#39;s AOV. Leslie&#39;s Gold target (8-10/day) vs. baseline (2-3/day) represented 5-7 additional Gold leads per day at $3,400 average order value.
           </p>
-          <p className="text-pink font-black mt-3">Routing isn&#39;t sales support. It&#39;s revenue architecture.</p>
+          <p className="text-coral font-black mt-3">Routing isn&#39;t sales support. It&#39;s revenue architecture.</p>
         </motion.div>
       </div>
 
       {/* SECTION 6: RETROSPECTIVE */}
       <div className="mt-8">
-        <SectionLabel>RETROSPECTIVE</SectionLabel>
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">

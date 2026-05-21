@@ -5,7 +5,7 @@ import { WhatsappIcon } from '@/components/WhatsappIcon';
 const WhatsAppButton = () => {
   const message = "Hi Saswata, I found you via your website. Would love to connect!";
   const encodedMessage = encodeURIComponent(message);
-  const whatsappLink = `https://wa.me/918777875140?text=${encodedMessage}`;
+  const whatsappLink = `https://wa.me/919836312162?text=${encodedMessage}`;
 
   return (
     <motion.a

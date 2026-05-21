@@ -5,7 +5,7 @@ import ContactForm from '@/components/contact/ContactForm';
 import { ArrowRight, Calendar, X, Sparkles } from 'lucide-react';
 
 const floatingDecorations = [
-  { className: '-top-3 -left-3 w-10 h-10 bg-pink rotate-12 hidden md:block' },
+  { className: '-top-3 -left-3 w-10 h-10 bg-coral rotate-12 hidden md:block' },
   { className: 'bottom-6 -right-3 w-8 h-8 bg-lemon -rotate-12 hidden md:block' },
   { className: 'top-1/2 -right-4 w-6 h-6 bg-sky rotate-45 hidden lg:block' },
 ];
@@ -99,7 +99,7 @@ const Contact = () => {
             className="mt-6 flex justify-center"
           >
             <div className="relative inline-flex group">
-              <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
+              <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <button
                 onClick={() => setShowCalendar(true)}
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
@@ -144,7 +144,7 @@ const Contact = () => {
               >
                 <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
                   <span className="font-bold text-sm">Book a Meeting</span>
-                  <button onClick={() => setShowCalendar(false)} className="hover:text-pink transition-colors">
+                  <button onClick={() => setShowCalendar(false)} className="hover:text-coral transition-colors">
                     <X className="w-5 h-5" />
                   </button>
                 </div>

@@ -28,7 +28,7 @@ const skills = [
 
 const cardStyles = [
   { bg: 'bg-blush', shadow: '6px 6px 0px 0px #F4EC4A' },
-  { bg: 'bg-sky', shadow: '6px 6px 0px 0px #FF90E8' },
+  { bg: 'bg-sky', shadow: '6px 6px 0px 0px #E85D3A' },
   { bg: 'bg-mint', shadow: '6px 6px 0px 0px #625BF6' },
   { bg: 'bg-lemon', shadow: '6px 6px 0px 0px #3DDC91' },
 ];
@@ -74,7 +74,7 @@ const WhatIDoSection = () => {
           style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
         >
           <div className="text-center mb-10">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-pink text-ink text-xs font-bold border-2 border-black mb-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-coral text-ink text-xs font-bold border-2 border-black mb-3">
               How I Work
             </span>
             <h2 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
@@ -93,7 +93,7 @@ const WhatIDoSection = () => {
 
           <div className="text-center mt-8">
             <div className="relative inline-flex group">
-              <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
+              <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <Link
                 to="/experience"
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"

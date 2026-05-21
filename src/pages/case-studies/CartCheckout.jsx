@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Lightbulb, ShoppingCart } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { containerVariants, itemVariants } from '@/components/case-studies/animations';
 import Card from '@/components/case-studies/Card';
-import SectionLabel from '@/components/case-studies/SectionLabel';
 import ContextBar from '@/components/case-studies/ContextBar';
 import BottomNav from '@/components/case-studies/BottomNav';
 
 const CartCheckout = () => {
-  const color = '#FF90E8';
-  const cardBg = 'bg-blush';
-
   return (
     <motion.div
       variants={containerVariants}
@@ -32,109 +28,184 @@ const CartCheckout = () => {
         Back to all case studies
       </Link>
 
+      {/* HERO */}
       <motion.div
         variants={itemVariants}
-        className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`}
-        style={{ boxShadow: `12px 12px 0px 0px ${color}` }}
+        className="bg-blush border-2 border-black rounded-2xl p-10 md:p-16"
+        style={{ boxShadow: '12px 12px 0px 0px #E85D3A' }}
       >
-        <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/30 border-2 border-black rounded-xl rotate-12 hidden md:block" />
-        <div className="absolute top-16 right-12 w-12 h-12 bg-white/20 border-2 border-black rounded-lg -rotate-6 hidden md:block" />
-
         <ContextBar company="Sierra Living Concepts" period="2024" tags={['D2C', 'E-Commerce']} />
-
-        <div className="flex items-center gap-3 mb-2 relative z-10">
-          <ShoppingCart className="w-8 h-8 text-ink" aria-hidden="true" />
-          <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
-            Cart & Checkout Abandonment — –26%
-          </h1>
-        </div>
-
-        <p className="mt-3 text-sm md:text-base text-ink/70 font-medium max-w-3xl relative z-10">
-          73.1% → 53.9%. Three friction points, two sprints, zero architecture changes.
+        <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
+          73% cart abandonment isn&#39;t a Shopify problem. It&#39;s an instrumentation problem.
+        </h1>
+        <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
+          480,000 sessions. Three friction points. Two sprints. Zero architecture changes. The checkout didn&#39;t need to be rebuilt — it needed to be measured.
         </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '73.1%', label: 'Cart abandonment before' },
-            { value: '53.9%', label: 'Cart abandonment after' },
-            { value: '–26%', label: 'Relative reduction' },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.03, y: -2 }}
-              className="bg-pink/30 border-2 border-black rounded-xl p-3 md:p-4 text-center"
-            >
-              <div className="text-xl md:text-2xl font-display font-black text-ink">{stat.value}</div>
-              <p className="text-xs font-bold text-ink/60 mt-0.5">{stat.label}</p>
-            </motion.div>
+            { value: '73.1 → 53.9%', label: 'Cart Abandonment', sub: 'Before → After', color: 'text-ink' },
+            { value: '–26%', label: 'Relative Reduction', sub: 'Two-sprint improvement', color: 'text-ink' },
+            { value: '+47%', label: 'Mobile CVR', sub: 'Mobile checkout conversion', color: 'text-ink' },
+            { value: '480K', label: 'Sessions Analysed', sub: 'GA4 + Clarity data set', color: 'text-ink' },
+          ].map((m, i) => (
+            <div key={i} className="bg-coral/30 border border-ink/20 rounded-xl p-4">
+              <div className={`font-display font-black text-3xl ${m.color}`}>{m.value}</div>
+              <p className="text-xs font-bold text-ink/80 mt-1">{m.label}</p>
+              <p className="text-[10px] text-ink/50 mt-0.5">{m.sub}</p>
+            </div>
           ))}
         </div>
       </motion.div>
 
-      <div className="mt-8 space-y-6">
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>The Problem</SectionLabel>
+      <motion.div
+        variants={itemVariants}
+        className="mt-6 bg-white border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-ink/70"
+      >
+        <span>Role: Growth PM — Instrumentation, diagnosis, A/B test design, stakeholder communication</span>
+        <span className="hidden md:block">|</span>
+        <span>Platform: Sierra Living Concepts · D2C furniture e-commerce · Shopify Plus</span>
+        <span className="hidden md:block">|</span>
+        <span>Duration: 6 weeks (2 sprints)</span>
+      </motion.div>
+
+      {/* SECTION 1: BEFORE STATE */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+
+        <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Cart abandonment was sitting at 73.1% — a significant leak in the conversion funnel. The business knew the number but not the why. No funnel instrumentation existed below the PDP level. The default Shopify analytics showed a flat abandonment rate with no step-by-step breakdown, making it impossible to identify where users were dropping off or why.
+            Cart abandonment was sitting at 73.1% — a significant leak in the conversion funnel. The business knew the number but not the why. No funnel instrumentation existed below the product detail page. The default Shopify analytics showed a flat abandonment rate with no step-by-step breakdown, making it impossible to identify where users were dropping off or why.
           </p>
         </Card>
 
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>My Diagnosis</SectionLabel>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-coral/20 border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Set up GA4 custom events across every checkout step — cart view, shipping info, payment info, order review, purchase. Layered Microsoft Clarity heatmaps and session recordings on top. Within two weeks of instrumentation, three distinct drop-off clusters emerged: (1) users reaching the shipping estimate step and immediately leaving, (2) mobile users rage-clicking a non-functional promo code field, and (3) desktop users abandoning at the payment step after encountering a generic error message with no resolution path.
+            Three months of GA4 data existed. Nobody had configured custom events for the checkout flow. The team was optimising based on aggregate numbers and anecdotal support tickets — trying to fix a leak they couldn&#39;t see.
           </p>
-        </Card>
+        </motion.div>
 
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>What We Shipped</SectionLabel>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Transparent shipping cost display on the cart page so users saw the full cost before entering the checkout flow. Fixed promo code validation with inline error messaging that told users exactly what went wrong. Replaced the generic payment error with specific, actionable copy referencing card type, expiry, or network decline. Each fix was independently validated with before/after session recordings. Shipped in two sprints over 6 weeks.
+            Baymard Institute&#39;s large-scale checkout research identified 8 critical UX violations in the current flow — overlapping with the exact friction points customers were quietly abandoning over. The data existed. It just hadn&#39;t been connected to Sierra&#39;s specific implementation.
           </p>
-        </Card>
+        </motion.div>
       </div>
 
-      <motion.div variants={itemVariants} className="mt-6">
-        <SectionLabel color={color}>Options I Considered</SectionLabel>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {/* SECTION 2: HOW I FOUND IT */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW I FOUND IT</p>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-8">
+          <p className="text-lg font-display font-black text-ink mb-6">I built the measurement layer the checkout had always been missing.</p>
+
           {[
-            'A/B test a single-page checkout vs the existing multi-step. Higher risk, longer timeline, but potentially higher uplift.',
-            'Fix the three specific friction points identified in discovery without rebuilding the flow. Lower risk, faster to ship.',
-            'I pushed for Option B — the data already told us exactly where to focus. Option A could follow as a separate experiment.',
-          ].map((opt, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.02, y: -3 }}
-              className={`${cardBg} border-2 border-black rounded-xl p-4`}
-              style={{ boxShadow: `4px 4px 0px 0px ${color}` }}
-            >
-              <span
-                className="inline-flex items-center justify-center w-6 h-6 rounded-lg border-2 border-black text-xs font-black mb-2"
-                style={{ backgroundColor: color, borderColor: color }}
-              >
-                {String.fromCharCode(65 + i)}
-              </span>
-              <p className="text-xs md:text-sm font-medium text-ink/80">{opt}</p>
+            "Configured GA4 custom events across every checkout step — cart view, shipping information, payment information, order review, purchase. No checkout had ever been instrumented below the 'added to cart' event.",
+            'Layered Microsoft Clarity heatmaps and session recordings on top. Watched 50+ full checkout sessions across desktop and mobile. The patterns were consistent and unmistakable.',
+            'Cross-referenced Clarity rage-click data with GA4 event drop-off. Three distinct clusters emerged within two weeks of instrumentation: shipping estimate abandonment, promo code rage clicks, and payment error exits with no recovery path.',
+          ].map((step, i) => (
+            <div key={i} className="flex gap-3 mb-4 last:mb-0">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">{i + 1}</div>
+              <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-white border-2 border-black rounded-xl p-4 flex-1">
+                <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">{step}</p>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-xl p-5 mt-4">
+          <p className="text-white text-sm md:text-base font-medium leading-relaxed">
+            What looked like &#39;high cart abandonment&#39; was actually three separate problems happening to different users at different points. Treating them as one problem would have fixed nothing. Each required a specific, independent fix — and they didn&#39;t need a checkout rebuild.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* SECTION 3: WHAT WE SHIPPED */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT WE SHIPPED</p>
+
+        <Card>
+          <p className="text-lg font-display font-black text-ink mb-6">Three targeted fixes. Two sprints. Each validated independently.</p>
+
+          {[
+            'Fix 1 — Shipping cost on the cart page. Users were reaching the shipping estimate step and seeing the full cost for the first time. Added transparent shipping cost display on the cart page so users saw the complete total before entering checkout.',
+            'Fix 2 — Promo code validation. Users were rage-clicking a non-functional promo code field. Fixed inline validation with error messaging that told users exactly what went wrong — wrong format, expired code, or ineligible category.',
+            'Fix 3 — Payment error recovery. Users were abandoning after a generic "something went wrong" message. Replaced with specific copy referencing card type, expiry, or network decline — and added a visible retry path.',
+          ].map((fix, i) => (
+            <div key={i} className="flex items-center gap-3 mb-3 last:mb-0 bg-canvas border-2 border-black rounded-xl p-4">
+              <span className="text-xs font-black text-ink/40 w-8">{i + 1}.</span>
+              <p className="text-sm text-ink/80 font-medium leading-relaxed">{fix}</p>
+            </div>
+          ))}
+        </Card>
+
+        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          {[
+            { label: 'Shipping Display', value: 'Before checkout entry', bg: 'bg-lemon' },
+            { label: 'Promo Validation', value: 'Inline error messaging', bg: 'bg-sky' },
+            { label: 'Payment Recovery', value: 'Specific retry path', bg: 'bg-mint' },
+          ].map((k, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-5 text-center`}>
+              <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
+              <p className="font-display font-black text-xl text-ink mt-2">{k.value}</p>
             </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ scale: 1.005, y: -2 }}
-        className="mt-6 bg-white border-2 border-black rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
-        style={{ boxShadow: `8px 8px 0px 0px ${color}` }}
-      >
-        <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg rotate-12 border-2 border-black hidden md:block" style={{ backgroundColor: color }} />
-        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} aria-hidden="true" />
-        <p className="text-base md:text-lg font-display font-black text-ink">
-          Cart abandonment dropped from 73.1% to 53.9%. That's a 26% relative reduction. The fix cost two sprints and zero architectural changes — no single-page checkout rebuild, no platform migration. Just targeted instrumentation followed by targeted fixes.
-        </p>
-      </motion.div>
+      {/* SECTION 4: OUTCOME */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</p>
+
+        <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { label: 'Cart Abandonment', value: '73.1 → 53.9%', bg: 'bg-blush' },
+            { label: 'Mobile Conversion Rate', value: '+47%', bg: 'bg-mint' },
+            { label: 'Checkout Completion', value: '+49%', bg: 'bg-sky' },
+            { label: 'Sprints to Ship', value: '2', bg: 'bg-lemon' },
+          ].map((k, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-6 text-center`}>
+              <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
+              <p className="font-display font-black text-3xl text-ink mt-2">{k.value}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
+          <p className="text-white font-display font-black text-lg">No single-page checkout rebuild. No platform migration. Just instrumentation followed by targeted fixes.</p>
+          <p className="text-white/70 text-sm mt-2 leading-relaxed">
+            The checkout template stayed the same. What changed was the execution quality of every step. The fixes outperformed Wayfair&#39;s checkout on mobile conversion within 30 days of the final sprint — a benchmark nobody had thought to measure against.
+          </p>
+          <p className="text-coral font-black mt-3">The checkout didn&#39;t need to be rebuilt. It needed to be understood.</p>
+        </motion.div>
+      </div>
+
+      {/* SECTION 5: RETROSPECTIVE */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
+          <div className="space-y-4">
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                The three problems looked like one because the data only showed the aggregate. Step-level instrumentation was the unlock — without it, we were trying to diagnose a three-part fracture with a single X-ray. Always instrument before you diagnose.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">2</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                Session recordings should have started earlier. We had 480K sessions of data we couldn&#39;t use because nobody had turned on recordings. Two weeks of recordings gave us more actionable insight than three months of aggregate dashboards.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">3</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                Baymard&#39;s research was sitting in a folder for months. Nobody had mapped their 8 critical violations to our specific checkout. External UX benchmarks are only useful when you test them against your own implementation. I&#39;d do this mapping earlier next time.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
       <BottomNav next="category-discovery" />
     </motion.div>

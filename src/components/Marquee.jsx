@@ -32,7 +32,7 @@ const Marquee = () => {
           <motion.span
             key={i}
             whileHover={{ scale: 1.1, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
-            className="inline-flex items-center px-3 py-1 rounded-lg bg-pink text-ink text-xs font-bold border-2 border-black cursor-pointer"
+            className="inline-flex items-center px-3 py-1 rounded-lg bg-coral text-ink text-xs font-bold border-2 border-black cursor-pointer"
           >
             {tag}
           </motion.span>

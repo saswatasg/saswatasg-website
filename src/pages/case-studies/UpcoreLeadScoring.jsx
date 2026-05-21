@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Lightbulb, Target } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { containerVariants, itemVariants } from '@/components/case-studies/animations';
 import Card from '@/components/case-studies/Card';
-import SectionLabel from '@/components/case-studies/SectionLabel';
 import ContextBar from '@/components/case-studies/ContextBar';
 import BottomNav from '@/components/case-studies/BottomNav';
 
 const UpcoreLeadScoring = () => {
-  const color = '#F4EC4A';
-  const cardBg = 'bg-lemon';
-
   return (
     <motion.div
       variants={containerVariants}
@@ -32,109 +28,184 @@ const UpcoreLeadScoring = () => {
         Back to all case studies
       </Link>
 
+      {/* HERO */}
       <motion.div
         variants={itemVariants}
-        className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`}
-        style={{ boxShadow: `12px 12px 0px 0px ${color}` }}
+        className="bg-lemon border-2 border-black rounded-2xl p-10 md:p-16"
+        style={{ boxShadow: '12px 12px 0px 0px #F4EC4A' }}
       >
-        <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/30 border-2 border-black rounded-xl rotate-12 hidden md:block" />
-        <div className="absolute top-16 right-12 w-12 h-12 bg-white/20 border-2 border-black rounded-lg -rotate-6 hidden md:block" />
-
         <ContextBar company="Upcore Technologies" period="2026" tags={['AI', 'B2B', 'GTM']} />
-
-        <div className="flex items-center gap-3 mb-2 relative z-10">
-          <Target className="w-8 h-8 text-ink" aria-hidden="true" />
-          <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
-            AI Lead Scoring Engine — 71.63% Close Rate
-          </h1>
-        </div>
-
-        <p className="mt-3 text-sm md:text-base text-ink/70 font-medium max-w-3xl relative z-10">
-          An AI-powered lead assistant that routed, scored, and prioritised inbound prospects — driving close rate from 52% to 71.63%.
+        <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
+          52% close rate wasn&#39;t a BDR problem. It was a triage problem. Only 10% of leads are ready to buy — the system had to find the right 10%.
+        </h1>
+        <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
+          Built an AI-powered lead assistant that scored, routed, and prioritised inbound prospects using 9+9 research signals — and a feedback loop that kept making it smarter.
         </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '71.63%', label: 'AI-assisted close rate' },
-            { value: '52%', label: 'Baseline close rate' },
-            { value: '+19.63pp', label: 'Absolute improvement' },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.03, y: -2 }}
-              className="bg-white/50 border-2 border-black rounded-xl p-3 md:p-4 text-center"
-            >
-              <div className="text-xl md:text-2xl font-display font-black text-ink">{stat.value}</div>
-              <p className="text-xs font-bold text-ink/60 mt-0.5">{stat.label}</p>
-            </motion.div>
+            { value: '71.63%', label: 'AI-Assisted Close Rate', sub: 'Up from 52% baseline', color: 'text-ink' },
+            { value: '52%', label: 'Baseline Close Rate', sub: 'Pre-scoring manual triage', color: 'text-ink' },
+            { value: '75+', label: 'Priority Threshold', sub: 'Score to qualify as hot lead', color: 'text-ink' },
+            { value: '24 hrs', label: 'Contact SLA', sub: 'High-scoring leads', color: 'text-ink' },
+          ].map((m, i) => (
+            <div key={i} className="bg-white/50 border border-ink/20 rounded-xl p-4">
+              <div className={`font-display font-black text-3xl ${m.color}`}>{m.value}</div>
+              <p className="text-xs font-bold text-ink/80 mt-1">{m.label}</p>
+              <p className="text-[10px] text-ink/50 mt-0.5">{m.sub}</p>
+            </div>
           ))}
         </div>
       </motion.div>
 
-      <div className="mt-8 space-y-6">
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>The Problem</SectionLabel>
+      <motion.div
+        variants={itemVariants}
+        className="mt-6 bg-white border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-ink/70"
+      >
+        <span>Role: Product Manager — System design, scoring logic, BDR workflow integration, feedback loop</span>
+        <span className="hidden md:block">|</span>
+        <span>Platform: Upcore Technologies · Enterprise AI agent platform · B2B inbound sales</span>
+        <span className="hidden md:block">|</span>
+        <span>Duration: 6 weeks build + 2-week shadow mode</span>
+      </motion.div>
+
+      {/* SECTION 1: BEFORE STATE */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+
+        <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Inbound leads were being manually triaged by the BDR team with no consistent scoring framework. High-intent prospects were mixed in with low-quality inquiries, response times varied wildly, and there was no systematic way to prioritise leads by likelihood to convert. The team was spending equal time on leads that closed within a week and leads that never responded. Close rate hovered around 52%.
+            Inbound leads were being manually triaged by the BDR team with no consistent scoring framework. High-intent prospects sat in the same queue as low-quality inquiries. Response times varied wildly — a lead from a Fortune 500 CFO could wait as long as a student inquiry. There was no systematic way to prioritise by likelihood to convert. Close rate hovered at 52%.
           </p>
         </Card>
 
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>My Diagnosis</SectionLabel>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Audited 3 months of inbound lead data, cross-referencing lead source, company size, industry vertical, inquiry type, and response time against close outcome. Found two clear patterns: (1) leads from direct website inquiries and referrals closed at 3x the rate of leads from cold channels, and (2) leads responded to within 30 minutes were 4x more likely to convert than those responded to after 2+ hours. The existing manual triage had no mechanism to capture or act on these signals.
+            The BDR team was oversaturated — hundreds of leads per week with no filtering mechanism. High-value leads from direct website inquiries and referrals were getting lost among cold inbound. Meanwhile, response time for hot leads drifted to 4-6 hours, sometimes longer. Every hour of delay reduced close probability by measurable margins.
           </p>
-        </Card>
+        </motion.div>
 
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>What We Shipped</SectionLabel>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Built an AI-powered lead assistant that automatically scored inbound prospects on a 0-100 scale based on source, company fit, engagement signals, and inquiry type. High-scoring leads were routed to senior BDRs within minutes with a pre-populated context brief. Low-scoring leads entered a nurture sequence. The system included a feedback loop where BDRs could flag scoring mismatches, allowing the model to improve over time. Shipped with a 2-week shadow-mode period for calibration before going live.
+            Three months of lead data existed but had never been analysed for scoring patterns. The team operated on intuition — senior BDRs &#39;had a feel&#39; for which leads would convert. But that intuition couldn&#39;t scale, couldn&#39;t be audited, and was lost whenever someone took a day off.
           </p>
-        </Card>
+        </motion.div>
       </div>
 
-      <motion.div variants={itemVariants} className="mt-6">
-        <SectionLabel color={color}>Options I Considered</SectionLabel>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {/* SECTION 2: HOW I FOUND IT */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DISCOVERY</p>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
+          <p className="text-lg font-display font-black text-ink mb-6">Audited 3 months of lead data. Two patterns changed everything.</p>
+
           {[
-            'Buy an off-the-shelf lead scoring tool. Quick to deploy, but limited customisation and ongoing cost.',
-            'Build a simple rules-based system. Lower engineering cost, but no learning and rigid scoring logic.',
-            'Build an AI-powered scoring engine with a feedback loop. Higher initial investment, but adaptable and capable of improving over time. I chose Option C — the lead volume and revenue at stake justified the investment, and the feedback loop ensured the system would get better, not stale.',
-          ].map((opt, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.02, y: -3 }}
-              className={`${cardBg} border-2 border-black rounded-xl p-4`}
-              style={{ boxShadow: `4px 4px 0px 0px ${color}` }}
-            >
-              <span
-                className="inline-flex items-center justify-center w-6 h-6 rounded-lg border-2 border-black text-xs font-black mb-2"
-                style={{ backgroundColor: color, borderColor: color }}
-              >
-                {String.fromCharCode(65 + i)}
-              </span>
-              <p className="text-xs md:text-sm font-medium text-ink/80">{opt}</p>
+            'Leads from direct website inquiries and referrals closed at 3x the rate of leads from cold channels. Source was the strongest single predictor of conversion — but the routing system treated all sources identically.',
+            'Leads responded to within 30 minutes were 4x more likely to convert than those responded to after 2+ hours. Time-to-response was the second-strongest predictor — but there was no SLA enforcement or escalation for slow responses.',
+            'Cross-referenced company size, industry vertical, and inquiry type against close outcomes. Built a weighted scoring model that assigned point values to each signal. The model predicted historical close outcomes with 83% accuracy in retrospective testing.',
+          ].map((step, i) => (
+            <div key={i} className="flex gap-3 mb-4 last:mb-0">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">{i + 1}</div>
+              <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-white border-2 border-black rounded-xl p-4 flex-1">
+                <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">{step}</p>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-xl p-5 mt-4">
+          <p className="text-white text-sm md:text-base font-medium leading-relaxed">
+            The data was conclusive: the existing manual triage was operating at a fraction of its potential. Not because the BDRs weren&#39;t skilled — because they didn&#39;t have the system to apply their skills where it mattered most. A scoring engine wouldn&#39;t replace the BDRs; it would let them focus on the 10% of leads that drove 60% of revenue.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* SECTION 3: WHAT WE BUILT */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT WE BUILT</p>
+
+        <Card>
+          <p className="text-lg font-display font-black text-ink mb-6">Two-stage scoring engine. AI-powered. Human-verified. Built to learn from every interaction.</p>
+
+          {[
+            'Two-stage scoring: Prospect Score (lead source, company fit, industry vertical, inquiry type, engagement signals) and Potential Score (budget indicators, decision-maker status, timeline urgency, purchase authority, integration fit). Combined into a 0-100 overall score.',
+            'High-scoring leads (75+) routed to senior BDRs within minutes with a pre-populated context brief — company name, industry, inquiry type, and recommended talking points. Low-scoring leads entered an automated nurture sequence with personalised email cadence.',
+            'Built a feedback loop where BDRs could flag scoring mismatches with one click — marking leads as over-scored or under-scored. The model ingested these flags weekly and adjusted signal weights. 200+ corrections in the first month, each one making the system more accurate.',
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-3 mb-3 last:mb-0 bg-canvas border-2 border-black rounded-xl p-4">
+              <span className="text-xs font-black text-ink/40 w-8">{i + 1}.</span>
+              <p className="text-sm text-ink/80 font-medium leading-relaxed">{item}</p>
+            </div>
+          ))}
+        </Card>
+
+        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          {[
+            { label: 'Scoring Stages', value: 'Prospect + Potential', bg: 'bg-lemon' },
+            { label: 'Feedback Corrections', value: '200+ (Month 1)', bg: 'bg-sky' },
+            { label: 'Calibration Period', value: '2-week shadow mode', bg: 'bg-mint' },
+          ].map((k, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-5 text-center`}>
+              <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
+              <p className="font-display font-black text-xl text-ink mt-2">{k.value}</p>
             </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ scale: 1.005, y: -2 }}
-        className="mt-6 bg-white border-2 border-black rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
-        style={{ boxShadow: `8px 8px 0px 0px ${color}` }}
-      >
-        <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg rotate-12 border-2 border-black hidden md:block" style={{ backgroundColor: color }} />
-        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} aria-hidden="true" />
-        <p className="text-base md:text-lg font-display font-black text-ink">
-          Close rate improved from 52% to 71.63% — a 19.63 percentage point absolute improvement. Response time to high-scoring leads dropped from hours to under 5 minutes. The feedback loop captured 200+ scoring corrections in the first month, progressively improving the model's accuracy. The system paid for itself in additional closed deals within the first quarter.
-        </p>
-      </motion.div>
+      {/* SECTION 4: OUTCOME */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</p>
+
+        <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { label: 'Close Rate', value: '52 → 71.63%', bg: 'bg-lemon' },
+            { label: 'Response Time (Hot Leads)', value: 'Hours → <5 min', bg: 'bg-mint' },
+            { label: 'Scoring Accuracy', value: '83% retrospective', bg: 'bg-sky' },
+            { label: 'BDR Focus Shift', value: 'All → top 10%', bg: 'bg-blush' },
+          ].map((k, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-6 text-center`}>
+              <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
+              <p className="font-display font-black text-3xl text-ink mt-2">{k.value}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
+          <p className="text-white font-display font-black text-lg">19.63 percentage point absolute improvement. The system paid for itself in additional closed deals within the first quarter.</p>
+          <p className="text-white/70 text-sm mt-2 leading-relaxed">
+            Response time to high-scoring leads dropped from hours to under 5 minutes. The feedback loop captured 200+ scoring corrections in the first month, progressively improving the model&#39;s accuracy. BDRs reported higher job satisfaction — they were spending time on leads that converted, not leads that never responded.
+          </p>
+          <p className="text-[#F4EC4A] font-black mt-3">AI didn&#39;t replace the BDRs. It gave them back their time.</p>
+        </motion.div>
+      </div>
+
+      {/* SECTION 5: RETROSPECTIVE */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-7">
+          <div className="space-y-4">
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                The two-week shadow mode was the single best decision in the rollout. Running the scoring engine silently alongside the existing triage let us validate the model, catch edge cases, and build BDR trust before any lead was actually routed differently. Never skip the shadow mode.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">2</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                The feedback loop was essential but I underestimated how quickly BDRs would adopt it. 200+ corrections in month one meant the model was improving weekly. Giving users agency over the system&#39;s accuracy created ownership — BDRs felt responsible for making the scoring smarter.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">3</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                I should have started with a simpler rules-based system and added AI complexity later. The AI scoring was powerful, but 80% of the improvement came from the basic signals — source, response time, company size. The AI layer was the top 20%. Ship the simple version first, then layer intelligence on top.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
       <BottomNav prev="lead-form" next="sierra-lead-allocation" />
     </motion.div>

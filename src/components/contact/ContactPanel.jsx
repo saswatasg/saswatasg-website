@@ -27,7 +27,7 @@ const ContactPanel = ({ custom }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [iframeError, setIframeError] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
-  const phoneNumber = '+91 87778 75140';
+  const phoneNumber = '+91 9836312162';
 
   useEffect(() => {
     if (!showCalendar) {
@@ -183,7 +183,7 @@ const ContactPanel = ({ custom }) => {
             >
               <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
                 <span className="font-bold text-sm">Book a Meeting</span>
-                <button onClick={() => setShowCalendar(false)} className="hover:text-pink transition-colors">
+                <button onClick={() => setShowCalendar(false)} className="hover:text-coral transition-colors">
                   <X className="w-5 h-5" />
                 </button>
               </div>

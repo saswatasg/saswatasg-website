@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default: 'bg-ink text-white px-5 py-2.5 min-h-[44px] gap-2 hover:scale-[1.02] hover:-rotate-[0.5deg]',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline: 'bg-white text-ink px-5 py-2.5 min-h-[44px] gap-2 hover:scale-[1.02] hover:rotate-[0.5deg]',
-        secondary: 'bg-pink text-ink px-5 py-2.5 min-h-[44px] gap-2 hover:scale-[1.02] hover:-rotate-[0.5deg]',
+        secondary: 'bg-coral text-ink px-5 py-2.5 min-h-[44px] gap-2 hover:scale-[1.02] hover:-rotate-[0.5deg]',
         ghost: 'hover:bg-accent hover:text-accent-foreground border-0',
         link: 'text-primary underline-offset-4 hover:underline border-0',
         'ink-pill': 'bg-ink text-white px-5 py-2.5 text-sm font-bold inline-flex items-center gap-2 min-h-[44px] rounded-lg border-2 border-black hover:scale-[1.02] hover:-rotate-[0.5deg]',
@@ -47,17 +47,17 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
 Button.displayName = 'Button';
 
 const stackedColors = {
-  default: 'bg-pink',
-  outline: 'bg-pink',
+  default: 'bg-coral',
+  outline: 'bg-coral',
   secondary: 'bg-purple',
-  'ink-pill': 'bg-pink',
-  'outline-pill': 'bg-pink',
-  'yellow-pill': 'bg-pink',
+  'ink-pill': 'bg-coral',
+  'outline-pill': 'bg-coral',
+  'yellow-pill': 'bg-coral',
 };
 
 const StackedButton = React.forwardRef(({ className, variant = 'default', size, children, ...props }, ref) => {
   const baseClasses = buttonVariants({ variant, size, className });
-  const colorClass = stackedColors[variant] || 'bg-pink';
+  const colorClass = stackedColors[variant] || 'bg-coral';
 
   return (
     <motion.div

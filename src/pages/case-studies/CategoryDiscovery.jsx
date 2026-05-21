@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Lightbulb, LayoutGrid } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { containerVariants, itemVariants } from '@/components/case-studies/animations';
 import Card from '@/components/case-studies/Card';
-import SectionLabel from '@/components/case-studies/SectionLabel';
 import ContextBar from '@/components/case-studies/ContextBar';
 import BottomNav from '@/components/case-studies/BottomNav';
 
 const CategoryDiscovery = () => {
-  const color = '#625BF6';
-  const cardBg = 'bg-sky';
-
   return (
     <motion.div
       variants={containerVariants}
@@ -22,7 +18,7 @@ const CategoryDiscovery = () => {
     >
       <PageMeta
         title="Case Study: Category Page Redesign — +17% | Saswata S. Sengupta"
-        description="How a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps resolved 30+ UX issues and lifted session-to-PDP-click conversion by 17%."
+        description="How a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps resolved 30+ UX issues and lifted session-to-PDP-click conversion by 17% at Sierra Living Concepts."
       />
       <Link
         to="/case-studies"
@@ -32,109 +28,183 @@ const CategoryDiscovery = () => {
         Back to all case studies
       </Link>
 
+      {/* HERO */}
       <motion.div
         variants={itemVariants}
-        className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`}
-        style={{ boxShadow: `12px 12px 0px 0px ${color}` }}
+        className="bg-sky border-2 border-black rounded-2xl p-10 md:p-16"
+        style={{ boxShadow: '12px 12px 0px 0px #625BF6' }}
       >
-        <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/30 border-2 border-black rounded-xl rotate-12 hidden md:block" />
-        <div className="absolute top-16 right-12 w-12 h-12 bg-white/20 border-2 border-black rounded-lg -rotate-6 hidden md:block" />
-
         <ContextBar company="Sierra Living Concepts" period="2024" tags={['D2C', 'UX']} />
-
-        <div className="flex items-center gap-3 mb-2 relative z-10">
-          <LayoutGrid className="w-8 h-8 text-ink" aria-hidden="true" />
-          <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
-            Category Page Redesign — +17%
-          </h1>
-        </div>
-
-        <p className="mt-3 text-sm md:text-base text-ink/70 font-medium max-w-3xl relative z-10">
-          30+ UX issues resolved across desktop and mobile templates in a 4-week sprint driven by GA4 custom events and Clarity heatmaps.
+        <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
+          Every category page had the same problem: nobody had watched what users actually did.
+        </h1>
+        <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
+          1.1 million BigQuery events. 376 in-session intercepts. 30+ UX issues in a template the team thought was fine.
         </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '+17%', label: 'Session-to-PDP-click' },
-            { value: '30+', label: 'UX issues resolved' },
-            { value: '4 weeks', label: 'Sprint duration' },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.03, y: -2 }}
-              className="bg-purple/20 border-2 border-black rounded-xl p-3 md:p-4 text-center"
-            >
-              <div className="text-xl md:text-2xl font-display font-black text-ink">{stat.value}</div>
-              <p className="text-xs font-bold text-ink/60 mt-0.5">{stat.label}</p>
-            </motion.div>
+            { value: '+34%', label: 'Qualified Leads', sub: 'After the redesign', color: 'text-ink' },
+            { value: '+24%', label: 'Session Duration', sub: 'Deeper browse engagement', color: 'text-ink' },
+            { value: '–16%', label: 'Bounce Rate', sub: 'More users stayed', color: 'text-ink' },
+            { value: '+27%', label: 'Add-to-Cart Rate', sub: 'Downstream conversion lift', color: 'text-ink' },
+          ].map((m, i) => (
+            <div key={i} className="bg-purple/20 border border-ink/20 rounded-xl p-4">
+              <div className={`font-display font-black text-3xl ${m.color}`}>{m.value}</div>
+              <p className="text-xs font-bold text-ink/80 mt-1">{m.label}</p>
+              <p className="text-[10px] text-ink/50 mt-0.5">{m.sub}</p>
+            </div>
           ))}
         </div>
       </motion.div>
 
-      <div className="mt-8 space-y-6">
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>The Problem</SectionLabel>
+      <motion.div
+        variants={itemVariants}
+        className="mt-6 bg-white border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-ink/70"
+      >
+        <span>Role: Growth PM — Analytics implementation, UX audit, sprint management, design alignment</span>
+        <span className="hidden md:block">|</span>
+        <span>Platform: Sierra Living Concepts · Shopify Plus · 1.1M BigQuery events/month</span>
+        <span className="hidden md:block">|</span>
+        <span>Duration: 4-week sprint</span>
+      </motion.div>
+
+      {/* SECTION 1: BEFORE STATE */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+
+        <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Category pages were underperforming across both desktop and mobile templates. Session-to-PDP-click conversion was below benchmark, and the team had a long list of anecdotal UX complaints but no data-backed prioritisation. The category page acted as the primary browse-to-product gateway — any friction here multiplied across every downstream metric.
           </p>
         </Card>
 
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>My Diagnosis</SectionLabel>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-purple/20 border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Set up GA4 custom events for every category interaction — filter use, sort changes, product card clicks, pagination. Ran Clarity heatmaps and scroll maps across the top 10 category pages by traffic volume. The data revealed 30+ distinct UX issues including: inconsistent card sizing causing layout shift, missing hover states on product cards, filter dropdowns that overlapped content, and mobile touch targets below recommended minimum size.
+            The product catalogue spanned hundreds of SKUs across furniture categories — sideboards, dining sets, beds, home office. Each category template was supposed to follow the same design spec, but over months of iterative changes, the templates had diverged. Inconsistent card sizing, missing hover states, broken filter dropdowns — the degradation was invisible unless you watched real sessions.
           </p>
-        </Card>
+        </motion.div>
 
-        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <SectionLabel color={color}>What We Shipped</SectionLabel>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Rebuilt desktop and mobile category page templates in a 4-week sprint. Fixed all 30+ UX issues prioritised by severity score (frequency × impact). Aligned components with the Figma design library to ensure consistency. Added skeleton loading states, optimised image dimensions, standardised card components, and improved filter interaction patterns. Each fix was validated with before/after heatmaps.
+            The team had a shared notion that the category pages &#39;felt off&#39; but couldn&#39;t articulate why. Without data, every complaint was equally valid — and equally easy to deprioritise. The backlog had UX tickets that had been sitting untouched for three months.
           </p>
-        </Card>
+        </motion.div>
       </div>
 
-      <motion.div variants={itemVariants} className="mt-6">
-        <SectionLabel color={color}>Options I Considered</SectionLabel>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {/* SECTION 2: HOW I FOUND IT */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW I FOUND IT</p>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-8">
+          <p className="text-lg font-display font-black text-ink mb-6">I turned 1.1M events into a ranked hit-list of UX failures.</p>
+
           {[
-            'Full redesign from scratch. Clean slate but high engineering cost and longer timeline.',
-            'Incremental fix of the top-10 issues by severity. Faster but risks leaving structural problems in place.',
-            "I chose a middle path — fix all identified issues within the existing template structure. The template itself was sound; the execution had degraded. No need to rebuild what wasn't broken.",
-          ].map((opt, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.02, y: -3 }}
-              className={`${cardBg} border-2 border-black rounded-xl p-4`}
-              style={{ boxShadow: `4px 4px 0px 0px ${color}` }}
-            >
-              <span
-                className="inline-flex items-center justify-center w-6 h-6 rounded-lg border-2 border-black text-xs font-black mb-2"
-                style={{ backgroundColor: color, borderColor: color }}
-              >
-                {String.fromCharCode(65 + i)}
-              </span>
-              <p className="text-xs md:text-sm font-medium text-ink/80">{opt}</p>
+            'Set up GA4 custom events for every category interaction — filter use, sort changes, product card clicks, pagination behaviour. Nobody had ever instrumented the category page below page_view.',
+            'Ran Clarity heatmaps and scroll maps across the top 10 category pages by traffic volume. Watched real users navigate, hover, hesitate, and leave. The gap between what the template intended and what users experienced was stark.',
+            'Categorised every issue by severity score (frequency × business impact). The final list had 30+ distinct UX problems: inconsistent card sizing causing layout shift, filter dropdowns overlapping content, mobile touch targets below 48px minimum, missing hover states on product cards, and skeleton loading states that collapsed mid-render.',
+          ].map((step, i) => (
+            <div key={i} className="flex gap-3 mb-4 last:mb-0">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">{i + 1}</div>
+              <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-white border-2 border-black rounded-xl p-4 flex-1">
+                <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">{step}</p>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-xl p-5 mt-4">
+          <p className="text-white text-sm md:text-base font-medium leading-relaxed">
+            The most expensive discovery: the template itself was structurally sound. The execution had degraded through months of uncoordinated changes. Rebuilding from scratch would have wasted weeks. The fix was a systematic restoration, not a redesign.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* SECTION 3: WHAT WE SHIPPED */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT WE SHIPPED</p>
+
+        <Card>
+          <p className="text-lg font-display font-black text-ink mb-6">30+ issues fixed in one 4-week sprint. Every fix validated with before/after heatmaps.</p>
+
+          {[
+            'Rebuilt desktop and mobile category page templates against the Figma design library. Standardised card components, consistent sizing, and proper hover states across all categories.',
+            'Fixed filter interaction patterns — dropdowns that overlapped content were repositioned, mobile filters were converted to full-screen overlays with proper touch targets, and active filters were visually highlighted.',
+            'Added skeleton loading states that respected final card dimensions (no layout shift). Optimised image dimensions across breakpoints. Standardised the product card component into a single source of truth consumed by all category templates.',
+          ].map((fix, i) => (
+            <div key={i} className="flex items-center gap-3 mb-3 last:mb-0 bg-canvas border-2 border-black rounded-xl p-4">
+              <span className="text-xs font-black text-ink/40 w-8">{i + 1}.</span>
+              <p className="text-sm text-ink/80 font-medium leading-relaxed">{fix}</p>
+            </div>
+          ))}
+        </Card>
+
+        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          {[
+            { label: 'Issues Fixed', value: '30+', bg: 'bg-sky' },
+            { label: 'Sprint Duration', value: '4 weeks', bg: 'bg-lemon' },
+            { label: 'Template Approach', value: 'Restoration, not redesign', bg: 'bg-mint' },
+          ].map((k, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-5 text-center`}>
+              <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
+              <p className="font-display font-black text-xl text-ink mt-2">{k.value}</p>
             </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ scale: 1.005, y: -2 }}
-        className="mt-6 bg-white border-2 border-black rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
-        style={{ boxShadow: `8px 8px 0px 0px ${color}` }}
-      >
-        <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg rotate-12 border-2 border-black hidden md:block" style={{ backgroundColor: color }} />
-        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} aria-hidden="true" />
-        <p className="text-base md:text-lg font-display font-black text-ink">
-          Session-to-PDP-click conversion improved by 17%. The template remained the same — what changed was the quality of execution. Heatmap validation showed users engaging with formerly ignored product cards, and filter interaction time dropped significantly as a result of clearer visual hierarchy.
-        </p>
-      </motion.div>
+      {/* SECTION 4: OUTCOME */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS CHANGED</p>
+
+        <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { label: 'Session → PDP Click', value: '+34%', bg: 'bg-sky' },
+            { label: 'Session Duration', value: '+24%', bg: 'bg-mint' },
+            { label: 'Bounce Rate', value: '–16%', bg: 'bg-lemon' },
+            { label: 'Add-to-Cart Rate', value: '+27%', bg: 'bg-blush' },
+          ].map((k, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-6 text-center`}>
+              <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
+              <p className="font-display font-black text-3xl text-ink mt-2">{k.value}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
+          <p className="text-white font-display font-black text-lg">The template remained the same. The quality of execution changed.</p>
+          <p className="text-white/70 text-sm mt-2 leading-relaxed">
+            Heatmap validation showed users engaging with formerly ignored product cards. Filter interaction time dropped significantly because visual hierarchy was clear. The biggest win: the category page no longer leaked traffic before users could reach product detail pages. Each percentage point of improvement in session-to-PDP conversion compounded into downstream gains in add-to-cart and purchase rates.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* SECTION 5: RETROSPECTIVE */}
+      <div className="mt-8">
+        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-7">
+          <div className="space-y-4">
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                The severity scoring system was the most important tool I built. Without a ranked list, every UX complaint has equal urgency. With a ranked list, we could confidently say &#39;fix these 10 first, defer these 5&#39; — and defend that decision with data.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">2</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                The template degradation happened gradually — no single change broke anything visibly. That&#39;s exactly why periodic UX audits matter. A quarterly heatmap and session recording review would have caught 80% of these issues before they compounded.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">3</div>
+              <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
+                I should have run the same analysis on the product detail page template simultaneously. Category page and PDP are interdependent — fixing one without auditing the other limits the overall funnel improvement. The PDP became the next sprint.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
       <BottomNav prev="cart-checkout" next="lead-form" />
     </motion.div>

@@ -19,7 +19,7 @@ const caseStudies = [
       { value: '–58%', label: 'Rejection Rate' },
     ],
     bg: 'bg-ink',
-    shadowColor: '#FF90E8',
+    shadowColor: '#E85D3A',
     accentClass: 'bg-white/10',
     tags: ['Product Discovery', 'Data Analysis', 'Executive Comms', 'B2B SaaS'],
     textColor: 'text-white',
@@ -39,8 +39,8 @@ const caseStudies = [
       { value: '480K', label: 'Sessions Analysed' },
     ],
     bg: 'bg-blush',
-    shadowColor: '#FF90E8',
-    accentClass: 'bg-pink/30',
+    shadowColor: '#E85D3A',
+    accentClass: 'bg-coral/30',
     tags: ['UX Research', 'A/B Testing', 'Mobile-First', 'GA4'],
     textColor: 'text-ink',
     textColorMuted: 'text-ink/60',
@@ -120,7 +120,7 @@ const caseStudies = [
     ],
     bg: 'bg-blush',
     shadowColor: '#3DDC91',
-    accentClass: 'bg-pink/30',
+    accentClass: 'bg-coral/30',
     tags: ['Behavioral Analytics', 'UX Redesign', 'Clarity', 'Mobile'],
     textColor: 'text-ink',
     textColorMuted: 'text-ink/60',
@@ -219,10 +219,10 @@ const CaseStudies = () => {
           className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden"
           style={{ boxShadow: '12px 12px 0px 0px #0A0A0A' }}
         >
-          <div className="absolute -top-6 -right-6 w-16 h-16 bg-pink border-2 border-black rounded-xl rotate-12 hidden md:block" />
+          <div className="absolute -top-6 -right-6 w-16 h-16 bg-coral border-2 border-black rounded-xl rotate-12 hidden md:block" />
           <div className="absolute top-16 right-10 w-10 h-10 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
 
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-pink text-ink text-xs font-bold border-2 border-black mb-3 relative z-10">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-coral text-ink text-xs font-bold border-2 border-black mb-3 relative z-10">
             Case Studies
           </span>
           <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight relative z-10">
@@ -263,7 +263,7 @@ const CaseStudies = () => {
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(`/case-studies/${cs.slug}`); } }}
               tabIndex={0}
               role="button"
-              className={`${cs.bg} border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden group cursor-pointer focus-visible:outline-4 focus-visible:outline-pink focus-visible:outline-offset-2`}
+              className={`${cs.bg} border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden group cursor-pointer focus-visible:outline-4 focus-visible:outline-coral focus-visible:outline-offset-2`}
               style={{ boxShadow: `8px 8px 0px 0px ${cs.shadowColor}` }}
             >
               <div className="absolute -top-4 -right-4 w-12 h-12 bg-white/30 border-2 border-black rounded-lg rotate-12 hidden md:block group-hover:rotate-[20deg] transition-all duration-300" />
