@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Star, MessageSquare, X } from 'lucide-react';
 
@@ -21,11 +21,7 @@ const childVariants = {
 
 const HeroSection = () => {
   const [showCalendar, setShowCalendar] = useState(false);
-
-  const handleScrollToWork = () => {
-    const el = document.getElementById('work-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const [impactIndex, setImpactIndex] = useState(0);
 
   const handleWhatsApp = () => {
     window.dispatchEvent(new CustomEvent('openWhatsApp'));
@@ -65,12 +61,6 @@ const HeroSection = () => {
                 <motion.h1 variants={childVariants} className="text-ink text-2xl md:text-3xl font-display font-black tracking-tighter leading-[1.05] mt-2">
                   Saswata S.<br />Sengupta
                 </motion.h1>
-                <div className="mt-3 flex flex-col gap-1.5 w-full">
-                  <div className="flex items-center gap-2 text-xs font-bold text-ink/50 justify-center md:justify-start">
-                    <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-                    Available for roles
-                  </div>
-                </div>
               </div>
 
               <div className="md:col-span-2">
@@ -91,15 +81,6 @@ const HeroSection = () => {
                     >
                       <Calendar className="w-4 h-4" />
                       Book a Meeting
-                    </button>
-                  </div>
-                  <div className="relative inline-flex group">
-                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-lemon translate-x-[3px] translate-y-[3px]" />
-                    <button
-                      onClick={handleScrollToWork}
-                      className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
-                    >
-                      See My Work
                     </button>
                   </div>
                   <div className="relative inline-flex group">
@@ -138,50 +119,70 @@ const HeroSection = () => {
             className="bg-mint border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden"
             style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
                   Impact
                 </span>
-                <span className="text-[10px] font-bold text-ink/40">Sierra Living Concepts</span>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={impactSlides[impactIndex].company}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.25 }}
+                    className={`text-[10px] font-bold ${impactSlides[impactIndex].companyColor}`}
+                  >
+                    {impactSlides[impactIndex].company}
+                  </motion.span>
+                </AnimatePresence>
               </div>
 
-              <div className="bg-white border-2 border-black rounded-xl p-5 mb-4 -rotate-[0.3deg] hover:rotate-0 transition-all duration-200">
-                <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
-                <p className="text-xs text-ink/60 font-bold">monthly revenue recovered</p>
-                <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-                  <div className="bg-pink/30 rounded-lg p-2 border border-black">
-                    <div className="text-sm font-black text-ink">$329K</div>
-                    <p className="text-[9px] font-bold text-ink/60">Checkout</p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={impactIndex}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex-1 flex flex-col"
+                >
+                  <div className="bg-white border-2 border-black rounded-xl p-5 mb-4 -rotate-[0.3deg] hover:rotate-0 transition-all duration-200">
+                    <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">
+                      {impactSlides[impactIndex].primary}
+                    </div>
+                    <p className="text-xs text-ink/60 font-bold">{impactSlides[impactIndex].primaryLabel}</p>
+                    <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                      {impactSlides[impactIndex].breakdowns.map((b, i) => (
+                        <div key={i} className={`rounded-lg p-2 border border-black ${i === 0 ? 'bg-pink/30' : i === 1 ? 'bg-lemon/40' : 'bg-purple/20'}`}>
+                          <div className="text-sm font-black text-ink">{b.value}</div>
+                          <p className="text-[9px] font-bold text-ink/60">{b.label}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="bg-lemon/40 rounded-lg p-2 border border-black">
-                    <div className="text-sm font-black text-ink">$152K</div>
-                    <p className="text-[9px] font-bold text-ink/60">Pricing</p>
-                  </div>
-                  <div className="bg-purple/20 rounded-lg p-2 border border-black">
-                    <div className="text-sm font-black text-ink">$113K</div>
-                    <p className="text-[9px] font-bold text-ink/60">CRM</p>
-                  </div>
-                </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
-                  <div className="text-lg font-black text-ink">70+</div>
-                  <p className="text-[10px] font-bold text-ink/60">Products shipped</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {impactSlides[impactIndex].grid.map((g, i) => (
+                      <motion.div key={i} whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
+                        <div className="text-lg font-black text-ink">{g.value}</div>
+                        <p className="text-[10px] font-bold text-ink/60">{g.label}</p>
+                      </motion.div>
+                    ))}
+                  </div>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
-                  <div className="text-lg font-black text-ink">84% → 63%</div>
-                  <p className="text-[10px] font-bold text-ink/60">Cart abandonment</p>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
-                  <div className="text-lg font-black text-ink">+105%</div>
-                  <p className="text-[10px] font-bold text-ink/60">Lead submissions</p>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} className="bg-white border-2 border-black rounded-xl p-3">
-                  <div className="text-lg font-black text-ink">71.6%</div>
-                  <p className="text-[10px] font-bold text-ink/60">AI lead close rate</p>
-                </motion.div>
+              </AnimatePresence>
+
+              <div className="flex justify-center gap-1.5 mt-4">
+                {impactSlides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setImpactIndex(i)}
+                    className={`w-2 h-2 rounded-full border border-black transition-all duration-300 ${
+                      i === impactIndex ? 'bg-ink scale-125' : 'bg-white'
+                    }`}
+                  />
+                ))}
               </div>
             </div>
             <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-purple border-2 border-black rounded-lg -rotate-12 hidden md:block" />
