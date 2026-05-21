@@ -3,27 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Lightbulb } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const Card = ({ children, className = '', style = {} }) => (
-  <motion.div
-    variants={itemVariants}
-    whileHover={{ y: -2, transition: { duration: 0.15 } }}
-    className={`border-2 border-black rounded-2xl p-6 md:p-8 ${className}`}
-    style={style}
-  >
-    {children}
-  </motion.div>
-);
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const LiveKeepingComplianceGap = () => {
   return (
@@ -51,12 +34,7 @@ const LiveKeepingComplianceGap = () => {
         className="bg-ink border-2 border-black rounded-2xl p-10 md:p-16"
         style={{ boxShadow: '12px 12px 0px 0px #FF90E8' }}
       >
-        <div className="flex items-center gap-2 mb-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-lg bg-white/10 text-white text-xs font-bold border-2 border-white/20">
-            LiveKeeping · An IndiaMART Company
-          </span>
-          <span className="text-xs font-bold text-white/40">Jan–Mar 2026 · B2B SaaS · 50,000+ Users</span>
-        </div>
+        <ContextBar company="LiveKeeping · An IndiaMART Company" period="Jan–Mar 2026" tags={['B2B SaaS', '50,000+ Users']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-white leading-tight">
           PRO+ users weren&#39;t using the product. The business didn&#39;t know why.
         </h1>
@@ -79,7 +57,6 @@ const LiveKeepingComplianceGap = () => {
         </div>
       </motion.div>
 
-      {/* CONTEXT BAR */}
       <motion.div
         variants={itemVariants}
         className="mt-6 bg-ink border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-white/70"
@@ -95,19 +72,19 @@ const LiveKeepingComplianceGap = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
 
-        <Card className="bg-white">
+        <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             LiveKeeping is a mobile GST compliance and accounting app for Indian SMBs. PRO+ is the highest-value subscriber tier — users who pay for advanced features including native E-Way Bill and E-Invoice generation. The product team tracked feature adoption. The number looked low. But nobody had asked why.
           </p>
         </Card>
 
-        <motion.div variants={itemVariants} className="bg-blush border-2 border-black rounded-xl p-5 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Tally commands over 80% of India&#39;s accounting software market. Over 75% of Indian SMEs use it for GST, TDS, inventory, and payroll. For a decade, Tally has been the default for every CA and accountant who advises SMB clients. LiveKeeping operates inside this ecosystem. The question was never &#39;is Tally competition&#39; — it was &#39;where exactly is it displacing us.&#39;
           </p>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="bg-sky border-2 border-black rounded-xl p-5 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             What we knew: PRO+ feature adoption for E-Way Bills and E-Invoices was low. What we didn&#39;t know: Were users not aware of the feature? Was it broken? Were they doing it somewhere else? Nobody had run the investigation to separate these possibilities.
           </p>
@@ -118,7 +95,7 @@ const LiveKeepingComplianceGap = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW I FOUND IT</p>
 
-        <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-8">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-6">I built the measurement from scratch.</p>
 
           {[
@@ -129,14 +106,14 @@ const LiveKeepingComplianceGap = () => {
           ].map((step, i) => (
             <div key={i} className="flex gap-3 mb-4 last:mb-0">
               <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">{i + 1}</div>
-              <div className="bg-white border-2 border-black rounded-xl p-4 flex-1">
+              <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-white border-2 border-black rounded-xl p-4 flex-1">
                 <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">{step}</p>
-              </div>
+              </motion.div>
             </div>
           ))}
         </motion.div>
 
-        <motion.div variants={itemVariants} className="bg-ink border-2 border-black rounded-xl p-5 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-white text-sm md:text-base font-medium leading-relaxed">
             This changed everything about how the problem was presented. &#39;Low feature adoption&#39; sounds like a marketing problem. &#39;17:1 gap among paid users who are clearly generating these documents — just not through us&#39; sounds like a product-trust and workflow-integration problem. These require completely different solutions. Framing mattered.
           </p>
@@ -147,7 +124,7 @@ const LiveKeepingComplianceGap = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">THE DECK</p>
 
-        <Card className="bg-white">
+        <Card>
           <p className="text-lg font-display font-black text-ink mb-6">Built for VP/CEO. Structured as a business case, not a bug report.</p>
 
           {[
@@ -164,7 +141,7 @@ const LiveKeepingComplianceGap = () => {
           ))}
         </Card>
 
-        <motion.div variants={itemVariants} className="bg-mint border-2 border-black rounded-xl p-5 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-mint border-2 border-black rounded-xl p-5 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             The presentation went to VP and CEO level. The finding directly greenlit a cross-functional product investigation sprint that would not have happened without this analysis. The same diagnostic methodology was reused immediately — and found the 19:1 E-Invoice gap within two weeks.
           </p>
@@ -175,7 +152,7 @@ const LiveKeepingComplianceGap = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">PARALLEL TRACK</p>
 
-        <motion.div variants={itemVariants} className="bg-blush border-2 border-black rounded-2xl p-7">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <p className="text-lg font-display font-black text-ink mb-4">While the investigation was running, I also fixed the compliance journey reliability.</p>
           <p className="text-sm text-ink/80 font-medium leading-relaxed mb-6">
             Pulled and analysed 100K+ API transaction logs. Classified failure modes across three categories: government API downtime (external, nothing we could do), user-input errors (fixable with validation), and sync inconsistencies between mobile and web (fixable with engineering).
@@ -203,7 +180,7 @@ const LiveKeepingComplianceGap = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
 
-        <motion.div variants={itemVariants} className="bg-ink border-2 border-black rounded-2xl p-7">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">
             <div className="flex gap-3">
               <div className="w-7 h-7 bg-white text-ink rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
@@ -227,20 +204,7 @@ const LiveKeepingComplianceGap = () => {
         </motion.div>
       </div>
 
-      {/* BOTTOM NAV */}
-      <motion.div variants={itemVariants} className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <Link to="/case-studies/sierra-lead-allocation" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Lead Allocation & Routing
-        </Link>
-        <Link to="/case-studies" className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          ← All Case Studies →
-        </Link>
-        <Link to="/case-studies/livekeeping-send-greetings" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          Send Greetings + Nano Banana
-          <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </motion.div>
+      <BottomNav prev="sierra-lead-allocation" next="livekeeping-send-greetings" />
     </motion.div>
   );
 };

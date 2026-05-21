@@ -81,26 +81,35 @@ const HeroSection = () => {
       company: 'LiveKeeping (IndiaMART)',
       companyColor: 'text-ink/70',
       content: (
-        <div className="flex flex-col gap-3">
-          <div className="bg-white border-2 border-black rounded-xl p-4 transition-all duration-200">
-            <div className="grid grid-cols-2 gap-3">
-              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-3">
-                <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">17:1</div>
-                <p className="text-xs font-bold text-ink/60">adoption gap</p>
+        <div className="flex flex-col gap-2.5">
+          <div className="bg-white border-2 border-black rounded-xl p-3.5 transition-all duration-200 space-y-2.5">
+            <p className="text-[10px] font-bold text-ink/50 uppercase tracking-wider text-center">Found users bypassing core compliance features</p>
+            <div className="grid grid-cols-2 gap-2">
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">17:1</div>
+                <p className="text-[10px] font-bold text-ink/60">E-Way Bill gap</p>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-pink/30 border border-black p-3">
-                <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">160%</div>
-                <p className="text-xs font-bold text-ink/60">re-engagement lift</p>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-pink/30 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">19:1</div>
+                <p className="text-[10px] font-bold text-ink/60">E-Invoice gap</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-lemon/40 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">−58%</div>
+                <p className="text-[10px] font-bold text-ink/60">Rejection rate</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-mint/30 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">160%</div>
+                <p className="text-[10px] font-bold text-ink/60">Feature lift</p>
               </motion.div>
             </div>
           </div>
           <div className="flex flex-wrap gap-1.5 items-center justify-center">
             {[
-              { value: '19:1', label: 'E-Invoice' },
-              { value: 'CEO', label: 'C-level escalation' },
+              { value: 'CEO', label: 'Escalation' },
               { value: 'PRO+', label: 'Plan focus' },
-              { value: 'PRO+ Plan', label: 'GST' },
-              { value: 'B2B SaaS', label: 'India SMB' },
+              { value: '27+', label: 'Triggers' },
+              { value: '5', label: 'Regions' },
+              { value: 'C-suite', label: 'Reporting' },
             ].map((b, i) => (
               <motion.span
                 key={i}
@@ -111,7 +120,7 @@ const HeroSection = () => {
                     : 'bg-ink/5 text-ink/50 border-ink/30'
                 }`}
               >
-                {b.value}{b.label ? ` ${b.label}` : ''}
+                {b.value} {b.label}
               </motion.span>
             ))}
           </div>
@@ -225,10 +234,10 @@ const HeroSection = () => {
                   <div className="relative inline-flex group">
                     <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
                     <button
-                      onClick={() => setShowCalendar(true)}
-                      className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold inline-flex items-center gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
-                    >
-                      <Calendar className="w-4 h-4" />
+              onClick={() => setShowCalendar(true)}
+              className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold inline-flex items-center gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+            >
+              <Calendar className="w-4 h-4" aria-hidden="true" />
                       Book a Meeting
                     </button>
                   </div>
@@ -295,18 +304,19 @@ const HeroSection = () => {
                 </AnimatePresence>
               </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={slideIndex}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex-1"
-                >
-                  {slides[slideIndex].content}
-                </motion.div>
-              </AnimatePresence>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={slideIndex}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -30 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex-1"
+                    aria-live="polite"
+                  >
+                    {slides[slideIndex].content}
+                  </motion.div>
+                </AnimatePresence>
 
               <div className="flex justify-center gap-2 mt-4">
                 {slides.map((_, i) => (
@@ -340,6 +350,9 @@ const HeroSection = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 className="bg-white border-2 border-black rounded-2xl w-full max-w-[700px] max-h-[85vh] overflow-hidden relative"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Book a meeting"
                 style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
                 onClick={(e) => e.stopPropagation()}
               >

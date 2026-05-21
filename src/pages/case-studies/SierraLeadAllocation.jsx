@@ -1,33 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Lightbulb } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const Card = ({ children, className = '', style = {} }) => (
-  <motion.div
-    variants={itemVariants}
-    whileHover={{ y: -2, transition: { duration: 0.15 } }}
-    className={`border-2 border-black rounded-2xl p-6 md:p-8 ${className}`}
-    style={style}
-  >
-    {children}
-  </motion.div>
-);
-
-const SectionLabel = ({ children, color = '#0A0A0A' }) => (
-  <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4" style={{ color }}>{children}</p>
-);
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import SectionLabel from '@/components/case-studies/SectionLabel';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const SierraLeadAllocation = () => {
   return (
@@ -55,12 +35,7 @@ const SierraLeadAllocation = () => {
         className="bg-blush border-2 border-black rounded-2xl p-10 md:p-16"
         style={{ boxShadow: '12px 12px 0px 0px #0A0A0A' }}
       >
-        <div className="flex items-center gap-2 mb-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
-            Sierra Living Concepts · Sales Operations
-          </span>
-          <span className="text-xs font-bold text-ink/40">Q3–Q4 2024 · 30-Day Pilot → Full Rollout</span>
-        </div>
+        <ContextBar company="Sierra Living Concepts · Sales Operations" period="Q3–Q4 2024" tags={['30-Day Pilot', 'Full Rollout']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
           The team was routing leads randomly. Gold leads were being picked up by the wrong agents.
         </h1>
@@ -83,7 +58,6 @@ const SierraLeadAllocation = () => {
         </div>
       </motion.div>
 
-      {/* CONTEXT BAR */}
       <motion.div
         variants={itemVariants}
         className="mt-6 bg-canvas border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-ink/70"
@@ -96,15 +70,15 @@ const SierraLeadAllocation = () => {
       </motion.div>
 
       {/* SECTION 1: THE PROBLEM */}
-      <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
+      <SectionLabel>BEFORE STATE</SectionLabel>
 
-      <Card className="bg-white">
+      <Card>
         <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
           Sierra&#39;s sales team had four agents handling inbound leads. All leads — regardless of source, value, or conversion likelihood — were distributed in whatever order they arrived. There was no routing logic, no tier system, and no awareness that a $5,000 website form enquiry and a cold chat message were worth treating differently.
         </p>
       </Card>
 
-      <motion.div variants={itemVariants} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
+      <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
         <p className="text-white text-xs uppercase tracking-widest font-black mb-4">What 3 months of data showed</p>
         {[
           'Leslie · Best at: Sideboard & Buffets (42.9%) · Struggling: Dining Tables (0%)',
@@ -121,9 +95,9 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 2: THE DATA */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">DISCOVERY</p>
+        <SectionLabel>DISCOVERY</SectionLabel>
 
-        <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-8">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-6">Six lead sources. Wildly different conversion rates. Zero differentiation in how they were handled.</p>
           {[
             { name: 'Website Forms', volume: '406 leads / 3 months', cvr: '63.5%', tier: 'GOLD' },
@@ -142,19 +116,19 @@ const SierraLeadAllocation = () => {
               </div>
             </div>
           ))}
-          <div className="bg-white border-2 border-black rounded-xl p-5 mt-4">
+          <motion.div whileHover={{ scale: 1.005, y: -2 }} className="bg-white border-2 border-black rounded-xl p-5 mt-4">
             <p className="text-sm text-ink/80 font-medium leading-relaxed">
               Cart abandonment leads (751 per quarter) were consuming agent time at a 0.4% conversion rate. That&#39;s 5x worse than the next-worst source, and agents were spending real minutes on these. Meanwhile, inbound calls — 71.4% CVR — were sometimes going to whichever agent happened to be free.
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* SECTION 3: THE ROUTING SYSTEM */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">SOLUTION</p>
+        <SectionLabel>SOLUTION</SectionLabel>
 
-        <motion.div variants={itemVariants} className="bg-sky border-2 border-black rounded-2xl p-8">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-8">
           <p className="text-lg font-display font-black text-ink mb-4">Three-tier routing system</p>
 
           {[
@@ -177,15 +151,15 @@ const SierraLeadAllocation = () => {
               color: 'bg-white',
             },
           ].map((t, i) => (
-            <div key={i} className={`${t.color} border-2 border-black rounded-xl p-5 mt-3`}>
+            <motion.div whileHover={{ scale: 1.01, y: -2 }} className={`${t.color} border-2 border-black rounded-xl p-5 mt-3`}>
               <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-1">{t.tier}</p>
               <p className="font-bold text-sm text-ink">{t.label}</p>
               <p className="text-sm text-ink/70 mt-2 leading-relaxed">{t.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        <motion.div variants={itemVariants} className="bg-mint border-2 border-black rounded-2xl p-6 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-mint border-2 border-black rounded-2xl p-6 mt-4">
           <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3">Routing changes by day of week</p>
           {[
             'Mon–Wed (full team): GOLD → Leslie → Larry → Mollie · SILVER → Angela → Mollie · BRONZE → automation',
@@ -206,10 +180,10 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 4: RISK & PILOT PLAN */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">HOW WE ROLLED IT OUT</p>
+        <SectionLabel>HOW WE ROLLED IT OUT</SectionLabel>
 
-        <Card className="bg-white">
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">Risk Matrix</p>
+        <Card>
+          <SectionLabel>Risk Matrix</SectionLabel>
           {[
             { risk: 'Thursday Coverage Gap', prob: 'High', impact: 'High', mitigation: 'Hold queue + management backup for Gold leads' },
             { risk: 'Leslie Absence', prob: 'Medium', impact: 'High', mitigation: 'Larry as primary backup, postpone non-urgent Gold leads' },
@@ -224,8 +198,8 @@ const SierraLeadAllocation = () => {
           ))}
         </Card>
 
-        <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3">Pilot Plan — 30 Days</p>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
+          <SectionLabel>Pilot Plan — 30 Days</SectionLabel>
           <div className="space-y-2">
             <p className="text-sm text-ink/80 font-medium"><strong>Week 1 (10% of leads):</strong> Route only Friday website leads to Leslie. Track conversion improvement. Gather agent feedback.</p>
             <p className="text-sm text-ink/80 font-medium"><strong>Weeks 2-3 (25% of leads):</strong> Add Thursday hold queue. Implement chat automation for Mollie. Include Larry in Gold routing.</p>
@@ -236,7 +210,7 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 5: RESULTS */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS UNLOCKED</p>
+        <SectionLabel>WHAT THIS UNLOCKED</SectionLabel>
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
@@ -245,14 +219,14 @@ const SierraLeadAllocation = () => {
             { label: 'Chat Response Automation', value: '0% → 90%', bg: 'bg-sky' },
             { label: 'Avg Days to Close', value: '5.2 → 3.5 target', bg: 'bg-lemon' },
           ].map((k, i) => (
-            <div key={i} className={`${k.bg} border-2 border-black rounded-2xl p-6 text-center`}>
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-6 text-center`}>
               <p className="text-xs font-black text-ink/40 uppercase">{k.label}</p>
               <p className="font-display font-black text-3xl text-ink mt-2">{k.value}</p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        <motion.div variants={itemVariants} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
           <p className="text-white font-display font-black text-lg">What misrouting cost — per lead.</p>
           <p className="text-white/70 text-sm mt-2 leading-relaxed">
             Each Gold lead misrouted to a non-specialist agent instead of Leslie represented ~$2,000 in lower expected conversion revenue at Sierra&#39;s AOV. Leslie&#39;s Gold target (8-10/day) vs. baseline (2-3/day) represented 5-7 additional Gold leads per day at $3,400 average order value.
@@ -263,9 +237,9 @@ const SierraLeadAllocation = () => {
 
       {/* SECTION 6: RETROSPECTIVE */}
       <div className="mt-8">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
+        <SectionLabel>RETROSPECTIVE</SectionLabel>
 
-        <motion.div variants={itemVariants} className="bg-blush border-2 border-black rounded-2xl p-7">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">
             <div className="flex gap-3">
               <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
@@ -289,20 +263,7 @@ const SierraLeadAllocation = () => {
         </motion.div>
       </div>
 
-      {/* BOTTOM NAV */}
-      <motion.div variants={itemVariants} className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <Link to="/case-studies/lead-form" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Lead Form Optimization
-        </Link>
-        <Link to="/case-studies" className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          ← All Case Studies →
-        </Link>
-        <Link to="/case-studies/livekeeping-compliance-gap" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          Compliance Adoption Gap
-          <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </motion.div>
+      <BottomNav prev="lead-form" next="livekeeping-compliance-gap" />
     </motion.div>
   );
 };

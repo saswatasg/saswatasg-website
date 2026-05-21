@@ -52,6 +52,7 @@ const TestimonialCarousel = () => {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="text-center"
+              aria-live="polite"
             >
               <span className="text-3xl text-ink/20 font-display font-black leading-none">&#10077;</span>
               <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed mt-1 max-w-3xl mx-auto">
@@ -66,13 +67,16 @@ const TestimonialCarousel = () => {
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-center gap-2 mt-5">
+        <div className="flex justify-center gap-2 mt-5" role="tablist" aria-label="Testimonial navigation">
           {testimonials.map((_, i) => (
             <motion.button
               key={i}
               onClick={() => setCurrent(i)}
               whileHover={{ scale: 1.5 }}
               whileTap={{ scale: 0.8 }}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Testimonial ${i + 1}`}
               className={`w-2 h-2 rounded-full border border-black transition-all duration-300 ${
                 i === current ? 'bg-ink scale-110' : 'bg-white hover:bg-ink/30'
               }`}

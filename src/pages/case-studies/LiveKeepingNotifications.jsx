@@ -1,29 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Lightbulb } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const Card = ({ children, className = '', style = {} }) => (
-  <motion.div
-    variants={itemVariants}
-    whileHover={{ y: -2, transition: { duration: 0.15 } }}
-    className={`border-2 border-black rounded-2xl p-6 md:p-8 ${className}`}
-    style={style}
-  >
-    {children}
-  </motion.div>
-);
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const LiveKeepingNotifications = () => {
   return (
@@ -51,12 +34,7 @@ const LiveKeepingNotifications = () => {
         className="bg-sky border-2 border-black rounded-2xl p-10 md:p-16"
         style={{ boxShadow: '12px 12px 0px 0px #3DDC91' }}
       >
-        <div className="flex items-center gap-2 mb-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
-            LiveKeeping · Notification Architecture
-          </span>
-          <span className="text-xs font-bold text-ink/40">Jan–Mar 2026 · 50,000+ Users</span>
-        </div>
+        <ContextBar company="LiveKeeping · Notification Architecture" period="Jan–Mar 2026" tags={['50,000+ Users']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
           27+ triggers. Geo-segmented by region. A 3-slot daily cap with priority queuing. Built from scratch.
         </h1>
@@ -79,7 +57,6 @@ const LiveKeepingNotifications = () => {
         </div>
       </motion.div>
 
-      {/* CONTEXT BAR */}
       <motion.div
         variants={itemVariants}
         className="mt-6 bg-white border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-ink/70"
@@ -95,7 +72,7 @@ const LiveKeepingNotifications = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
 
-        <Card className="bg-white">
+        <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             LiveKeeping had push notifications. But there was no strategy — no documented trigger list, no priority rules, no daily cap, no regional logic. Compliance reminders, feature announcements, and festival greetings competed for the same time slots with no defined winner. A user filing their GSTR-1 on the 11th of the month could receive a Holi greeting at the same time as a compliance deadline reminder. No one had built the rules for what fires when, for whom, and in what order.
           </p>
@@ -106,7 +83,7 @@ const LiveKeepingNotifications = () => {
           { title: 'NO CAP', desc: 'Users could theoretically receive 5+ notifications on a single day during busy compliance periods. Every notification above 3 per day is a churn risk.' },
           { title: 'NO GEO-LOGIC', desc: 'A Ganesh Chaturthi greeting going to a user in Chandigarh is meaningless noise. A Vishwakarma Puja greeting going only to East India users is the right call. This logic didn\'t exist.' },
         ].map((item, i) => (
-          <motion.div key={i} variants={itemVariants} className={`${['bg-blush', 'bg-lemon', 'bg-sky'][i]} border-2 border-black rounded-xl p-5 mt-3`}>
+          <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className={`${['bg-blush', 'bg-lemon', 'bg-sky'][i]} border-2 border-black rounded-xl p-5 mt-3`}>
             <p className="text-xs font-black text-ink/40 mb-1">{item.title}</p>
             <p className="text-sm text-ink/80 font-medium leading-relaxed">{item.desc}</p>
           </motion.div>
@@ -120,7 +97,7 @@ const LiveKeepingNotifications = () => {
         <p className="text-sm font-medium text-ink/60 mb-4">I built this as a layered system — priority tiers, slot management, geo-segmentation, conflict resolution, and per-plan rules. Every notification type has a defined place in the hierarchy.</p>
 
         {/* LAYER 1 */}
-        <motion.div variants={itemVariants} className="bg-ink border-2 border-black rounded-2xl p-6">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6">
           <p className="text-white font-display font-black text-lg mb-4">P0 → P3 Priority Hierarchy</p>
           {[
             'P0 — OVERRIDE: GSTR-1 Last Day (11th of month). Takes slot 1. Always fires regardless of other slots. Cannot be bumped.',
@@ -135,7 +112,7 @@ const LiveKeepingNotifications = () => {
         </motion.div>
 
         {/* LAYER 2 */}
-        <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
           <p className="font-display font-black text-lg text-ink mb-3">3-slot daily cap with earned access</p>
           <p className="text-sm text-ink/80 font-medium leading-relaxed">
             Users with 0-3 months tenure: 2-slot cap. Users with 3+ months: 3-slot cap. This prevents overwhelming new users who are still in the onboarding phase.
@@ -149,7 +126,7 @@ const LiveKeepingNotifications = () => {
         </motion.div>
 
         {/* LAYER 3 */}
-        <motion.div variants={itemVariants} className="bg-blush border-2 border-black rounded-2xl p-6 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-6 mt-4">
           <p className="font-display font-black text-lg text-ink mb-3">5 geo-segments. Different festivals. Different timing.</p>
           {[
             'Pan-India: National occasions — Eid, Independence Day, Diwali, Holi, Raksha Bandhan, Guru Purnima, Janmashtami',
@@ -165,7 +142,7 @@ const LiveKeepingNotifications = () => {
         </motion.div>
 
         {/* LAYER 4 */}
-        <motion.div variants={itemVariants} className="bg-mint border-2 border-black rounded-2xl p-6 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-mint border-2 border-black rounded-2xl p-6 mt-4">
           <p className="font-display font-black text-lg text-ink mb-3">Named exception handling</p>
           {[
             'E-Way Bill + GSTR-1 Day: GSTR-1 takes slot 1. E-Way takes slot 2 (event-triggered). If 2-slot cap: E-Way drops on GST compliance days. Note in SOP.',
@@ -183,7 +160,7 @@ const LiveKeepingNotifications = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT GOOD NOTIFICATION COPY LOOKS LIKE</p>
 
-        <Card className="bg-white">
+        <Card>
           <p className="text-sm text-ink/80 font-medium mb-6">Every notification was written with a specific trigger, audience, and action in mind. I wrote all copy. Two examples that show the principle:</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -217,7 +194,7 @@ const LiveKeepingNotifications = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT THIS SYSTEM ENABLES</p>
 
-        <Card className="bg-blush">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-blush border-2 border-black rounded-2xl p-7">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed mb-6">
             This was a systems design project, not an A/B test. The output was the architecture itself — a documented, reproducible, tier-aware notification system that the team could maintain and extend. Before this, every new notification was ad-hoc. After this, every new trigger has a defined slot, a defined audience, a defined priority, and a conflict resolution rule.
           </p>
@@ -235,14 +212,14 @@ const LiveKeepingNotifications = () => {
               </div>
             ))}
           </div>
-        </Card>
+        </motion.div>
       </div>
 
       {/* SECTION 5: RETROSPECTIVE */}
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
 
-        <motion.div variants={itemVariants} className="bg-sky border-2 border-black rounded-2xl p-7">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-sky border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">
             <div className="flex gap-3">
               <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
@@ -266,20 +243,7 @@ const LiveKeepingNotifications = () => {
         </motion.div>
       </div>
 
-      {/* BOTTOM NAV */}
-      <motion.div variants={itemVariants} className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <Link to="/case-studies/livekeeping-send-greetings" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Send Greetings + Nano Banana
-        </Link>
-        <Link to="/case-studies" className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          ← All Case Studies →
-        </Link>
-        <Link to="/case-studies/livekeeping-report-automation" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          Daily Report Automation
-          <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </motion.div>
+      <BottomNav prev="livekeeping-send-greetings" next="livekeeping-report-automation" />
     </motion.div>
   );
 };

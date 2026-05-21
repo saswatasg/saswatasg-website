@@ -34,7 +34,7 @@ const pageSpecificMeta = {
   },
   '/case-studies': {
     title: "Case Studies | Saswata S. Sengupta",
-    description: "Four product decisions, explained in full — problem, diagnosis, options, outcome, and what I'd do differently."
+    description: "Nine product decisions, explained in full — problem, diagnosis, options, outcome, and what I'd do differently."
   },
   '/case-studies/cart-checkout': {
     title: "Case Study: Cart & Checkout — –26% | Saswata S. Sengupta",

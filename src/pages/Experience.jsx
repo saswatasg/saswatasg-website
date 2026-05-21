@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   Calendar, Map, Layers, GitBranch, Target, Brain, Lightbulb,
   Search, FileText, BarChart2, Bell, MessageSquare, TrendingUp,
-  DollarSign, Zap, Settings, Users, Award, CheckCircle2
+  DollarSign, Zap, Settings, Users, Award, CheckCircle2, ArrowRight
 } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 
@@ -121,7 +121,7 @@ const roles = [
     context: "Led B2B SaaS analytics and feature adoption initiatives for Indian SMBs.",
     tags: ["Fintech", "B2B SaaS", "GST Compliance", "Analytics", "Notifications"],
     achievements: [
-      { text: "Diagnosed a 17:1 adoption gap where PRO+ subscribers generated E-Way Bills via Tally instead of LiveKeeping's native module; built an executive presentation for VP/CEO that greenlit a cross-functional investigation.", icon: <Search className="w-4 h-4" />, metric: "17:1" },
+      { text: "Diagnosed a 17:1 adoption gap where PRO+ subscribers generated E-Way Bills via Tally instead of LiveKeeping's native module; built an executive presentation for VP/CEO that greenlit a cross-functional investigation.", icon: <Search className="w-4 h-4" />, metric: "17:1 ratio" },
       { text: "Identified a similar 19:1 E-Invoice adoption gap between Tally and LiveKeeping, feeding analysis into C-suite reporting.", icon: <FileText className="w-4 h-4" />, metric: "19:1" },
       { text: "Built an automated weekly CEO report tracking GST rejection errors across compliance products — replaced manual data pulls with structured, recurring insights.", icon: <BarChart2 className="w-4 h-4" /> },
       { text: "Led a company-wide notification strategy overhaul covering all user segments, plan tiers, renewal journeys, and conflict resolution logic across the complete product suite.", icon: <Bell className="w-4 h-4" /> }
@@ -132,7 +132,7 @@ const roles = [
     company: "Sierra Living Concepts",
     period: "May 2024 – January 2026",
     type: "Full-time",
-    context: "Owned the product growth roadmap for a US-based D2C furniture brand — from UX optimisation to revenue-driving features.",
+    context: "Owned the product growth roadmap for a US-based D2C furniture brand — from UX optimisation to revenue-driving features. (Transitioned internally to LiveKeeping in Jan 2026)",
     tags: ["D2C", "E-Commerce", "UX", "Analytics", "A/B Testing"],
     achievements: [
       { text: "Redesigned landing flows — bounce rate dropped from 41.04% to 32.54%", icon: <TrendingUp className="w-4 h-4" />, metric: "-20.7%" },

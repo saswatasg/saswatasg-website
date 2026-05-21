@@ -1,29 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Lightbulb } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const Card = ({ children, className = '', style = {} }) => (
-  <motion.div
-    variants={itemVariants}
-    whileHover={{ y: -2, transition: { duration: 0.15 } }}
-    className={`border-2 border-black rounded-2xl p-6 md:p-8 ${className}`}
-    style={style}
-  >
-    {children}
-  </motion.div>
-);
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const LiveKeepingSendGreetings = () => {
   return (
@@ -51,12 +34,7 @@ const LiveKeepingSendGreetings = () => {
         className="bg-lemon border-2 border-black rounded-2xl p-10 md:p-16"
         style={{ boxShadow: '12px 12px 0px 0px #625BF6' }}
       >
-        <div className="flex items-center gap-2 mb-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
-            LiveKeeping · Pro+ Feature · Send Greetings
-          </span>
-          <span className="text-xs font-bold text-ink/40">Jan–Mar 2026 · AI Integration + UX Redesign</span>
-        </div>
+        <ContextBar company="LiveKeeping · Pro+ Feature · Send Greetings" period="Jan–Mar 2026" tags={['AI Integration', 'UX Redesign']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
           A dormant Pro+ feature. Rebuilt with AI. +168% engagement.
         </h1>
@@ -79,7 +57,6 @@ const LiveKeepingSendGreetings = () => {
         </div>
       </motion.div>
 
-      {/* CONTEXT BAR */}
       <motion.div
         variants={itemVariants}
         className="mt-6 bg-white border-2 border-black rounded-xl p-4 flex flex-col md:flex-row gap-4 text-sm font-medium text-ink/70"
@@ -95,7 +72,7 @@ const LiveKeepingSendGreetings = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">BEFORE STATE</p>
 
-        <Card className="bg-white">
+        <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             LiveKeeping&#39;s Send Greetings module let Pro+ users send festival and occasion messages to their customers. The idea was right. Execution was static: pre-written templates, generic images, no personalisation. Indian SMB owners — shop owners, traders, manufacturers — couldn&#39;t customise the greeting to feel like it came from their business. Usage was low. Most Pro+ users had never touched it.
           </p>
@@ -106,7 +83,7 @@ const LiveKeepingSendGreetings = () => {
           { bg: 'bg-sky', title: 'ZERO CUSTOMISATION', desc: "Business name auto-filled, but the greeting image itself was fixed. Users couldn't change the colour, the style, the language register, or the visual tone." },
           { bg: 'bg-lemon', title: 'MISSED OCCASIONS', desc: "The module covered major national festivals but ignored regional ones. A Ganesh Chaturthi greeting is irrelevant to a trader in West Bengal. A Vishwakarma Puja greeting is deeply relevant. One-size-fits-all = low resonance everywhere." },
         ].map((item, i) => (
-          <motion.div key={i} variants={itemVariants} className={`${item.bg} border-2 border-black rounded-xl p-5 mt-3`}>
+          <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className={`${item.bg} border-2 border-black rounded-xl p-5 mt-3`}>
             <p className="text-xs font-black text-ink/40 mb-1">{item.title}</p>
             <p className="text-sm text-ink/80 font-medium leading-relaxed">{item.desc}</p>
           </motion.div>
@@ -117,7 +94,7 @@ const LiveKeepingSendGreetings = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT NANO BANANA DOES</p>
 
-        <motion.div variants={itemVariants} className="bg-ink border-2 border-black rounded-2xl p-7">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-7">
           <p className="text-white text-lg font-display font-black mb-4">
             Nano Banana is Google&#39;s AI image generation model, powered by Gemini 3.1 Flash Image. It generates photorealistic, text-accurate visuals from prompts — with precise text rendering across fonts, languages, and calligraphy styles. Specifically, it was designed for marketing mockups, greeting cards, and branded content with in-image text translation. That made it the right model for this use case: Indian SMB owners sending festival greetings in Hindi, Bengali, Tamil, Gujarati — not just English.
           </p>
@@ -144,7 +121,7 @@ const LiveKeepingSendGreetings = () => {
             { bg: 'bg-sky', part: 'PART 2', title: 'Geo-Segmented Festival Calendar', desc: "Built a 27-occasion calendar from March to September 2026 with geo-segmentation across Pan-India, South India, Maharashtra/Goa, East India, and Gujarat. A West Bengal trader sees Ratha Yatra and Vishwakarma Puja. A Maharashtra shopkeeper sees Ganesh Chaturthi and Gudi Padwa." },
             { bg: 'bg-mint', part: 'PART 3', title: 'Evergreen Greeting Library', desc: "13 on-demand types available any day — Good Morning, Good Night, Thank You (post-payment + post-order variants), Motivation (Monday and general), Payment Reminder (3 urgency tiers: soft/firm/urgent), Sale Promotion, and 4 discount tiers (5%/10%/15%/20%)." },
           ].map((item, i) => (
-            <motion.div key={i} variants={itemVariants} className={`${item.bg} border-2 border-black rounded-2xl p-6`}>
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className={`${item.bg} border-2 border-black rounded-2xl p-6`}>
               <span className="bg-ink text-white text-xs font-black px-2 py-1 rounded">{item.part}</span>
               <p className="font-display font-black text-lg text-ink mt-3">{item.title}</p>
               <p className="text-sm text-ink/70 mt-2 font-medium leading-relaxed">{item.desc}</p>
@@ -152,7 +129,7 @@ const LiveKeepingSendGreetings = () => {
           ))}
         </div>
 
-        <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-6 mt-4">
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             March is the busiest month (8 occasions: Ugadi, Gudi Padwa, Navratri, Eid, Navroz, Cheti Chand, Rama Navami, Hanuman Jayanti). March 19 and 20 each have 3 simultaneous occasions — requiring geo-segmentation logic to prevent a single user from receiving 3 identical-timing greetings. Independence Day (August 15) is the single highest-reach notification of the full calendar — mandatory Pan-India, all plans.
           </p>
@@ -163,7 +140,7 @@ const LiveKeepingSendGreetings = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">WHAT I GOT SPECIFIC ABOUT</p>
 
-        <Card className="bg-white">
+        <Card>
           <div className="space-y-4">
             {[
               "AI prompt construction — the Nano Banana prompt is built dynamically from: occasion name, business type (from user's LiveKeeping account category), customer name (from ledger), language preference, and region. A Kerala shop owner sending a Vishu greeting to a customer named Rajesh gets a different image than a Punjab trader sending the same Vaisakhi greeting. This level of specificity was not present in V1.",
@@ -172,9 +149,9 @@ const LiveKeepingSendGreetings = () => {
             ].map((item, i) => (
               <div key={i} className="flex gap-3">
                 <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">{i + 1}</div>
-                <div className="bg-canvas border-2 border-black rounded-xl p-4 flex-1">
+                <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-canvas border-2 border-black rounded-xl p-4 flex-1">
                   <p className="text-sm text-ink/80 font-medium leading-relaxed">{item}</p>
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>
@@ -185,7 +162,7 @@ const LiveKeepingSendGreetings = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">OUTCOME</p>
 
-        <motion.div variants={itemVariants} className="bg-white border-2 border-black rounded-2xl p-10 text-center">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-white border-2 border-black rounded-2xl p-10 text-center">
           <div className="font-display font-black text-7xl text-ink">+168%</div>
           <p className="text-lg font-medium text-ink/60 mt-2">Feature engagement uplift · Pro+ Send Greetings module</p>
         </motion.div>
@@ -197,10 +174,10 @@ const LiveKeepingSendGreetings = () => {
             { label: '13 evergreen types', sub: 'Available any day, user-initiated', bg: 'bg-lemon' },
             { label: '15 seconds', sub: 'AI greeting generation time (target)', bg: 'bg-mint' },
           ].map((k, i) => (
-            <div key={i} className={`${k.bg} border-2 border-black rounded-2xl p-5 text-center`}>
+            <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-5 text-center`}>
               <p className="font-display font-black text-lg text-ink">{k.label}</p>
               <p className="text-xs font-bold text-ink/60 mt-1">{k.sub}</p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
@@ -209,7 +186,7 @@ const LiveKeepingSendGreetings = () => {
       <div className="mt-8">
         <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-4">RETROSPECTIVE</p>
 
-        <motion.div variants={itemVariants} className="bg-lemon border-2 border-black rounded-2xl p-7">
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-lemon border-2 border-black rounded-2xl p-7">
           <div className="space-y-4">
             <div className="flex gap-3">
               <div className="w-7 h-7 bg-ink text-white rounded-full flex items-center justify-center text-xs font-black flex-shrink-0">1</div>
@@ -233,20 +210,7 @@ const LiveKeepingSendGreetings = () => {
         </motion.div>
       </div>
 
-      {/* BOTTOM NAV */}
-      <motion.div variants={itemVariants} className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <Link to="/case-studies/livekeeping-compliance-gap" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Compliance Adoption Gap
-        </Link>
-        <Link to="/case-studies" className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          ← All Case Studies →
-        </Link>
-        <Link to="/case-studies/livekeeping-notifications" className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group">
-          Push Notification Strategy
-          <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </motion.div>
+      <BottomNav prev="livekeeping-compliance-gap" next="livekeeping-notifications" />
     </motion.div>
   );
 };

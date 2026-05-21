@@ -3,20 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Lightbulb, FileText } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import SectionLabel from '@/components/case-studies/SectionLabel';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const LeadForm = () => {
-  const company = 'Sierra Living Concepts';
-  const year = '2024';
   const color = '#3DDC91';
   const cardBg = 'bg-mint';
 
@@ -33,22 +26,24 @@ const LeadForm = () => {
       />
       <Link
         to="/case-studies"
-        className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/60 hover:text-ink mb-6 transition-colors group"
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         Back to all case studies
       </Link>
 
-      <div className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`} style={{ boxShadow: `12px 12px 0px 0px ${color}` }}>
+      <motion.div
+        variants={itemVariants}
+        className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`}
+        style={{ boxShadow: `12px 12px 0px 0px ${color}` }}
+      >
         <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/30 border-2 border-black rounded-xl rotate-12 hidden md:block" />
         <div className="absolute top-16 right-12 w-12 h-12 bg-white/20 border-2 border-black rounded-lg -rotate-6 hidden md:block" />
 
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mb-4 relative z-10">
-          {company} · {year}
-        </span>
+        <ContextBar company="Sierra Living Concepts" period="2024" tags={['D2C', 'UX', 'Conversion']} />
 
         <div className="flex items-center gap-3 mb-2 relative z-10">
-          <FileText className="w-8 h-8 text-ink" />
+          <FileText className="w-8 h-8 text-ink" aria-hidden="true" />
           <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
             Lead Form Conversion Overhaul — +105%
           </h1>
@@ -70,63 +65,40 @@ const LeadForm = () => {
               className="bg-white/50 border-2 border-black rounded-xl p-3 md:p-4 text-center"
             >
               <div className="text-xl md:text-2xl font-display font-black text-ink">{stat.value}</div>
-              <p className="text-[10px] font-bold text-ink/60 mt-0.5">{stat.label}</p>
+              <p className="text-xs font-bold text-ink/60 mt-0.5">{stat.label}</p>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <div className="mt-8 space-y-6">
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            The Problem
-          </p>
+          <SectionLabel color={color}>The Problem</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             The lead capture form was converting at 2.14% — well below industry benchmarks. The form had high client-side latency, validation errors that appeared only after submission, and mobile touch targets smaller than the recommended 48px. Field labels were inconsistent, error messages were generic, and there was no inline validation to guide users toward correct input. Rage-click maps showed concentrated frustration around the submit button and the phone number field.
           </p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            My Diagnosis
-          </p>
+          <SectionLabel color={color}>My Diagnosis</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Analysed GA4 form interaction events alongside Clarity session recordings and rage-click maps. Identified four primary issues: (1) client-side latency of 3-5 seconds on form field initialisation, (2) no inline validation — users only saw errors after full submission attempt, (3) mobile touch targets at 32px instead of the recommended 48px minimum, and (4) the phone number field had a format restriction that wasn't communicated until after submission. Together, these created a compounding friction effect where each issue amplified the perceived cost of completing the form.
           </p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            What We Shipped
-          </p>
+          <SectionLabel color={color}>What We Shipped</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Rebuilt the form using Material 3 components for consistent styling and interaction patterns. Added real-time inline validation with contextual microcopy that explained each field requirement before submission. Fixed the client-side latency issue by deferring non-critical scripts and lazy-loading third-party widgets. Increased mobile touch targets to 48px minimum. Added a clear format hint for the phone number field with live formatting. Shipped with a before/after A/B test running on 10% of traffic before full rollout.
           </p>
-        </motion.div>
+        </Card>
       </div>
 
       <motion.div variants={itemVariants} className="mt-6">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3" style={{ color }}>
-          Options I Considered
-        </p>
+        <SectionLabel color={color}>Options I Considered</SectionLabel>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
             'Replace the form with a third-party solution. Faster to implement, but loses control over UX and data flow.',
@@ -158,36 +130,21 @@ const LeadForm = () => {
         style={{ boxShadow: `8px 8px 0px 0px ${color}` }}
       >
         <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg rotate-12 border-2 border-black hidden md:block" style={{ backgroundColor: color }} />
-        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} />
+        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} aria-hidden="true" />
         <p className="text-base md:text-lg font-display font-black text-ink">
           Lead submissions increased by 105% overall, with mobile conversion rate improving by 38%. The A/B test confirmed the rebuild outperformed the control across every segment — new vs returning visitors, mobile vs desktop, and across all traffic sources. The compounding friction hypothesis was correct: fixing all issues simultaneously produced a result greater than the sum of individual fixes.
         </p>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ x: 2, transition: { duration: 0.15 } }}
-        className="mt-6 bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-        style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-      >
+      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
         <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-          What I'd Do Differently
-        </p>
+        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
         <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
           I would have added form-level event tracking (field focus time, field abandonment rate, error trigger frequency) earlier. The rage-click maps told us where users were frustrated, but field-level analytics would have told us exactly which fields caused the most abandonment without needing to correlate session recordings manually.
         </p>
-      </motion.div>
+      </Card>
 
-      <motion.div variants={itemVariants} className="mt-8 text-center">
-        <Link
-          to="/case-studies"
-          className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to all case studies
-        </Link>
-      </motion.div>
+      <BottomNav prev="category-discovery" next="upcore-lead-scoring" />
     </motion.div>
   );
 };

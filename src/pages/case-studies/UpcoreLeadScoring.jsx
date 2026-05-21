@@ -3,20 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Lightbulb, Target } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import SectionLabel from '@/components/case-studies/SectionLabel';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const UpcoreLeadScoring = () => {
-  const company = 'Upcore Technologies';
-  const year = '2026';
   const color = '#F4EC4A';
   const cardBg = 'bg-lemon';
 
@@ -33,22 +26,24 @@ const UpcoreLeadScoring = () => {
       />
       <Link
         to="/case-studies"
-        className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/60 hover:text-ink mb-6 transition-colors group"
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         Back to all case studies
       </Link>
 
-      <div className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`} style={{ boxShadow: `12px 12px 0px 0px ${color}` }}>
+      <motion.div
+        variants={itemVariants}
+        className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`}
+        style={{ boxShadow: `12px 12px 0px 0px ${color}` }}
+      >
         <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/30 border-2 border-black rounded-xl rotate-12 hidden md:block" />
         <div className="absolute top-16 right-12 w-12 h-12 bg-white/20 border-2 border-black rounded-lg -rotate-6 hidden md:block" />
 
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mb-4 relative z-10">
-          {company} · {year}
-        </span>
+        <ContextBar company="Upcore Technologies" period="2026" tags={['AI', 'B2B', 'GTM']} />
 
         <div className="flex items-center gap-3 mb-2 relative z-10">
-          <Target className="w-8 h-8 text-ink" />
+          <Target className="w-8 h-8 text-ink" aria-hidden="true" />
           <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
             AI Lead Scoring Engine — 71.63% Close Rate
           </h1>
@@ -70,63 +65,40 @@ const UpcoreLeadScoring = () => {
               className="bg-white/50 border-2 border-black rounded-xl p-3 md:p-4 text-center"
             >
               <div className="text-xl md:text-2xl font-display font-black text-ink">{stat.value}</div>
-              <p className="text-[10px] font-bold text-ink/60 mt-0.5">{stat.label}</p>
+              <p className="text-xs font-bold text-ink/60 mt-0.5">{stat.label}</p>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <div className="mt-8 space-y-6">
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            The Problem
-          </p>
+          <SectionLabel color={color}>The Problem</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Inbound leads were being manually triaged by the BDR team with no consistent scoring framework. High-intent prospects were mixed in with low-quality inquiries, response times varied wildly, and there was no systematic way to prioritise leads by likelihood to convert. The team was spending equal time on leads that closed within a week and leads that never responded. Close rate hovered around 52%.
           </p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            My Diagnosis
-          </p>
+          <SectionLabel color={color}>My Diagnosis</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Audited 3 months of inbound lead data, cross-referencing lead source, company size, industry vertical, inquiry type, and response time against close outcome. Found two clear patterns: (1) leads from direct website inquiries and referrals closed at 3x the rate of leads from cold channels, and (2) leads responded to within 30 minutes were 4x more likely to convert than those responded to after 2+ hours. The existing manual triage had no mechanism to capture or act on these signals.
           </p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            What We Shipped
-          </p>
+          <SectionLabel color={color}>What We Shipped</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Built an AI-powered lead assistant that automatically scored inbound prospects on a 0-100 scale based on source, company fit, engagement signals, and inquiry type. High-scoring leads were routed to senior BDRs within minutes with a pre-populated context brief. Low-scoring leads entered a nurture sequence. The system included a feedback loop where BDRs could flag scoring mismatches, allowing the model to improve over time. Shipped with a 2-week shadow-mode period for calibration before going live.
           </p>
-        </motion.div>
+        </Card>
       </div>
 
       <motion.div variants={itemVariants} className="mt-6">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3" style={{ color }}>
-          Options I Considered
-        </p>
+        <SectionLabel color={color}>Options I Considered</SectionLabel>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
             'Buy an off-the-shelf lead scoring tool. Quick to deploy, but limited customisation and ongoing cost.',
@@ -158,36 +130,21 @@ const UpcoreLeadScoring = () => {
         style={{ boxShadow: `8px 8px 0px 0px ${color}` }}
       >
         <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg rotate-12 border-2 border-black hidden md:block" style={{ backgroundColor: color }} />
-        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} />
+        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} aria-hidden="true" />
         <p className="text-base md:text-lg font-display font-black text-ink">
           Close rate improved from 52% to 71.63% — a 19.63 percentage point absolute improvement. Response time to high-scoring leads dropped from hours to under 5 minutes. The feedback loop captured 200+ scoring corrections in the first month, progressively improving the model's accuracy. The system paid for itself in additional closed deals within the first quarter.
         </p>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ x: 2, transition: { duration: 0.15 } }}
-        className="mt-6 bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-        style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-      >
+      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
         <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-          What I'd Do Differently
-        </p>
+        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
         <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
           I'd have added a lead scoring dashboard for the BDR team from day one, not as a post-launch addition. Giving the team visibility into why each lead received its score would have reduced initial skepticism and accelerated the feedback loop.
         </p>
-      </motion.div>
+      </Card>
 
-      <motion.div variants={itemVariants} className="mt-8 text-center">
-        <Link
-          to="/case-studies"
-          className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to all case studies
-        </Link>
-      </motion.div>
+      <BottomNav prev="lead-form" next="sierra-lead-allocation" />
     </motion.div>
   );
 };

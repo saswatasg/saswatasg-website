@@ -3,20 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Lightbulb, LayoutGrid } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
+import { containerVariants, itemVariants } from '@/components/case-studies/animations';
+import Card from '@/components/case-studies/Card';
+import SectionLabel from '@/components/case-studies/SectionLabel';
+import ContextBar from '@/components/case-studies/ContextBar';
+import BottomNav from '@/components/case-studies/BottomNav';
 
 const CategoryDiscovery = () => {
-  const company = 'Sierra Living Concepts';
-  const year = '2024';
   const color = '#625BF6';
   const cardBg = 'bg-sky';
 
@@ -33,22 +26,24 @@ const CategoryDiscovery = () => {
       />
       <Link
         to="/case-studies"
-        className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/60 hover:text-ink mb-6 transition-colors group"
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         Back to all case studies
       </Link>
 
-      <div className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`} style={{ boxShadow: `12px 12px 0px 0px ${color}` }}>
+      <motion.div
+        variants={itemVariants}
+        className={`${cardBg} border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden`}
+        style={{ boxShadow: `12px 12px 0px 0px ${color}` }}
+      >
         <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/30 border-2 border-black rounded-xl rotate-12 hidden md:block" />
         <div className="absolute top-16 right-12 w-12 h-12 bg-white/20 border-2 border-black rounded-lg -rotate-6 hidden md:block" />
 
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mb-4 relative z-10">
-          {company} · {year}
-        </span>
+        <ContextBar company="Sierra Living Concepts" period="2024" tags={['D2C', 'UX']} />
 
         <div className="flex items-center gap-3 mb-2 relative z-10">
-          <LayoutGrid className="w-8 h-8 text-ink" />
+          <LayoutGrid className="w-8 h-8 text-ink" aria-hidden="true" />
           <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
             Category Page Redesign — +17%
           </h1>
@@ -70,63 +65,40 @@ const CategoryDiscovery = () => {
               className="bg-purple/20 border-2 border-black rounded-xl p-3 md:p-4 text-center"
             >
               <div className="text-xl md:text-2xl font-display font-black text-ink">{stat.value}</div>
-              <p className="text-[10px] font-bold text-ink/60 mt-0.5">{stat.label}</p>
+              <p className="text-xs font-bold text-ink/60 mt-0.5">{stat.label}</p>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <div className="mt-8 space-y-6">
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            The Problem
-          </p>
+          <SectionLabel color={color}>The Problem</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Category pages were underperforming across both desktop and mobile templates. Session-to-PDP-click conversion was below benchmark, and the team had a long list of anecdotal UX complaints but no data-backed prioritisation. The category page acted as the primary browse-to-product gateway — any friction here multiplied across every downstream metric.
           </p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            My Diagnosis
-          </p>
+          <SectionLabel color={color}>My Diagnosis</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Set up GA4 custom events for every category interaction — filter use, sort changes, product card clicks, pagination. Ran Clarity heatmaps and scroll maps across the top 10 category pages by traffic volume. The data revealed 30+ distinct UX issues including: inconsistent card sizing causing layout shift, missing hover states on product cards, filter dropdowns that overlapped content, and mobile touch targets below recommended minimum size.
           </p>
-        </motion.div>
+        </Card>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-          style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-        >
+        <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
           <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-          <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-            What We Shipped
-          </p>
+          <SectionLabel color={color}>What We Shipped</SectionLabel>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
             Rebuilt desktop and mobile category page templates in a 4-week sprint. Fixed all 30+ UX issues prioritised by severity score (frequency × impact). Aligned components with the Figma design library to ensure consistency. Added skeleton loading states, optimised image dimensions, standardised card components, and improved filter interaction patterns. Each fix was validated with before/after heatmaps.
           </p>
-        </motion.div>
+        </Card>
       </div>
 
       <motion.div variants={itemVariants} className="mt-6">
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-3" style={{ color }}>
-          Options I Considered
-        </p>
+        <SectionLabel color={color}>Options I Considered</SectionLabel>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
             'Full redesign from scratch. Clean slate but high engineering cost and longer timeline.',
@@ -158,36 +130,21 @@ const CategoryDiscovery = () => {
         style={{ boxShadow: `8px 8px 0px 0px ${color}` }}
       >
         <div className="absolute -top-4 -left-4 w-16 h-16 rounded-lg rotate-12 border-2 border-black hidden md:block" style={{ backgroundColor: color }} />
-        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} />
+        <Lightbulb className="w-8 h-8 mx-auto mb-3" style={{ color }} aria-hidden="true" />
         <p className="text-base md:text-lg font-display font-black text-ink">
           Session-to-PDP-click conversion improved by 17%. The template remained the same — what changed was the quality of execution. Heatmap validation showed users engaging with formerly ignored product cards, and filter interaction time dropped significantly as a result of clearer visual hierarchy.
         </p>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ x: 2, transition: { duration: 0.15 } }}
-        className="mt-6 bg-white border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden"
-        style={{ boxShadow: `6px 6px 0px 0px ${color}` }}
-      >
+      <Card style={{ boxShadow: `6px 6px 0px 0px ${color}` }}>
         <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: color }} />
-        <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-2" style={{ color }}>
-          What I'd Do Differently
-        </p>
+        <SectionLabel color={color}>What I'd Do Differently</SectionLabel>
         <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
           I would have run the Clarity heatmap and scroll map audit earlier — before the UX backlog grew to 30+ items. A monthly category page health check using the same instrumentation would have caught regressions sooner and reduced the fix batch size.
         </p>
-      </motion.div>
+      </Card>
 
-      <motion.div variants={itemVariants} className="mt-8 text-center">
-        <Link
-          to="/case-studies"
-          className="inline-flex items-center gap-2 text-sm font-bold text-ink/50 hover:text-ink transition-colors group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to all case studies
-        </Link>
-      </motion.div>
+      <BottomNav prev="cart-checkout" next="lead-form" />
     </motion.div>
   );
 };

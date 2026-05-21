@@ -5,9 +5,9 @@ import ContactForm from '@/components/contact/ContactForm';
 import { ArrowRight, Calendar, X, Sparkles } from 'lucide-react';
 
 const floatingDecorations = [
-  { emoji: '', className: '-top-3 -left-3 w-10 h-10 bg-pink rotate-12 hidden md:block' },
-  { emoji: '', className: 'bottom-6 -right-3 w-8 h-8 bg-lemon -rotate-12 hidden md:block' },
-  { emoji: '', className: 'top-1/2 -right-4 w-6 h-6 bg-sky rotate-45 hidden lg:block' },
+  { className: '-top-3 -left-3 w-10 h-10 bg-pink rotate-12 hidden md:block' },
+  { className: 'bottom-6 -right-3 w-8 h-8 bg-lemon -rotate-12 hidden md:block' },
+  { className: 'top-1/2 -right-4 w-6 h-6 bg-sky rotate-45 hidden lg:block' },
 ];
 
 const Contact = () => {
@@ -31,6 +31,7 @@ const Contact = () => {
               className={`absolute ${d.className} border-2 border-black rounded-xl`}
               animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.05, 1] }}
               transition={{ duration: 6 + i * 2, repeat: Infinity, ease: 'easeInOut' }}
+              aria-hidden="true"
             />
           ))}
 
@@ -120,6 +121,9 @@ const Contact = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 className="bg-white border-2 border-black rounded-2xl w-full max-w-[700px] max-h-[85vh] overflow-hidden relative"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Book a meeting"
                 style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
                 onClick={(e) => e.stopPropagation()}
               >
