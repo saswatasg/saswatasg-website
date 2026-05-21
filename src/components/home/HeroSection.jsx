@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Star, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket } from 'lucide-react';
+import { Calendar, Star, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
+import CalendarLoader from '@/components/CalendarLoader';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,6 +26,7 @@ const HeroSection = () => {
   const [iframeError, setIframeError] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [slidePaused, setSlidePaused] = useState(false);
 
   useEffect(() => {
     if (!showCalendar) {
@@ -38,6 +40,14 @@ const HeroSection = () => {
     }, 10000);
     return () => clearTimeout(timer);
   }, [showCalendar]);
+
+  useEffect(() => {
+    if (slidePaused) return;
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slidePaused]);
 
   const slides = [
     {
@@ -190,13 +200,6 @@ const HeroSection = () => {
     },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="w-full pt-20 md:pt-24 lg:pt-28">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
@@ -296,10 +299,10 @@ Book a Meet
             style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
             <motion.div
-              key={slideIndex}
-              initial={{ width: '0%' }}
+              key={slideIndex + (slidePaused ? '-paused' : '')}
+              initial={{ width: slidePaused ? 'auto' : '0%' }}
               animate={{ width: '100%' }}
-              transition={{ duration: 5, ease: 'linear' }}
+              transition={slidePaused ? { duration: 0 } : { duration: 5, ease: 'linear' }}
               className="absolute top-0 left-0 h-1 bg-ink/80"
             />
             <div className="relative z-10 flex-1 flex flex-col">
@@ -335,7 +338,16 @@ Book a Meet
                   </motion.div>
                 </AnimatePresence>
 
-              <div className="flex justify-center gap-2 mt-4">
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <motion.button
+                  onClick={() => setSlidePaused(!slidePaused)}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
+                  className="w-5 h-5 rounded-full bg-white border border-black flex items-center justify-center hover:bg-canvas transition-colors"
+                  aria-label={slidePaused ? 'Play slideshow' : 'Pause slideshow'}
+                >
+                  {slidePaused ? <Play className="w-2.5 h-2.5 text-ink" /> : <Pause className="w-2.5 h-2.5 text-ink" />}
+                </motion.button>
                 {slides.map((_, i) => (
                   <motion.button
                     key={i}
