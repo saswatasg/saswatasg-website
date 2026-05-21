@@ -37,7 +37,7 @@ const HeroSection = () => {
       content: (
         <div className="flex flex-col gap-3">
           <div className="bg-white border-2 border-black rounded-xl p-4 -rotate-[0.3deg] group-hover:rotate-0 transition-all duration-200">
-            <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">–26%</div>
+            <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
             <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue impact</p>
             <div className="flex gap-1.5">
               <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-pink/30 border border-black p-1.5 text-center">
@@ -82,34 +82,34 @@ const HeroSection = () => {
       companyColor: 'text-ink/70',
       content: (
         <div className="flex flex-col gap-3">
-          <div className="bg-white border-2 border-black rounded-xl p-4 transition-all duration-200">
-            <div className="grid grid-cols-2 gap-3">
-              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-2.5">
+          <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-2 gap-2">
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-3">
                 <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">17:1</div>
-                <p className="text-[10px] font-bold text-ink/60">adoption gap</p>
+                <p className="text-xs font-bold text-ink/60">adoption gap</p>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-pink/30 border border-black p-2.5">
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-pink/30 border border-black p-3">
                 <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">160%</div>
-                <p className="text-[10px] font-bold text-ink/60">re-engagement lift</p>
+                <p className="text-xs font-bold text-ink/60">re-engagement lift</p>
               </motion.div>
             </div>
-            <p className="text-xs text-ink/60 font-bold text-center mt-2.5">
-              Gap diagnosed & escalated to CPO with weekly CEO-ready reporting
+            <p className="text-xs text-ink/50 font-bold text-center">
+              Diagnosed & escalated to CPO · Weekly CEO-ready reporting
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-3 gap-2">
             {[
-              { value: '19:1', label: 'E-Invoice' },
-              { value: 'CEO', label: 'Reporting' },
+              { value: '19:1', label: 'E-Invoice gap' },
+              { value: 'CEO', label: 'C-level escalation' },
               { value: 'PRO+', label: 'Plan focus' },
             ].map((b, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.06, y: -1 }}
-                className={`rounded-lg border border-black p-1.5 text-center ${i === 0 ? 'bg-lemon/40' : i === 1 ? 'bg-purple/20' : 'bg-pink/30'}`}
+                className={`rounded-xl border border-black p-2.5 text-center ${i === 0 ? 'bg-lemon/40' : i === 1 ? 'bg-purple/20' : 'bg-pink/30'}`}
               >
-                <div className="text-xs font-black text-ink">{b.value}</div>
-                <p className="text-[8px] font-bold text-ink/60">{b.label}</p>
+                <div className="text-sm font-black text-ink">{b.value}</div>
+                <p className="text-[10px] font-bold text-ink/60">{b.label}</p>
               </motion.div>
             ))}
           </div>
@@ -135,25 +135,22 @@ const HeroSection = () => {
       companyColor: 'text-pink-dark',
       content: (
         <div className="flex flex-col gap-2.5 h-full">
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: <Search className="w-4 h-4" />, label: 'Discovery', sub: 'Enterprise workflow mapping & bottleneck diagnosis' },
-              { icon: <FileText className="w-4 h-4" />, label: 'Briefing', sub: 'AI agent solution briefs for engineering' },
-              { icon: <Route className="w-4 h-4" />, label: 'Roadmap', sub: 'Prioritize 12 verticals by severity & ROI' },
-              { icon: <Rocket className="w-4 h-4" />, label: 'GTM', sub: 'AI launch strategy & market intelligence' },
+              { icon: <Search className="w-5 h-5" />, label: 'Discovery' },
+              { icon: <FileText className="w-5 h-5" />, label: 'Briefing' },
+              { icon: <Route className="w-5 h-5" />, label: 'Roadmap' },
+              { icon: <Rocket className="w-5 h-5" />, label: 'GTM' },
             ].map((step, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.15 } }}
-                className="bg-white border-2 border-black rounded-xl p-3"
+                className="bg-white border-2 border-black rounded-xl p-4 text-center"
               >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="w-7 h-7 rounded-lg bg-purple/20 border border-black flex items-center justify-center text-purple">
-                    {step.icon}
-                  </span>
-                  <p className="text-xs font-black text-ink">{step.label}</p>
-                </div>
-                <p className="text-[10px] font-medium text-ink/60 leading-tight ml-9">{step.sub}</p>
+                <span className="w-10 h-10 rounded-xl bg-purple/20 border border-black flex items-center justify-center text-purple mx-auto mb-2">
+                  {step.icon}
+                </span>
+                <p className="text-xs font-black text-ink">{step.label}</p>
               </motion.div>
             ))}
           </div>
