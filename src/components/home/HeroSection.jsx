@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Star, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
-import CalendarLoader from '@/components/CalendarLoader';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,24 +22,8 @@ const childVariants = {
 
 const HeroSection = () => {
   const [showCalendar, setShowCalendar] = useState(false);
-  const [iframeError, setIframeError] = useState(false);
-  const [iframeLoading, setIframeLoading] = useState(true);
   const [slideIndex, setSlideIndex] = useState(0);
   const [slidePaused, setSlidePaused] = useState(false);
-  const iframeTimerRef = useRef(null);
-
-  useEffect(() => {
-    if (!showCalendar) {
-      setIframeLoading(true);
-      setIframeError(false);
-      return;
-    }
-    iframeTimerRef.current = setTimeout(() => {
-      setIframeLoading(false);
-      setIframeError(true);
-    }, 10000);
-    return () => clearTimeout(iframeTimerRef.current);
-  }, [showCalendar]);
 
   useEffect(() => {
     if (slidePaused) return;
@@ -380,7 +363,7 @@ Book a Meet
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white border-2 border-black rounded-2xl w-full max-w-[700px] max-h-[85vh] overflow-hidden relative"
+                className="bg-white border-2 border-black rounded-2xl w-full max-w-[400px] overflow-hidden relative"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Book a meeting"
@@ -389,27 +372,31 @@ Book a Meet
               >
                 <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
                   <span className="font-bold text-sm">Book a Meeting</span>
-                  <button onClick={() => setShowCalendar(false)} className="hover:text-coral transition-colors">
+                  <button onClick={() => setShowCalendar(false)} aria-label="Close booking calendar" className="hover:text-coral transition-colors">
                     <X className="w-5 h-5" />
                   </button>
                 </div>
-                {(iframeLoading || iframeError) && (
-                  iframeError ? (
-                    <div className="flex items-center justify-center h-[600px] text-sm font-medium text-ink/50 flex-col gap-3">
-                      <span>Could not load the booking calendar.</span>
-                      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true" target="_blank" rel="noopener noreferrer" className="bg-ink text-white px-4 py-2 rounded-lg border-2 border-black text-sm font-bold hover:bg-ink/80 transition-colors">
-                        Open booking page
-                      </a>
-                    </div>
-                  ) : <CalendarLoader />
-                )}
-                <iframe
-                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
-                  className={`w-full h-[600px] ${iframeLoading || iframeError ? 'hidden' : ''}`}
-                  title="Schedule a meeting"
-                  onLoad={() => { clearTimeout(iframeTimerRef.current); setIframeLoading(false); }}
-                  onError={() => { clearTimeout(iframeTimerRef.current); setIframeLoading(false); setIframeError(true); }}
-                />
+                <div className="p-8 text-center space-y-5">
+                  <div className="w-16 h-16 rounded-2xl bg-coral/10 border-2 border-coral flex items-center justify-center mx-auto">
+                    <Calendar className="w-8 h-8 text-coral" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-ink mb-1">Pick a time that works for you</p>
+                    <p className="text-xs text-ink/60 font-medium">No account needed &middot; Instant confirmation</p>
+                  </div>
+                  <a
+                    href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-flex group"
+                  >
+                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
+                    <span className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-6 py-3 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]">
+                      <Calendar className="w-4 h-4" />
+                      Open Booking Page
+                    </span>
+                  </a>
+                </div>
               </motion.div>
             </motion.div>
           )}
