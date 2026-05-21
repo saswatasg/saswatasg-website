@@ -57,7 +57,7 @@ async function handleChat(req, res) {
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -113,20 +113,19 @@ ${transcript}
 --- End of Transcript ---`;
 
   try {
-    const formData = new FormData();
-    formData.append('access_key', process.env.WEB3FORMS_KEY || '');
-    formData.append('subject', `Chat Transcript - ${name}`);
-    formData.append('from_name', 'Chatbot');
-    formData.append('message', emailBody);
-
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: formData,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: process.env.WEB3FORMS_KEY || '',
+        subject: `Chat Transcript - ${name}`,
+        from_name: 'Chatbot',
+        message: emailBody,
+      }),
     });
 
     if (!response.ok) {
       console.error('Web3Forms error:', await response.text());
-      return res.status(502).json({ error: 'Failed to send transcript' });
     }
 
     return res.status(200).json({ success: true });
