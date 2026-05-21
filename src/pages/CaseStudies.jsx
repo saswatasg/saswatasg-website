@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, LayoutGrid, List } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 
 const caseStudies = [
@@ -199,11 +199,7 @@ const cardVariants = {
 
 const CaseStudies = () => {
   const navigate = useNavigate();
-
-  const getRowLayout = (index) => {
-    if (index === 0 || index === 1) return 'md:grid-cols-3';
-    return 'md:grid-cols-4';
-  };
+  const [isGrid, setIsGrid] = useState(true);
 
   return (
     <>
@@ -237,7 +233,27 @@ const CaseStudies = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-6 mt-6">
+        <div className="hidden md:flex items-center justify-end gap-3 mt-6">
+          <span className="text-xs font-bold text-ink/40">Layout</span>
+          <div className="flex gap-1 p-1 bg-white border-2 border-black rounded-lg">
+            <motion.button
+              onClick={() => setIsGrid(true)}
+              whileTap={{ scale: 0.95 }}
+              className={`p-1.5 rounded-md transition-colors ${isGrid ? 'bg-ink text-white' : 'bg-white text-ink/40 hover:text-ink'}`}
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </motion.button>
+            <motion.button
+              onClick={() => setIsGrid(false)}
+              whileTap={{ scale: 0.95 }}
+              className={`p-1.5 rounded-md transition-colors ${!isGrid ? 'bg-ink text-white' : 'bg-white text-ink/40 hover:text-ink'}`}
+            >
+              <List className="w-4 h-4" />
+            </motion.button>
+          </div>
+        </div>
+
+        <div className={`grid gap-6 mt-6 ${isGrid ? 'md:grid-cols-3' : ''}`}>
           {caseStudies.map((cs, i) => (
             <motion.div
               key={cs.id}

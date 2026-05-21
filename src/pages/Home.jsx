@@ -42,10 +42,10 @@ const Home = () => {
         <div className="mt-6">
           <Marquee />
         </div>
-        <TestimonialCarousel />
         <div className="pb-16">
           <WhatIDoSection />
         </div>
+        <TestimonialCarousel />
       </div>
     </>
   );

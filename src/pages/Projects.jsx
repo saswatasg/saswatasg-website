@@ -35,7 +35,7 @@ const upcoreProjects = [
     title: "Revenue Model & Pricing Strategy",
     description: "Built the revenue architecture and tiered pricing model for Upcore's AI agent services. Partnered with the CEO on financial modelling and the investor narrative as part of pre-seed fundraising preparation.",
     tags: ["Pricing Strategy", "Revenue Modelling", "Fundraising", "GTM"],
-    result: "Supported $1.2M pre-seed line secured"
+    result: "Revenue model · Pre-seed fundraising support"
   },
   {
     title: "Enterprise Discovery Sprints",

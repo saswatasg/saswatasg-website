@@ -109,7 +109,7 @@ const roles = [
       { text: "Transitioned enterprise outreach from manual LinkedIn prospecting to data-driven outbounding with lead scoring and capacity planning for 3 BDRs — optimized cost-to-book by 36%.", icon: <DollarSign className="w-4 h-4" />, metric: "-36%" },
       { text: "Performed discovery with 20+ prospective enterprise clients across 12 verticals, top-3 high-impact agentic AI opportunities.", icon: <Map className="w-4 h-4" />, metric: "20+" },
       { text: "Produced a 16-page 'State of AI Agents' report covering market sizing, tooling landscape, adoption maturity curve, and 8+ case studies across industries.", icon: <FileText className="w-4 h-4" />, metric: "16 pages" },
-      { text: "Built revenue model and pricing strategy for AI agent services and partnered with CEO on securing a $1.2M pre-seed line.", icon: <DollarSign className="w-4 h-4" />, metric: "$1.2M" },
+      { text: "Built revenue model and pricing strategy for AI agent services and partnered with CEO on securing pre-seed funding.", icon: <DollarSign className="w-4 h-4" /> },
       { text: "Built market intelligence across verticals — tracking agentic AI tooling, competitor positioning, and industry-specific automation trends.", icon: <Brain className="w-4 h-4" /> }
     ]
   },
@@ -209,6 +209,77 @@ function Experience() {
           <p className="mt-2 text-sm md:text-base text-ink/70 font-medium max-w-2xl">
             From AI agent discovery to D2C checkout optimisation — the roles and results that shaped my product journey.
           </p>
+        </motion.div>
+
+        {/* TIMELINE */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 mb-6 relative overflow-hidden"
+          style={{ boxShadow: '8px 8px 0px 0px #0A0A0A' }}
+        >
+          <div className="absolute -top-4 -right-4 w-10 h-10 bg-pink border-2 border-black rounded-lg rotate-12 hidden md:block" />
+          <div className="absolute bottom-6 left-6 w-6 h-6 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
+
+          <div className="flex items-center gap-2 mb-6">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-purple/20 text-purple text-xs font-bold border-2 border-black">
+              The Story So Far
+            </span>
+          </div>
+
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-ink/10 hidden md:block" />
+
+            <div className="space-y-6 md:space-y-0">
+              {[
+                { year: '2026', title: 'AI Agent Product Management', company: 'Upcore Technologies', desc: 'Leading enterprise AI agent discovery and market strategy.' },
+                { year: '2026', title: 'Associate PM — B2B SaaS', company: 'LiveKeeping (IndiaMART)', desc: 'Diagnosed 17:1 adoption gap. Built notification architecture from scratch.' },
+                { year: '2024–26', title: 'Product Manager (Growth)', company: 'Sierra Living Concepts', desc: 'Reduced checkout abandonment 26%. Drove +105% lead submissions. 70+ product rollouts.' },
+                { year: '2023', title: 'Marketing & Sales Intern', company: 'Mozo Hunt', desc: 'Boosted enrollments 24%. Awarded Certificate of Excellence.' },
+                { year: '2022–24', title: 'MBA — Marketing & Analytics', company: 'IIT Jodhpur', desc: 'CAT 97.69 percentile. Product foundations and strategic thinking.' },
+              ].map((milestone, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.3 }}
+                  className="relative md:pl-10 pb-6 md:pb-4 last:pb-0"
+                >
+                  {/* Dot on timeline */}
+                  <div className="hidden md:flex absolute left-[4px] top-1 w-4 h-4 rounded-full bg-white border-2 border-ink items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-ink" />
+                  </div>
+
+                  <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
+                    <span className="text-[10px] font-black text-ink/30 uppercase tracking-widest md:w-16 flex-shrink-0">{milestone.year}</span>
+                    <div className="flex-1">
+                      <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
+                        <h3 className="text-sm font-black text-ink">{milestone.title}</h3>
+                        <span className="text-xs font-bold text-ink/50">{milestone.company}</span>
+                      </div>
+                      <p className="text-xs text-ink/60 font-medium mt-0.5">{milestone.desc}</p>
+                    </div>
+                    {i < 4 && (
+                      <motion.div
+                        className="hidden md:block text-ink/20 ml-auto"
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                      >
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* Mobile separator */}
+                  {i < 4 && <div className="md:hidden mt-2 h-px bg-ink/10" />}
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         <div className="space-y-5">

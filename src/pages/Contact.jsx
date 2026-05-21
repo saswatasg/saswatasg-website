@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageMeta from '@/components/PageMeta';
 import ContactForm from '@/components/contact/ContactForm';
-import { ArrowRight, Calendar, X } from 'lucide-react';
+import { ArrowRight, Calendar, X, Sparkles } from 'lucide-react';
+
+const floatingDecorations = [
+  { emoji: '', className: '-top-3 -left-3 w-10 h-10 bg-pink rotate-12 hidden md:block' },
+  { emoji: '', className: 'bottom-6 -right-3 w-8 h-8 bg-lemon -rotate-12 hidden md:block' },
+  { emoji: '', className: 'top-1/2 -right-4 w-6 h-6 bg-sky rotate-45 hidden lg:block' },
+];
 
 const Contact = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -16,19 +22,66 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ y: -2, transition: { duration: 0.2 } }}
-          className="bg-mint border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 text-center"
+          className="bg-mint border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 text-center relative overflow-hidden"
           style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mb-3">
+          {floatingDecorations.map((d, i) => (
+            <motion.div
+              key={i}
+              className={`absolute ${d.className} border-2 border-black rounded-xl`}
+              animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.05, 1] }}
+              transition={{ duration: 6 + i * 2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          ))}
+
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mb-3"
+          >
+            <Sparkles className="w-3 h-3" />
             Get in Touch
-          </span>
-          <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
-            Let's <span className="text-ink/50">talk</span>
-          </h1>
-          <p className="mt-2 text-sm md:text-base text-ink/70 font-medium max-w-2xl mx-auto">
+          </motion.span>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.3 }}
+            className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight"
+          >
+            Let's{' '}
+            <motion.span
+              className="text-ink/50 inline-block"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              talk
+            </motion.span>
+            <motion.span
+              className="inline-block ml-1"
+              animate={{ rotate: [0, 10, 0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            >
+              
+            </motion.span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.3 }}
+            className="mt-2 text-sm md:text-base text-ink/70 font-medium max-w-2xl mx-auto"
+          >
             Whether you have a project in mind, a collaboration idea, or just want to say hello — I'd love to hear from you.
-          </p>
-          <div className="mt-6 flex justify-center">
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.3 }}
+            className="mt-6 flex justify-center"
+          >
             <div className="relative inline-flex group">
               <div className="absolute inset-0 rounded-lg border-2 border-black bg-pink translate-x-[3px] translate-y-[3px]" />
               <button
@@ -40,12 +93,18 @@ const Contact = () => {
                 <ArrowRight size={18} />
               </button>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
-        <div className="mt-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6"
+        >
           <ContactForm />
-        </div>
+        </motion.div>
 
         <AnimatePresence>
           {showCalendar && (

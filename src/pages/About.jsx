@@ -197,7 +197,7 @@ function About() {
                 <div className="mt-2 space-y-2">
                   {[
                     { label: 'Checkout reduction', value: '–26%' },
-                    { label: 'Cart abandonment', value: '73.1% → 53.9%' },
+                    { label: 'Cart abandonment', value: '73% → 54%' },
                     { label: 'Lead submissions', value: '+105%' },
                     { label: 'Products shipped', value: '70+' },
                   ].map((stat) => (

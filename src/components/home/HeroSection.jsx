@@ -82,8 +82,8 @@ const HeroSection = () => {
       companyColor: 'text-ink/70',
       content: (
         <div className="flex flex-col gap-3">
-          <div className="flex flex-col gap-2">
-            <div className="grid grid-cols-2 gap-2">
+          <div className="bg-white border-2 border-black rounded-xl p-4 transition-all duration-200">
+            <div className="grid grid-cols-2 gap-3">
               <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-3">
                 <div className="text-2xl md:text-3xl font-display font-black tracking-tighter text-ink">17:1</div>
                 <p className="text-xs font-bold text-ink/60">adoption gap</p>
@@ -93,34 +93,25 @@ const HeroSection = () => {
                 <p className="text-xs font-bold text-ink/60">re-engagement lift</p>
               </motion.div>
             </div>
-            <p className="text-xs text-ink/50 font-bold text-center">
-              Diagnosed & escalated to CPO · Weekly CEO-ready reporting
-            </p>
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="flex flex-wrap gap-1.5 items-center justify-center">
             {[
-              { value: '19:1', label: 'E-Invoice gap' },
+              { value: '19:1', label: 'E-Invoice' },
               { value: 'CEO', label: 'C-level escalation' },
               { value: 'PRO+', label: 'Plan focus' },
+              { value: 'PRO+ Plan', label: 'GST' },
+              { value: 'B2B SaaS', label: 'India SMB' },
             ].map((b, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.06, y: -1 }}
-                className={`rounded-xl border border-black p-2 text-center ${i === 0 ? 'bg-lemon/40' : i === 1 ? 'bg-purple/20' : 'bg-pink/30'}`}
-              >
-                <div className="text-sm font-black text-ink">{b.value}</div>
-                <p className="text-[10px] font-bold text-ink/60">{b.label}</p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {['PRO+ Plan', 'GST', 'B2B SaaS', 'India SMB'].map((tag, i) => (
               <motion.span
                 key={i}
-                whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
-                className="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-white border-2 border-black"
+                whileHover={{ scale: 1.08, rotate: [0, -2, 2, 0], transition: { duration: 0.15 } }}
+                className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border-2 border-black ${
+                  i < 3
+                    ? 'bg-white text-ink'
+                    : 'bg-ink/5 text-ink/50 border-ink/30'
+                }`}
               >
-                {tag}
+                {b.value}{b.label ? ` ${b.label}` : ''}
               </motion.span>
             ))}
           </div>
@@ -135,19 +126,19 @@ const HeroSection = () => {
       companyColor: 'text-pink-dark',
       content: (
         <div className="flex flex-col gap-2.5 h-full">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2">
             {[
-              { icon: <Search className="w-5 h-5" />, label: 'Discovery' },
-              { icon: <FileText className="w-5 h-5" />, label: 'Briefing' },
-              { icon: <Route className="w-5 h-5" />, label: 'Roadmap' },
-              { icon: <Rocket className="w-5 h-5" />, label: 'GTM' },
+              { icon: <Search className="w-5 h-5" />, label: 'Discovery', bg: 'bg-blush' },
+              { icon: <FileText className="w-5 h-5" />, label: 'Briefing', bg: 'bg-sky' },
+              { icon: <Route className="w-5 h-5" />, label: 'Roadmap', bg: 'bg-lemon' },
+              { icon: <Rocket className="w-5 h-5" />, label: 'GTM', bg: 'bg-mint' },
             ].map((step, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.15 } }}
-                className="bg-white border-2 border-black rounded-xl p-4 text-center"
+                className={`${step.bg} border-2 border-black rounded-xl p-3.5 text-center`}
               >
-                <span className="w-10 h-10 rounded-xl bg-purple/20 border border-black flex items-center justify-center text-purple mx-auto mb-2">
+                <span className="w-10 h-10 rounded-xl bg-white border-2 border-black flex items-center justify-center text-ink mx-auto mb-1.5">
                   {step.icon}
                 </span>
                 <p className="text-xs font-black text-ink">{step.label}</p>
@@ -159,7 +150,7 @@ const HeroSection = () => {
               <motion.span
                 key={i}
                 whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
-                className="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-white/80 border-2 border-black"
+                className="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-white border-2 border-black"
               >
                 {tag}
               </motion.span>
@@ -167,10 +158,10 @@ const HeroSection = () => {
           </div>
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="flex items-center justify-center gap-2 bg-white/80 border-2 border-black rounded-xl p-2"
+            className="flex items-center justify-center gap-2 bg-purple/20 border-2 border-black rounded-xl p-2"
           >
             <Target className="w-3 h-3 text-purple" />
-            <span className="text-[10px] font-bold text-ink/60">AI agentic product strategy</span>
+            <span className="text-[10px] font-bold text-purple">AI agentic product strategy</span>
             <Layers className="w-3 h-3 text-purple" />
           </motion.div>
         </div>
