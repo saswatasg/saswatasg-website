@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Star, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
@@ -27,6 +27,7 @@ const HeroSection = () => {
   const [iframeLoading, setIframeLoading] = useState(true);
   const [slideIndex, setSlideIndex] = useState(0);
   const [slidePaused, setSlidePaused] = useState(false);
+  const iframeTimerRef = useRef(null);
 
   useEffect(() => {
     if (!showCalendar) {
@@ -34,11 +35,11 @@ const HeroSection = () => {
       setIframeError(false);
       return;
     }
-    const timer = setTimeout(() => {
+    iframeTimerRef.current = setTimeout(() => {
       setIframeLoading(false);
       setIframeError(true);
     }, 10000);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(iframeTimerRef.current);
   }, [showCalendar]);
 
   useEffect(() => {
@@ -406,8 +407,8 @@ Book a Meet
                   src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
                   className={`w-full h-[600px] ${iframeLoading || iframeError ? 'hidden' : ''}`}
                   title="Schedule a meeting"
-                  onLoad={() => setIframeLoading(false)}
-                  onError={() => { setIframeLoading(false); setIframeError(true); }}
+                  onLoad={() => { clearTimeout(iframeTimerRef.current); setIframeLoading(false); }}
+                  onError={() => { clearTimeout(iframeTimerRef.current); setIframeLoading(false); setIframeError(true); }}
                 />
               </motion.div>
             </motion.div>
