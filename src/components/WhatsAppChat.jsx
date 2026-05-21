@@ -12,9 +12,6 @@ const QuickActions = ({ onAction }) => (
     <button onClick={() => onAction('meet')} className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border-2 border-black text-[10px] font-bold text-ink hover:bg-canvas transition-colors">
       <Calendar className="w-3 h-3 text-coral" /> Book a Meet
     </button>
-    <button onClick={() => onAction('resume')} className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border-2 border-black text-[10px] font-bold text-ink hover:bg-canvas transition-colors">
-      <FileText className="w-3 h-3 text-purple" /> Resume
-    </button>
     <button onClick={() => onAction('email')} className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border-2 border-black text-[10px] font-bold text-ink hover:bg-canvas transition-colors">
       <Mail className="w-3 h-3 text-ink" /> Email
     </button>
@@ -33,12 +30,6 @@ const ActionButton = ({ label, icon: Icon, onClick, color = 'coral' }) => (
   </button>
 );
 
-const ResumeEmbed = () => (
-  <div className="mt-2">
-    <ActionButton label="View Resume" icon={FileText} onClick={() => window.open('/resume.pdf', '_blank')} color="purple" />
-  </div>
-);
-
 const EmailEmbed = () => (
   <div className="mt-2 flex flex-col gap-1.5">
     <div className="bg-canvas border-2 border-black rounded-lg px-3 py-1.5 text-xs font-bold text-ink flex items-center justify-between gap-2">
@@ -48,6 +39,12 @@ const EmailEmbed = () => (
       </button>
     </div>
     <ActionButton label="Send Email" icon={Mail} onClick={() => window.open('mailto:saswatasg@gmail.com', '_blank')} color="ink" />
+  </div>
+);
+
+const ResumeEmbed = () => (
+  <div className="mt-2">
+    <ActionButton label="View Resume" icon={FileText} onClick={() => window.open('/resume.pdf', '_blank')} color="purple" />
   </div>
 );
 
@@ -160,8 +157,8 @@ const ChatBot = () => {
     const lower = text.toLowerCase();
     if (lower.includes('whatsapp') || lower.includes('wa.me') || lower.includes('whats app')) return 'whatsapp';
     if (lower.includes('meet') || lower.includes('meeting') || lower.includes('calendar') || lower.includes('call') || lower.includes('book')) return 'meet';
-    if (lower.includes('resume') || lower.includes('cv') || lower.includes('curriculum')) return 'resume';
     if (lower.includes('email') || lower.includes('mail') || lower.includes('saswatasg@gmail')) return 'email';
+    if (lower.includes('resume') || lower.includes('cv') || lower.includes('curriculum')) return 'resume';
     if (lower.includes('case study') || lower.includes('case-study')) return 'case-studies';
     if (lower.includes('project') || lower.includes('portfolio')) return 'projects';
     if (lower.includes('about') || lower.includes('background')) return 'about';

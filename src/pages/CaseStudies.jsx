@@ -8,7 +8,7 @@ const caseStudies = [
   {
     id: 'livekeeping-compliance-gap',
     slug: 'livekeeping-compliance-gap',
-    company: 'LiveKeeping · IndiaMART',
+    company: 'LiveKeeping',
     year: 'B2B SaaS · Analytical',
     title: 'The 17:1 Compliance Gap Nobody Had Measured',
     description: 'For every E-Way Bill generated in LiveKeeping, 17 were going to Tally. I found this in 100K+ API logs and took it to the CEO.',
@@ -48,7 +48,7 @@ const caseStudies = [
   {
     id: 'livekeeping-send-greetings',
     slug: 'livekeeping-send-greetings',
-    company: 'LiveKeeping · IndiaMART',
+    company: 'LiveKeeping',
     year: 'AI Integration · Feature PM',
     title: 'Send Greetings + Nano Banana — +168% Engagement',
     description: 'Integrated Google Gemini Flash image AI into a dormant Pro+ feature. Built a geo-segmented festival calendar across 5 Indian regions.',
@@ -68,7 +68,7 @@ const caseStudies = [
   {
     id: 'livekeeping-notifications',
     slug: 'livekeeping-notifications',
-    company: 'LiveKeeping · IndiaMART',
+    company: 'LiveKeeping',
     year: 'Systems Design · Notification Strategy',
     title: 'Push Notification Architecture — Built From Zero',
     description: '27+ triggers. P0–P3 priority hierarchy. 3-slot daily cap with conflict resolution. Geo-segmented across 5 Indian regions. Built the entire system from scratch.',
@@ -148,7 +148,7 @@ const caseStudies = [
   {
     id: 'livekeeping-report-automation',
     slug: 'livekeeping-report-automation',
-    company: 'LiveKeeping · IndiaMART',
+    company: 'LiveKeeping',
     year: 'Internal Tooling',
     title: 'Daily Report Automation — 3 Sources, 88 Rows, 11 AM',
     description: 'Kibana + MongoDB + GA4 → Google Sheets. One Apps Script trigger. Manual data entry eliminated across the team.',
