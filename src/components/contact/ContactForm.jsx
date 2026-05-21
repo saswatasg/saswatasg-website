@@ -15,7 +15,7 @@ const XIcon = (props) => (
 );
 
 const socialLinks = [
-  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/919836312162?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Would%20love%20to%20connect!', color: 'hover:text-[#25D366]' },
+  { name: 'WhatsApp', icon: MessageSquare, handler: 'whatsapp', color: 'hover:text-[#25D366]' },
   { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99/', color: 'hover:text-[#0A66C2]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/saswatasg99/', color: 'hover:text-[#E4405F]' },
   { name: 'Twitter', icon: XIcon, href: 'https://twitter.com/saswatasg', color: 'hover:text-ink' },
@@ -94,7 +94,16 @@ const ContactForm = () => {
                 {socialLinks.map((social, index) => (
                   <Tooltip key={index} delayDuration={100}>
                     <TooltipTrigger asChild>
-                      <motion.a href={social.href} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={cn('h-10 w-10 flex items-center justify-center rounded-lg bg-white text-ink/50 border-2 border-black transition-colors', social.color)} aria-label={`Visit my ${social.name} profile`}>
+                      <motion.a
+                        href={social.href || '#'}
+                        target={social.href ? '_blank' : undefined}
+                        rel={social.href ? 'noopener noreferrer' : undefined}
+                        onClick={social.handler === 'whatsapp' ? (e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openWhatsApp')); } : undefined}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={cn('h-10 w-10 flex items-center justify-center rounded-lg bg-white text-ink/50 border-2 border-black transition-colors', social.color)}
+                        aria-label={`Visit my ${social.name} profile`}
+                      >
                         <social.icon className="h-5 w-5" />
                       </motion.a>
                     </TooltipTrigger>

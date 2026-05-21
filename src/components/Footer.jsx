@@ -42,12 +42,21 @@ function Footer() {
                 { href: 'https://linkedin.com/in/sss99', label: 'LinkedIn' },
                 { href: 'https://github.com/saswatasg', label: 'GitHub' },
                 { href: 'https://twitter.com/saswatasg', label: 'Twitter' },
-                { href: 'https://wa.me/919836312162', label: 'WhatsApp' },
+                { href: 'https://wa.me/919836312162', label: 'WhatsApp', handler: 'whatsapp' },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/60 hover:text-white font-medium transition-colors">
-                    {link.label}
-                  </a>
+                  {link.handler === 'whatsapp' ? (
+                    <button
+                      onClick={() => window.dispatchEvent(new CustomEvent('openWhatsApp'))}
+                      className="text-sm text-white/60 hover:text-white font-medium transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/60 hover:text-white font-medium transition-colors">
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

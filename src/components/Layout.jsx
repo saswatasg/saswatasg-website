@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Stickman from '@/components/Stickman';
 import ChatBot from '@/components/WhatsAppChat';
+import WhatsAppModal from '@/components/WhatsAppModal';
 import { Toaster } from '@/components/ui/toaster';
 
 const Layout = ({ children }) => {
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
       </main>
       <Stickman />
       <ChatBot />
+      <WhatsAppModal />
       <Footer />
       <Toaster />
     </div>

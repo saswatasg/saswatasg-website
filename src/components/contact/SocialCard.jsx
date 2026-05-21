@@ -12,7 +12,7 @@ const XIcon = (props) => (
 );
 
 const socialLinks = [
-  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/919836312162?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Would%20love%20to%20connect!', color: 'hover:text-[#25D366]' },
+  { name: 'WhatsApp', icon: MessageSquare, handler: 'whatsapp', color: 'hover:text-[#25D366]' },
   { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99', color: 'hover:text-[#0A66C2]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/saswatasg99/', color: 'hover:text-[#E4405F]' },
   { name: 'Twitter', icon: XIcon, href: 'https://twitter.com/saswatasg', color: 'hover:text-white' },
@@ -22,6 +22,11 @@ const socialLinks = [
 const SocialCard = ({ custom }) => {
   const handleAnalytics = (platform) => {
     console.log(`Analytics Event: contact_social_clicked, Platform: ${platform}`);
+  };
+
+  const handleWhatsApp = (e) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent('openWhatsApp'));
   };
 
   return (
@@ -36,16 +41,13 @@ const SocialCard = ({ custom }) => {
               <Tooltip key={index} delayDuration={100}>
                 <TooltipTrigger asChild>
                   <motion.a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleAnalytics(social.name)}
+                    href={social.handler === 'whatsapp' ? undefined : social.href}
+                    target={social.href ? '_blank' : undefined}
+                    rel={social.href ? 'noopener noreferrer' : undefined}
+                    onClick={social.handler === 'whatsapp' ? handleWhatsApp : () => handleAnalytics(social.name)}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className={cn(
-                      'flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-2xl bg-secondary/50 text-muted-foreground transition-colors duration-300',
-                      social.color
-                    )}
+                    className={cn('flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg bg-white text-ink/50 border-2 border-black transition-colors', social.color)}
                     aria-label={`Visit Saswata's ${social.name} profile`}
                   >
                     <social.icon className="h-7 w-7" />

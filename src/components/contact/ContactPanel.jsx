@@ -14,7 +14,7 @@ const XIcon = (props) => (
 );
 
 const socialLinks = [
-  { name: 'WhatsApp', icon: MessageSquare, href: 'https://wa.me/919836312162?text=Hi%20Saswata%2C%20found%20you%20via%20your%20site.%20Can%20we%20chat%3F', color: 'hover:text-[#25D366]' },
+  { name: 'WhatsApp', icon: MessageSquare, handler: 'whatsapp', color: 'hover:text-[#25D366]' },
   { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sss99', color: 'hover:text-[#0A66C2]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/saswatasg99/', color: 'hover:text-[#E4405F]' },
   { name: 'Twitter', icon: XIcon, href: 'https://twitter.com/saswatasg', color: 'hover:text-ink' },
@@ -31,6 +31,10 @@ const ContactPanel = ({ custom }) => {
   const handleCopy = (text, type) => {
     navigator.clipboard.writeText(text);
     toast({ title: `${type} copied!`, description: 'Copied to your clipboard.', duration: 1500 });
+  };
+
+  const handleWhatsApp = () => {
+    window.dispatchEvent(new CustomEvent('openWhatsApp'));
   };
 
   const handleRevealPhone = () => {
@@ -60,7 +64,7 @@ const ContactPanel = ({ custom }) => {
       <p className="font-medium text-ink text-lg text-center">{phoneNumber}</p>
       <div className="grid grid-cols-3 gap-2 pt-4">
         <a href={`tel:${phoneNumber}`} className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><Phone className="h-4 w-4" /> Call</a>
-        <a href={`https://wa.me/919836312162`} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><MessageSquare className="h-4 w-4" /> WhatsApp</a>
+        <button onClick={handleWhatsApp} className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><MessageSquare className="h-4 w-4" /> WhatsApp</button>
         <button onClick={() => handleCopy(phoneNumber, 'Number')} className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2"><Copy className="h-4 w-4" /> Copy</button>
       </div>
     </>
@@ -123,7 +127,17 @@ const ContactPanel = ({ custom }) => {
               {socialLinks.map((social, index) => (
                 <Tooltip key={index} delayDuration={100}>
                   <TooltipTrigger asChild>
-                    <motion.a href={social.href} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} className={cn('flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg bg-ink/5 text-ink/60 transition-colors duration-300', social.color)} aria-label={`Visit Saswata's ${social.name} profile`}>
+                    <motion.a
+                      key={index}
+                      href={social.href || '#'}
+                      target={social.href ? '_blank' : undefined}
+                      rel={social.href ? 'noopener noreferrer' : undefined}
+                      onClick={social.handler === 'whatsapp' ? (e) => { e.preventDefault(); handleWhatsApp(); } : undefined}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={cn('flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg bg-ink/5 text-ink/60 transition-colors duration-300', social.color)}
+                      aria-label={`Visit Saswata's ${social.name} profile`}
+                    >
                       <social.icon className="h-6 w-6" />
                     </motion.a>
                   </TooltipTrigger>

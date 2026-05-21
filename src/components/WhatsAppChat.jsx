@@ -80,7 +80,7 @@ const ChatBot = () => {
 
   const sendToWhatsApp = (text) => {
     const msg = encodeURIComponent(`Hi Saswata! ${text}`);
-    window.open(`https://wa.me/919836312162?text=${msg}`, '_blank');
+    window.dispatchEvent(new CustomEvent('openWhatsApp'));
   };
 
   const handleSend = () => {
