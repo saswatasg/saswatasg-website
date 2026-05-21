@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Calendar } from 'lucide-react';
+import CalendarLoader from '@/components/CalendarLoader';
 
 const navItems = [
   { name: 'About', path: '/about' },
@@ -159,12 +160,14 @@ const Header = () => {
                 </button>
               </div>
               {(iframeLoading || iframeError) && (
-                <div className="flex items-center justify-center h-[600px] text-sm font-medium text-ink/50 flex-col gap-3">
-                  <span>{iframeError ? 'Could not load the booking calendar.' : 'Loading booking calendar...'}</span>
-                  <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true" target="_blank" rel="noopener noreferrer" className="bg-ink text-white px-4 py-2 rounded-lg border-2 border-black text-sm font-bold hover:bg-ink/80 transition-colors">
-                    Open booking page
-                  </a>
-                </div>
+                iframeError ? (
+                  <div className="flex items-center justify-center h-[600px] text-sm font-medium text-ink/50 flex-col gap-3">
+                    <span>Could not load the booking calendar.</span>
+                    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true" target="_blank" rel="noopener noreferrer" className="bg-ink text-white px-4 py-2 rounded-lg border-2 border-black text-sm font-bold hover:bg-ink/80 transition-colors">
+                      Open booking page
+                    </a>
+                  </div>
+                ) : <CalendarLoader />
               )}
               <iframe
                 src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
