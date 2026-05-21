@@ -137,7 +137,7 @@ const roles = [
     achievements: [
       { text: "Redesigned landing flows — bounce rate dropped from 41.04% to 32.54%", icon: <TrendingUp className="w-4 h-4" />, metric: "-20.7%" },
       { text: "Doubled lead submissions (2.14% → 4.40%) via form UX and CTA improvements", icon: <Target className="w-4 h-4" />, metric: "+105%" },
-      { text: "Reduced cart & checkout drop-offs — recovered $329K/month in revenue", icon: <DollarSign className="w-4 h-4" />, metric: "$329K" },
+      { text: "Reduced checkout abandonment by 26% (73.1% → 53.9%)", icon: <DollarSign className="w-4 h-4" />, metric: "–26%" },
       { text: "AI-powered lead assistant drove close rate up to 71.63%", icon: <Zap className="w-4 h-4" />, metric: "71.63%" },
       { text: "Configured 118 SKU pricing tools — ATC rate up 18.17%, +$32K/month", icon: <Settings className="w-4 h-4" />, metric: "+$32K" },
       { text: "Built 5 pricing configuration tools — custom orders up 34%, +$120K/month", icon: <Target className="w-4 h-4" />, metric: "+$120K" },

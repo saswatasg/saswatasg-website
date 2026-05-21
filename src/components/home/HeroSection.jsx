@@ -37,11 +37,11 @@ const HeroSection = () => {
       content: (
         <div className="flex flex-col gap-3">
           <div className="bg-white border-2 border-black rounded-xl p-4 -rotate-[0.3deg] group-hover:rotate-0 transition-all duration-200">
-            <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
+            <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">–26%</div>
             <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue impact</p>
             <div className="flex gap-1.5">
               <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-pink/30 border border-black p-1.5 text-center">
-                <div className="text-sm font-black text-ink">$329K</div>
+                <div className="text-sm font-black text-ink">53.9%</div>
                 <p className="text-[9px] font-bold text-ink/60">Checkout</p>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-lemon/40 border border-black p-1.5 text-center">
@@ -57,7 +57,7 @@ const HeroSection = () => {
           <div className="grid grid-cols-2 gap-2">
             {[
               { value: '70+', label: 'Products shipped' },
-              { value: '84%→63%', label: 'Cart abandonment' },
+              { value: '73.1%→53.9%', label: 'Cart abandonment' },
               { value: '+105%', label: 'Lead submissions' },
               { value: '71.6%', label: 'AI close rate' },
             ].map((g, i) => (
@@ -230,7 +230,7 @@ const HeroSection = () => {
                 </motion.p>
 
                 <motion.p variants={childVariants} className="mt-3 text-ink/70 text-sm md:text-base">
-                  3+ years across AI agents (Upcore), D2C e-commerce ($329K/mo recovered at Sierra), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
+                  3+ years across AI agents (Upcore), D2C e-commerce (73.1% → 53.9% checkout fix at Sierra), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
                 </motion.p>
 
                 <motion.div variants={childVariants} className="flex flex-wrap gap-3 mt-5">

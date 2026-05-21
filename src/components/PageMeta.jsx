@@ -4,17 +4,17 @@ import { useLocation } from 'react-router-dom';
 
 const defaultMeta = {
   title: "Saswata S. Sengupta | Product Manager — Building Products That Move Metrics",
-  description: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata.",
+  description: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata.",
   ogTitle: "Saswata S. Sengupta | Product Manager",
-  ogDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered.",
+  ogDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction.",
   twitterTitle: "Saswata S. Sengupta | Product Manager",
-  twitterDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered."
+  twitterDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction."
 };
 
 const pageSpecificMeta = {
   '/': {
     title: "Saswata S. Sengupta | Product Manager — AI Agents, D2C Growth & B2B SaaS",
-    description: "PM at Upcore Technologies. IIT Jodhpur MBA. $329K/mo in D2C revenue recovered. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata."
+    description: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata."
   },
   '/about': {
     title: "About Me | Saswata S. Sengupta — Product Manager",
@@ -31,6 +31,26 @@ const pageSpecificMeta = {
   '/contact': {
     title: "Contact | Saswata S. Sengupta",
     description: "Get in touch with Saswata S. Sengupta for collaborations, opportunities, or just to say hello."
+  },
+  '/case-studies': {
+    title: "Case Studies | Saswata S. Sengupta",
+    description: "Four product decisions, explained in full — problem, diagnosis, options, outcome, and what I'd do differently."
+  },
+  '/case-studies/cart-checkout': {
+    title: "Case Study: Cart & Checkout — –26% | Saswata S. Sengupta",
+    description: "How I reduced cart abandonment from 73.1% to 53.9% through checkout instrumentation and three targeted fixes at Sierra Living Concepts."
+  },
+  '/case-studies/category-discovery': {
+    title: "Case Study: Category Page Redesign — +17% | Saswata S. Sengupta",
+    description: "How a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps resolved 30+ UX issues and lifted session-to-PDP-click conversion by 17%."
+  },
+  '/case-studies/lead-form': {
+    title: "Case Study: Lead Form Overhaul — +105% | Saswata S. Sengupta",
+    description: "How I rebuilt the lead capture form at Sierra Living Concepts with Material 3 components, contextual microcopy, and latency fixes — driving lead submissions up 105%."
+  },
+  '/case-studies/upcore-lead-scoring': {
+    title: "Case Study: AI Lead Scoring — 71.63% Close Rate | Saswata S. Sengupta",
+    description: "How I built an AI-powered lead scoring and routing engine at Upcore Technologies that drove close rate from 52% to 71.63%."
   }
 };
 

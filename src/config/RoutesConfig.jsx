@@ -6,10 +6,11 @@ const Home = React.lazy(() => import('@/pages/Home'));
 const About = React.lazy(() => import('@/pages/About'));
 const Experience = React.lazy(() => import('@/pages/Experience'));
 const Projects = React.lazy(() => import('@/pages/Projects'));
-const CaseStudies = React.lazy(() => import('@/pages/CaseStudiesIndex'));
-const CaseStudySierra = React.lazy(() => import('@/pages/CaseStudySierra'));
-const CaseStudyLiveKeeping = React.lazy(() => import('@/pages/CaseStudyLiveKeeping'));
-const CaseStudyUpcore = React.lazy(() => import('@/pages/CaseStudyUpcore'));
+const CaseStudies = React.lazy(() => import('@/pages/CaseStudies'));
+const CaseStudyCartCheckout = React.lazy(() => import('@/pages/case-studies/CartCheckout'));
+const CaseStudyCategoryDiscovery = React.lazy(() => import('@/pages/case-studies/CategoryDiscovery'));
+const CaseStudyLeadForm = React.lazy(() => import('@/pages/case-studies/LeadForm'));
+const CaseStudyUpcoreLeadScoring = React.lazy(() => import('@/pages/case-studies/UpcoreLeadScoring'));
 const Contact = React.lazy(() => import('@/pages/Contact'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
 
@@ -45,9 +46,10 @@ const RoutesConfig = () => {
           <Route path="/experience" element={<AnimatedPage><Experience /></AnimatedPage>} />
           <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
           <Route path="/case-studies" element={<AnimatedPage><CaseStudies /></AnimatedPage>} />
-          <Route path="/case-studies/sierra-cart" element={<AnimatedPage><CaseStudySierra /></AnimatedPage>} />
-          <Route path="/case-studies/livekeeping-gap" element={<AnimatedPage><CaseStudyLiveKeeping /></AnimatedPage>} />
-          <Route path="/case-studies/upcore-webinar" element={<AnimatedPage><CaseStudyUpcore /></AnimatedPage>} />
+          <Route path="/case-studies/cart-checkout" element={<AnimatedPage><CaseStudyCartCheckout /></AnimatedPage>} />
+          <Route path="/case-studies/category-discovery" element={<AnimatedPage><CaseStudyCategoryDiscovery /></AnimatedPage>} />
+          <Route path="/case-studies/lead-form" element={<AnimatedPage><CaseStudyLeadForm /></AnimatedPage>} />
+          <Route path="/case-studies/upcore-lead-scoring" element={<AnimatedPage><CaseStudyUpcoreLeadScoring /></AnimatedPage>} />
           <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
           <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
         </Routes>

@@ -72,7 +72,8 @@ const sierraProjects = [
     title: "Category Page Redesign",
     description: "Led a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps. Rebuilt desktop and mobile templates, resolved 30+ UX issues, and aligned components with the Figma library.",
     tags: ["Product Management", "GA4", "UX Design", "Shopify"],
-    result: "Session-to-PDP-click conversion: +17%"
+    result: "Session-to-PDP-click conversion: +17%",
+    caseStudyLink: "/case-studies/category-discovery"
   },
   {
     title: "Landing Page Optimisation",
@@ -84,7 +85,8 @@ const sierraProjects = [
     title: "Lead Form Conversion Overhaul",
     description: "Diagnosed event funnels and rage-clicks, then rebuilt the form with Material 3 components, contextual microcopy, and latency fixes.",
     tags: ["Product Management", "UX", "CRO", "Analytics"],
-    result: "Lead submissions: 2.1×; mobile conversion rate: +38%"
+    result: "Lead submissions: 2.1×; mobile conversion rate: +38%",
+    caseStudyLink: "/case-studies/lead-form"
   },
   {
     title: "Customization Price Calculator",
@@ -114,8 +116,8 @@ const sierraProjects = [
     title: "Cart & Checkout Flow Redesign",
     description: "Ran a friction audit combining GA4 step funnels and Clarity session evidence. Simplified fields, clarified trust signals, and adjusted error/validation UX.",
     tags: ["Checkout UX", "GA4", "Trust Signals", "A/B Testing"],
-    result: "Cart abandonment: 84.47% → 63.26%; revenue recovered: $329K/month",
-    caseStudyLink: "/case-studies/sierra-cart"
+    result: "Checkout abandonment: 73.1% → 53.9% (–26%) · 480K sessions",
+    caseStudyLink: "/case-studies/cart-checkout"
   }
 ];
 

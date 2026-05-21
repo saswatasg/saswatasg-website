@@ -185,7 +185,7 @@ function About() {
                 I'm a Product Manager with 3+ years shipping across AI agents, US D2C e-commerce, and B2B SaaS for Indian SMBs. My work sits at the intersection of discovery, analytics, and execution — I find the problem others haven't quantified, and build the fix with a measurable before/after.
               </p>
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                At Sierra Living Concepts I recovered $329K/month through checkout redesign and cut cart abandonment from 84% to 63%. At LiveKeeping I diagnosed a 17:1 adoption gap that went directly to the CPO. At Upcore I'm now building discovery-to-deployment pipelines for enterprise AI agents.
+                At Sierra Living Concepts I drove a 26% relative reduction in checkout abandonment (73.1% → 53.9%). At LiveKeeping I diagnosed a 17:1 adoption gap that went directly to the CPO. At Upcore I'm now building discovery-to-deployment pipelines for enterprise AI agents.
               </p>
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
                 IIT Jodhpur MBA. Based in Kolkata. I mentor early-career PMs and write about product craft on LinkedIn.
@@ -196,8 +196,8 @@ function About() {
                 <p className="text-xs font-bold text-ink/60 uppercase tracking-wider">Impact Snapshot</p>
                 <div className="mt-2 space-y-2">
                   {[
-                    { label: 'Revenue recovered', value: '$329K/mo' },
-                    { label: 'Cart abandonment', value: '84% → 63%' },
+                    { label: 'Checkout reduction', value: '–26%' },
+                    { label: 'Cart abandonment', value: '73.1% → 53.9%' },
                     { label: 'Lead submissions', value: '+105%' },
                     { label: 'Products shipped', value: '70+' },
                   ].map((stat) => (
