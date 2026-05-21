@@ -7,6 +7,7 @@ const navItems = [
   { name: 'About', path: '/about' },
   { name: 'Experience', path: '/experience' },
   { name: 'Projects', path: '/projects' },
+  { name: 'Case Studies', path: '/case-studies' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -38,7 +39,7 @@ const Header = () => {
                 to={item.path}
                 className={({ isActive }) =>
                   `px-3 py-1.5 text-sm font-bold rounded-lg border-2 transition-all ${
-                    isActive
+                    (isActive || (item.path === '/case-studies' && location.pathname.startsWith('/case-studies')))
                       ? 'bg-ink text-white border-black'
                       : 'text-ink/60 border-transparent hover:text-ink hover:border-black'
                   }`

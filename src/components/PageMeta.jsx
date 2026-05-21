@@ -51,6 +51,26 @@ const pageSpecificMeta = {
   '/case-studies/upcore-lead-scoring': {
     title: "Case Study: AI Lead Scoring — 71.63% Close Rate | Saswata S. Sengupta",
     description: "How I built an AI-powered lead scoring and routing engine at Upcore Technologies that drove close rate from 52% to 71.63%."
+  },
+  '/case-studies/sierra-lead-allocation': {
+    title: "Lead Allocation & Routing | Saswata S. Sengupta",
+    description: "How I built a data-backed lead routing system at Sierra Living Concepts — Gold/Silver/Bronze tiers, agent specialisation, and a 30-day pilot from 10% to full rollout."
+  },
+  '/case-studies/livekeeping-compliance-gap': {
+    title: "Compliance Adoption Gap — 17:1 | Saswata S. Sengupta",
+    description: "How I diagnosed a 17:1 gap between Tally and LiveKeeping for PRO+ compliance usage — and built the executive case that changed the product roadmap."
+  },
+  '/case-studies/livekeeping-send-greetings': {
+    title: "Send Greetings + Nano Banana AI | Saswata S. Sengupta",
+    description: "How I integrated Google's Nano Banana (Gemini Flash) into LiveKeeping's Pro+ Send Greetings feature — geo-segmented festival calendar, AI-generated custom greeting cards, +168% engagement."
+  },
+  '/case-studies/livekeeping-notifications': {
+    title: "Push Notification Strategy | Saswata S. Sengupta",
+    description: "Built LiveKeeping's push notification system from scratch — 27+ triggers, P0–P3 priority hierarchy, 3-slot daily cap, geo-segmented across 5 Indian regions."
+  },
+  '/case-studies/livekeeping-report-automation': {
+    title: "Daily Report Automation | Saswata S. Sengupta",
+    description: "Automated LiveKeeping's daily metrics report — unified Kibana, MongoDB, and GA4 into a single Google Sheets pipeline auto-populated at 11 AM via Apps Script."
   }
 };
 

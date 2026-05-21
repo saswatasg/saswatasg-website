@@ -7,11 +7,17 @@ import PageMeta from '@/components/PageMeta';
 
 const upcoreProjects = [
   {
+    title: "Two-Stage Lead Scoring — 9 Research Signals Before Outreach",
+    description: "Only 10% of leads are ready to buy. Built the B2B GTM framework that identifies which 10% — scoring prospects on 9 intent signals and 9 potential signals before a single outreach message is sent.",
+    tags: ["B2B GTM", "Lead Scoring", "Enterprise", "Sales Ops"],
+    result: "9+9 scoring signals · 75+ priority threshold · 24hr contact SLA",
+    caseStudyLink: "/case-studies/upcore-lead-scoring"
+  },
+  {
     title: "Webinar Sales Engine Redesign",
     description: "Redesigned the full-funnel webinar experience — landing page, email sequence, and post-session nurture. Mapped drop-off points across registration, attendance, and follow-up before rebuilding each touchpoint from the data up.",
     tags: ["Funnel Design", "Email Strategy", "Growth", "Landing Pages"],
-    result: "478 sign-ups/month · +51% from baseline",
-    caseStudyLink: "/case-studies/upcore-webinar"
+    result: "478 sign-ups/month · +51% from baseline"
   },
   {
     title: "Enterprise Outreach Optimization",
@@ -41,15 +47,36 @@ const upcoreProjects = [
 
 const liveKeepingProjects = [
   {
-    title: "E-Way Bill Adoption Diagnosis",
-    description: "Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative to greenlight feature improvements.",
+    title: "E-Way Bill Adoption Diagnosis — 17:1 Compliance Gap",
+    description: "Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative that changed the product roadmap.",
     tags: ["Data Analytics", "B2B SaaS", "User Behavior", "Executive Reporting"],
     result: "17:1 adoption gap diagnosed and presented to VP/CEO",
-    caseStudyLink: "/case-studies/livekeeping-gap"
+    caseStudyLink: "/case-studies/livekeeping-compliance-gap"
   },
   {
-    title: "E-Invoice Adoption Diagnosis",
-    description: "Investigated low utilization of the native E-Invoice module, mapping workflow disconnects between LiveKeeping and Tally's default integrations.",
+    title: "Send Greetings + Nano Banana AI Integration — +168% Engagement",
+    description: "Integrated Google Gemini Flash (Nano Banana) image AI into LiveKeeping's dormant Pro+ Send Greetings feature. Built a geo-segmented festival calendar across 5 Indian regions with 27 occasions.",
+    tags: ["AI Integration", "Feature PM", "India SMB", "Engagement"],
+    result: "+168% feature engagement · 27 occasions · 5 geo-regions",
+    caseStudyLink: "/case-studies/livekeeping-send-greetings"
+  },
+  {
+    title: "Push Notification Architecture — 27 Triggers, Priority Tiers, Geo-Segmented",
+    description: "Redesigned the entire lifecycle messaging architecture covering renewals, transactional states, conflict logic, and feature releases across PRO and PRO+ plan segments.",
+    tags: ["Systems Design", "Notification Strategy", "GST Compliance", "India SMB"],
+    result: "27+ triggers · P0-P3 priority · 3-slot daily cap · 5 geo-regions",
+    caseStudyLink: "/case-studies/livekeeping-notifications"
+  },
+  {
+    title: "Daily Report Automation — 3 Sources, 88 Rows, 11 AM",
+    description: "Built a Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into a single auto-populated report. Eliminated manual data entry across the team.",
+    tags: ["Google Apps Script", "Kibana", "MongoDB", "GA4"],
+    result: "3 sources unified · 88 rows mapped · 11 AM auto-populate",
+    caseStudyLink: "/case-studies/livekeeping-report-automation"
+  },
+  {
+    title: "E-Invoice Adoption Diagnosis — 19:1 Gap",
+    description: "Investigated low utilization of the native E-Invoice module, mapping workflow disconnects between LiveKeeping and Tally's default integrations using the same methodology as the E-Way Bill diagnosis.",
     tags: ["Product Discovery", "Gap Analysis", "Fintech"],
     result: "19:1 E-Invoice adoption gap identified and reported to C-suite"
   },
@@ -58,35 +85,43 @@ const liveKeepingProjects = [
     description: "Engineered a multi-week tracking instrument summarizing complex GST compliance rejection codes across product tiers. Created a standardized data pipeline for executive visibility.",
     tags: ["Dashboarding", "Analytics", "GST Compliance"],
     result: "Weekly CEO dashboard tracking GST rejection errors — reduced manual reporting effort"
-  },
-  {
-    title: "Notification Strategy Overhaul",
-    description: "Redesigned the entire lifecycle messaging architecture covering renewals, transactional states, conflict logic, and feature releases across PRO and PRO+ plan segments.",
-    tags: ["Lifecycle Messaging", "UX Writing", "Push Notifications"],
-    result: "Unified notification system covering 5 user segments and 2 plan tiers"
   }
 ];
 
 const sierraProjects = [
   {
-    title: "Category Page Redesign",
-    description: "Led a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps. Rebuilt desktop and mobile templates, resolved 30+ UX issues, and aligned components with the Figma library.",
+    title: "Cart & Checkout Flow Redesign — –26% Abandonment",
+    description: "Ran a friction audit combining GA4 step funnels and Clarity session evidence. Simplified fields, clarified trust signals, and adjusted error/validation UX.",
+    tags: ["Checkout UX", "GA4", "Trust Signals", "A/B Testing"],
+    result: "Checkout abandonment: 73.1% → 53.9% (–26%) · 480K sessions",
+    caseStudyLink: "/case-studies/cart-checkout"
+  },
+  {
+    title: "Category & Landing Page Redesign — +34% Leads",
+    description: "Led a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps. Replaced commodity category pages with story-driven, trust-led journeys. 1.1M BigQuery events analyzed.",
     tags: ["Product Management", "GA4", "UX Design", "Shopify"],
-    result: "Session-to-PDP-click conversion: +17%",
+    result: "Session-to-PDP-click: +17% · Qualified leads: +34%",
     caseStudyLink: "/case-studies/category-discovery"
+  },
+  {
+    title: "Lead Form Conversion Overhaul — +124% in 28 Days",
+    description: "Diagnosed event funnels and rage-clicks. Rebuilt static form into category-specific modules with Material 3 components, contextual microcopy, and latency fixes.",
+    tags: ["Product Management", "UX", "CRO", "Analytics"],
+    result: "Lead submissions: +124% · Mobile completion time: –41% · Rage clicks: –68%",
+    caseStudyLink: "/case-studies/lead-form"
+  },
+  {
+    title: "Lead Allocation & Routing — Gold/Silver/Bronze System",
+    description: "Built a data-backed lead routing system across 4 agents. Website forms (63.5% CVR) routed differently from chat (4.7% CVR). 30-day pilot from 10% to full rollout.",
+    tags: ["Sales Ops", "Data Analysis", "Routing Design", "Revenue Operations"],
+    result: "Gold source CVR: 63.5% · Bronze source CVR: 0.4% · Days to close: 5.2→3.5 target",
+    caseStudyLink: "/case-studies/sierra-lead-allocation"
   },
   {
     title: "Landing Page Optimisation",
     description: "Used GA4 funnels and Clarity scroll/click insights to ship speed-tuned, modular landing templates that match paid-traffic intent.",
     tags: ["Product Management", "Landing Pages", "A/B Testing", "UX"],
     result: "Bounce rate: −22%; AOV: +8%"
-  },
-  {
-    title: "Lead Form Conversion Overhaul",
-    description: "Diagnosed event funnels and rage-clicks, then rebuilt the form with Material 3 components, contextual microcopy, and latency fixes.",
-    tags: ["Product Management", "UX", "CRO", "Analytics"],
-    result: "Lead submissions: 2.1×; mobile conversion rate: +38%",
-    caseStudyLink: "/case-studies/lead-form"
   },
   {
     title: "Customization Price Calculator",
@@ -111,13 +146,6 @@ const sierraProjects = [
     description: "Event-driven iterations on media gallery, variants, and micro-copy, informed by GA4 custom events and Clarity behavior data.",
     tags: ["GA4", "PDP UX", "Product Management", "UX Research"],
     result: "Add-to-cart rate: +27%; page engagement time: +22%"
-  },
-  {
-    title: "Cart & Checkout Flow Redesign",
-    description: "Ran a friction audit combining GA4 step funnels and Clarity session evidence. Simplified fields, clarified trust signals, and adjusted error/validation UX.",
-    tags: ["Checkout UX", "GA4", "Trust Signals", "A/B Testing"],
-    result: "Checkout abandonment: 73.1% → 53.9% (–26%) · 480K sessions",
-    caseStudyLink: "/case-studies/cart-checkout"
   }
 ];
 
@@ -136,15 +164,21 @@ const Projects = () => {
   };
 
   const { projects, banner } = useMemo(() => {
+    let data;
     switch (activeTab) {
       case 'upcore':
-        return { projects: upcoreProjects, banner: "Upcore Technologies · Product Manager · April 2026–Present · AI agent discovery & enterprise deployment" };
+        data = { projects: upcoreProjects, banner: "Upcore Technologies · Product Manager · April 2026–Present · AI agent discovery & enterprise deployment" };
+        break;
       case 'sierra':
-        return { projects: sierraProjects, banner: "Sierra Living Concepts · Product Manager (Growth) · May 2024–Jan 2026 · US D2C furniture brand" };
+        data = { projects: sierraProjects, banner: "Sierra Living Concepts · Product Manager (Growth) · May 2024–Jan 2026 · US D2C furniture brand" };
+        break;
       case 'livekeeping':
       default:
-        return { projects: liveKeepingProjects, banner: "LiveKeeping · Associate Product Manager · Jan–Apr 2026 · B2B SaaS, GST compliance for Indian SMBs" };
+        data = { projects: liveKeepingProjects, banner: "LiveKeeping · Associate Product Manager · Jan–Apr 2026 · B2B SaaS, GST compliance for Indian SMBs" };
+        break;
     }
+    const sorted = [...data.projects].sort((a, b) => (b.caseStudyLink ? 1 : 0) - (a.caseStudyLink ? 1 : 0));
+    return { projects: sorted, banner: data.banner };
   }, [activeTab]);
 
   return (

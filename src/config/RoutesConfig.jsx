@@ -11,6 +11,11 @@ const CaseStudyCartCheckout = React.lazy(() => import('@/pages/case-studies/Cart
 const CaseStudyCategoryDiscovery = React.lazy(() => import('@/pages/case-studies/CategoryDiscovery'));
 const CaseStudyLeadForm = React.lazy(() => import('@/pages/case-studies/LeadForm'));
 const CaseStudyUpcoreLeadScoring = React.lazy(() => import('@/pages/case-studies/UpcoreLeadScoring'));
+const SierraLeadAllocation = React.lazy(() => import('@/pages/case-studies/SierraLeadAllocation'));
+const LiveKeepingComplianceGap = React.lazy(() => import('@/pages/case-studies/LiveKeepingComplianceGap'));
+const LiveKeepingSendGreetings = React.lazy(() => import('@/pages/case-studies/LiveKeepingSendGreetings'));
+const LiveKeepingNotifications = React.lazy(() => import('@/pages/case-studies/LiveKeepingNotifications'));
+const LiveKeepingReportAutomation = React.lazy(() => import('@/pages/case-studies/LiveKeepingReportAutomation'));
 const Contact = React.lazy(() => import('@/pages/Contact'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
 
@@ -50,6 +55,11 @@ const RoutesConfig = () => {
           <Route path="/case-studies/category-discovery" element={<AnimatedPage><CaseStudyCategoryDiscovery /></AnimatedPage>} />
           <Route path="/case-studies/lead-form" element={<AnimatedPage><CaseStudyLeadForm /></AnimatedPage>} />
           <Route path="/case-studies/upcore-lead-scoring" element={<AnimatedPage><CaseStudyUpcoreLeadScoring /></AnimatedPage>} />
+          <Route path="/case-studies/sierra-lead-allocation" element={<AnimatedPage><SierraLeadAllocation /></AnimatedPage>} />
+          <Route path="/case-studies/livekeeping-compliance-gap" element={<AnimatedPage><LiveKeepingComplianceGap /></AnimatedPage>} />
+          <Route path="/case-studies/livekeeping-send-greetings" element={<AnimatedPage><LiveKeepingSendGreetings /></AnimatedPage>} />
+          <Route path="/case-studies/livekeeping-notifications" element={<AnimatedPage><LiveKeepingNotifications /></AnimatedPage>} />
+          <Route path="/case-studies/livekeeping-report-automation" element={<AnimatedPage><LiveKeepingReportAutomation /></AnimatedPage>} />
           <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
           <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
         </Routes>
