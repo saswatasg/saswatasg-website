@@ -27,6 +27,50 @@ const HeroSection = () => {
     window.dispatchEvent(new CustomEvent('openWhatsApp'));
   };
 
+  const impactSlides = [
+    {
+      company: "Sierra Living Concepts",
+      companyColor: "text-purple",
+      primary: "$594K",
+      primaryLabel: "monthly revenue recovered",
+      breakdowns: [
+        { value: "$329K", label: "Checkout" },
+        { value: "$152K", label: "Pricing" },
+        { value: "$113K", label: "CRM" },
+      ],
+      grid: [
+        { value: "70+", label: "Products shipped" },
+        { value: "84%→63%", label: "Cart abandonment" },
+        { value: "+105%", label: "Lead submissions" },
+        { value: "71.6%", label: "AI close rate" },
+      ],
+    },
+    {
+      company: "LiveKeeping (IndiaMART)",
+      companyColor: "text-ink/60",
+      primary: "17:1",
+      primaryLabel: "adoption gap diagnosed & escalated",
+      breakdowns: [
+        { value: "19:1", label: "E-Invoice gap" },
+        { value: "160%", label: "Re-engagement through notifications" },
+        { value: "CEO", label: "Weekly reporting" },
+      ],
+      grid: [
+        { value: "PRO+", label: "Plan tier focus" },
+        { value: "GST", label: "Compliance" },
+        { value: "B2B", label: "SaaS" },
+        { value: "SMB", label: "Indian market" },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setImpactIndex((prev) => (prev + 1) % impactSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="w-full pt-20 md:pt-24 lg:pt-28">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
