@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, X } from 'lucide-react';
 import caseStudies from '@/data/caseStudies';
 
@@ -10,30 +10,25 @@ const CaseStudyPopup = ({ slug, onClose }) => {
   if (!cs) return null;
 
   return (
-    <AnimatePresence>
+    <motion.div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onKeyDown={(e) => { if (e.key === 'Escape') onClose(); }}
+      tabIndex={-1}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Case study: ${cs.title}`}
+    >
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-        style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
-        onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-        onKeyDown={(e) => { if (e.key === 'Escape') onClose(); }}
-        tabIndex={-1}
-        role="dialog"
-        aria-modal="true"
-        aria-label={`Case study: ${cs.title}`}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        className={`${cs.bg} border-2 border-black rounded-2xl relative overflow-hidden w-full max-w-lg`}
+        style={{ boxShadow: `12px 12px 0px 0px ${cs.shadowColor}`, maxHeight: '90vh', overflowY: 'auto' }}
+        onClick={(e) => e.stopPropagation()}
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className={`${cs.bg} border-2 border-black rounded-2xl relative overflow-hidden w-full max-w-lg`}
-          style={{ boxShadow: `12px 12px 0px 0px ${cs.shadowColor}`, maxHeight: '90vh', overflowY: 'auto' }}
-          onClick={(e) => e.stopPropagation()}
-        >
           <div className="absolute -top-4 -right-4 w-12 h-12 bg-white/30 border-2 border-black rounded-lg rotate-12 hidden md:block" />
 
           <button
@@ -90,8 +85,7 @@ const CaseStudyPopup = ({ slug, onClose }) => {
             </button>
           </div>
         </motion.div>
-      </motion.div>
-    </AnimatePresence>
+    </motion.div>
   );
 };
 

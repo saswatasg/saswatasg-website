@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { MapPin, Award, GraduationCap, Briefcase, FileText } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-import { useCaseStudyPopup } from '@/contexts/CaseStudyPopupContext';
 
 const statColors = [
   { bg: 'bg-blush', shadow: '6px 6px 0px 0px #F4EC4A' },
@@ -14,7 +13,7 @@ const statColors = [
 function About() {
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true });
-  const openCaseStudy = useCaseStudyPopup();
+  const openCaseStudy = (slug) => window.dispatchEvent(new CustomEvent('openCaseStudyPopup', { detail: slug }));
 
   return (
     <>

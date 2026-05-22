@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useCaseStudyPopup } from '@/contexts/CaseStudyPopupContext';
 import {
   Calendar, Map, Layers, GitBranch, Target, Brain, Lightbulb,
   Search, FileText, BarChart2, Bell, MessageSquare, TrendingUp,
@@ -24,8 +23,9 @@ const cardShadows = [
   '6px 6px 0px 0px #E85D3A',
 ];
 
+const openCaseStudy = (slug) => window.dispatchEvent(new CustomEvent('openCaseStudyPopup', { detail: slug }));
+
 const ExperienceCard = ({ role, index }) => {
-  const openCaseStudy = useCaseStudyPopup();
   const slugFromPath = (path) => path.replace('/case-studies/', '');
   return (
   <motion.div
