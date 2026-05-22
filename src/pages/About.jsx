@@ -89,14 +89,14 @@ function About() {
               </p>
 
               <div className="flex flex-wrap gap-2 mt-5">
-                <button onClick={() => openCaseStudy('cart-checkout')} className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors cursor-pointer">
-                  Checkout optimisation &rarr;
+                <button onClick={() => openCaseStudy('cart-checkout')} className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
+                  Checkout optimisation
                 </button>
-                <button onClick={() => openCaseStudy('livekeeping-compliance-gap')} className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors cursor-pointer">
-                  Compliance gap diagnosis &rarr;
+                <button onClick={() => openCaseStudy('livekeeping-compliance-gap')} className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
+                  Compliance gap diagnosis
                 </button>
-                <button onClick={() => openCaseStudy('upcore-lead-scoring')} className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors cursor-pointer">
-                  AI lead scoring &rarr;
+                <button onClick={() => openCaseStudy('upcore-lead-scoring')} className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
+                  AI lead scoring
                 </button>
               </div>
             </div>

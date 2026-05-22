@@ -102,8 +102,8 @@ const ExperienceCard = ({ role, index }) => {
         <p className="text-xs font-bold text-ink/40 uppercase tracking-widest mb-2">Related Case Studies</p>
         <div className="flex flex-wrap gap-2">
           {role.caseStudies.map((cs, i) => (
-            <button key={i} onClick={() => openCaseStudy(slugFromPath(cs.to))} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-canvas transition-colors cursor-pointer">
-              {cs.label} &rarr;
+            <button key={i} onClick={() => openCaseStudy(slugFromPath(cs.to))} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black hover:bg-canvas transition-colors cursor-pointer">
+              {cs.label}
             </button>
           ))}
         </div>

@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Linkedin, Github, Twitter } from 'lucide-react';
+import { Linkedin, Github } from 'lucide-react';
+
+const XIcon = (props) => (
+  <svg {...props} viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1058.01 1148.81H895.408L569.165 687.854V687.828Z" fill="currentColor"/>
+  </svg>
+);
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -85,7 +91,7 @@ function Footer() {
             {[
               { icon: Linkedin, href: 'https://linkedin.com/in/sss99', label: 'LinkedIn' },
               { icon: Github, href: 'https://github.com/saswatasg', label: 'GitHub' },
-              { icon: Twitter, href: 'https://twitter.com/saswatasg', label: 'Twitter' },
+              { icon: XIcon, href: 'https://twitter.com/saswatasg', label: 'X (Twitter)' },
             ].map((social) => (
               <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.label} profile`} className="text-white/40 hover:text-coral transition-colors border-2 border-transparent hover:border-coral rounded-lg p-1.5">
                 <social.icon className="w-4 h-4" />

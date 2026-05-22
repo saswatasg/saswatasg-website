@@ -21,19 +21,7 @@ const childVariants = {
   },
 };
 
-const HeroSection = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [slidePaused, setSlidePaused] = useState(false);
-
-  useEffect(() => {
-    if (slidePaused) return;
-    const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slidePaused]);
-
-  const slides = [
+const slides = [
     {
       id: 'sierra',
       title: 'Revenue Impact',
@@ -183,6 +171,18 @@ const HeroSection = () => {
       ),
     },
   ];
+
+const HeroSection = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [slidePaused, setSlidePaused] = useState(false);
+
+  useEffect(() => {
+    if (slidePaused) return;
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slidePaused]);
 
   return (
     <section className="w-full pt-20 md:pt-24 lg:pt-28">
