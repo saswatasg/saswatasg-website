@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, Award, GraduationCap, Briefcase, FileText, Quote } from 'lucide-react';
+import { MapPin, Award, GraduationCap, Briefcase, FileText } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
+import { useCaseStudyPopup } from '@/contexts/CaseStudyPopupContext';
 
 const statColors = [
   { bg: 'bg-blush', shadow: '6px 6px 0px 0px #F4EC4A' },
@@ -14,6 +14,7 @@ const statColors = [
 function About() {
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true });
+  const openCaseStudy = useCaseStudyPopup();
 
   return (
     <>
@@ -89,15 +90,15 @@ function About() {
               </p>
 
               <div className="flex flex-wrap gap-2 mt-5">
-                <Link to="/case-studies/cart-checkout" className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors">
+                <button onClick={() => openCaseStudy('cart-checkout')} className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors cursor-pointer">
                   Checkout optimisation &rarr;
-                </Link>
-                <Link to="/case-studies/livekeeping-compliance-gap" className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors">
+                </button>
+                <button onClick={() => openCaseStudy('livekeeping-compliance-gap')} className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors cursor-pointer">
                   Compliance gap diagnosis &rarr;
-                </Link>
-                <Link to="/case-studies/upcore-lead-scoring" className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors">
+                </button>
+                <button onClick={() => openCaseStudy('upcore-lead-scoring')} className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-white transition-colors cursor-pointer">
                   AI lead scoring &rarr;
-                </Link>
+                </button>
               </div>
             </div>
 

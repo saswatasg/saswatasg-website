@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useCaseStudyPopup } from '@/contexts/CaseStudyPopupContext';
 import {
   Calendar, Map, Layers, GitBranch, Target, Brain, Lightbulb,
   Search, FileText, BarChart2, Bell, MessageSquare, TrendingUp,
@@ -24,7 +24,10 @@ const cardShadows = [
   '6px 6px 0px 0px #E85D3A',
 ];
 
-const ExperienceCard = ({ role, index }) => (
+const ExperienceCard = ({ role, index }) => {
+  const openCaseStudy = useCaseStudyPopup();
+  const slugFromPath = (path) => path.replace('/case-studies/', '');
+  return (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -99,15 +102,16 @@ const ExperienceCard = ({ role, index }) => (
         <p className="text-xs font-bold text-ink/40 uppercase tracking-widest mb-2">Related Case Studies</p>
         <div className="flex flex-wrap gap-2">
           {role.caseStudies.map((cs, i) => (
-            <Link key={i} to={cs.to} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-canvas transition-colors">
+            <button key={i} onClick={() => openCaseStudy(slugFromPath(cs.to))} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black inline-flex items-center gap-1 hover:bg-canvas transition-colors cursor-pointer">
               {cs.label} &rarr;
-            </Link>
+            </button>
           ))}
         </div>
       </div>
     )}
   </motion.div>
-);
+  );
+};
 
 const roles = [
   {
@@ -145,6 +149,7 @@ const roles = [
     caseStudies: [
       { to: '/case-studies/livekeeping-compliance-gap', label: 'Compliance Gap' },
       { to: '/case-studies/livekeeping-notifications', label: 'Notification Strategy' },
+      { to: '/case-studies/livekeeping-send-greetings', label: 'Send Greetings' },
       { to: '/case-studies/livekeeping-report-automation', label: 'Report Automation' }
     ]
   },
