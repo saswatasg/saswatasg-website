@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Star, X, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
+import { Calendar, Star, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
+import { openScheduleBooking } from '@/utils/openCalendar';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,7 +22,6 @@ const childVariants = {
 };
 
 const HeroSection = () => {
-  const [showCalendar, setShowCalendar] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [slidePaused, setSlidePaused] = useState(false);
 
@@ -239,7 +239,7 @@ const HeroSection = () => {
                   <div className="relative inline-flex group">
                     <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
                     <button
-              onClick={() => setShowCalendar(true)}
+              onClick={openScheduleBooking}
               className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold inline-flex items-center gap-1.5 md:gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
             >
               <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4" aria-hidden="true" />
@@ -350,57 +350,7 @@ Book a Meet
           </motion.div>
         </motion.div>
 
-        <AnimatePresence>
-          {showCalendar && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 p-4"
-              onClick={() => setShowCalendar(false)}
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white border-2 border-black rounded-2xl w-full max-w-[400px] overflow-hidden relative"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Book a meeting"
-                style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-center justify-between bg-ink text-white px-5 py-3 border-b-2 border-black">
-                  <span className="font-bold text-sm">Book a Meeting</span>
-                  <button onClick={() => setShowCalendar(false)} aria-label="Close booking calendar" className="hover:text-coral transition-colors">
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-                <div className="p-8 text-center space-y-5">
-                  <div className="w-16 h-16 rounded-2xl bg-coral/10 border-2 border-coral flex items-center justify-center mx-auto">
-                    <Calendar className="w-8 h-8 text-coral" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-ink mb-1">Pick a time that works for you</p>
-                    <p className="text-xs text-ink/60 font-medium">No account needed &middot; Instant confirmation</p>
-                  </div>
-                  <a
-                    href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative inline-flex group"
-                  >
-                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
-                    <span className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-6 py-3 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]">
-                      <Calendar className="w-4 h-4" />
-                      Open Booking Page
-                    </span>
-                  </a>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
       </div>
     </section>
   );
