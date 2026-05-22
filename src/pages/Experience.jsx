@@ -36,7 +36,7 @@ const ExperienceCard = ({ role, index }) => {
     className={`${cardColors[index % cardColors.length]} border-2 border-black rounded-2xl p-8 md:p-10 relative overflow-hidden group`}
     style={{ boxShadow: cardShadows[index % cardShadows.length] }}
   >
-    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300" />
+    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none" />
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
       <div className="flex items-center gap-2 text-sm font-bold text-ink/60">
         <Calendar className="w-4 h-4 text-ink" />
