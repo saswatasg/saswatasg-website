@@ -151,15 +151,15 @@ const Contact = () => {
               </div>
               <div
                 onClick={() => window.open("https://maps.app.goo.gl/dKgHkFhawWi7z7e48", "_blank", "noopener,noreferrer")}
-                className="relative aspect-video cursor-pointer group overflow-hidden mx-6 mb-5 rounded-xl border-2 border-black"
+                className="relative aspect-video cursor-pointer group overflow-hidden mx-6 mb-5 rounded-xl border-2 border-black bg-gradient-to-br from-ink/5 to-ink/10"
               >
-                <img
-                  src="https://i.postimg.cc/NMLsRFrR/kolkata-map-preview.png"
-                  alt="Map showing Kolkata, India"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                  <span className="text-white font-bold bg-black/50 px-3 py-1.5 rounded-lg text-xs opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 backdrop-blur-sm">
+                <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #0A0A0A 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                  <MapPin className="w-10 h-10 text-coral drop-shadow-sm" strokeWidth={2.5} />
+                  <span className="text-xs font-bold text-ink/60">Kolkata, India</span>
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                  <span className="text-white font-bold bg-ink/80 px-3 py-1.5 rounded-lg text-xs opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 backdrop-blur-sm">
                     <ExternalLink className="w-3 h-3 inline mr-1" />View on Google Maps
                   </span>
                 </div>
@@ -207,27 +207,6 @@ const Contact = () => {
                   ))}
                 </div>
               </TooltipProvider>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="bg-gradient-to-br from-coral/10 to-lemon/10 border-2 border-black rounded-2xl p-6 text-center"
-              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
-            >
-              <motion.span
-                className="text-3xl block mb-2"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                💡
-              </motion.span>
-              <p className="text-sm font-bold text-ink leading-relaxed">
-                "I believe great products come from great conversations."
-              </p>
-              <p className="text-xs text-ink/50 font-medium mt-2">— Saswata</p>
             </motion.div>
 
             <motion.a
