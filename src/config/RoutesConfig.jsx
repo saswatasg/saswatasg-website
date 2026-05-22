@@ -35,7 +35,9 @@ const PageLoader = () => (
 
 const AnimatedPage = ({ children }) => (
   <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
-    {children}
+    <Suspense fallback={<PageLoader />}>
+      {children}
+    </Suspense>
   </motion.div>
 );
 
@@ -43,27 +45,25 @@ const RoutesConfig = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Suspense fallback={<PageLoader />}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-          <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
-          <Route path="/experience" element={<AnimatedPage><Experience /></AnimatedPage>} />
-          <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
-          <Route path="/case-studies" element={<AnimatedPage><CaseStudies /></AnimatedPage>} />
-          <Route path="/case-studies/cart-checkout" element={<AnimatedPage><CaseStudyCartCheckout /></AnimatedPage>} />
-          <Route path="/case-studies/category-discovery" element={<AnimatedPage><CaseStudyCategoryDiscovery /></AnimatedPage>} />
-          <Route path="/case-studies/lead-form" element={<AnimatedPage><CaseStudyLeadForm /></AnimatedPage>} />
-          <Route path="/case-studies/upcore-lead-scoring" element={<AnimatedPage><CaseStudyUpcoreLeadScoring /></AnimatedPage>} />
-          <Route path="/case-studies/sierra-lead-allocation" element={<AnimatedPage><SierraLeadAllocation /></AnimatedPage>} />
-          <Route path="/case-studies/livekeeping-compliance-gap" element={<AnimatedPage><LiveKeepingComplianceGap /></AnimatedPage>} />
-          <Route path="/case-studies/livekeeping-send-greetings" element={<AnimatedPage><LiveKeepingSendGreetings /></AnimatedPage>} />
-          <Route path="/case-studies/livekeeping-notifications" element={<AnimatedPage><LiveKeepingNotifications /></AnimatedPage>} />
-          <Route path="/case-studies/livekeeping-report-automation" element={<AnimatedPage><LiveKeepingReportAutomation /></AnimatedPage>} />
-          <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-          <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
-        </Routes>
-      </Suspense>
+    <AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+        <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
+        <Route path="/experience" element={<AnimatedPage><Experience /></AnimatedPage>} />
+        <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
+        <Route path="/case-studies" element={<AnimatedPage><CaseStudies /></AnimatedPage>} />
+        <Route path="/case-studies/cart-checkout" element={<AnimatedPage><CaseStudyCartCheckout /></AnimatedPage>} />
+        <Route path="/case-studies/category-discovery" element={<AnimatedPage><CaseStudyCategoryDiscovery /></AnimatedPage>} />
+        <Route path="/case-studies/lead-form" element={<AnimatedPage><CaseStudyLeadForm /></AnimatedPage>} />
+        <Route path="/case-studies/upcore-lead-scoring" element={<AnimatedPage><CaseStudyUpcoreLeadScoring /></AnimatedPage>} />
+        <Route path="/case-studies/sierra-lead-allocation" element={<AnimatedPage><SierraLeadAllocation /></AnimatedPage>} />
+        <Route path="/case-studies/livekeeping-compliance-gap" element={<AnimatedPage><LiveKeepingComplianceGap /></AnimatedPage>} />
+        <Route path="/case-studies/livekeeping-send-greetings" element={<AnimatedPage><LiveKeepingSendGreetings /></AnimatedPage>} />
+        <Route path="/case-studies/livekeeping-notifications" element={<AnimatedPage><LiveKeepingNotifications /></AnimatedPage>} />
+        <Route path="/case-studies/livekeeping-report-automation" element={<AnimatedPage><LiveKeepingReportAutomation /></AnimatedPage>} />
+        <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+        <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
+      </Routes>
     </AnimatePresence>
   );
 };
