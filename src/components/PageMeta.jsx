@@ -87,7 +87,7 @@ const PageMeta = ({ title, description, noindex = false }) => {
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath || ''}`;
   
-  const ogImage = "https://i.postimg.cc/Kv5xF852/DP-Linkedin.jpg";
+  const ogImage = "https://i.postimg.cc/k4SXX1GT/Saswata-img1.png";
 
   return (
     <Helmet>

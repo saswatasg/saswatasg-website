@@ -203,7 +203,7 @@ const HeroSection = () => {
               <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
                 <div className="w-36 h-36 md:w-44 md:h-44 overflow-hidden rounded-2xl border-2 border-black rotate-[-1deg] mx-auto md:mx-0" style={{ boxShadow: '6px 6px 0px 0px #E85D3A' }}>
                   <img
-                    src="https://i.postimg.cc/Kv5xF852/DP-Linkedin.jpg"
+                    src="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png"
                     alt="Saswata S. Sengupta"
                     loading="eager"
                     fetchpriority="high"
