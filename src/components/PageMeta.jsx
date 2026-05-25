@@ -4,21 +4,21 @@ import { useLocation } from 'react-router-dom';
 
 const defaultMeta = {
   title: "Saswata S. Sengupta | Product Manager — Building Products That Move Metrics",
-  description: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata.",
+  description: "PM at Upcore Technologies. B.Tech (Mech) + IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata.",
   ogTitle: "Saswata S. Sengupta | Product Manager",
-  ogDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction.",
+  ogDescription: "PM at Upcore Technologies. B.Tech (Mech) + IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction.",
   twitterTitle: "Saswata S. Sengupta | Product Manager",
-  twitterDescription: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction."
+  twitterDescription: "PM at Upcore Technologies. B.Tech (Mech) + IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction."
 };
 
 const pageSpecificMeta = {
   '/': {
     title: "Saswata S. Sengupta | Product Manager — AI Agents, D2C Growth & B2B SaaS",
-    description: "PM at Upcore Technologies. IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata."
+    description: "PM at Upcore Technologies. B.Tech (Mech) + IIT Jodhpur MBA. 73.1% → 53.9% (–26%) checkout abandonment reduction. AI agent discovery, B2B SaaS, growth analytics. Based in Kolkata."
   },
   '/about': {
     title: "About Me | Saswata S. Sengupta — Product Manager",
-    description: "Product Manager with a mix of product management, growth, and data analytics experience across B2B SaaS, D2C, and e-commerce. IIT Jodhpur MBA."
+    description: "Product Manager with a mix of product management, growth, and data analytics experience across B2B SaaS, D2C, and e-commerce. B.Tech (Mech) + IIT Jodhpur MBA."
   },
   '/experience': {
     title: "Professional Background | Saswata S. Sengupta",

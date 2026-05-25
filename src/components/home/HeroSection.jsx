@@ -232,7 +232,7 @@ const HeroSection = () => {
                 </motion.p>
 
                 <motion.p variants={childVariants} className="mt-3 text-ink/70 text-sm md:text-base">
-                   3+ years across AI agents (Upcore), D2C e-commerce (73% → 54% checkout fix at Sierra Living Concepts), and B2B SaaS (LiveKeeping/IndiaMART). IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
+                   3+ years across AI agents (Upcore), D2C e-commerce (73% → 54% checkout fix at Sierra Living Concepts), and B2B SaaS (LiveKeeping/IndiaMART). B.Tech (Mech) + IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
                 </motion.p>
 
                 <motion.div variants={childVariants} className="flex flex-wrap gap-2 md:gap-3 mt-5">

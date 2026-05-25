@@ -8,8 +8,8 @@ const pageMessages = {
     idle: ["Check out my case studies.", "Move fast, ship products. That's the goal.", "B2B SaaS, D2C, AI agents — I've done all three.", "Every project has a before & after.", "Want to see my impact stats?"],
   },
   '/about': {
-    welcome: ["About me? Product Manager. Problem solver.", "IIT Jodhpur MBA. Now building AI agents."],
-    idle: ["IIT Jodhpur MBA. Product Manager. AI agent builder.", "Want the full resume? Just ask!", "From compliance SaaS to AI — shipped across the stack.", "Product discovery is my superpower."],
+    welcome: ["About me? Product Manager. Problem solver.", "B.Tech + MBA. Now building AI agents."],
+    idle: ["B.Tech (Mech) + MBA (IIT Jodhpur). Product Manager. AI agent builder.", "Want the full resume? Just ask!", "From compliance SaaS to AI — shipped across the stack.", "Product discovery is my superpower."],
   },
   '/experience': {
     welcome: ["3+ years of shipping. Here's the timeline."],

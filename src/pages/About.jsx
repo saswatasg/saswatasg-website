@@ -35,7 +35,7 @@ function About() {
             Product Manager — shipping outcomes, not features.
           </h1>
           <p className="mt-3 text-sm md:text-base text-ink/70 font-medium max-w-2xl">
-            IIT Jodhpur MBA. Product Manager across B2B SaaS, D2C e-commerce, and AI.
+            B.Tech (Mech) + MBA. Product Manager across B2B SaaS, D2C e-commerce, and AI.
           </p>
         </motion.div>
 
@@ -43,7 +43,7 @@ function About() {
           {[
             { icon: <Briefcase className="w-5 h-5" />, value: '3+', label: 'Years in Product' },
             { icon: <Award className="w-5 h-5" />, value: '70+', label: 'Product Changes Shipped' },
-            { icon: <GraduationCap className="w-5 h-5" />, value: 'IIT Jodhpur', label: 'MBA' },
+            { icon: <GraduationCap className="w-5 h-5" />, value: 'B.Tech + MBA', label: 'Engineering & Management' },
             { icon: <MapPin className="w-5 h-5" />, value: 'Kolkata', label: 'Based in India' },
           ].map((fact, i) => {
             const c = statColors[i];

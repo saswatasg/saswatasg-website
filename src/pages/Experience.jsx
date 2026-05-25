@@ -272,6 +272,7 @@ function Experience() {
                 { year: '2024–26', title: 'Product Manager (Growth)', company: 'Sierra Living Concepts', desc: 'Reduced checkout abandonment 26%. Drove +105% lead submissions. 70+ product rollouts.' },
                 { year: '2023', title: 'Marketing & Sales Intern', company: 'Mozo Hunt', desc: 'Boosted enrollments 24%. Awarded Certificate of Excellence.' },
                 { year: '2022–24', title: 'MBA — Marketing & Analytics', company: 'IIT Jodhpur', desc: 'CAT 97.69 percentile. Product foundations and strategic thinking.' },
+                { year: '2017–21', title: 'B.Tech — Mechanical Engineering', company: 'Jalpaiguri Government Engineering College', desc: 'Systems thinking and engineering problem-solving foundation.' },
               ].map((milestone, i) => (
                 <motion.div
                   key={i}
@@ -295,7 +296,7 @@ function Experience() {
                       </div>
                       <p className="text-xs text-ink/60 font-medium mt-0.5">{milestone.desc}</p>
                     </div>
-                    {i < 4 && (
+                    {i < 5 && (
                       <motion.div
                         className="hidden md:block text-ink/20 ml-auto"
                         animate={{ x: [0, 4, 0] }}
@@ -307,7 +308,7 @@ function Experience() {
                   </div>
 
                   {/* Mobile separator */}
-                  {i < 4 && <div className="md:hidden mt-2 h-px bg-ink/10" />}
+                  {i < 5 && <div className="md:hidden mt-2 h-px bg-ink/10" />}
                 </motion.div>
               ))}
             </div>
