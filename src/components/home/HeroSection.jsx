@@ -149,7 +149,7 @@ const slides = [
             ))}
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {['Enterprise Clients', 'AI Products', '12 Verticals', 'GTM Strategy'].map((tag, i) => (
+            {['Enterprise Clients', 'AI Products', '12 Verticals', 'GTM Strategy', 'Revenue Modeling', 'Market Intelligence'].map((tag, i) => (
               <motion.span
                 key={i}
                 whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
