@@ -81,49 +81,51 @@ const CaseStudies = () => {
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(`/case-studies/${cs.slug}`); } }}
               tabIndex={0}
               role="button"
-              className={`${cs.bg} border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden group cursor-pointer focus-visible:outline-4 focus-visible:outline-coral focus-visible:outline-offset-2`}
+              className={`${cs.bg} border-2 border-black rounded-2xl p-6 md:p-8 relative overflow-hidden group cursor-pointer focus-visible:outline-4 focus-visible:outline-coral focus-visible:outline-offset-2 flex flex-col`}
               style={{ boxShadow: `8px 8px 0px 0px ${cs.shadowColor}` }}
             >
               <div className="absolute -top-4 -right-4 w-12 h-12 bg-white/30 border-2 border-black rounded-lg rotate-12 hidden md:block group-hover:rotate-[20deg] transition-all duration-300" />
 
-              <div className="flex items-center gap-2 mb-3 relative z-10">
-                <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg border border-black text-[10px] font-bold ${cs.bg === 'bg-ink' ? 'bg-white text-ink' : 'bg-ink text-white'}`}>
-                  {cs.company}
-                </span>
-                <span className={`text-[10px] font-bold ${cs.textColorMuted}`}>{cs.year}</span>
-              </div>
-
-              <h2 className={`text-xl md:text-2xl font-display font-black ${cs.textColor} mb-3 relative z-10 leading-tight`}>
-                {cs.title}
-              </h2>
-
-              <p className={`text-sm md:text-base ${cs.textColorMuted} font-medium leading-relaxed mb-4 relative z-10 max-w-3xl ${isGrid ? 'line-clamp-3' : ''}`}>
-                {cs.description}
-              </p>
-
-              <div className={`grid grid-cols-2 ${!isGrid ? 'md:grid-cols-4' : ''} gap-2 mb-4 relative z-10`}>
-                {cs.stats.map((stat, si) => (
-                  <div key={si} className={`${cs.accentClass} border-2 border-black rounded-xl ${isGrid ? 'p-2' : 'p-3'} text-center`}>
-                    <div className={`${isGrid ? 'text-base md:text-lg' : 'text-xl md:text-2xl'} font-display font-black ${cs.textColor}`}>{stat.value}</div>
-                    <p className={`${isGrid ? 'text-[9px]' : 'text-[10px]'} font-bold ${cs.textColorMuted} mt-0.5`}>{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-1 mb-3 relative z-10">
-                {(isGrid ? cs.tags.slice(0, 3) : cs.tags).map((tag) => (
-                  <span
-                    key={tag}
-                    className={`px-2 py-0.5 rounded-lg ${cs.bg === 'bg-ink' ? 'bg-white/10 text-white/60' : 'bg-white text-ink/60'} text-[9px] font-bold border-2 border-black`}
-                  >
-                    {tag}
+              <div className="flex flex-col flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-3 relative z-10">
+                  <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg border border-black text-[10px] font-bold ${cs.bg === 'bg-ink' ? 'bg-white text-ink' : 'bg-ink text-white'}`}>
+                    {cs.company}
                   </span>
-                ))}
-                {isGrid && cs.tags.length > 3 && (
-                  <span className="px-2 py-0.5 rounded-lg bg-white text-ink/30 text-[9px] font-bold border-2 border-black">
-                    +{cs.tags.length - 3}
-                  </span>
-                )}
+                  <span className={`text-[10px] font-bold ${cs.textColorMuted}`}>{cs.year}</span>
+                </div>
+
+                <h2 className={`text-xl md:text-2xl font-display font-black ${cs.textColor} mb-3 relative z-10 leading-tight`}>
+                  {cs.title}
+                </h2>
+
+                <p className={`text-sm md:text-base ${cs.textColorMuted} font-medium leading-relaxed mb-4 relative z-10 max-w-3xl ${isGrid ? 'line-clamp-3' : ''}`}>
+                  {cs.description}
+                </p>
+
+                <div className={`grid grid-cols-2 ${!isGrid ? 'md:grid-cols-4' : ''} gap-2 mb-4 relative z-10`}>
+                  {cs.stats.map((stat, si) => (
+                    <div key={si} className={`${cs.accentClass} border-2 border-black rounded-xl ${isGrid ? 'p-2' : 'p-3'} text-center`}>
+                      <div className={`${isGrid ? 'text-base md:text-lg' : 'text-xl md:text-2xl'} font-display font-black ${cs.textColor}`}>{stat.value}</div>
+                      <p className={`${isGrid ? 'text-[9px]' : 'text-[10px]'} font-bold ${cs.textColorMuted} mt-0.5`}>{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-1 mb-3 relative z-10">
+                  {(isGrid ? cs.tags.slice(0, 3) : cs.tags).map((tag) => (
+                    <span
+                      key={tag}
+                      className={`px-2 py-0.5 rounded-lg ${cs.bg === 'bg-ink' ? 'bg-white/10 text-white/60' : 'bg-white text-ink/60'} text-[9px] font-bold border-2 border-black`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {isGrid && cs.tags.length > 3 && (
+                    <span className="px-2 py-0.5 rounded-lg bg-white text-ink/30 text-[9px] font-bold border-2 border-black">
+                      +{cs.tags.length - 3}
+                    </span>
+                  )}
+                </div>
               </div>
 
               <span

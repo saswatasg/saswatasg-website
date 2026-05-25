@@ -24,7 +24,7 @@ const caseStudies = [
     slug: 'cart-checkout',
     company: 'Sierra Living Concepts',
     year: 'D2C E-Commerce',
-    title: 'Cart & Checkout Redesign — –26% Abandonment',
+    title: 'From 73% to 54%: The Cart & Checkout Fix That Outperformed Wayfair',
     description: '480,000 sessions. 8 Baymard violations. One mobile-first redesign that outperformed Wayfair on every metric.',
     stats: [
       { value: '–26%', label: 'Checkout Abandonment' },
@@ -44,7 +44,7 @@ const caseStudies = [
     slug: 'livekeeping-send-greetings',
     company: 'LiveKeeping',
     year: 'AI Integration · Feature PM',
-    title: 'Send Greetings + Nano Banana — +168% Engagement',
+    title: 'AI-Powered Send Greetings: +168% Engagement From a Dormant Feature',
     description: 'Integrated Google Gemini Flash image AI into a dormant Pro+ feature. Built a geo-segmented festival calendar across 5 Indian regions.',
     stats: [
       { value: '+168%', label: 'Feature Engagement' },
@@ -64,7 +64,7 @@ const caseStudies = [
     slug: 'livekeeping-notifications',
     company: 'LiveKeeping',
     year: 'Systems Design · Notification Strategy',
-    title: 'Push Notification Architecture — Built From Zero',
+    title: 'Push Notifications From Zero: 27+ Triggers, 5 Regions, One System',
     description: '27+ triggers. P0–P3 priority hierarchy. 3-slot daily cap with conflict resolution. Geo-segmented across 5 Indian regions. Built the entire system from scratch.',
     stats: [
       { value: '27+', label: 'Event Triggers' },
@@ -84,7 +84,7 @@ const caseStudies = [
     slug: 'category-discovery',
     company: 'Sierra Living Concepts',
     year: 'D2C Discovery',
-    title: 'Category & Landing Redesign — +34% Leads',
+    title: 'Story-Driven Category Pages: +34% Leads Without a Single Ad',
     description: 'Replaced commodity category pages with story-driven, trust-led journeys. 1.1M BigQuery events. 376 in-session intercepts.',
     stats: [
       { value: '+34%', label: 'Qualified Leads' },
@@ -104,7 +104,7 @@ const caseStudies = [
     slug: 'lead-form',
     company: 'Sierra Living Concepts',
     year: 'Form Optimization',
-    title: 'Lead Form Optimization — +124% in 28 Days',
+    title: 'Lead Form Overhaul: +124% Without a Single New Visitor',
     description: 'Static form. Zero conditional logic. Rebuilt into category-specific modules. No traffic changes — pure UX architecture.',
     stats: [
       { value: '+124%', label: 'Submission Rate' },
@@ -124,7 +124,7 @@ const caseStudies = [
     slug: 'sierra-lead-allocation',
     company: 'Sierra Living Concepts',
     year: 'Sales Operations',
-    title: 'Lead Allocation & Routing — Built the System',
+    title: 'Gold, Silver, Bronze: Lead Routing That Closed 63.5%',
     description: 'Website Forms convert at 63.5%. Chat converts at 4.7%. The team was treating them identically. Built Gold/Silver/Bronze routing across 4 agents.',
     stats: [
       { value: '63.5%', label: 'Gold Source CVR' },
@@ -144,7 +144,7 @@ const caseStudies = [
     slug: 'livekeeping-report-automation',
     company: 'LiveKeeping',
     year: 'Internal Tooling',
-    title: 'Daily Report Automation — 3 Sources, 88 Rows, 11 AM',
+    title: 'Daily Report Automation: 3 Sources, 88 Rows, 0 Manual Steps',
     description: 'Kibana + MongoDB + GA4 → Google Sheets. One Apps Script trigger. Manual data entry eliminated across the team.',
     stats: [
       { value: '3', label: 'Data Sources Unified' },
@@ -164,7 +164,7 @@ const caseStudies = [
     slug: 'upcore-lead-scoring',
     company: 'Upcore Technologies',
     year: 'B2B GTM · Framework',
-    title: 'Two-Stage Lead Scoring — 9 Research Signals Before Outreach',
+    title: 'Two-Stage Lead Scoring: 9 Signals Before the First Outreach',
     description: 'Only 10% of leads are ready to buy. Built the system that identifies which 10% — before a single outreach message is sent.',
     stats: [
       { value: '9+9', label: 'Scoring Signals' },
