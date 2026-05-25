@@ -316,7 +316,7 @@ Book a Meet
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex-1 min-h-[200px] overflow-hidden"
+                    className="flex-1 min-h-[200px]"
                     aria-live="polite"
                   >
                     {slides[slideIndex].content}
