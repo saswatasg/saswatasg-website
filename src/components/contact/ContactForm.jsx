@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics';
 import { cn } from '@/lib/utils';
 
 const ContactForm = () => {
@@ -40,6 +41,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isFormValid) return;
+    trackEvent('contact_form', 'submit', name);
     setIsSubmitting(true);
     let error = null;
     try {
@@ -62,6 +64,7 @@ const ContactForm = () => {
     if (error) {
       toast({ title: 'Uh oh! Something went wrong.', description: 'There was a problem with your request. Please try again.', variant: 'destructive', duration: 5000 });
     } else {
+      trackEvent('contact_form', 'success');
       toast({ title: 'Message Sent!', description: 'Thanks for reaching out. I\'ll get back to you soon!', duration: 5000 });
       setName(''); setEmail(''); setPhone(''); setMessage(''); setEmailError('');
     }

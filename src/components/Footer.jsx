@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Linkedin, Github } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics';
 
 const XIcon = (props) => (
   <svg {...props} viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +36,7 @@ function Footer() {
                 { to: '/contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-sm text-white/60 hover:text-white font-medium transition-colors">
+                  <Link to={link.to} onClick={() => trackEvent('footer', 'page_link', link.label)} className="text-sm text-white/60 hover:text-white font-medium transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -54,13 +55,13 @@ function Footer() {
                 <li key={link.label}>
                   {link.handler === 'whatsapp' ? (
                     <button
-                      onClick={() => window.dispatchEvent(new CustomEvent('openWhatsApp'))}
+                      onClick={() => { trackEvent('footer', 'whatsapp'); window.dispatchEvent(new CustomEvent('openWhatsApp')); }}
                       className="text-sm text-white/60 hover:text-white font-medium transition-colors"
                     >
                       {link.label}
                     </button>
                   ) : (
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/60 hover:text-white font-medium transition-colors">
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('footer', 'connect_link', link.label)} className="text-sm text-white/60 hover:text-white font-medium transition-colors">
                       {link.label}
                     </a>
                   )}
@@ -76,7 +77,7 @@ function Footer() {
                 { href: 'mailto:saswatasg@gmail.com', label: 'saswatasg@gmail.com' },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/60 hover:text-white font-medium transition-colors">
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('footer', 'resource_link', link.label)} className="text-sm text-white/60 hover:text-white font-medium transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -93,7 +94,7 @@ function Footer() {
               { icon: Github, href: 'https://github.com/saswatasg', label: 'GitHub' },
               { icon: XIcon, href: 'https://twitter.com/saswatasg', label: 'X (Twitter)' },
             ].map((social) => (
-              <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.label} profile`} className="text-white/40 hover:text-coral transition-colors border-2 border-transparent hover:border-coral rounded-lg p-1.5">
+              <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('footer', 'social_icon', social.label)} aria-label={`Visit my ${social.label} profile`} className="text-white/40 hover:text-coral transition-colors border-2 border-transparent hover:border-coral rounded-lg p-1.5">
                 <social.icon className="w-4 h-4" />
               </a>
             ))}

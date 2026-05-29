@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Star, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
 import { openScheduleBooking } from '@/utils/openCalendar';
+import { trackEvent } from '@/utils/analytics';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -179,7 +180,9 @@ const HeroSection = () => {
   useEffect(() => {
     if (slidePaused) return;
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % slides.length);
+      const next = (slideIndex + 1) % slides.length;
+      trackEvent('hero_slideshow', 'auto_advance', slides[next].id);
+      setSlideIndex(next);
     }, 5000);
     return () => clearInterval(timer);
   }, [slidePaused]);
@@ -239,7 +242,7 @@ const HeroSection = () => {
                   <div className="relative inline-flex group">
                     <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
                     <button
-              onClick={openScheduleBooking}
+              onClick={() => { trackEvent('hero_cta', 'book_a_meet'); openScheduleBooking(); }}
               className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold inline-flex items-center gap-1.5 md:gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
             >
               <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4" aria-hidden="true" />
@@ -249,6 +252,7 @@ Book a Meet
                   <div className="relative inline-flex group">
                     <div className="absolute inset-0 rounded-lg border-2 border-black bg-lemon translate-x-[3px] translate-y-[3px]" />
                     <Link
+                      onClick={() => trackEvent('hero_cta', 'view_case_studies')}
                       to="/case-studies"
                       className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold min-h-[44px] inline-flex items-center gap-1.5 md:gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
                     >
@@ -325,7 +329,7 @@ Book a Meet
 
               <div className="flex items-center justify-center gap-2 pt-4">
                 <motion.button
-                  onClick={() => setSlidePaused(!slidePaused)}
+                  onClick={() => { trackEvent('hero_slideshow', slidePaused ? 'play' : 'pause'); setSlidePaused(!slidePaused); }}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.8 }}
                   className="w-5 h-5 rounded-full bg-white border border-black flex items-center justify-center hover:bg-canvas transition-colors"
@@ -336,7 +340,7 @@ Book a Meet
                 {slides.map((_, i) => (
                   <motion.button
                     key={i}
-                    onClick={() => setSlideIndex(i)}
+                    onClick={() => { trackEvent('hero_slideshow', 'dot_nav', slides[i].id, i); setSlideIndex(i); }}
                     whileHover={{ scale: 1.5 }}
                     whileTap={{ scale: 0.8 }}
                     className={`w-2.5 h-2.5 rounded-full border border-black transition-all duration-300 ${

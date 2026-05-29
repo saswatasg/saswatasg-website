@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Calendar } from 'lucide-react';
 import { openScheduleBooking } from '@/utils/openCalendar';
+import { trackEvent } from '@/utils/analytics';
 
 const navItems = [
   { name: 'About', path: '/about' },
@@ -37,6 +38,7 @@ const Header = () => {
               <NavLink
                 key={item.name}
                 to={item.path}
+                onClick={() => trackEvent('navigation', 'nav_click', item.name)}
                 className={({ isActive }) =>
                   `px-3 py-1.5 text-sm font-bold rounded-lg border-2 transition-all ${
                     (isActive || (item.path === '/case-studies' && location.pathname.startsWith('/case-studies')))
@@ -54,7 +56,7 @@ const Header = () => {
             <div className="relative inline-flex group">
               <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <button
-                onClick={openScheduleBooking}
+                onClick={() => { trackEvent('navigation', 'book_a_call'); openScheduleBooking(); }}
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
               >
                 Book a Call
@@ -98,6 +100,7 @@ const Header = () => {
                   <NavLink
                     key={item.path}
                     to={item.path}
+                    onClick={() => trackEvent('navigation', 'mobile_nav_click', item.name)}
                     className={({ isActive }) =>
                       `px-4 py-3 rounded-lg text-sm font-bold border-2 transition-all ${
                         isActive ? 'bg-ink text-white border-black' : 'text-ink/70 border-transparent hover:border-black'
@@ -108,7 +111,7 @@ const Header = () => {
                   </NavLink>
                 ))}
                 <button
-                  onClick={() => { openScheduleBooking(); setIsOpen(false); }}
+                  onClick={() => { trackEvent('navigation', 'mobile_book_a_call'); openScheduleBooking(); setIsOpen(false); }}
                   className="bg-ink text-white rounded-lg border-2 border-black px-4 py-3 text-sm font-bold text-center mt-2 hover:bg-white hover:text-ink transition-all duration-200 flex items-center justify-center gap-2 w-full"
                 >
                   <Calendar className="w-4 h-4" />

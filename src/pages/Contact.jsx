@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import PageMeta from '@/components/PageMeta';
 import ContactForm from '@/components/contact/ContactForm';
 import { openScheduleBooking } from '@/utils/openCalendar';
+import { trackEvent } from '@/utils/analytics';
 import { ArrowRight, Calendar, Sparkles, Clock, MapPin, Heart, MessageSquare, Linkedin, Instagram, Github, ExternalLink } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -103,7 +104,7 @@ const Contact = () => {
           >
             <div className="relative inline-flex group">
               <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
-              <button onClick={openScheduleBooking} className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]">
+              <button onClick={() => { trackEvent('contact', 'book_a_meeting'); openScheduleBooking(); }} className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]">
                 <Calendar size={18} />
                 Book a Meeting
                 <ArrowRight size={18} />
@@ -150,7 +151,7 @@ const Contact = () => {
                 </div>
               </div>
               <div
-                onClick={() => window.open("https://maps.app.goo.gl/dKgHkFhawWi7z7e48", "_blank", "noopener,noreferrer")}
+                onClick={() => { trackEvent('contact', 'map_click'); window.open("https://maps.app.goo.gl/dKgHkFhawWi7z7e48", "_blank", "noopener,noreferrer"); }}
                 className="relative aspect-video cursor-pointer group overflow-hidden mx-6 mb-5 rounded-xl border-2 border-black bg-gradient-to-br from-ink/5 to-ink/10"
               >
                 <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #0A0A0A 1px, transparent 0)', backgroundSize: '20px 20px' }} />
@@ -192,7 +193,7 @@ const Contact = () => {
                           href={social.href || '#'}
                           target={social.href ? '_blank' : undefined}
                           rel={social.href ? 'noopener noreferrer' : undefined}
-                          onClick={social.handler === 'whatsapp' ? (e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openWhatsApp')); } : undefined}
+                          onClick={social.handler === 'whatsapp' ? (e) => { e.preventDefault(); trackEvent('contact', 'social_whatsapp'); window.dispatchEvent(new CustomEvent('openWhatsApp')); } : () => trackEvent('contact', 'social_link', social.name)}
                           whileHover={{ scale: 1.05, y: -2 }}
                           whileTap={{ scale: 0.95 }}
                           className={cn('flex items-center gap-2 px-3 py-2 rounded-lg border-2 border-black text-xs font-bold text-ink/60 transition-colors', social.color)}
@@ -213,6 +214,7 @@ const Contact = () => {
               href="https://drive.google.com/file/d/1cRaGUx3cvEYShMD67zLQIK4UxdPi6p-o/view"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('contact', 'download_resume')}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

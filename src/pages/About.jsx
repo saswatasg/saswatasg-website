@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { MapPin, Award, GraduationCap, Briefcase, FileText } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
+import { trackEvent } from '@/utils/analytics';
 
 const statColors = [
   { bg: 'bg-blush', shadow: '6px 6px 0px 0px #F4EC4A' },
@@ -89,13 +90,13 @@ function About() {
               </p>
 
               <div className="flex flex-wrap gap-2 mt-5">
-                <button onClick={() => openCaseStudy('cart-checkout')} className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
+                <button onClick={() => { trackEvent('about', 'case_study_tag', 'cart-checkout'); openCaseStudy('cart-checkout'); }} className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
                   Checkout optimisation
                 </button>
-                <button onClick={() => openCaseStudy('livekeeping-compliance-gap')} className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
+                <button onClick={() => { trackEvent('about', 'case_study_tag', 'livekeeping-compliance-gap'); openCaseStudy('livekeeping-compliance-gap'); }} className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
                   Compliance gap diagnosis
                 </button>
-                <button onClick={() => openCaseStudy('upcore-lead-scoring')} className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
+                <button onClick={() => { trackEvent('about', 'case_study_tag', 'upcore-lead-scoring'); openCaseStudy('upcore-lead-scoring'); }} className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
                   AI lead scoring
                 </button>
               </div>
@@ -155,6 +156,7 @@ function About() {
               href="https://drive.google.com/file/d/1z4QJfKgGbVUGM1N3tXtTfPlamug49gGY/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('about', 'download_resume')}
               className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-5 py-2.5 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
             >
               <FileText className="w-4 h-4" />

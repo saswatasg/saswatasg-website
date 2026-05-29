@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, MessageCircle, ExternalLink, Copy, Calendar, FileText, Mail } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics';
 
 const MAX_MESSAGES = 6;
 
@@ -123,6 +124,7 @@ const ChatBot = () => {
   }, []);
 
   const handleQuickAction = (action) => {
+    trackEvent('chatbot', 'quick_action', action);
     if (action === 'whatsapp') {
       addUserMsg('Open WhatsApp');
       setTimeout(() => {
@@ -170,6 +172,7 @@ const ChatBot = () => {
   const handleSend = async () => {
     const text = input.trim();
     if (!text || isLoading) return;
+    trackEvent('chatbot', 'message_sent');
     setInput('');
     setMessageCount((prev) => prev + 1);
     const newCount = messageCount + 1;
@@ -361,7 +364,7 @@ const ChatBot = () => {
       </AnimatePresence>
 
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => { trackEvent('chatbot', isOpen ? 'close' : 'open'); setIsOpen(!isOpen); }}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
         className="w-14 h-14 rounded-full bg-coral border-2 border-black flex items-center justify-center text-ink"
         style={{ boxShadow: '4px 4px 0px 0px #0A0A0A' }}

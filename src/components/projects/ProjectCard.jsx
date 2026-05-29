@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics';
 
 const cardColors = ['bg-blush', 'bg-sky', 'bg-mint', 'bg-lemon', 'bg-blush', 'bg-sky', 'bg-mint', 'bg-lemon'];
 const cardShadows = [
@@ -72,6 +73,7 @@ const ProjectCard = ({ title, description, tags, result, index, caseStudyLink, c
       {caseStudyLink && (
         <Link
           to={caseStudyLink}
+          onClick={() => trackEvent('projects', 'case_study_link', companyName)}
           className="text-xs font-bold text-purple hover:text-ink inline-flex items-center gap-1 transition-colors relative z-10"
         >
           Read Full Case Study

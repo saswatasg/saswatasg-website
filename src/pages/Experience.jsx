@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { trackEvent } from '@/utils/analytics';
 import {
   Calendar, Map, Layers, GitBranch, Target, Brain, Lightbulb,
   Search, FileText, BarChart2, Bell, MessageSquare, TrendingUp,
@@ -102,7 +103,7 @@ const ExperienceCard = ({ role, index }) => {
         <p className="text-xs font-bold text-ink/40 uppercase tracking-widest mb-2">Related Case Studies</p>
         <div className="flex flex-wrap gap-2">
           {role.caseStudies.map((cs, i) => (
-            <button key={i} onClick={() => openCaseStudy(slugFromPath(cs.to))} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black hover:bg-canvas transition-colors cursor-pointer">
+            <button key={i} onClick={() => { trackEvent('experience', 'case_study', cs.label); openCaseStudy(slugFromPath(cs.to)); }} className="text-xs font-bold bg-white text-ink px-2.5 py-1 rounded-lg border-2 border-black hover:bg-canvas transition-colors cursor-pointer">
               {cs.label}
             </button>
           ))}

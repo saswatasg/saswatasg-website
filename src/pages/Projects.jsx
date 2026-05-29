@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Rocket, Armchair, Brain } from 'lucide-react';
 import ProjectCard from '@/components/projects/ProjectCard';
 import PageMeta from '@/components/PageMeta';
+import { trackEvent } from '@/utils/analytics';
 
 const allProjects = [
   {
@@ -222,7 +223,7 @@ const Projects = () => {
                 return (
                   <button
                     key={f.id}
-                    onClick={() => setActiveFilter(f.id)}
+                    onClick={() => { trackEvent('projects', 'filter', f.id); setActiveFilter(f.id); }}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border-2 border-black whitespace-nowrap transition-all flex-shrink-0 ${
                       isActive ? 'bg-ink text-white' : 'bg-white text-ink/50 hover:text-ink hover:bg-canvas'
                     }`}

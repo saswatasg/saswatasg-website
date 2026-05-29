@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, LayoutGrid, List } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import caseStudies from '@/data/caseStudies';
+import { trackEvent } from '@/utils/analytics';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -55,14 +56,14 @@ const CaseStudies = () => {
           <span className="text-xs font-bold text-ink/40">Layout</span>
           <div className="flex gap-1 p-1 bg-white border-2 border-black rounded-lg">
             <motion.button
-              onClick={() => setIsGrid(true)}
+              onClick={() => { trackEvent('case_studies', 'layout_grid'); setIsGrid(true); }}
               whileTap={{ scale: 0.95 }}
               className={`p-1.5 rounded-md transition-colors ${isGrid ? 'bg-ink text-white' : 'bg-white text-ink/40 hover:text-ink'}`}
             >
               <LayoutGrid className="w-4 h-4" />
             </motion.button>
             <motion.button
-              onClick={() => setIsGrid(false)}
+              onClick={() => { trackEvent('case_studies', 'layout_list'); setIsGrid(false); }}
               whileTap={{ scale: 0.95 }}
               className={`p-1.5 rounded-md transition-colors ${!isGrid ? 'bg-ink text-white' : 'bg-white text-ink/40 hover:text-ink'}`}
             >
@@ -77,7 +78,7 @@ const CaseStudies = () => {
               key={cs.id}
               variants={cardVariants}
               whileHover={{ y: -4, scale: 1.005, transition: { duration: 0.2 } }}
-              onClick={() => navigate(`/case-studies/${cs.slug}`)}
+              onClick={() => { trackEvent('case_studies', 'card_click', cs.title); navigate(`/case-studies/${cs.slug}`); }}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(`/case-studies/${cs.slug}`); } }}
               tabIndex={0}
               role="button"
