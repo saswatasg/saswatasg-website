@@ -113,19 +113,22 @@ ${transcript}
 --- End of Transcript ---`;
 
   try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+    const response = await fetch('https://formsubmit.co/ajax/saswatasg@gmail.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_KEY || '',
-        subject: `Chat Transcript - ${name}`,
-        from_name: 'Chatbot',
+        _subject: `Chat Transcript - ${name}`,
+        _template: 'table',
+        _captcha: 'false',
+        name,
+        phone: phone || 'Not provided',
+        session_id: sessionId || 'N/A',
         message: emailBody,
       }),
     });
 
     if (!response.ok) {
-      console.error('Web3Forms error:', await response.text());
+      console.error('FormSubmit error:', await response.text());
     }
 
     return res.status(200).json({ success: true });

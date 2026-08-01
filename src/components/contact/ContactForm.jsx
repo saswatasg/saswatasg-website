@@ -45,15 +45,18 @@ const ContactForm = () => {
     setIsSubmitting(true);
     let error = null;
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://formsubmit.co/ajax/saswatasg@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
           name,
           email,
           phone,
           message,
+          _subject: 'New message from portfolio contact form',
+          _replyto: email,
+          _template: 'table',
+          _captcha: 'false',
         }),
       });
       if (!res.ok) error = new Error('Failed to send');
