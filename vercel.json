@@ -8,7 +8,7 @@
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.saswatasg.com" }],
-      "destination": "https://saswatasg.com/:path1",
+      "destination": "https://saswatasg.com/$1",
       "permanent": true
     },
     {
