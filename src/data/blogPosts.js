@@ -40,9 +40,11 @@ export const PILLAR_CTA = {
   },
   growth: {
     title: 'Need the same treatment on your store?',
-    body: 'Browse the CRO and checkout case studies — three separate problems, three targeted fixes, one aggregate myth busted.',
-    label: 'Read the case studies',
-    href: '/case-studies',
+    body: 'Want the numbers from this post on your checkout? Let\'s talk — no deck, no push. Or follow the work on LinkedIn.',
+    ctas: [
+      { label: 'Book a call', href: null, action: 'book' },
+      { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/sss99/', external: true },
+    ],
   },
   pm: {
     title: 'More on building products with AI',
