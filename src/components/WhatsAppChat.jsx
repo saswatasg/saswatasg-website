@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, MessageCircle, ExternalLink, Copy, Calendar, FileText, Mail } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics';
+import { openScheduleBooking } from '@/utils/openCalendar';
 
 const MAX_MESSAGES = 6;
 
@@ -45,13 +46,13 @@ const EmailEmbed = () => (
 
 const ResumeEmbed = () => (
   <div className="mt-2">
-    <ActionButton label="View Resume" icon={FileText} onClick={() => window.open('/resume.pdf', '_blank')} color="purple" />
+    <ActionButton label="View Resume" icon={FileText} onClick={() => window.open('/assets/resume.pdf', '_blank')} color="purple" />
   </div>
 );
 
 const MeetEmbed = () => (
   <div className="mt-2">
-    <ActionButton label="Book a Meeting" icon={Calendar} onClick={() => window.dispatchEvent(new CustomEvent('openCalendar'))} color="coral" />
+    <ActionButton label="Book a Meeting" icon={Calendar} onClick={() => openScheduleBooking()} color="coral" />
   </div>
 );
 

@@ -1,9 +1,116 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Armchair, Brain } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { Rocket, Armchair, Brain, ExternalLink, Github, Boxes } from 'lucide-react';
 import ProjectCard from '@/components/projects/ProjectCard';
 import PageMeta from '@/components/PageMeta';
 import { trackEvent } from '@/utils/analytics';
+
+const openSourceProjects = [
+  {
+    name: 'DhanPlan',
+    tagline: 'Precision retirement planning for Indian investors',
+    description: 'SIP, EPF, PPF, NPS, and FIRE calculators with inflation-adjusted, institutional-grade projections.',
+    status: 'In production',
+    statusClass: 'bg-mint text-white',
+    tags: ['India Finance', 'Calculators', 'SIP/EPF/NPS'],
+    links: [{ label: 'dhanplan.in', href: 'https://www.dhanplan.in/', external: true }],
+    code: null,
+  },
+  {
+    name: 'The Growth Bench',
+    tagline: 'Full-stack growth partner for D2C brands',
+    description: 'Strategy, performance marketing, CRO, and web development under one roof for D2C brands and early-stage startups.',
+    status: 'In production',
+    statusClass: 'bg-mint text-white',
+    tags: ['Strategy', 'Performance Marketing', 'CRO'],
+    links: [{ label: 'thegrowthbench.com', href: 'https://thegrowthbench.com', external: true }],
+    code: null,
+  },
+  {
+    name: 'TGB Hunt',
+    tagline: 'Self-hosted LinkedIn outreach agent',
+    description: 'You describe your target roles; the agent finds the right recruiters and hiring managers, writes personalised AI intros, and manages follow-ups. One-click macOS app. 766 commits, 6 releases.',
+    status: 'Active · v1.0.9',
+    statusClass: 'bg-sky text-ink',
+    tags: ['Python', 'Django', 'Playwright', 'LLM agents'],
+    links: [],
+    code: 'https://github.com/saswatasg/TGBhunt',
+  },
+  {
+    name: 'FilmRisk.AI',
+    tagline: 'Bollywood greenlight risk engine',
+    description: 'A 10-component scoring engine blending gradient-boosted ML with Bayesian priors, trained on 2,200+ Indian films — with brutally honest published backtests and known failure modes.',
+    status: 'Working model',
+    statusClass: 'bg-lemon text-ink',
+    tags: ['Next.js', 'ML / GBM', 'Bayesian scoring', 'Backtesting'],
+    links: [],
+    code: 'https://github.com/saswatasg/FilmRisk.AI',
+  },
+  {
+    name: 'Inventory Leveling Agent',
+    tagline: 'Procurement intelligence for manufacturers',
+    description: 'Explodes sales orders through BOMs, nets demand against supply, computes min stock per component, and back-schedules POs — with trapped working capital quantified in rupees. 28 reconciliation tests.',
+    status: 'Completed · Client demo',
+    statusClass: 'bg-sky text-ink',
+    tags: ['React', 'TypeScript', 'MRP logic', 'Gantt scheduling'],
+    links: [{ label: 'Live demo', href: 'https://inventory-leveling-agent-gamma.vercel.app', external: true }],
+    code: 'https://github.com/saswatasg/inventory-leveling-agent',
+  },
+  {
+    name: 'BlogHero',
+    tagline: 'SEO content pipeline for non-technical teams',
+    description: 'Pulls real GSC data to find content revival and gap opportunities, drafts with Gemini (fact-check pass included), creates WordPress drafts — never auto-publishes — and logs every run to Sheets.',
+    status: 'Completed · In client use',
+    statusClass: 'bg-sky text-ink',
+    tags: ['Python', 'FastAPI', 'Gemini', 'GSC API'],
+    links: [],
+    code: 'https://github.com/saswatasg/bloghero_s',
+  },
+  {
+    name: 'Topshe',
+    tagline: 'Voice AI that runs entirely in your browser',
+    description: 'Wake word, speech-to-text, and a quantised Qwen 2.5 model running in-browser over WebAssembly — no server, no API bill, no data sent anywhere. Offline-capable PWA at $0/month.',
+    status: 'Personal · Experimental',
+    statusClass: 'bg-blush text-ink',
+    tags: ['React 19', 'WASM LLM', 'Web Speech API', 'PWA'],
+    links: [],
+    code: 'https://github.com/saswatasg/topshe',
+  },
+  {
+    name: '11 PM Cinema',
+    tagline: 'Movie night, solved for couples',
+    description: 'Picks your next film together based on mood — built for exactly two people. Live on Vercel and in active nightly service at home.',
+    status: 'Completed · Used daily',
+    statusClass: 'bg-mint text-white',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    links: [{ label: 'Live app', href: 'https://movie-sugest.vercel.app', external: true }],
+    code: 'https://github.com/saswatasg/MovieSugest',
+  },
+  {
+    name: 'Intent',
+    tagline: 'Modern dating for people done with swiping',
+    description: 'An AI matchmaker over verified profiles curating a small number of high-compatibility matches for India\u2019s 24\u201330s — built on Next.js and Supabase.',
+    status: 'Demo · Launching 2027',
+    statusClass: 'bg-purple text-white',
+    tags: ['Next.js', 'Supabase', 'AI matchmaking'],
+    links: [{ label: 'Demo', href: 'https://intent-app-o5nw.vercel.app', external: true }],
+    code: 'https://github.com/saswatasg/intent-app',
+  },
+];
+
+const softwareSchema = openSourceProjects
+  .filter((p) => p.code)
+  .map((p) => ({
+    '@type': 'SoftwareApplication',
+    name: p.name,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    description: p.description,
+    url: p.code.replace('github.com/', ''),
+    codeRepository: p.code,
+    author: { '@type': 'Person', '@id': 'https://saswatasg.com/#person', name: 'Saswata S. Sengupta' },
+  }));
 
 const allProjects = [
   {
@@ -187,6 +294,11 @@ const Projects = () => {
   return (
     <>
       <PageMeta />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({ '@context': 'https://schema.org', '@graph': softwareSchema })}
+        </script>
+      </Helmet>
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -250,6 +362,79 @@ const Projects = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white border-2 border-black rounded-2xl p-6 md:p-8 mt-6"
+        >
+          <div className="flex items-center gap-2 mb-1">
+            <Boxes className="w-5 h-5 text-ink" />
+            <h2 className="text-ink text-xl md:text-2xl font-display font-black tracking-tight">
+              Built in the open
+            </h2>
+          </div>
+          <p className="text-sm md:text-base text-ink/70 font-medium mb-6">
+            Products I design, code, and ship myself — with the repo public. Every line, commit, and backtest visible.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {openSourceProjects.map((p, index) => (
+              <motion.div
+                key={p.name}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: (index % 2) * 0.05 }}
+                className="bg-canvas border-2 border-black rounded-xl p-5 flex flex-col"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-display font-black text-ink text-lg leading-tight">{p.name}</h3>
+                  <span className={`flex-shrink-0 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wide ${p.statusClass}`}>
+                    {p.status}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs font-bold text-ink/60 uppercase tracking-wide">{p.tagline}</p>
+                <p className="mt-2 text-sm text-ink/75 leading-relaxed">{p.description}</p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {p.tags.map((t) => (
+                    <span key={t} className="px-2 py-0.5 rounded-md bg-white border border-ink/15 text-[11px] font-bold text-ink/60">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-auto pt-4 flex items-center gap-2">
+                  {p.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      target={l.external ? '_blank' : undefined}
+                      rel={l.external ? 'noopener noreferrer' : undefined}
+                      onClick={() => trackEvent('projects', 'open_source_link', l.label)}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black hover:bg-lemon hover:text-ink transition-colors"
+                    >
+                      {l.label}
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  ))}
+                  {p.code && (
+                    <a
+                      href={p.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackEvent('projects', 'open_source_code', p.name)}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white text-ink text-xs font-bold border-2 border-black hover:bg-mint transition-colors"
+                    >
+                      <Github className="w-3 h-3" />
+                      Code
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </>

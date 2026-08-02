@@ -180,9 +180,11 @@ const HeroSection = () => {
   useEffect(() => {
     if (slidePaused) return;
     const timer = setInterval(() => {
-      const next = (slideIndex + 1) % slides.length;
-      trackEvent('hero_slideshow', 'auto_advance', slides[next].id);
-      setSlideIndex(next);
+      setSlideIndex((prev) => {
+        const next = (prev + 1) % slides.length;
+        trackEvent('hero_slideshow', 'auto_advance', slides[next].id);
+        return next;
+      });
     }, 5000);
     return () => clearInterval(timer);
   }, [slidePaused]);
@@ -209,7 +211,7 @@ const HeroSection = () => {
                     src="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png"
                     alt="Saswata S. Sengupta"
                     loading="eager"
-                    fetchpriority="high"
+                    fetchPriority="high"
                     width="176"
                     height="176"
                     className="w-full h-full object-cover"
