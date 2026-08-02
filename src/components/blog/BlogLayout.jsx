@@ -1,0 +1,87 @@
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import AuthorBox from '@/components/blog/AuthorBox';
+import PillarCTA from '@/components/blog/PillarCTA';
+import RelatedPosts from '@/components/blog/RelatedPosts';
+import FAQ, { FAQJsonLd } from '@/components/blog/FAQ';
+import { PILLAR_META } from '@/data/blogPosts';
+
+const SITE_URL = 'https://saswatasg.com';
+
+const BlogLayout = ({ post, children }) => {
+  const pillarMeta = PILLAR_META[post.pillar] || PILLAR_META.pm;
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
+
+  return (
+    <>
+      <Helmet>
+        <title>{post.title}</title>
+        <meta name="description" content={post.description} />
+        <link rel="canonical" href={postUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description} />
+        <meta property="og:url" content={postUrl} />
+        <meta property="og:image" content="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+        <meta name="twitter:image" content="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png" />
+        <meta name="author" content="Saswata S. Sengupta" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.description,
+            datePublished: post.date,
+            dateModified: post.updated || post.date,
+            inLanguage: 'en-US',
+            author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
+            publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+              { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
+            ],
+          })}
+        </script>
+      </Helmet>
+      <FAQJsonLd items={post.faq} url={postUrl} />
+
+      <div className="max-w-3xl mx-auto px-4 md:px-6 py-12 md:py-16">
+        <nav className="text-xs font-bold text-ink/50 mb-6 flex items-center gap-2">
+          <Link to="/blog" className="hover:text-coral transition-colors">Blog</Link>
+          <span>/</span>
+          <span className="text-ink/70 truncate">{post.title}</span>
+        </nav>
+
+        <span className={`inline-block text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-white mb-4`}>
+          {pillarMeta.label}
+        </span>
+        <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-display font-black text-ink leading-tight mb-4">
+          {post.title}
+        </h1>
+        <p className="text-sm md:text-base font-semibold text-ink/60 mb-6">
+          {post.date} · {post.readingMinutes || 5} min read
+        </p>
+
+        <article className="blog-prose">{children}</article>
+
+        <AuthorBox />
+        <PillarCTA pillar={post.pillar} />
+        <RelatedPosts post={post} />
+      </div>
+    </>
+  );
+};
+
+export default BlogLayout;

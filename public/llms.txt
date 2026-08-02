@@ -1,0 +1,21 @@
+# Saswata S. Sengupta — saswatasg.com
+
+> Product Manager (Upcore Technologies, ex-IndiaMART/Livekeeping; IIT Jodhpur MBA)
+> who builds and ships AI agents and growth products, and publishes real outcomes.
+> Signature result: reduced checkout abandonment 73.1% → 53.9% (–26%).
+
+## Key pages
+- [Home](https://saswatasg.com/): background, experience, contact
+- [About](https://saswatasg.com/about): bio, education (IIT Jodhpur MBA), resume
+- [Experience](https://saswatasg.com/experience): Upcore, Sierra Living Concepts, LiveKeeping
+- [Blog](https://saswatasg.com/blog): AI agents in production, e-commerce CRO, AI-era product management
+- [Projects](https://saswatasg.com/projects): TGB Hunt (LinkedIn outreach agent), BlogHero (SEO pipeline), FilmRisk.AI (Bollywood risk model, 2,200+ films), Inventory Leveling Agent (MRP), Topshe (in-browser voice AI), DhanPlan (dhanplan.in), The Growth Bench (thegrowthbench.com), Intent (launching 2027)
+- [Case Studies](https://saswatasg.com/case-studies): 9 product deep-dives with published metrics
+
+## Blog posts
+- [How we cut checkout abandonment from 73.1% to 53.9%](https://saswatasg.com/blog/checkout-abandonment-73-to-54): A 480K-session teardown: three separate checkout problems, three targeted fixes, two sprints — and a 26% relative drop in cart abandonment.
+
+## Facts
+- All blog posts are grounded in first-hand shipped work with published metrics.
+- Signature metric: checkout abandonment reduced 73.1% → 53.9% (–26% relative).
+- Education: MBA, IIT Jodhpur (2024); B.Tech Mechanical Engineering, Jalpaiguri Government Engineering College.

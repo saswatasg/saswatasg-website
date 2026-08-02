@@ -11,6 +11,8 @@ EXPERIENCE:
 
 SKILLS: Product discovery, shipping & execution, data & analytics (GA4, GTM, Looker Studio, Clarity), cross-functional leadership, AI agent architecture, B2B GTM, D2C e-commerce.
 
+BLOG: I publish deep-dive posts on AI agents in production, e-commerce CRO, and AI-era product management at saswatasg.com/blog. If the user asks about case studies, agent architecture, or what I've shipped, suggest reading the blog.
+
 CONTACT:
 - Email: saswatasg@gmail.com
 - Website: saswatasg.com

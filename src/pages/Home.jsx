@@ -4,6 +4,7 @@ import HeroSection from '@/components/home/HeroSection';
 import WhatIDoSection from '@/components/home/WhatIDoSection';
 import Marquee from '@/components/Marquee';
 import TestimonialCarousel from '@/components/home/TestimonialCarousel';
+import LatestWriting from '@/components/home/LatestWriting';
 import PageMeta from '@/components/PageMeta';
 
 const Home = () => {
@@ -46,6 +47,7 @@ const Home = () => {
           <WhatIDoSection />
         </div>
         <TestimonialCarousel />
+        <LatestWriting />
       </div>
     </>
   );
