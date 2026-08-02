@@ -1,0 +1,134 @@
+import { createServer } from 'vite';
+import { promises as fs } from 'node:fs';
+import { Writable } from 'node:stream';
+import path from 'node:path';
+
+const root = process.cwd();
+const dist = path.join(root, 'dist');
+
+const STATIC_ROUTES = [
+  '/',
+  '/about',
+  '/experience',
+  '/projects',
+  '/case-studies',
+  '/case-studies/cart-checkout',
+  '/case-studies/category-discovery',
+  '/case-studies/lead-form',
+  '/case-studies/upcore-lead-scoring',
+  '/case-studies/sierra-lead-allocation',
+  '/case-studies/livekeeping-compliance-gap',
+  '/case-studies/livekeeping-send-greetings',
+  '/case-studies/livekeeping-notifications',
+  '/case-studies/livekeeping-report-automation',
+  '/contact',
+];
+
+const HEAD_STRIP_PATTERNS = [
+  /\s*<title>[\s\S]*?<\/title>\s*/i,
+  /\s*<link rel="canonical"[^>]*>\s*/i,
+  /\s*<meta name="description"[^>]*>\s*/i,
+  /\s*<meta property="og:url"[^>]*>\s*/i,
+  /\s*<meta property="og:title"[^>]*>\s*/i,
+  /\s*<meta property="og:description"[^>]*>\s*/i,
+  /\s*<meta name="twitter:title"[^>]*>\s*/i,
+  /\s*<meta name="twitter:description"[^>]*>\s*/i,
+];
+
+function serializeHelmetTags(helmet) {
+  const parts = [];
+  for (const key of ['base', 'link', 'meta', 'noscript', 'script', 'style', 'title']) {
+    const entry = helmet[key];
+    if (entry && typeof entry.toString === 'function') {
+      const html = entry.toString();
+      if (html) parts.push(html);
+    }
+  }
+  return parts.join('\n');
+}
+
+function collectStream(renderResult) {
+  return new Promise((resolve, reject) => {
+    let html = '';
+    const writable = new Writable({
+      write(chunk, _enc, cb) {
+        html += chunk;
+        cb();
+      },
+    });
+    writable.on('finish', () => resolve(html));
+    writable.on('error', reject);
+    renderResult.stream.pipe(writable);
+  });
+}
+
+async function writeRoute(filePath, html) {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, html, 'utf-8');
+}
+
+const vite = await createServer({
+  root,
+  server: { middlewareMode: true, hmr: false },
+  appType: 'custom',
+  logLevel: 'error',
+});
+
+try {
+  const { renderApp } = await vite.ssrLoadModule('/src/ssr-entry.jsx');
+  const template = await fs.readFile(path.join(dist, 'index.html'), 'utf-8');
+  if (/<div id="root">\s*[^<\s]/.test(template)) {
+    console.error('[prerender] ERROR: dist/index.html is already prerendered (non-empty #root). Run `vite build` first to restore the clean template.');
+    process.exitCode = 1;
+    throw new Error('Stale prerendered template detected');
+  }
+
+  const { posts: blogPosts } = await vite.ssrLoadModule('/src/data/blogPosts.js');
+  const blogRoutes = ['/blog', ...blogPosts.map((post) => `/blog/${post.slug}`)];
+  const routes = [...STATIC_ROUTES, ...blogRoutes];
+
+  for (const route of routes) {
+    const renderResult = renderApp({ path: route });
+    const body = await collectStream(renderResult);
+    const error = renderResult.getRenderError();
+    if (error) {
+      console.error(`[prerender] failed for ${route}:`, error.message);
+      process.exitCode = 1;
+      continue;
+    }
+    if (body.trim().length < 100) {
+      console.warn(`[prerender] WARNING: ${route} rendered only ${body.trim().length} chars`);
+    }
+
+    const helmet = renderResult.helmetData.context.helmet;
+    const helmetTags = serializeHelmetTags(helmet);
+
+    let html = template;
+    for (const pattern of HEAD_STRIP_PATTERNS) {
+      html = html.replace(pattern, '\n');
+    }
+    html = html.replace('</head>', `${helmetTags ? helmetTags + '\n' : ''}</head>`);
+    html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+
+    const outPath =
+      route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.replace(/^\//, ''), 'index.html');
+    await writeRoute(outPath, html);
+    console.log(`[prerender] wrote ${route} (${body.trim().length} chars)`);
+  }
+  const renderResult404 = renderApp({ path: '/__prerender-not-found__' });
+  const notFoundBody = await collectStream(renderResult404);
+  if (!renderResult404.getRenderError()) {
+    const helmet = renderResult404.helmetData.context.helmet;
+    const helmetTags = serializeHelmetTags(helmet);
+    let html = template;
+    for (const pattern of HEAD_STRIP_PATTERNS) {
+      html = html.replace(pattern, '\n');
+    }
+    html = html.replace('</head>', `${helmetTags ? helmetTags + '\n' : ''}</head>`);
+    html = html.replace('<div id="root"></div>', `<div id="root">${notFoundBody}</div>`);
+    await writeRoute(path.join(dist, '404.html'), html);
+    console.log('[prerender] wrote 404.html');
+  }
+} finally {
+  await vite.close();
+}

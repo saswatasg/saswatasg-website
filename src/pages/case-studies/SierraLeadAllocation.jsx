@@ -16,10 +16,7 @@ const SierraLeadAllocation = () => {
       animate="visible"
       className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16"
     >
-      <PageMeta
-        title="Lead Allocation & Routing | Saswata S. Sengupta"
-        description="How I built a data-backed lead routing system at Sierra Living Concepts — Gold/Silver/Bronze tiers, agent specialisation, and a 30-day pilot from 10% to full rollout."
-      />
+      <PageMeta />
       <Link
         to="/case-studies"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"
@@ -150,7 +147,7 @@ const SierraLeadAllocation = () => {
               color: 'bg-white',
             },
           ].map((t, i) => (
-            <motion.div whileHover={{ scale: 1.01, y: -2 }} className={`${t.color} border-2 border-black rounded-xl p-5 mt-3`}>
+            <motion.div key={t.tier} whileHover={{ scale: 1.01, y: -2 }} className={`${t.color} border-2 border-black rounded-xl p-5 mt-3`}>
               <p className="text-xs font-black text-ink/40 uppercase tracking-widest mb-1">{t.tier}</p>
               <p className="font-bold text-sm text-ink">{t.label}</p>
               <p className="text-sm text-ink/70 mt-2 leading-relaxed">{t.desc}</p>

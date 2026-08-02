@@ -16,10 +16,7 @@ const LiveKeepingReportAutomation = () => {
       animate="visible"
       className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16"
     >
-      <PageMeta
-        title="Daily Report Automation | Saswata S. Sengupta"
-        description="Automated LiveKeeping's daily metrics report — unified Kibana, MongoDB, and GA4 into a single Google Sheets pipeline auto-populated at 11 AM via Apps Script."
-      />
+      <PageMeta />
       <Link
         to="/case-studies"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"

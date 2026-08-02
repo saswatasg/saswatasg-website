@@ -16,10 +16,7 @@ const UpcoreLeadScoring = () => {
       animate="visible"
       className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16"
     >
-      <PageMeta
-        title="Case Study: AI Lead Scoring — 71.63% Close Rate | Saswata S. Sengupta"
-        description="How I built an AI-powered lead scoring and routing engine at Upcore Technologies that drove close rate from 52% to 71.63%."
-      />
+      <PageMeta />
       <Link
         to="/case-studies"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"

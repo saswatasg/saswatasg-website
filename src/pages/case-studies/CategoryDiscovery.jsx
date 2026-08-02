@@ -16,10 +16,7 @@ const CategoryDiscovery = () => {
       animate="visible"
       className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16"
     >
-      <PageMeta
-        title="Case Study: Category Page Redesign — +17% | Saswata S. Sengupta"
-        description="How a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps resolved 30+ UX issues and lifted session-to-PDP-click conversion by 17% at Sierra Living Concepts."
-      />
+      <PageMeta />
       <Link
         to="/case-studies"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"

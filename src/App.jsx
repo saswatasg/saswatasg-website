@@ -5,9 +5,9 @@ import RoutesConfig from '@/config/RoutesConfig';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 
 
-function App() {
+function App({ helmetContext }) {
   return (
-    <HelmetProvider>
+    <HelmetProvider context={helmetContext}>
       <ThemeProvider>
         <Layout>
           <RoutesConfig />

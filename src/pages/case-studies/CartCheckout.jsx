@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { containerVariants, itemVariants } from '@/components/case-studies/animations';
 import Card from '@/components/case-studies/Card';
@@ -206,6 +206,20 @@ const CartCheckout = () => {
           </div>
         </motion.div>
       </div>
+
+      <motion.div variants={itemVariants} className="mt-8 bg-ink text-white border-2 border-black rounded-2xl p-7">
+        <p className="text-xs font-black text-lemon uppercase tracking-widest mb-2">Read the full breakdown</p>
+        <p className="text-lg font-display font-black leading-snug">
+          How I took checkout abandonment from 73.1% to 53.9% — a complete teardown with the numbers, the three friction points, and the fixes.
+        </p>
+        <Link
+          to="/blog/checkout-abandonment-73-to-54"
+          className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 rounded-lg bg-lemon text-ink text-sm font-black border-2 border-white hover:bg-white transition-colors"
+        >
+          Read the blog post
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
 
       <BottomNav next="category-discovery" />
     </motion.div>

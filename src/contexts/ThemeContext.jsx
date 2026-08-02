@@ -5,11 +5,12 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    // On first load, check localStorage. If nothing is there, default to 'light'.
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'light';
-  });
+    if (savedTheme) setTheme(savedTheme);
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;

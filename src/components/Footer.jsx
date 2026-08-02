@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Linkedin, Github } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics';
@@ -10,7 +10,11 @@ const XIcon = (props) => (
 );
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState(2026);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="bg-ink text-white mt-auto border-t-4 border-coral">
@@ -33,6 +37,7 @@ function Footer() {
                 { to: '/experience', label: 'Experience' },
                 { to: '/projects', label: 'Projects' },
                 { to: '/case-studies', label: 'Case Studies' },
+                { to: '/blog', label: 'Blog' },
                 { to: '/contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.label}>

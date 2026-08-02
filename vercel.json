@@ -2,7 +2,19 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.saswatasg.com" }],
+      "destination": "https://saswatasg.com/:path1",
+      "permanent": true
+    },
+    {
+      "source": "/resume.pdf",
+      "destination": "/assets/resume.pdf",
+      "permanent": true
+    }
   ]
 }

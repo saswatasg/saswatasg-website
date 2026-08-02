@@ -16,10 +16,7 @@ const LeadForm = () => {
       animate="visible"
       className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16"
     >
-      <PageMeta
-        title="Case Study: Lead Form Overhaul — +105% | Saswata S. Sengupta"
-        description="How I rebuilt the lead capture form at Sierra Living Concepts with Material 3 components, contextual microcopy, and latency fixes — driving lead submissions up 105%."
-      />
+      <PageMeta />
       <Link
         to="/case-studies"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"
