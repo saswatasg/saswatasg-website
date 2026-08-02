@@ -30,3 +30,4 @@ jobs:
       - name: IndexNow submission (Bing)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && env.INDEXNOW_KEY != ''
         run: node tools/ping-indexnow.mjs
+        continue-on-error: true
