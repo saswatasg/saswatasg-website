@@ -133,10 +133,10 @@ public class TallyConnector : BackgroundService
 
 **Key design decisions:**
 
-1. **Push, not pull** — The connector watches Tally's data folder for new invoice XML files. No polling Tally's ODBC (slow, fragile).
-2. **Idempotency** — Every invoice gets a UUID. Re-processing the same XML is safe.
-3. **Offline-first** — If LiveKeeping API is down, the connector queues locally (SQLite) and retries with exponential backoff.
-4. **Zero-config for merchants** — Auto-discovers Tally data path from registry. One-click install.
+- **Push, not pull** — The connector watches Tally's data folder for new invoice XML files. No polling Tally's ODBC (slow, fragile).
+- **Idempotency** — Every invoice gets a UUID. Re-processing the same XML is safe.
+- **Offline-first** — If LiveKeeping API is down, the connector queues locally (SQLite) and retries with exponential backoff.
+- **Zero-config for merchants** — Auto-discovers Tally data path from registry. One-click install.
 
 ## The rollout (how we got 50K+ merchants on the connector)
 
