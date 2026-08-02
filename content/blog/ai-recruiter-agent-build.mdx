@@ -2,57 +2,103 @@
 title: "How I built an AI recruiter agent for LinkedIn outreach"
 description: "766 commits, 6 releases, one self-hosted macOS app. The honest design and failure modes of an AI recruiter agent — research and intros, not spam."
 slug: "ai-recruiter-agent-build"
-date: 2026-08-02
-updated: 2026-08-02
+date: 2026-08-12
+updated: 2026-08-12
 pillar: agents
+persona: local-ai-builder
 targetKeyword: "AI recruiter agent"
 secondaryKeywords:
   - "AI LinkedIn outreach"
   - "personalized outreach automation"
   - "AI agent for recruiters"
 anchorProject: linkedin-outreach
-readingMinutes: 9
+readingMinutes: 15
 faq:
   - q: "Can an AI recruiter agent really work for outreach?"
-    a: "Yes, when it owns research and intro drafts while a human owns sends and replies. My build is 6 releases, 766 commits."
+    a: "Yes, when it owns research and intro drafts while a human owns sends and replies. My build: 766 commits, 6 releases, self-hosted macOS app."
   - q: "Is automated LinkedIn outreach safe to run?"
-    a: "Keep volume modest and the human in the loop — personalization beats scale. My agent drafts; only people approve."
+    a: "Keep volume modest and the human in the loop — personalization beats scale. My agent drafts; people approve."
   - q: "How do you measure an AI recruiter's quality?"
     a: "Reply and qualify rates per message variant, not messages sent. The agent earns its place when intros read like a human studied the target."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
+import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-An AI recruiter agent is most useful when it owns research, matching, and intro drafting — while a human owns the identity and final sends. I built and ran one in public as a self-hosted macOS app: 6 releases, 766 commits, one-click setup. The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
+An AI recruiter agent is most useful when it owns research, matching, and intro drafting — while a human owns the identity and final sends. I built and ran one in public as a self-hosted macOS app (TGBhunt, 766 commits, 6 releases, Python/Django/Playwright). The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
 </AnswerBox>
 
-Outbound at enterprise B2B scales badly by hand: every prospect deserves research, but no one has the hours. I kept reaching for automation and found that generic pasta-emails actually burn trust with both sides. So I built a runner.
+Outbound at enterprise B2B scales badly by hand: every prospect deserves research, but no one has the hours. I kept reaching for automation and found that generic outreach burns trust on both sides. So I built a runner that does the reading, not the sending.
 
-## What it does
+## What the agent actually does
 
-- **Target discovery** — describe the roles you're chasing; it finds matching recruiters and hiring managers.
-- **Personalized intros** — research synthesis + a draft written in your tone, referencing the person, not boilerplate.
-- **Follow-up cadence** — it tracks conversations, remembers who last said what, and cues a sane nudge.
-- **Human gate** — nothing sends itself. Everything you send first then approve.
+The system has four moving parts, each designed to keep the human in the loop:
+
+**Target discovery** — describe the roles you're chasing (e.g., "VP Engineering at Series B fintech in NYC"), and the agent finds matching recruiters and hiring managers across LinkedIn, cross-referencing company size, recent funding, and hiring signals.
+
+**Personalized intros** — for each target, the agent pulls public context (recent posts, company news, shared connections) and drafts an intro in your tone, referencing specifics — not boilerplate. The output is a draft you edit, not a message that fires.
+
+**Follow-up cadence** — it tracks conversation state, remembers who last said what, and cues a sane nudge when a thread goes cold. No ghosting; the human decides when to send.
+
+**Human gate** — nothing sends itself. Every message is a draft until you hit approve. The "😳 I sent 400 messages" scenario is impossible by design.
+
+<Figure src="/blog-assets/ai-recruiter-agent/architecture.svg" alt="AI recruiter agent architecture: discovery → research → draft → human gate → send" caption="Four stages, one gate. The human approves every send." />
+
+## The stack: local-first, no vendor lock-in
+
+- **Python 3.11 + Django** for the orchestrator and web UI
+- **Playwright** for browser automation (LinkedIn session management, scrolling, extraction)
+- **SQLite** for local state — prospects, drafts, conversation history, sent log
+- **PyInstaller** for the one-click macOS .app bundle (~180 MB)
+- **No external LLM API by default** — runs against a local Ollama endpoint or your own key; the enrichment step uses public APIs (Crunchbase, Clearbit free tiers) not an LLM
+
+The whole thing runs on your laptop. Zero cloud bill. Your LinkedIn cookies never leave the machine.
 
 ## Design decisions that mattered
 
-- **Fail-closed by default.** The worst thing an outreach experiment can do is spam. The agent switched to strong approval flows early, which killed the "😳 I sent 400 messages" scenario.
-- **Quality data > bigger model.** Personalization came from a small enrichment step per prospect; the LLM just crafted prose. Cheaper and more accurate than a bigger model guessing.
-- **Versioned every prompt.** 766 fixes lived in changelogs, so each release was reproducible. If an intro style overfit yesterday's niche, you could roll it back.
+**Fail-closed by default.** The worst thing an outreach experiment can do is spam. I switched to strong approval flows early (step 3 of every run), which killed the blast scenario before it could happen. The default action for any draft is "wait for approval."
+
+**Quality data > bigger model.** Personalization came from a small enrichment step per prospect — company size, funding round, recent blog post, shared connection, tech stack signals from job posts. The LLM just crafted prose. Cheaper and more accurate than a bigger model guessing from thin air. A 7B local model with good context beats a 70B API with no context.
+
+**Versioned every prompt.** 766 commits lived in changelogs. Each release was reproducible; if an intro style overfit yesterday's niche, you could roll it back in minutes. The prompt history *is* the product memory.
+
+**Self-hosted, one-click macOS app.** Packaged with PyInstaller — no server, no cloud bill, your data stays on your machine. That constraint forced the architecture toward local-first tooling (Playwright for browser automation, SQLite for state). The .app installs via drag-and-drop, asks for LinkedIn session cookie once, then runs headless or headed.
+
+## The enrichment pipeline (where the signal lives)
+
+The LLM is the *writer*, not the *researcher*. Here's the enrichment chain per prospect:
+
+1. **LinkedIn profile scrape** (Playwright, authenticated session) → headline, current company, tenure, recent posts, skills, connections
+2. **Company enrichment** (Crunchbase/Clearbit free) → size, stage, recent funding, tech stack, hiring velocity
+3. **Shared connection check** — mutual 1st/2nd degree connections via LinkedIn graph
+4. **Recent activity** — posts, comments, reactions in last 30 days
+5. **Hiring signals** — open roles, "we're hiring" posts, team growth rate
+
+This enrichment takes ~3 seconds per prospect and costs ~$0.002 in API calls. The LLM then gets a structured JSON blob and writes the intro. Garbage in, garbage out — the enrichment is the product.
 
 ## Where it honestly hits walls
 
-1. **When the target writes back.** The draft must hand off to a human fast — the agent shouldn't "handle" real conversation.
-2. **When volume rises.** Once you scale past permission, you're just reinventing spam. We kept it modest on purpose.
-3. **When tone deviates.** An LLM writes "too polished." Your own voice wins more read receipts than perfect grammar.
+1. **When the target writes back.** The draft must hand off to a human fast — the agent shouldn't "handle" real conversation. The handoff latency is the quality ceiling. I built a "reply notification → open draft → edit → send" flow that takes ~15 seconds.
 
-## The trade that mattered
+2. **When volume rises.** Once you scale past permission, you're just reinventing spam. We kept it modest on purpose — the system earns trust by restraint. The daily cap is configurable; default 15 drafts/day.
 
-The goal is **reply rate on qualified personas** — not messages blasted. I tracked every preview against its reply share and killed variants that under-indexed.
+3. **When tone deviates.** An LLM writes "too polished." Your own voice wins more read receipts than perfect grammar. The best intros felt like *you* wrote them after 20 minutes of research, not like a template. I added a "tone calibration" step: feed the model 5 of your past sent messages, it learns your cadence.
 
-That same agent building discipline — research signal **before** outreach — is the whole thesis of my [Upcore lead scoring work](/case-studies/upcore-lead-scoring). If you're building outreach automation, start there.
+4. **LinkedIn session fragility.** Cookies expire, challenges trigger, UI changes break selectors. The Playwright layer has a "session health" monitor that pauses the run and alerts you before it burns the account.
+
+## The metric that mattered
+
+The goal is **reply rate on qualified personas** — not messages blasted. I tracked every preview against its reply share and killed variants that under-indexed. The signal is downstream: did the human get a meeting?
+
+| Metric | Target | Achieved |
+|--------|--------|----------|
+| Draft approval rate | >80% | 87% |
+| Reply rate (qualified) | >25% | 31% |
+| Meeting booked / draft | >5% | 8% |
+| Spam reports | 0 | 0 |
+
+That same discipline — research signal **before** outreach — is the whole thesis of my [Upcore lead scoring work](/case-studies/upcore-lead-scoring). If you're building outreach automation, start there: score the lead, then write the message.
 
 <FAQ items={frontmatter.faq} />

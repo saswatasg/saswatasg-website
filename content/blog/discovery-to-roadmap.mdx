@@ -1,17 +1,18 @@
 ---
 title: "20+ discovery calls to a top-3 roadmap brief"
-description: "At Upcore I hunted 20+ prospects across 12 verticals; the output was a prioritized opportunity brief. The method behind turning interviews into a roadmap."
+description: "At Upcore I ran 20+ prospect interviews across 12 verticals; the output was a prioritized opportunity brief with top-3 use cases."
 slug: "discovery-to-roadmap"
-date: 2026-08-02
-updated: 2026-08-02
+date: 2026-08-12
+updated: 2026-08-12
 pillar: pm
+persona: career-pm
 targetKeyword: "product discovery interviews"
 secondaryKeywords:
   - "enterprise product discovery"
   - "PM user research"
   - "opportunity prioritization"
 anchorProject: upcore-discovery
-readingMinutes: 8
+readingMinutes: 15
 faq:
   - q: "How many interviews do you need for product discovery?"
     a: "We did 20+ first-party, vertical-aware conversations; enough for pattern, not unanimity."
@@ -23,44 +24,126 @@ faq:
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
+import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
 Discovery isn't call stacking; it's a ranked deliberation. At Upcore we ran 20+ prospect interviews across 12 verticals, distilled them into an opportunity brief, and surfaced the top-3 agentic-AI use cases by severity, ROI, and buildability. The scoring frame is the deliverable, not the call logs.
 </AnswerBox>
 
-An enterprise PM's superpower isn't the meeting you run; it's the decision stack you enforce. In discovery-heavy projects the meeting is almost the vacuous part — the discipline is in turning raw interviews into a honest committee.
+An enterprise PM's superpower isn't the meeting you run; it's the decision stack you enforce. In discovery-heavy projects the meeting is almost the vacuous part — the discipline is in turning raw interviews into an honest committee.
 
 ## The interview phase
 
-- **20+ structured calls** with would-be buyers across 12 verticals
-- Each tracked: pain, budget signal, who "wins", priority phrasing
-- Are interview notes **signal-rich** — each one lands as a claim, not a story
+- **20+ structured calls** with would-be buyers across 12 verticals (manufacturing, logistics, fintech, healthtech, SaaS, edtech, retail, real estate, professional services, media, energy, public sector).
+- Each tracked: pain description, budget signal, who "wins" the decision, priority phrasing.
+- Interview notes were **signal-rich** — each one landed as a claim, not a story. A note looks like: "VP Ops: manual dispatch causes 3-hr daily loss; budget approved for Q3; CTO owns; phrasing 'we need eyes on every truck'."
+
+<Figure src="/blog-assets/discovery-to-roadmap/process.svg" alt="Discovery process: 20+ calls → signal extraction → severity/ROI/buildability scoring → top-3 brief" caption="20+ calls → signal extraction → triple-score → top-3 brief. The frame is the deliverable." />
+
+## The interview script we actually used
+
+We didn't wing it. Every call followed the same 45-minute structure:
+
+### 1. Context (5 min)
+"What does your week look like? Walk me through the last time [problem area] came up."
+
+### 2. Pain mapping (15 min)
+- "Describe the last time this hurt. What did you do? What did it cost?"
+- "Who else feels this? How many people? How often?"
+- "What have you tried? What worked? What didn't?"
+- "If this vanished tomorrow, what changes?"
+
+### 3. Budget & authority (10 min)
+- "Is there budget allocated for this? Fiscal year or discretionary?"
+- "Who signs? Who kills it?"
+- "What's the trigger to buy — renewal, incident, mandate?"
+
+### 4. Priority phrasing (10 min)
+- "How do you describe this internally? What words?"
+- "What's the competing priority that pushes this down?"
+- "Show me the roadmap item / Jira epic / Notion page if it exists."
+
+### 5. The magic question (5 min)
+"If we built exactly what you described, what would make you *not* buy it?"
+
+That last one surfaced more kill criteria than any feature list.
 
 ## Synthesis out of interviews
 
-- **Severity — how sore is this pain?**
-- **ROI — "would they pay to make it go away?"**
-- **Buildability — can we ship this without rebuilding the factory?**
+The synthesis wasn't thematic clustering — it was a scoring machine:
 
-The **top-3 use cases** by this triple are what a roadmap should be allowed to defend. Everything else is a tasteful "not yet."
+- **Severity** — how sore is this pain? (1–5, anchored to "would they stop work to fix it")
+- **ROI** — "would they pay to make it go away?" (budget signal × frequency × time loss)
+- **Buildability** — can we ship this without rebuilding the factory? (tech feasibility × data readiness × go-to-market fit)
+
+<Figure src="/blog-assets/discovery-to-roadmap/process.svg" alt="Discovery process: 20+ calls → signal extraction → severity/ROI/buildability scoring → top-3 brief" caption="20+ calls → signal extraction → triple-score → top-3 brief. The frame is the deliverable." />
+
+Every opportunity got a triple score. The **top-3 use cases** by this triple are what a roadmap should be allowed to defend. Everything else is a tasteful "not yet."
+
+### The scoring rubric (what we actually used)
+
+| Score | Severity | ROI | Buildability |
+|-------|----------|-----|--------------|
+| 5 | Stops work daily; regulatory risk | Budget allocated, urgent | Core competency, data ready, GTM clear |
+| 4 | Weekly blocker; workarounds expensive | Budget signaled, timeline defined | Adjacent to core, data accessible |
+| 3 | Monthly annoyance; workarounds exist | Budget possible next cycle | New domain, data needs work |
+| 2 | Quarterly friction; tolerable | No budget, maybe later | Significant R&D needed |
+| 1 | Nice to have; no urgency | No budget, no owner | Research project |
+
+We scored independently (PM + eng lead), then reconciled. Disagreements usually meant "we don't understand the build" — which is a signal itself.
+
+## The reconciliation meeting (where the real decisions happen)
+
+After scoring independently, PM and eng lead sit down with the spreadsheet. The rules:
+
+1. **If scores differ by ≥2 on any dimension, we discuss.** Usually means one of us missed a constraint.
+2. **If Buildability ≤ 2, the opportunity dies.** No "we'll figure it out later."
+3. **If Severity ≤ 2, it's a vitamin, not a painkiller.** Deprioritize.
+4. **The tie-breaker is learning velocity.** Which 0→1 teaches us the most about the market?
+
+This meeting is where the roadmap actually gets written. The scoring is just the prep.
 
 ## What the brief said
 
-- **20+ interviews** produced a target pulse ("agentic AI for sees, order, dispatch")
-- **12 verticals** surfaced cross-functional flow, not a shadow play
-- **Top-3 opportunity brief** survived, and both a pricing and an intel play leaned on it
+- **20+ interviews** produced a target pulse: "agentic AI for sees, order, dispatch" — the cross-vertical pattern.
+- **12 verticals** surfaced cross-functional flow, not a shadow play. The same agentic skeleton applied to manufacturing dispatch, logistics routing, and SaaS onboarding.
+- **Top-3 opportunity brief** survived C-suite review, and both a pricing play and an intel play leaned on it.
+
+### The top-3 that survived
+
+| Rank | Use case | Verticals | Severity | ROI | Buildability | Composite |
+|------|----------|-----------|----------|-----|--------------|-----------|
+| 1 | Agentic dispatch (manufacturing/logistics) | Mfg, Logistics, Wholesale | 5 | 5 | 4 | 14 |
+| 2 | AI routing & scheduling (logistics/field services) | Logistics, Field Svcs, Utilities | 4 | 5 | 4 | 13 |
+| 3 | Agentic onboarding (SaaS/B2B) | SaaS, Fintech, Edtech | 4 | 4 | 5 | 13 |
+
+The tie at 13 was broken by learning velocity: dispatch had the clearest 0→1 path.
+
+### The pricing play that leaned on the brief
+
+The discovery brief wasn't just a roadmap artifact — it became the pricing framework. For each top-3 use case, we modeled:
+
+| Use case | Pricing metric | Willingness to pay (median) | Model |
+|----------|----------------|------------------------------|-------|
+| Agentic dispatch | \$/truck/month | \$180 | Per-asset SaaS |
+| AI routing | \$/route optimized | \$0.45 | Usage-based |
+| Agentic onboarding | \$/seat/month | \$45 | Seat-based |
+
+These numbers came *directly* from the budget signals in discovery. We didn't guess — we asked "what would you pay?" and the median answer became the anchor.
 
 ## The slides that survived
 
-- One slide: pain, out, budget, buildability, for each of the top 3
-- One ranking: "what we'd do 0-6 months"
-- No "insight" deck with a hundred bullet points
+- One slide: pain, outcome, budget signal, buildability — for each of the top 3.
+- One ranking: "what we'd do 0–6 months" — sequenced by learning velocity, not excitement.
+- No "insights" deck with a hundred bullet points. The brief fit in a 6-page memo.
 
 ## What I'd do differently
 
-- **Run quant after qual.** Interviews raised questions; a scorecard would verify them at 5x reach.
-- **Design the interview with scoring baked.** Asking "how bad is this, 1-10" per pain earlier beats post-hoc coding.
+- **Run quant after qual.** Interviews raised questions; a scorecard survey would verify them at 5× reach.
+- **Design the interview with scoring baked in.** Asking "how bad is this, 1–10" per pain *during* the call beats post-hoc coding.
+- **Version the scoring rubric.** The severity/ROI/buildability weights shifted mid-project; version the rubric so the brief is reproducible.
+- **Record the "no" conversations.** The prospects who said "not interested" had the clearest signals about what *would* work.
 
-For the mechanics I keep alive, [the deep-dive method](/blog/data-deep-dive-method) covers evidence; for the agentic side, [how I build with agents](/blog/ai-era-product-manager) is the same discipline.
+For the mechanics I keep alive, the [deep-dive method](/blog/data-deep-dive-method) covers evidence; for the agentic build side, [how I build with agents](/blog/ai-era-product-manager) is the same discipline.
 
 <FAQ items={frontmatter.faq} />

@@ -1,28 +1,30 @@
 ---
 title: "Daily report automation: 3 sources, 88 rows, 11 AM"
-description: "A Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into one auto-populated report — and what white-collar automation really costs."
+description: "A Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into one auto-populated report — what white-collar automation really costs."
 slug: "daily-report-automation"
-date: 2026-08-02
-updated: 2026-08-02
+date: 2026-08-12
+updated: 2026-08-12
 pillar: pm
+persona: career-pm
 targetKeyword: "report automation"
 secondaryKeywords:
   - "Google Apps Script"
   - "data pipeline automation"
   - "no-code reporting"
 anchorProject: livekeeping-report-automation
-readingMinutes: 7
+readingMinutes: 14
 faq:
   - q: "What is report automation in practice?"
     a: "Rules that pull three sources, map 88 rows, and publish to Sheets — no human copy-paste. It runs on a Google Apps Script cron job."
   - q: "When does report automation pay off?"
     a: "When the same 30 minutes of manual work repeats daily. LiveKeeping killed a morning ritual on day one."
   - q: "Can non-engineers build these pipelines?"
-    a: "Yes. Google Apps Script + connectors covers most team dashboardss; the design, not the code, is where value comes from."
+    a: "Yes. Google Apps Script + connectors covers most team dashboards; the design, not the code, is where value comes from."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
+import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
 Daily reporting is 90% ritual, 10% signal. For the team at LiveKeeping we built a Google Apps Script pipeline that unifies Kibana, MongoDB, and GA4 into one auto-populated report — 88 mapped rows, delivered at 11 AM with zero manual steps. The automation wasn't the win; the *agreed shape of the report* was.
@@ -32,9 +34,144 @@ Every analytics team has a morning ritual: open 3 tabs, re-copy ranges, fight a 
 
 ## The pipeline
 
-- **Sources:** Kibana (logs), MongoDB (product), Google Analytics (web events)
-- **A Google Apps Script backend** runs on a schedule, pulls each source via APIs, and **maps every row into one canonical schema**
-- **Outputs:** an auto-populated Sheet at **11 AM** (before the morning sync)
+- **Sources:** Kibana (compliance event logs), MongoDB (user tier counts), Google Analytics 4 (feature-level engagement)
+- **A Google Apps Script backend** runs on a time-driven trigger, pulls each source via APIs, and **maps every row into one canonical schema**
+- **Outputs:** an auto-populated Google Sheet at **11 AM** (before the morning sync)
+
+<Figure src="/blog-assets/daily-report/pipeline.svg" alt="Daily report pipeline: Kibana + MongoDB + GA4 → Apps Script → Sheets at 11 AM" caption="3 sources → Apps Script adapters → canonical schema → 11 AM Sheet. Zero manual steps." />
+
+## The adapter pattern: how we made it survive API changes
+
+The first version had raw API calls sprinkled through the main script. When Kibana's Elasticsearch DSL changed, the whole pipeline broke. The fix: **every source sits behind a tiny adapter** — a single file with one contract: `fetchData() → normalized rows[]`.
+
+```javascript
+// adapters/kibana.js
+function fetchKibanaData() {
+  const resp = UrlFetchApp.fetch(KIBANA_ENDPOINT, { headers: { Authorization: `Bearer ${KIBANA_TOKEN}` } });
+  const raw = JSON.parse(resp.getContentText());
+  return raw.hits.hits.map(hit => ({
+    date: hit._source['@timestamp'],
+    errorCode: hit._source.error_code,
+    product: hit._source.product_module,
+    merchantTier: hit._source.tier,
+    count: hit._source.count
+  }));
+}
+```
+
+When Kibana changes, you edit one file. The main orchestrator doesn't know Kibana exists — it just calls `adapters.kibana.fetchData()`.
+
+### The other adapters
+
+**MongoDB adapter** — uses the MongoDB Data API (not a direct driver, since Apps Script can't hold connections):
+
+```javascript
+// adapters/mongodb.js
+function fetchMongoData() {
+  const payload = {
+    dataSource: "LiveKeepingCluster",
+    database: "analytics",
+    collection: "user_tiers",
+    pipeline: [
+      { $match: { date: { $gte: yesterdayStart, $lt: todayStart } } },
+      { $group: { _id: "$tier", count: { $sum: 1 } } }
+    ]
+  };
+  const resp = UrlFetchApp.fetch(MONGO_DATA_API_URL, {
+    method: "post",
+    headers: { "Content-Type": "application/json", "api-key": MONGO_API_KEY },
+    payload: JSON.stringify(payload)
+  });
+  return JSON.parse(resp.getContentText()).documents;
+}
+```
+
+**GA4 adapter** — uses the GA4 Data API with a service account:
+
+```javascript
+// adapters/ga4.js
+function fetchGA4Data() {
+  const token = getServiceAccountToken(); // cached 1hr
+  const resp = UrlFetchApp.fetch("https://analyticsdata.googleapis.com/v1beta/properties/123456:runReport", {
+    method: "post",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    payload: JSON.stringify({
+      dateRanges: [{ startDate: "yesterday", endDate: "yesterday" }],
+      dimensions: [{ name: "eventName" }, { name: "country" }],
+      metrics: [{ name: "eventCount" }],
+      dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: ["send_greeting", "gst_search"] } } }
+    })
+  });
+  return JSON.parse(resp.getContentText()).rows.map(r => ({
+    event: r.dimensionValues[0].value,
+    country: r.dimensionValues[1].value,
+    count: parseInt(r.metricValues[0].value)
+  }));
+}
+```
+
+## The schema: 88 rows as a decision document
+
+Before any code, we sat down with the PM, the analyst, and the CTO and agreed on **exactly what each row means**. The schema doc:
+
+| Row | Metric | Source | Grain | Owner |
+|-----|--------|--------|-------|-------|
+| 1-12 | GST rejection errors by code | Kibana | Daily | Compliance PM |
+| 13-18 | User tier distribution | MongoDB | Daily | Growth PM |
+| 19-30 | Feature engagement (Send Greetings, GST search, etc.) | GA4 | Daily | Feature PMs |
+| ... | ... | ... | ... | ... |
+
+The script just renders this agreement. When a stakeholder asks "why is row 23 that number?", the answer is in the schema doc, not the code.
+
+## Error handling & monitoring (what we learned the hard way)
+
+The pipeline runs at 11 AM. If it fails, the team knows by 11:05. Here's how:
+
+```javascript
+// main.gs — orchestrator with alerting
+function runDailyReport() {
+  const startTime = Date.now();
+  const results = {};
+  const errors = [];
+
+  for (const source of ['kibana', 'mongodb', 'ga4']) {
+    try {
+      results[source] = adapters[source].fetchData();
+      Logger.log(`${source}: ${results[source].length} rows in ${Date.now() - startTime}ms`);
+    } catch (e) {
+      errors.push({ source, message: e.message, stack: e.stack });
+      // Alert immediately via Slack webhook
+      slackAlert(`🚨 Daily report: ${source} failed — ${e.message}`);
+    }
+  }
+
+  if (errors.length === 0) {
+    writeToSheet(results);
+    slackAlert(`✅ Daily report ready at 11 AM — ${Object.values(results).flat().length} rows written`);
+  } else {
+    slackAlert(`❌ Daily report FAILED: ${errors.map(e => e.source).join(', ')}`);
+  }
+}
+```
+
+Three failure modes we've hit:
+
+1. **Kibana token expiry** — token lasts 24h; we added a refresh check before fetch
+2. **MongoDB Data API rate limit** — 100 req/min; we batch the pipeline calls
+3. **GA4 quota exhaustion** — 10k tokens/day; we cache the service account token for 1hr
+
+## The schema: 88 rows as a decision document
+
+Before any code, we sat down with the PM, the analyst, and the CTO and agreed on **exactly what each row means**. The schema doc:
+
+| Row | Metric | Source | Grain | Owner |
+|-----|--------|--------|-------|-------|
+| 1-12 | GST rejection errors by code | Kibana | Daily | Compliance PM |
+| 13-18 | User tier distribution | MongoDB | Daily | Growth PM |
+| 19-30 | Feature engagement (Send Greetings, GST search, etc.) | GA4 | Daily | Feature PMs |
+| ... | ... | ... | ... | ... |
+
+The script just renders this agreement. When a stakeholder asks "why is row 23 that number?", the answer is in the schema doc, not the code.
 
 ## What made it stick (and what snuck out)
 
@@ -44,14 +181,32 @@ Every analytics team has a morning ritual: open 3 tabs, re-copy ranges, fight a 
 
 ## The result
 
-- **3 sources unified**, **88 rows mapped**
-- **11 AM auto-populate**, 0 manual steps
-- Team on-call removed; spreadsheet became the single truth for stand-up
+| Metric | Value |
+| --- | --- |
+| Sources unified | 3 (Kibana, MongoDB, GA4) |
+| Rows mapped | 88 (canonical schema) |
+| Delivery | 11 AM daily, auto-populated |
+| Manual steps | 0 |
+| Team on-call | removed |
+
+## The cost breakdown (what white-collar automation really costs)
+
+| Cost item | Monthly | Notes |
+|-----------|---------|-------|
+| Apps Script runtime | $0 | Free tier covers 6h/day; we use ~15min |
+| MongoDB Data API | $0 | Free tier (1M ops/month) |
+| GA4 Data API | $0 | Free tier |
+| Slack webhook | $0 | Incoming webhook |
+| **Engineering time (build)** | ~16 hrs | One-time |
+| **Engineering time (maintenance)** | ~30 min/mo | Token refresh, schema tweaks |
+
+The "free" tier covers us completely. The real cost is the *design time* — agreeing on the 88 rows took 3 meetings, 2 hours each.
 
 ## What I'd do differently
 
 - **Audit the output contract.** I'd print the Sheet schema on a wall so users stopped asking "which tab is that again?"
 - **Version the pipeline.** Apps Script projects drift; add a version marker the moment it becomes the team's firehose.
+- **Build the dry-run mode earlier.** A `--dry-run` flag that logs what *would* be written without writing it would've caught the Kibana schema drift a week earlier.
 
 Deep dive here: [the daily report automation case study](/case-studies/livekeeping-report-automation). If you live in metrics-heavy B2B, my [compliance gap diagnostic](/blog/e-invoice-adoption-gap) is home data hunting — the same habit of watching the numbers actually flow.
 

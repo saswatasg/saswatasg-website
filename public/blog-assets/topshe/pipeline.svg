@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="960" height="420" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="944" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+
+  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">TOPSHE VOICE PIPELINE — EDGE ONLY, NO NETWORK HOP</text>
+
+  <!-- Stage boxes -->
+  <rect x="40" y="86" width="170" height="110" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="50" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">WAKE WORD</text>
+  <text x="50" y="134" font-size="10" fill="#0A0A0A">Picovoice Porcupine</text>
+  <text x="50" y="150" font-size="10" fill="#0A0A0A" opacity="0.75">WASM · ~50 ms</text>
+  <text x="50" y="166" font-size="10" fill="#0A0A0A" opacity="0.75">Keyword: "Topshe"</text>
+
+  <rect x="230" y="86" width="170" height="110" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="240" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">STT</text>
+  <text x="240" y="134" font-size="10" fill="#0A0A0A">Web Speech API</text>
+  <text x="240" y="150" font-size="10" fill="#0A0A0A" opacity="0.75">+ Whisper.cpp WASM</text>
+  <text x="240" y="166" font-size="10" fill="#0A0A0A" opacity="0.75">Streaming partials</text>
+
+  <rect x="420" y="86" width="200" height="110" rx="10" fill="#6D28D9" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="430" y="112" font-size="11" font-weight="bold" fill="#FFFFFF" letter-spacing="1">LLM</text>
+  <text x="430" y="134" font-size="10" fill="#FFFFFF">Qwen 2.5 1.5B Q4</text>
+  <text x="430" y="150" font-size="10" fill="#FFFFFF" opacity="0.85">wllama WASM runtime</text>
+  <text x="430" y="166" font-size="10" fill="#FFFFFF" opacity="0.85">~900 MB cached</text>
+
+  <rect x="640" y="86" width="170" height="110" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="650" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">TOOL REGISTRY</text>
+  <text x="650" y="134" font-size="10" fill="#0A0A0A">web_search, weather</text>
+  <text x="650" y="150" font-size="10" fill="#0A0A0A">stocks, news</text>
+  <text x="650" y="166" font-size="10" fill="#0A0A0A">calendar, email, todo</text>
+
+  <rect x="830" y="86" width="100" height="110" rx="10" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="840" y="112" font-size="11" font-weight="bold" fill="#FFFFFF" letter-spacing="1">TTS</text>
+  <text x="840" y="134" font-size="10" fill="#FFFFFF">Web Speech</text>
+  <text x="840" y="150" font-size="10" fill="#FFFFFF">+ Piper WASM</text>
+
+  <!-- Arrows between stages -->
+  <line x1="210" y1="140" x2="230" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="230,134 240,140 230,146" fill="#0A0A0A"/>
+  <line x1="400" y1="140" x2="420" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="420,134 430,140 420,146" fill="#0A0A0A"/>
+  <line x1="620" y1="140" x2="640" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="640,134 650,140 640,146" fill="#0A0A0A"/>
+  <line x1="810" y1="140" x2="830" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="830,134 840,140 830,146" fill="#0A0A0A"/>
+
+  <!-- Tools detail -->
+  <rect x="40" y="220" width="880" height="160" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="60" y="248" font-size="14" font-weight="bold" fill="#0A0A0A">TOOL REGISTRY — EVERY CAPABILITY IS A HANDLER, NOT A SERVER ROUTE</text>
+  <text x="60" y="276" font-size="12" fill="#0A0A0A"><tspan font-weight="bold">Research:</tspan> web_search, weather, stocks, news · <tspan font-weight="bold">Plan:</tspan> todo, reminder, timer, alarm · <tspan font-weight="bold">Records:</tspan> calendar (OAuth), email (OAuth), IndexedDB history, RAG embed</text>
+  <text x="60" y="302" font-size="12" fill="#0A0A0A"><tspan font-weight="bold">Personality:</tspan> tone pref, name, running context (5-turn summary), REPL mode · <tspan font-weight="bold">Contacts/Files:</tspan> clipboard, File System Access API</text>
+  <text x="60" y="330" font-size="12" fill="#0A0A0A" opacity="0.7"><tspan font-weight="bold">No network hop:</tspan> only explicit OAuth to your own Google/Outlook calendars leaves the device.</text>
+  <text x="60" y="356" font-size="12" fill="#0A0A0A" opacity="0.7"><tspan font-weight="bold">Model:</tspan> Qwen 2.5 1.5B Q4 (~900 MB) · wllama WASM · cached in IndexedDB · downloads once, runs offline.</text>
+</svg>

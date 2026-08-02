@@ -1,64 +1,117 @@
 ---
-title: "Simplest e-commerce CRO: ship one fix a week"
-description: "A handful of heartfelt, repeatable wins — checkout trust, search weights, PDP details — each small, each measured. The cadence beats the splash."
+title: "The cheapest e-commerce CRO: ship one fix a week"
+description: "17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash."
 slug: "one-fix-a-week-cro"
-date: 2026-08-02
-updated: 2026-08-02
+date: 2026-08-08
+updated: 2026-08-08
 pillar: growth
+persona: cro-operator
 targetKeyword: "ecommerce conversion optimization"
 secondaryKeywords:
   - "ecommerce CRO"
   - "website optimization"
   - "a/b test ecommerce"
 anchorProject: sierra-cro
-readingMinutes: 7
+readingMinutes: 9
 faq:
   - q: "What is conversion rate optimization in ecommerce?"
-    a: "Improving the share of store visitors who complete a purchase or submit a lead. One measured fix a week compounds."
+    a: "Improving the share of store visitors who complete a purchase or submit a lead. One measured fix a week compounds faster than a redesign."
   - q: "How much traffic do you need for CRO?"
-    a: "Enough to see a directional shift each week. We optimized with CI pipelines, not only paired-tests, on a growing store."
-  - q: "Why one fix, not a big redesign?"
-    a: "Rewrites rotate learnings little and reweight risk. Three targeted steps beat one cathartic overhaul."
+    a: "Enough to see a directional shift each week. We ran with CI pipelines rather than only paired tests on a growing store."
+  - q: "Why one fix instead of a big design?"
+    a: "Rewrites rotate learnings little and concentrate risk. Three targeted steps beat one cathartic overhaul."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
 
 <AnswerBox>
-A cheap CRO at a D2C furniture brand isn't a redesign — it's weekly micro-forensics with metrics. Fix the checkout surprise, fix the form field, fix the search weight, and measure each. One measured fix a week compounds faster than one big-bang redesign a quarter.
+CRO on a D2C furniture brand wasn't a redesign — it was weekly micro-forensics with a metric attached to each decision. Fix the checkout surprise, fix the form field, fix the search weights, and measure each. One measured fix a week compounds faster and with less risk than one big-bang redesign a quarter.
 </AnswerBox>
 
-Everyone wants the splashy redesign. Nobody wants the 17 boring fixes. But the supplier the splash deploys is the same one the boring fixes validate — one weekly, transparent, metric-backed run.
+Everyone on the team wanted the splashy redesign. Nobody wanted the 17 boring fixes. The splashy redesign was a bet on taste; the boring fixes were a bet on *measurement* — and measurement is the only thing that pays out predictably.
 
-## What "one fix a week" meant here
+## What "one fix a week" meant at Sierra
 
-At Sierra we flattened CRO into a repeatable pipeline:
+We flattened CRO into a repeatable pipeline, four steps, no heroics involved:
 
-- **Pick a funnel step** (checkout, form, search, PDP)
-- **Form a short hypothesis** from events + sessions
-- **Ship the cheapest change that tests it**
-- **Watch one KPI for two weeks**; keep it, kill it, or learn it
+1. **Pick a funnel step** — checkout, form, search, or product page.
+2. **Form a short hypothesis** from events + sessions, in one sentence.
+3. **Ship the cheapest change that tests it** — not the most impressive one.
+4. **Watch one KPI for two weeks.** Keep it, kill it, or learn from it. No orphan changes.
 
-## A sample of executed ones
+The whole discipline is step 4. A fix that isn't watched is a guess with a build ticket attached.
 
-- **Shipping displayed on cart** — surprise kills checkout; this alone moved the [abandonment needle](/blog/checkout-abandonment-73-to-54)
-- **Search synonyms** — re-weighting factors lifted search-attributed revenue +14% (one of the quieter CRO wins)
-- **Form objection** — a single uncommunicated field turned the [form +124% fix](/blog/lead-form-overhaul-124) into a micro-test instead of a field deletion
+## A sample of fixes that shipped
+
+- **Shipping on the cart page.** Surprise shipping cost was killing checkout; the display fix alone moved the [abandonment needle](/blog/checkout-abandonment-73-to-54).
+- **Search synonyms re-weighting.** Not flashy, but search-attributed revenue lifted **+14%** — one of the store's quietest, highest-ROI wins.
+- **Form field objection microcopy.** One uncommunicated field was costing the team the [form fix](/blog/lead-form-overhaul-124); a label, not a field deletion, turned it around.
 
 ## The cadence vs the splash
 
-|  | One fix/week | Big redesign |
+| | One fix a week | The big redesign |
 | --- | --- | --- |
-| Learning per unit | high | low |
-| Ramp | smooth | risky |
-| Blame | surgical | does |
-| Measurement | rigorous | noisy |
+| Learning per change | high | low |
+| Ramp | smooth, reversible | risky, all-or-nothing |
+| Attribution | the change owns the delta | noise |
+| Measurement | rigorous | loud but noisy |
+
+The telling column is attribution. Redesigns can't tell you which thing worked. Weekly fixes can — because each one is small enough to name as the cause.
 
 ## What I'd do differently
 
-- **Run hypotheses in a central log.** If a thought goes unmeasured for a week it should be dead; a backlog of micro-tests pays.
-- **Attach each fix to one KPI.** Vague fixes kill the funnel's red thread.
+- **Keep a central hypothesis log.** If a thought sits unmeasured for a week, it's dead. A queue of micro-tests compounds like a good backlog.
+- **Attach every fix to one KPI.** Vague fixes kill the funnel's red thread; a fix with an owner KPI survives review.
 
-Plug-ins at every tier: the [category redesign](/blog/category-page-redesign-plus34), [form teardown](/blog/lead-form-overhaul-124), and the flagship [checkout story](/blog/checkout-abandonment-73-to-54) are all single-fix clocks that scaled.
+## When *not* to use the weekly cadence
+
+Being honest about the limits is part of the discipline. One-fix-a-week fails in four situations:
+
+1. **The funnel is structurally broken.** If your checkout errors on half of attempts regardless of UX, fixing the copy is grinding powder. Fix the architecture once, deeply.
+2. **You don't have measurement.** The cadence *is* the measurement. Without events, the weekly fix is a prayer. Instrument first or skip the routine.
+3. **The win can't be isolated.** Some changes entangle — new page + new template + new flow in one PR. The cadence requires one change per KPI. Resist combos.
+4. **The team reuses "the splash always fails" as an excuse for slowness.** A weekly fix that never ships is just a slow redesign with braver language. The cadence has to ship.
+
+Knowing the four exit conditions is what separates a shop that does CRO from a shop that *talks* about it.
+
+## How to read the two-week window
+
+A common question when teams adopt this: *"what if the KPI hasn't moved after two weeks?"* Three honest answers, in order of likelihood:
+
+- **The fix doesn't matter (most common).** It moved nothing; kill it, log it, move on. Not every change needs to win.
+- **The KPI is too coarse.** If the window can't show the delta, refine the KPI before re-running.
+- **You need a variant, not a removal.** If the data hints the direction was right but the execution weak, run the next cheap variant — don't abandon the line.
+
+The trap is leaving the window open forever. A fix that "might still pay off next month" is a fix that's never been measured. Close the loop on schedule; keep the learnings in the log.
+
+## The compounding math, plainly
+
+Rough numbers, no spreadsheet glamour: one fix at a rough 1–5% lift per test — realistically optimistic — compounds into something a single redesign can't match. But you shouldn't believe me: the actual people reading this post have the checkout (−26%), the form (+124%), and the category (+34% qualified) as the evidence trail from a single disciplined year.
+
+That's the whole pitch of the weekly cadence. It's unglamorous, and it pays predictably.
+
+The mechanics behind those fixes are the connected stories: the [category redesign](/blog/category-page-redesign-plus34), the [form teardown](/blog/lead-form-overhaul-124), and the flagship [checkout story](/blog/checkout-abandonment-73-to-54). Read them together — they're the same discipline at three different scales.
+
+## The one-fix cadence, run for real
+
+Here's what a surrogate month of the routine looked like on a D2C store — not a master plan, just four Tuesdays:
+
+- **Week 1 fix:** Shipping shown on cart page. *Hypothesis:* users bail at the shipping step because the total arrives late. *KPI:* checkout abandonment. *Result:* the needle moved; keep.
+- **Week 2 fix:** Promo field validation. *Hypothesis:* rage-clicks came from a field that ate input without a reply. *KPI:* rage-clicks at the field. *Result:* cleaned up 68% of them; keep (already covered in the [form post](/blog/lead-form-overhaul-124)).
+- **Week 3 fix:** Search synonym weights. *Hypothesis:* searchers didn't find "buffet" because weights skewed "cabinet." *KPI:* search-attributed revenue. *Result:* +14%, keep.
+- **Week 4 fix:** Category page intent filter. *Hypothesis:* attribute filters ignore needs. *KPI:* qualified leads. *Result:* +34%, keep — covered in [category](/blog/category-page-redesign-plus34).
+
+That's the entire emotional experience of CRO at scale: boring change, boring measurement, boring win, repeated. The splash comes from compounding, not from any single Thursday.
+
+## Why the boring framing is a superpower
+
+When you tell a stakeholder "we'll ship the smallest thing that could work," you're actually buying three things at once:
+
+1. **Faster learning** — a one-file change ships this week, not next quarter.
+2. **Reversibility** — if it fails, you remove it without a postmortem.
+3. **Attribution** — one change = one KPI, so when it moves you know why.
+
+The redesign offers the thrill of scale and the torture of unblameable noise. The weekly fix offers none of the thrill and all of the accountability — which is why it compounds.
 
 <FAQ items={frontmatter.faq} />

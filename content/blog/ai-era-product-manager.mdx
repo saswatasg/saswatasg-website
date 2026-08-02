@@ -1,17 +1,18 @@
 ---
 title: "What an AI-era product manager does all day"
-description: "AI didn't remove the PM job — it moved the work up the judgment ladder. Specs get faster; decisions, scope, and risk reign. Real before/after inside."
+description: "AI didn't remove the PM job — it moved the work up the judgment ladder. Specs get faster; decisions, scope, risk reign. Real before/after from Upcore."
 slug: "ai-era-product-manager"
-date: 2026-08-02
-updated: 2026-08-02
+date: 2026-08-12
+updated: 2026-08-12
 pillar: pm
+persona: career-pm
 targetKeyword: "AI product manager"
 secondaryKeywords:
   - "PM AI tools"
   - "product management with AI"
   - "AI era product strategy"
 anchorProject: pm-agentic
-readingMinutes: 8
+readingMinutes: 15
 faq:
   - q: "Will AI replace product managers?"
     a: "No, but it shifts the job's center: drafting and synthesis get automated, judgment and scoping don't."
@@ -23,44 +24,93 @@ faq:
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
+import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-The AI-era PM is not the smartest typist; they're the sharpest decider. AI does the writing and the summarizing; the PM does the vetting, the scoping, and the "what do we actually promise users" call. On shipped projects, that's moved weeks into decisions and half the typing into judgment.
+The AI-era PM is not the smartest typist; they're the sharpest decider. AI does the writing and the summarizing; the PM does the vetting, the scoping, and the "what do we actually promise users" call. At Upcore, that's moved weeks into decisions and half the typing into judgment — across 20+ prospect interviews, 12 verticals, and a 16-page State of AI Agents report.
 </AnswerBox>
 
-There is a neat-looking "the PM is dead" stream on LinkedIn. It's wrong, but it's pointing at something real: **the spread between a good and a fine PM is widening, and the drying part is now delegable.**
+There's a neat-looking "the PM is dead" stream on LinkedIn. It's wrong, but it's pointing at something real: **the spread between a good PM and a fine PM is widening, and the drafting part is now delegable.**
 
-## Before the AI era
+## The day before AI was everywhere
 
-A classic PM day churned through drafting tickets, summarizing calls and decks, and polishing spec language for an audience of one. It looked busy, right.
+A classic PM day in 2023 churned through drafting tickets, summarizing calls and decks, and polishing spec language for an audience of one. It looked busy. It felt productive. The artifact pile grew — PRDs, one-pagers, follow-up emails — but the decision surface stayed the same size.
 
-## The AI-era shape
+Then the tools arrived. Not "AI features" in the product, but AI in the PM's hands: GPT for drafts, Whisper for call notes, Perplexity for research, Cursor for code-adjacent prototypes. The workflow didn't disappear — it inverted.
 
-The modern-day actually spends:
+## The AI-era shape of the PM day
 
-- **Drafting delegated** — AI drafts; the PM edits for truth and tone
-- **Judgment centralized** — the PM decides which problems are *worth* a build
-- **Evidence kept human** — measurements still come from your own funnels and interviews
-- **Scope defended** — the PM says "no" more than "yes" and everyone survives
+The modern PM day at Upcore actually spends:
 
-## What I actually got from it
+- **Drafting delegated** — AI writes the first PRD, the follow-up email, the competitive summary. The PM edits for truth, tone, and the gaps the model hallucinated.
+- **Judgment centralized** — the PM decides which problems are *worth* a build. The model suggests; the human commits the roadmap.
+- **Evidence kept human** — measurements still come from your own funnels, your own interviews, your own SQL. The model doesn't own the data.
+- **Scope defended** — the PM says "no" more than "yes" and everyone survives. AI generates feature ideas infinitely; the PM is the filter.
 
-The most concrete shrinker: **daily report automation**. The [previous post](/blog/daily-report-automation) replaced a 30-minute manual slice of the day with a script — I got back to the *thinking* those 30 minutes used to crowd out.
+<Figure src="/blog-assets/ai-era-pm/division.svg" alt="AI-era PM division of labor: AI drafts/synthesizes; PM judges/scopes/decides" caption="Drafting → AI. Judgment, scope, risk → PM. The division that matters." />
 
-And **call summarizations**: 20+ discovery calls became an insight map, not a binder of transcripts — exactly [what I describe here](/blog/ai-recruiter-agent-build) at the extreme.
+## A concrete Tuesday at Upcore
 
-## The skills I copied from being PM
+Here's what a real day looks like now, not the idealized version:
 
-- **Scope is your best product** — a tight enough build that AI can staff, and the client trusts what's real
-- **Human veto** — nothing ships that the model wrote unchecked
-- **Metrics before meetings** — the checklist still excludes a direct methodology
+**8:30 AM — Standup with context.** The model has already summarized the overnight Slack threads, Jira updates, and the GitHub PRs that merged. I walk in knowing which engineer unblocked whom, not just who showed up.
+
+**9:00 AM — Discovery synthesis.** Yesterday's three prospect calls (manufacturing, logistics, SaaS) are transcribed by Whisper, structured by GPT-4o into: pain quote, budget signal, decision owner, urgency phrasing. I spend 20 minutes vetting the extraction, merging duplicates, scoring severity/ROI/buildability. That used to take two hours of manual note-typing.
+
+**10:30 AM — PRD review.** The team shipped a draft PRD for the "agentic dispatch" feature overnight via Cursor. I'm not reading for grammar — I'm checking: does the success metric match the business case? Is the rollback plan real? Are the edge cases the ones that actually kill launches? The model wrote the first draft; I'm the veto layer.
+
+**12:00 PM — Competitive landscape update.** Perplexity ran the overnight query: "new agentic AI dispatch tools launched this week." I get a ranked list with pricing, positioning, and gaps. I add the two that matter to the competitive doc; the rest is noise.
+
+**1:30 PM — Funnel review with data.** The checkout abandonment fix we shipped last sprint (73.1% → 53.9%) — I'm checking the post-launch cohort. The model doesn't own this; I run the SQL, I read the Clarity recordings, I decide if the +47% mobile CVR holds.
+
+**3:00 PM — Roadmap arbitration.** Two stakeholders want opposite things. The model can't resolve this. I pull the severity/ROI/buildability scores from discovery, show the trade-off, make the call. That's the job.
+
+**4:30 PM — Writing the thing only I can write.** The weekly "State of AI Agents" section for the 16-page report. The model drafted the market sizing table; I'm writing the "why this matters for our GTM" narrative. That's the part no model can do — it requires the context of 20 prospect conversations.
+
+## What I actually got from it at Upcore
+
+The most concrete time-saver: **daily report automation**. The [daily report post](/blog/daily-report-automation) replaced a 30-minute manual slice of the day with a Google Apps Script pipeline — I got back the *thinking* those 30 minutes used to crowd out.
+
+And **call summarizations**: 20+ discovery calls across 12 verticals became an insight map, not a binder of transcripts. The model transcribed, extracted pain signals, and ranked by severity — the PM then vetted, merged, and wrote the top-3 opportunity brief.
+
+The [discovery-to-roadmap post](/blog/discovery-to-roadmap) is the same discipline: 20+ interviews → severity/ROI/buildability scores → top-3 use cases that survived C-suite review.
+
+## The skills I copied from being a PM, now applied to AI
+
+- **Scope is your best product** — a tight enough build that AI can staff, and the client trusts what's real. At Upcore, the 16-page "State of AI Agents" report (market sizing, tooling landscape, 8+ case studies) was scoped to be AI-draftable in sections, then human-vetted end-to-end.
+- **Human veto** — nothing ships that the model wrote unchecked. Every AI draft gets a "vetted by" initial.
+- **Metrics before meetings** — the checklist still excludes a direct methodology; the model doesn't know your funnel unless you feed it.
 
 ## The honest limits
 
-- AI drafts conclusions **too confidently** — a PM sorts the confident but wrong
-- Model output is best as a **skeleton**, never a tombstone
-- Product *strategy* is still yours: where the yard has value
+- AI drafts conclusions **too confidently** — a PM sorts the confident but wrong.
+- Model output is best as a **skeleton**, never a tombstone. The final PRD is human.
+- Product *strategy* is still yours: where the yard has value. The model can map the yard; it can't tell you where to build.
 
-For where my head really is now: [the deep-dive method](/blog/data-deep-dive-method) for evidence, and [agents in prod](/blog/ai-recruiter-agent-build) for the build side.
+## The tool stack that actually stays
+
+Not every tool survives contact with reality. Here's what's still in the daily rotation after three months:
+
+| Tool | Use case | Why it stayed |
+|------|----------|---------------|
+| GPT-4o / Claude 3.5 | PRD drafts, email synthesis, competitive summaries | Best reasoning for structured output |
+| Whisper (local) | Call transcription | Privacy; no vendor lock-in |
+| Perplexity Pro | Competitive research, technical fact-checking | Citations = verifiable |
+| Cursor | Code-adjacent prototypes, SQL generation | In-editor context |
+| Cursor + Whisper local | Meeting notes → structured signals | Keeps data on device |
+
+The ones that got cut: Notion AI (too slow, hallucinated page refs), GitHub Copilot Chat (disrupted flow more than helped), generic "AI PM" SaaS tools (too generic, no funnel context).
+
+## What this means for hiring
+
+If you're hiring PMs in 2026, the interview changed. I don't ask "how do you write a PRD?" anymore. I ask:
+
+- "Show me a model output you vetoed and why."
+- "How do you verify a synthesis before it hits the roadmap?"
+- "Where does your evidence come from, and who owns it?"
+
+The PM who treats AI as a co-author without a veto is a liability. The PM who treats it as a draft engine with a human filter is a force multiplier.
+
+For where my head really is now: the [deep-dive method](/blog/data-deep-dive-method) for evidence, and [agents in prod](/blog/ai-recruiter-agent-build) for the build side.
 
 <FAQ items={frontmatter.faq} />

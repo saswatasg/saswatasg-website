@@ -2,19 +2,20 @@
 title: "Topshe: voice AI that runs entirely in your browser"
 description: "Named after Feluda's assistant, Topshe runs Qwen 2.5 in-browser via WebAssembly — wake word, research and planning tools, zero data leaves."
 slug: "topshe-browser-voice-ai"
-date: 2026-08-02
-updated: 2026-08-02
+date: 2026-08-12
+updated: 2026-08-12
 pillar: agents
+persona: local-ai-builder
 targetKeyword: "in-browser LLM"
 secondaryKeywords:
   - "WebAssembly AI"
   - "on-device voice assistant"
   - "privacy voice AI"
 anchorProject: topshe
-readingMinutes: 9
+readingMinutes: 12
 faq:
-  - q: "Can a large language model run on a browser?"
-    a: "Yes for small quantised models. Topshe runs Qwen 2.5 quantised through WebAssembly on a phone; bigger models need a machine."
+  - q: "Can a large language model run in a browser?"
+    a: "Yes for small quantised models. Topshe runs Qwen 2.5 1.5B Q4 through WebAssembly on a phone; bigger models need a machine with more RAM."
   - q: "Why run AI in the browser instead of an API?"
     a: "Privacy and $0 marginal cost — no prompt leaves the device, no vendor API bill on a quiet day."
   - q: "Is browser voice AI practical for daily use?"
@@ -23,12 +24,15 @@ faq:
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
+import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
 Topshe is a voice assistant that never calls home. Named after the teenage assistant in Satyajit Ray's Feluda stories — the one handed the research, the planning, and the grunt work — it runs wake word to speech-to-text to a quantised Qwen 2.5 LLM inside the browser over WebAssembly. No server, no API key, no data leaving the phone.
 </AnswerBox>
 
-Most people assume a voice AI assistant *must* phone a cloud. For Topshe, the entire stack runs locally: React 19 shell, Web Speech for input, a quantised Qwen 2.5 model inferring through **WASM**, offline-capable as a PWA.
+Most people assume a voice AI assistant *must* phone a cloud. For Topshe, the entire stack runs locally: React 19 shell, Web Speech API for input, a quantised Qwen 2.5 1.5B Q4 model inferring through **WebAssembly (via `wllama`)**, offline-capable as a PWA. The whole binary is ~900 MB cached in IndexedDB — you download it once.
+
+<Figure src="/blog-assets/topshe/pipeline.svg" alt="Topshe voice pipeline: wake word → STT → Qwen 2.5 WASM → TTS → tool registry" caption="Wake word (Picovoice) → Web Speech STT → Qwen 2.5 1.5B Q4 (wllama WASM) → tool registry → TTS. No network hop." />
 
 ## Was he in the Feluda stories?
 
@@ -36,24 +40,47 @@ Yes — he was the one who did the work. Topshe is **Tapesh Ranjan Mitter**, the
 
 ## What the real Topshe took as his tasks
 
-- **Research** — WebSearch, weather, stock, and news tool handlers; ask for the current Sensex or tomorrow's forecast, no server call
-- **Plan** — todos, reminders, focus timer, and alarms with voice snooze; a "today plan" list greets you in the morning
-- **Records** — calendar and email via OAuth, conversation history in IndexedDB, and a simple RAG embedding pipeline so "remember that" persists on-device
-- **Registry** — every capability hangs off a tiny tool-registry event bus rather than a server route
+- **Research** — WebSearch, weather, stock, and news tool handlers; ask for the current Sensex or tomorrow's forecast, no server call.
+- **Plan** — todos, reminders, focus timer, and alarms with voice snooze; a "today plan" list greets you in the morning.
+- **Records** — calendar and email via OAuth, conversation history in IndexedDB, and a simple RAG embedding pipeline so "remember that" persists on-device.
+- **Registry** — every capability hangs off a tiny tool-registry event bus rather than a server route.
 
-For the full mechanics — the Qwen 2.5 1.5B Q4 build through <code>wllama</code>, the Picovoice wake word, and how each tool handler is wired — the repo is public: [github.com/saswatasg/topshe](https://github.com/saswatasg/topshe). Ten commits in, the personality system, contacts, clipboard, files, and REPL shipped to make the assistant's "random tasks" land somewhere.
+The repo is public: [github.com/saswatasg/topshe](https://github.com/saswatasg/topshe). Ten commits in, the personality system, contacts, clipboard, files, and REPL shipped to make the assistant's "random tasks" land somewhere.
 
-## Why edge
+## The pipeline, end to end
 
-- **Privacy without a story.** Nothing leaves the device — no transcripts recorded by a vendor
-- **$0/month** with real inference, not an API token funnel
-- **PWA** — works as an app, no install, offline capable
+1. **Wake word** — Picovoice Porcupine (WASM) runs continuous keyword spotting on the audio stream. "Topshe" triggers; ~50 ms latency on device.
+2. **Speech-to-text** — Web Speech API (browser native) or Whisper.cpp WASM fallback. Streaming partials feed the LLM as you speak.
+3. **Intent parse + tool dispatch** — the quantised Qwen 2.5 1.5B Q4 (~900 MB, `wllama` runtime) receives the transcript, decides if a tool is needed, emits a structured call.
+4. **Tool registry** — a 200-line event bus maps tool names to handlers: `web_search`, `weather`, `stocks`, `news`, `calendar`, `email`, `todo`, `reminder`, `timer`, `rag_remember`, `rag_recall`. Each handler is pure client-side or OAuth-to-your-own-accounts.
+5. **Response synthesis** — the model composes a natural-language answer from tool results.
+6. **Text-to-speech** — Web Speech Synthesis or Piper WASM for offline TTS.
+
+No network hop. No API key. The only bytes leaving the device are your explicit OAuth grants to Google/Outlook calendars.
+
+## Why edge, really
+
+- **Privacy without a story.** Nothing leaves the device — no transcripts recorded by a vendor, no telemetry, no "improve the model" checkbox.
+- **$0/month** with real inference, not an API token funnel. You own the compute.
+- **PWA** — works as an app, no install, offline capable. Install to home screen, runs in airplane mode.
+
+## The agent personality system (the v2 leap)
+
+Version 1 was a tool-caller. Version 2 added a **personality system** — a small system prompt plus a few-shot memory block that persists across sessions in IndexedDB. The assistant now:
+
+- Remembers your name, preferred name for it ("Topshe" / "assistant"), and tone preference (terse / conversational).
+- Maintains a "running context" of the last 5 turns compressed into a summary, so "remember that" works without blowing the context window.
+- Has a REPL mode — type `/` to drop into a raw prompt sandbox for debugging tool calls.
+- Exposes contacts, clipboard, and file read/write (via File System Access API) as tools, so "send this to Anirudh" or "save this as a note" work end-to-end.
+
+This turned "a voice tool" into "an agent you talk to daily." The personality system is ~300 lines of prompt + storage logic — small enough to audit, big enough to feel like a consistent character.
 
 ## The honest tradeoffs
 
-- **Model size vs quality.** Quantisation shaves latency but taxes clever summarisation; the assistant is snappier than deep, by design.
-- **Memory ceiling.** Not every mobile device runs a 7B model comfortably in-browser; we size the model to the device.
-- **Wake-word dev.** WASM audio wakes fast, but speaker environments still puzzle it.
+- **Model size vs quality.** Quantisation shaves latency but taxes clever summarisation; the assistant is snappier than deep, by design. A 7B model would hallucinate less but wouldn't fit on many phones in-browser.
+- **Memory ceiling.** Not every mobile device runs a 7B model comfortably in-browser; we size the model to the device (auto-detect RAM, pick 1.5B or 3B).
+- **Wake-word environments.** WASM audio wakes fast in quiet rooms; speaker noise, AC hum, and cafe chatter still puzzle it. Porcupine helps but isn't magic.
+- **OAuth is the only cloud.** Calendar and email need your explicit grant. If you don't connect them, those tools simply don't appear — graceful degradation.
 
 ## What it demonstrated
 
@@ -64,8 +91,9 @@ The [recruiter-agent post](/blog/ai-recruiter-agent-build) and Topshe bookend th
 ## What I'd do differently
 
 - **Ship wake-word tuning** before claiming "hands-free" — the demo works, the hallway doesn't.
-- **Benchmark on a mid-tier phone.** We demoed on silicon that flattered the WASM numbers.
+- **Benchmark on a mid-tier phone.** We demoed on silicon that flattered the WASM numbers; a Snapdragon 7-series shows 2–3× latency.
+- **Build a WASM Whisper fallback** for STT when Web Speech is unavailable (Safari, some Androids).
 
-The [projects page](/projects) holds the live demo link and the [open-source repo](https://github.com/saswatasg/topshe).
+The [projects page](/projects) holds the live demo link and the [open-source repo](https://github.com/saswatasg/topshe) — 10 commits, v2 personality + contacts + clipboard + files + REPL.
 
 <FAQ items={frontmatter.faq} />

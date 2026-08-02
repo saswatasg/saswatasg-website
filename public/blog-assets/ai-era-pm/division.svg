@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="960" height="380" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="944" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+
+  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">AI-ERA PM — THE DIVISION THAT MATTERS</text>
+
+  <!-- Left: AI does -->
+  <rect x="40" y="90" width="430" height="260" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="60" y="118" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">AI DOES</text>
+  <text x="60" y="152" font-size="13" fill="#0A0A0A">✦ First-draft PRDs, specs, one-pagers</text>
+  <text x="60" y="178" font-size="13" fill="#0A0A0A">✦ Call transcripts → insight extraction</text>
+  <text x="60" y="204" font-size="13" fill="#0A0A0A">✦ Competitive summaries, research calls</text>
+  <text x="60" y="230" font-size="13" fill="#0A0A0A">✦ Scoring frameworks, first-pass scoring</text>
+  <text x="60" y="256" font-size="13" fill="#0A0A0A">✦ Code-adjacent prototypes (Cursor)</text>
+  <text x="60" y="282" font-size="13" fill="#0A0A0A">✦ 16-page report sections (AI-agents)</text>
+  <text x="60" y="318" font-size="11" fill="#E85D3A" font-weight="bold">Speed. Volume. First pass.</text>
+
+  <!-- Right: PM does -->
+  <rect x="490" y="90" width="430" height="260" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="510" y="118" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PM DOES</text>
+  <text x="510" y="152" font-size="13" fill="#0A0A0A">✦ Truth & tone edit — every AI draft</text>
+  <text x="510" y="178" font-size="13" fill="#0A0A0A">✦ Scope decisions — what's worth building</text>
+  <text x="510" y="204" font-size="13" fill="#0A0A0A">✦ Evidence ownership — your funnels, your SQL</text>
+  <text x="510" y="230" font-size="13" fill="#0A0A0A">✦ Roadmap defense — say "no" to infinity</text>
+  <text x="510" y="256" font-size="13" fill="#0A0A0A">✦ Human veto — nothing ships unchecked</text>
+  <text x="510" y="282" font-size="13" fill="#0A0A0A">✦ Strategy — where the yard has value</text>
+  <text x="510" y="318" font-size="11" fill="#E85D3A" font-weight="bold">Judgment. Scope. Risk. Promise.</text>
+
+  <!-- Divider line -->
+  <line x1="480" y1="90" x2="480" y2="350" stroke="#0A0A0A" stroke-width="4" stroke-dasharray="8,8"/>
+  <text x="480" y="70" font-size="12" font-weight="bold" fill="#0A0A0A" text-anchor="middle">THE LINE</text>
+</svg>

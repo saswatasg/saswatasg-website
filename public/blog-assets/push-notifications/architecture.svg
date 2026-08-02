@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="960" height="420" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="944" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+
+  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">PUSH ARCHITECTURE — 27+ TRIGGERS, 3 RULES, 0 SPAM</text>
+
+  <!-- Trigger buckets -->
+  <rect x="40" y="86" width="220" height="140" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="50" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">RENEWAL & BILLING</text>
+  <text x="50" y="130" font-size="10" fill="#0A0A0A">Reminders, trial expiry</text>
+  <text x="50" y="146" font-size="10" fill="#0A0A0A">Invoice ready, pay failures</text>
+  <text x="50" y="162" font-size="10" fill="#0A0A0A">P0 — legal requirement</text>
+
+  <rect x="280" y="86" width="220" height="140" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="290" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">TRANSACTIONAL</text>
+  <text x="290" y="130" font-size="10" fill="#0A0A0A">Changes, additions</text>
+  <text x="290" y="146" font-size="10" fill="#0A0A0A">Reversal confirmations</text>
+  <text x="290" y="162" font-size="10" fill="#0A0A0A">P1 — user action</text>
+
+  <rect x="520" y="86" width="220" height="140" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="530" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">CONFLICTS & ERRORS</text>
+  <text x="530" y="130" font-size="10" fill="#0A0A0A">"We need something"</text>
+  <text x="530" y="146" font-size="10" fill="#0A0A0A">Compliance moments</text>
+  <text x="530" y="162" font-size="10" fill="#0A0A0A">P0 — blocking</text>
+
+  <rect x="760" y="86" width="160" height="140" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="770" y="112" font-size="11" font-weight="bold" fill="#0A0A0A" letter-spacing="1">FEATURE</text>
+  <text x="770" y="130" font-size="10" fill="#0A0A0A">Release notes</text>
+  <text x="770" y="146" font-size="10" fill="#0A0A0A">Feature nudges</text>
+  <text x="770" y="162" font-size="10" fill="#0A0A0A">P3 — nice to know</text>
+
+  <!-- Three rules -->
+  <rect x="40" y="250" width="280" height="140" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="50" y="278" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">RULE 1: P0–P3 PRIORITY</text>
+  <text x="50" y="302" font-size="12" fill="#0A0A0A">P0: billing, compliance — interrupt</text>
+  <text x="50" y="322" font-size="12" fill="#0A0A0A">P1: transactional — action</text>
+  <text x="50" y="342" font-size="12" fill="#0A0A0A">P2: conflicts — block</text>
+  <text x="50" y="362" font-size="12" fill="#0A0A0A">P3: features — wait</text>
+
+  <rect x="340" y="250" width="280" height="140" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="350" y="278" font-size="13" font-weight="bold" fill="#FFFFFF" letter-spacing="1">RULE 2: 3-SLOT DAILY CAP</text>
+  <text x="350" y="302" font-size="12" fill="#FFFFFF">Max 3 notifications/user/day</text>
+  <text x="350" y="322" font-size="12" fill="#FFFFFF">Queue non-critical for tomorrow</text>
+  <text x="350" y="342" font-size="12" fill="#FFFFFF">Stacking = blocked/muted</text>
+
+  <rect x="640" y="250" width="280" height="140" rx="12" fill="#6D28D9" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="650" y="278" font-size="13" font-weight="bold" fill="#FFFFFF" letter-spacing="1">RULE 3: 5 GEO-REGIONS</text>
+  <text x="650" y="302" font-size="12" fill="#FFFFFF">Pan-India, South, MH/Goa</text>
+  <text x="650" y="322" font-size="12" fill="#FFFFFF">East, Gujarat</text>
+  <text x="650" y="342" font-size="12" fill="#FFFFFF">Festival calendars local</text>
+
+  <!-- Result strip -->
+  <rect x="40" y="410" width="880" height="80" rx="10" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="480" y="436" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">27+ triggers · P0–P3 · 3-slot cap · 5 regions → engagement held, zero decay</text>
+  <text x="480" y="458" font-size="12" fill="#FFFFFF" opacity="0.75" text-anchor="middle">Constraint is the feature. Volume without cap = spam.</text>
+</svg>

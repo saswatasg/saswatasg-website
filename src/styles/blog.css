@@ -142,3 +142,20 @@
   max-width: 100%;
   height: auto;
 }
+
+.blog-figure-img {
+  width: 100%;
+  border-radius: 14px;
+  border: 2px solid var(--ink, #0a0a0a);
+  background: var(--canvas, #f5f2ec);
+  display: block;
+}
+
+.blog-figcaption {
+  margin-top: 0.6em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink, #0a0a0a);
+  opacity: 0.6;
+  text-align: center;
+}
