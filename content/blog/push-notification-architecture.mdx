@@ -81,9 +81,9 @@ Each trigger carried **execution context**: legal requirement (yes/no), average 
 
 | Tier | Definition | Max latency | Channels | Example |
 |------|------------|-------------|----------|---------|
-| P0 | Legal requirement, revenue at risk, user harm | <5 min | Push + SMS + Email | Payment failed, GST rejection |
-| P1 | User action required, revenue impact | <30 min | Push + Email | Invoice ready, sync error |
-| P2 | Helpful context, time-sensitive | <4 hours | Push | Renewal D-7, GST filed |
+| P0 | Legal requirement, revenue at risk, user harm | under 5 min | Push + SMS + Email | Payment failed, GST rejection |
+| P1 | User action required, revenue impact | under 30 min | Push + Email | Invoice ready, sync error |
+| P2 | Helpful context, time-sensitive | under 4 hours | Push | Renewal D-7, GST filed |
 | P3 | Nice to know, no urgency | Next slot | Push | Release notes, greetings |
 
 **2. Three-slot daily cap.** Only three notifications per user per day, globally. When the message isn't same-day critical, it queues for tomorrow. Stacking is the single fastest way to get *blocked and muted*.
@@ -188,7 +188,7 @@ Users wanted control. We added a preference center in month 3:
 }
 ```
 
-The center itself is a simple React page backed by a Firestore document. The Conflict Resolver reads this before sending. Opt-out rate dropped from 12% to <2% within two weeks of launch.
+The center itself is a simple React page backed by a Firestore document. The Conflict Resolver reads this before sending. Opt-out rate dropped from 12% to under 2% within two weeks of launch.
 
 ## What the numbers said
 
@@ -199,7 +199,7 @@ The center itself is a simple React page backed by a Firestore document. The Con
 | Daily cap | 3 slots per user |
 | Geo-regions | 5 (festival calendars) |
 | Engagement per send | held (no decay) |
-| Opt-out rate | <2% (vs 12% pre-cap) |
+| Opt-out rate | under 2% (vs 12% pre-cap) |
 | Revenue recovered (P0 billing) | ₹2.3M/quarter |
 
 The engagement lift from the AI seasonal feature — [+168% in the Send Greetings work](/case-studies/livekeeping-send-greetings) — only works because users never felt *spammed* in the weeks before.
