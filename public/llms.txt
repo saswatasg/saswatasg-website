@@ -9,7 +9,7 @@
 - [About](https://saswatasg.com/about): bio, education (IIT Jodhpur MBA), resume
 - [Experience](https://saswatasg.com/experience): Upcore, Sierra Living Concepts, LiveKeeping
 - [Blog](https://saswatasg.com/blog): AI agents in production, e-commerce CRO, AI-era product management
-- [Projects](https://saswatasg.com/projects): TGB Hunt (LinkedIn outreach agent), BlogHero (SEO pipeline), FilmRisk.AI (Bollywood risk model, 2,200+ films), Inventory Leveling Agent (MRP), Topshe (in-browser voice AI), DhanPlan (dhanplan.in), The Growth Bench (thegrowthbench.com), Intent (launching 2027)
+- [Projects](https://saswatasg.com/projects): LinkedIn Outreach Agent (LinkedIn outreach agent), BlogHero (SEO pipeline), FilmRisk.AI (Bollywood risk model, 2,200+ films), Inventory Leveling Agent (MRP), Topshe (in-browser voice AI), DhanPlan (dhanplan.in), Intent (launching 2027)
 - [Case Studies](https://saswatasg.com/case-studies): 9 product deep-dives with published metrics
 
 ## Blog posts

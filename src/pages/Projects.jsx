@@ -18,17 +18,7 @@ const openSourceProjects = [
     code: null,
   },
   {
-    name: 'The Growth Bench',
-    tagline: 'Full-stack growth partner for D2C brands',
-    description: 'Strategy, performance marketing, CRO, and web development under one roof for D2C brands and early-stage startups.',
-    status: 'In production',
-    statusClass: 'bg-mint text-white',
-    tags: ['Strategy', 'Performance Marketing', 'CRO'],
-    links: [{ label: 'thegrowthbench.com', href: 'https://thegrowthbench.com', external: true }],
-    code: null,
-  },
-  {
-    name: 'TGB Hunt',
+    name: 'LinkedIn Outreach Agent',
     tagline: 'Self-hosted LinkedIn outreach agent',
     description: 'You describe your target roles; the agent finds the right recruiters and hiring managers, writes personalised AI intros, and manages follow-ups. One-click macOS app. 766 commits, 6 releases.',
     status: 'Active · v1.0.9',

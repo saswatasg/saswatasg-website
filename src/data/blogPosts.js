@@ -40,10 +40,9 @@ export const PILLAR_CTA = {
   },
   growth: {
     title: 'Need the same treatment on your store?',
-    body: 'The Growth Bench is a full-stack growth partner for D2C brands — strategy, CRO, and performance marketing.',
-    label: 'Visit thegrowthbench.com',
-    href: 'https://thegrowthbench.com',
-    external: true,
+    body: 'Browse the CRO and checkout case studies — three separate problems, three targeted fixes, one aggregate myth busted.',
+    label: 'Read the case studies',
+    href: '/case-studies',
   },
   pm: {
     title: 'More on building products with AI',
