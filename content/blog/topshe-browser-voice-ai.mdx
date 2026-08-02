@@ -1,6 +1,6 @@
 ---
 title: "Topshe: voice AI that runs entirely in your browser"
-description: "Wake word, speech-to-text, and a quantised Qwen 2.5 model in-browser via WebAssembly — no server, no API bill, no data left your device."
+description: "Named after Feluda's assistant, Topshe runs Qwen 2.5 in-browser via WebAssembly — wake word, research and planning tools, zero data leaves."
 slug: "topshe-browser-voice-ai"
 date: 2026-08-02
 updated: 2026-08-02
@@ -11,7 +11,7 @@ secondaryKeywords:
   - "on-device voice assistant"
   - "privacy voice AI"
 anchorProject: topshe
-readingMinutes: 7
+readingMinutes: 9
 faq:
   - q: "Can a large language model run on a browser?"
     a: "Yes for small quantised models. Topshe runs Qwen 2.5 quantised through WebAssembly on a phone; bigger models need a machine."
@@ -25,10 +25,23 @@ import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
 
 <AnswerBox>
-Topshe is a voice assistant that never calls home. Wake word to speech-to-text to a quantised Qwen 2.5 LLM execute inside the browser over WebAssembly — no server, no API key, no data leaving the phone. The experiment that cost zero/month taught me where edge AI wins and where it still loses.
+Topshe is a voice assistant that never calls home. Named after the teenage assistant in Satyajit Ray's Feluda stories — the one handed the research, the planning, and the grunt work — it runs wake word to speech-to-text to a quantised Qwen 2.5 LLM inside the browser over WebAssembly. No server, no API key, no data leaving the phone.
 </AnswerBox>
 
-Most people assume a voice AI assistant *must* phone a cloud. For Topshe (Bengali for "sits" — the quiet one), the entire stack runs locally: React 19 shell, Web Speech for input, a quantised Qwen 2.5 model inferring through **WASM**, offline-capable as a PWA.
+Most people assume a voice AI assistant *must* phone a cloud. For Topshe, the entire stack runs locally: React 19 shell, Web Speech for input, a quantised Qwen 2.5 model inferring through **WASM**, offline-capable as a PWA.
+
+## Was he in the Feluda stories?
+
+Yes — he was the one who did the work. Topshe is **Tapesh Ranjan Mitter**, the teenager Satyajit Ray's detective Feluda hands the random jobs to: go recognise the professor's handwriting, fetch the passport photo, keep notes on every suspect, draft the plan for tomorrow's stake-out. Feluda thought; Topshe researched, planned, and kept records. That division of labour is exactly what this app is — a junior detective you can shout random tasks at, who quietly researches, plans, and remembers.
+
+## What the real Topshe took as his tasks
+
+- **Research** — WebSearch, weather, stock, and news tool handlers; ask for the current Sensex or tomorrow's forecast, no server call
+- **Plan** — todos, reminders, focus timer, and alarms with voice snooze; a "today plan" list greets you in the morning
+- **Records** — calendar and email via OAuth, conversation history in IndexedDB, and a simple RAG embedding pipeline so "remember that" persists on-device
+- **Registry** — every capability hangs off a tiny tool-registry event bus rather than a server route
+
+For the full mechanics — the Qwen 2.5 1.5B Q4 build through <code>wllama</code>, the Picovoice wake word, and how each tool handler is wired — the repo is public: [github.com/saswatasg/topshe](https://github.com/saswatasg/topshe). Ten commits in, the personality system, contacts, clipboard, files, and REPL shipped to make the assistant's "random tasks" land somewhere.
 
 ## Why edge
 

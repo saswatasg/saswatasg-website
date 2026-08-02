@@ -60,7 +60,7 @@ const openSourceProjects = [
   {
     name: 'Topshe',
     tagline: 'Voice AI that runs entirely in your browser',
-    description: 'Wake word, speech-to-text, and a quantised Qwen 2.5 model running in-browser over WebAssembly — no server, no API bill, no data sent anywhere. Offline-capable PWA at $0/month.',
+    description: 'Named after Feluda\u2019s assistant in the Ray stories \u2014 the one handed the research and planning \u2014 Topshe runs wake word, speech-to-text, and a quantised Qwen 2.5 model in-browser over WebAssembly. No server, no API bill, no data sent anywhere. Offline-capable PWA at $0/month.',
     status: 'Personal · Experimental',
     statusClass: 'bg-blush text-ink',
     tags: ['React 19', 'WASM LLM', 'Web Speech API', 'PWA'],
