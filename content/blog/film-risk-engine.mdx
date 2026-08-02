@@ -1,0 +1,61 @@
+---
+title: "FilmRisk.AI: scoring film risk with ML and Bayesian priors"
+description: "A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included."
+slug: "film-risk-engine"
+date: 2026-08-20
+updated: 2026-08-20
+pillar: agents
+targetKeyword: "ML movie score model"
+secondaryKeywords:
+  - "bayesian model"
+  - "feature scoring engine"
+  - "ML in product"
+anchorProject: filmrisk
+readingMinutes: 10
+faq:
+  - q: "Can machine learning predict a movie's box office?"
+    a: "Better than a gut call when you quantify priors. We rank roles on 2,200 films with GBM + Bayesian blending — no one guarantees a hit."
+  - q: "What makes a risk engine 'honest'?"
+    a: "Backtests everyone can see — training accuracy AND failure modes. FilmRisk publishes both so users can validate."
+  - q: "Why Bayesian priors on top of gradient boosting?"
+    a: "ML can overfit a handful of stars; priors pull hard toward the industry base rate when data is thin. That's what changed the output."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+FilmRisk.AI scores a film's greenlight risk from 2,200+ Indian films by mixing a gradient-boosted model with Bayesian priors. Prior pulls thin-data predictions back to base rates. We backtest religiously and publish the failure points — because scoring moves money and pretending a model is magic ends careers.
+</AnswerBox>
+
+Most side projects end at "an API collected and a chart made." FilmRisk.AI was painstaking because it has a judgment: how risky is a movie $ to greenlight? Wrong scores are a real cost, so we built-in honesty rails.
+
+## The 10-component engine
+
+Internal scoring blends 10 feature groups — genre, cast, director, release window, budgets, star momentum — each fed into the model as context. The architecture:
+
+1. **Gradient-boosted ML** learns rich interaction between the 10 components
+2. **Bayesian Priors** anchor thin groups: when a 1-film director appears, the score defers toward the category average instead of over-committing
+3. **Backtesting** is non-negotiable — runs on the loading data set each change
+
+## What honest backtesting surfaced
+
+- Some star-heavy bundles score *under* the market prior — and the engine says so
+- Sequel and date signals beat cast creativity in some timeless categories; the engine shows the effect honestly
+- Failure mode: this is a **selection** engine, not a prediction oracle — for a fan, the score helps pick, it doesn't guarantee a hit
+
+## Numbers that matter
+
+- **2,200+** Indian films in training
+- **10 components** in the score
+- **Priors** that shrink thin data toward category averages
+- Backtesting results published on the [repo](https://github.com/saswatasg/FilmRisk.AI)
+
+## What I'd do differently
+
+- **Ship the API before the blog.** The engine's value is a promptable scoring grid; I papered over it for a pretty UI.
+- **Version the backtest data.** Anyone can re-run, but no one can re-fake — pin the sample.
+
+For PMs: this is what *measure-before-judge* looks like when your product is literally judgment. Pair it with [numbers-led product decisioning](/blog/e-invoice-adoption-gap) for the same muscle in SaaS.
+
+<FAQ items={frontmatter.faq} />

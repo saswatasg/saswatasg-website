@@ -1,0 +1,66 @@
+---
+title: "The 17:1 e-way bill gap: diagnosing B2B adoption"
+description: "Why PRO+ users generated bills in Tally, not in-app — a two-week diagnostic that uncovered a 17:1 gap and changed the roadmap at C-suite level."
+slug: "e-invoice-adoption-gap"
+date: 2026-08-14
+updated: 2026-08-14
+pillar: pm
+targetKeyword: "B2B SaaS adoption diagnosis"
+secondaryKeywords:
+  - "product adoption analysis"
+  - "user behavior analysis"
+  - "B2B product roadmap"
+anchorProject: livekeeping-compliance-gap
+readingMinutes: 8
+faq:
+  - q: "What is a product adoption gap diagnosis?"
+    a: "A structured investigation of why users ignore a core feature — using data, interviews, and workflow mapping to find the why."
+  - q: "How do you find why users don't adopt a feature?"
+    a: "Trace the real workflow users settle on instead, then reconcile it against the built feature with quantifiable drop-off rates."
+  - q: "What changed after the 17:1 diagnosis?"
+    a: "The executive narrative showed ecosystem gravity and a redirectable roadmap — a 17:1 in-gap detection focus."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+At LiveKeeping, PRO+ users generated E-Way Bills in Tally rather than in the app — a 17:1 adoption gap hiding in white noise. A deep-dive diagnosis mapped the real workflow and produced a C-suite narrative so clear it changed the product roadmap.
+</AnswerBox>
+
+A compliance SaaS with 50K+ Indian SMBs lives or dies on **where merchants actually do bookkeeping**. If a critical transaction gets generated in Tally, a native feature is silently dead — and the negative is invisible in a happy-path dashboard.
+
+## The set-up
+
+- Native **e-way bill** generation exists; it's a top-of-funnel "PRO+ feature"
+- Analytics showed usage, but nothing about *substitute* behavior
+- Support tickets hinted at Tally; nobody quantified it
+
+## The two-step diagnosis
+
+**Step 1 — Workflow tracing.** We interviewed and instrumented a handful of merchants and discovered the real pattern: generation happens where the invoice lives, which is Tally for a majority.
+
+**Step 2 — Quantify the gap.** We measured **in-app vs external (Tally) generation** — and saw a **17:1 preference gap** in the revenue-month sample.
+
+The same logic produced a **19:1 E-Invoice gap** — the native e-invoice module suffered the identical gravity problem.
+
+## What the executive narrative changed
+
+- **The roadmap pivot.** If adoption is a workflow problem, not a feature problem, the fix is middleware (data flows via Tally natively) — not a principed sub-release.
+- **C-Suite escalation.** The narrative (17:1, 19:1) got an audience in a week; data cut through.
+
+## The result
+
+- **17:1 technical-use gap** uncovered and reported
+- **19:1 e-invoice gap** in the same study
+- **C-Suite escalation** funded a different path to adoption
+- **−58% rejection rate** in the reopen era as rejection reasons were tracked
+
+## What I'd do differently
+
+- **Run the workflow trace before the honeymoon.** We found Tally-origin volume after the feature demo.
+- **Report the two numbers together.** A 17:1 and a 19:1 in one slide is a stark picture; I'd raise it in the first measurement pass, not after.
+
+Read the whole story in the [compliance gap case study](/case-studies/livekeeping-compliance-gap). For more on metrics that matter in this exact problem space, see my notes on [product management metrics](/blog/push-notification-architecture).
+
+<FAQ items={frontmatter.faq} />

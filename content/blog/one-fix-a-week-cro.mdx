@@ -1,0 +1,64 @@
+---
+title: "Simplest e-commerce CRO: ship one fix a week"
+description: "A handful of heartfelt, repeatable wins — checkout trust, search weights, PDP details — each small, each measured. The cadence beats the splash."
+slug: "one-fix-a-week-cro"
+date: 2026-08-28
+updated: 2026-08-28
+pillar: growth
+targetKeyword: "ecommerce conversion optimization"
+secondaryKeywords:
+  - "ecommerce CRO"
+  - "website optimization"
+  - "a/b test ecommerce"
+anchorProject: sierra-cro
+readingMinutes: 7
+faq:
+  - q: "What is conversion rate optimization in ecommerce?"
+    a: "Improving the share of store visitors who complete a purchase or submit a lead. One measured fix a week compounds."
+  - q: "How much traffic do you need for CRO?"
+    a: "Enough to see a directional shift each week. We optimized with CI pipelines, not only paired-tests, on a growing store."
+  - q: "Why one fix, not a big redesign?"
+    a: "Rewrites rotate learnings little and reweight risk. Three targeted steps beat one cathartic overhaul."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+A cheap CRO at a D2C furniture brand isn't a redesign — it's weekly micro-forensics with metrics. Fix the checkout surprise, fix the form field, fix the search weight, and measure each. One measured fix a week compounds faster than one big-bang redesign a quarter.
+</AnswerBox>
+
+Everyone wants the splashy redesign. Nobody wants the 17 boring fixes. But the supplier the splash deploys is the same one the boring fixes validate — one weekly, transparent, metric-backed run.
+
+## What "one fix a week" meant here
+
+At Sierra we flattened CRO into a repeatable pipeline:
+
+- **Pick a funnel step** (checkout, form, search, PDP)
+- **Form a short hypothesis** from events + sessions
+- **Ship the cheapest change that tests it**
+- **Watch one KPI for two weeks**; keep it, kill it, or learn it
+
+## A sample of executed ones
+
+- **Shipping displayed on cart** — surprise kills checkout; this alone moved the [abandonment needle](/blog/checkout-abandonment-73-to-54)
+- **Search synonyms** — re-weighting factors lifted search-attributed revenue +14% (one of the quieter CRO wins)
+- **Form objection** — a single uncommunicated field turned the [form +124% fix](/blog/lead-form-overhaul-124) into a micro-test instead of a field deletion
+
+## The cadence vs the splash
+
+|  | One fix/week | Big redesign |
+| --- | --- | --- |
+| Learning per unit | high | low |
+| Ramp | smooth | risky |
+| Blame | surgical | does |
+| Measurement | rigorous | noisy |
+
+## What I'd do differently
+
+- **Run hypotheses in a central log.** If a thought goes unmeasured for a week it should be dead; a backlog of micro-tests pays.
+- **Attach each fix to one KPI.** Vague fixes kill the funnel's red thread.
+
+Plug-ins at every tier: the [category redesign](/blog/category-page-redesign-plus34), [form teardown](/blog/lead-form-overhaul-124), and the flagship [checkout story](/blog/checkout-abandonment-73-to-54) are all single-fix clocks that scaled.
+
+<FAQ items={frontmatter.faq} />

@@ -6,7 +6,112 @@
     <description>AI agents in production, e-commerce CRO, and AI-era product management — with the numbers.</description>
     <language>en-us</language>
     <atom:link href="https://saswatasg.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 02 Aug 2026 09:25:55 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 10:13:36 GMT</lastBuildDate>
+    <item>
+      <title><![CDATA[DhanPlan: a retirement calculator that speaks Indian finance]]></title>
+      <link>https://saswatasg.com/blog/dhanplan-retirement-calculator</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/dhanplan-retirement-calculator</guid>
+      <description><![CDATA[Building a calculator where SIP/EPF/PPF/NPS and FIRE are first-class citizens — product choices from projections to inflation. Design, scope, and tests.]]></description>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[20+ discovery calls to a top-3 roadmap brief]]></title>
+      <link>https://saswatasg.com/blog/discovery-to-roadmap</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/discovery-to-roadmap</guid>
+      <description><![CDATA[At Upcore I hunted 20+ prospects across 12 verticals; the output was a prioritized opportunity brief. The method behind turning interviews into a roadmap.]]></description>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Simplest e-commerce CRO: ship one fix a week]]></title>
+      <link>https://saswatasg.com/blog/one-fix-a-week-cro</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/one-fix-a-week-cro</guid>
+      <description><![CDATA[A handful of heartfelt, repeatable wins — checkout trust, search weights, PDP details — each small, each measured. The cadence beats the splash.]]></description>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[What an AI-era product manager does all day]]></title>
+      <link>https://saswatasg.com/blog/ai-era-product-manager</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/ai-era-product-manager</guid>
+      <description><![CDATA[AI didn't remove the PM job — it moved the work up the judgment ladder. Specs get faster; decisions, scope, and risk reign. Real before/after inside.]]></description>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[The data deep-dive: 480K sessions to three real problems]]></title>
+      <link>https://saswatasg.com/blog/data-deep-dive-method</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/data-deep-dive-method</guid>
+      <description><![CDATA[The repeatable method I used across checkout, category pages, and forms: instrument first, form hypotheses second, never optimize an unmeasured funnel.]]></description>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Topshe: voice AI that runs entirely in your browser]]></title>
+      <link>https://saswatasg.com/blog/topshe-browser-voice-ai</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/topshe-browser-voice-ai</guid>
+      <description><![CDATA[Wake word, speech-to-text, and a quantised Qwen 2.5 model in-browser via WebAssembly — no server, no API bill, no data left your device.]]></description>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[FilmRisk.AI: scoring film risk with ML and Bayesian priors]]></title>
+      <link>https://saswatasg.com/blog/film-risk-engine</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/film-risk-engine</guid>
+      <description><![CDATA[A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included.]]></description>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Daily report automation: 3 sources, 88 rows, 11 AM]]></title>
+      <link>https://saswatasg.com/blog/daily-report-automation</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/daily-report-automation</guid>
+      <description><![CDATA[A Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into one auto-populated report — and what white-collar automation really costs.]]></description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[AI image greetings lifted feature engagement by 168%]]></title>
+      <link>https://saswatasg.com/blog/ai-send-greetings-168</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/ai-send-greetings-168</guid>
+      <description><![CDATA[A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168%.]]></description>
+      <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[The 17:1 e-way bill gap: diagnosing B2B adoption]]></title>
+      <link>https://saswatasg.com/blog/e-invoice-adoption-gap</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/e-invoice-adoption-gap</guid>
+      <description><![CDATA[Why PRO+ users generated bills in Tally, not in-app — a two-week diagnostic that uncovered a 17:1 gap and changed the roadmap at C-suite level.]]></description>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Gold/silver/bronze lead routing that cut days to close]]></title>
+      <link>https://saswatasg.com/blog/lead-routing-gold-silver-bronze</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/lead-routing-gold-silver-bronze</guid>
+      <description><![CDATA[Website forms at 63.5% CVR but chat at 4.7%? We built a lead scoring router that sends gold leads to humans and bronze to automation.]]></description>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[27 push notification triggers, 5 regions, one architecture]]></title>
+      <link>https://saswatasg.com/blog/push-notification-architecture</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/push-notification-architecture</guid>
+      <description><![CDATA[Designing a notification system across renewals, transactional states, and conflict logic — with priority tiers and a daily cap users don't hate.]]></description>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Category page redesign that added +34% qualified leads]]></title>
+      <link>https://saswatasg.com/blog/category-page-redesign-plus34</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/category-page-redesign-plus34</guid>
+      <description><![CDATA[A 4-week sprint on GA4 custom events and Clarity heatmaps turned story-led category journeys into +17% PDP clicks, +34% leads, −16% bounce.]]></description>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[How I built an AI recruiter agent for LinkedIn outreach]]></title>
+      <link>https://saswatasg.com/blog/ai-recruiter-agent-build</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/ai-recruiter-agent-build</guid>
+      <description><![CDATA[766 commits, 6 releases, one self-hosted macOS app. The honest design and failure modes of an AI recruiter agent — research and intros, not spam.]]></description>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[How a form fix lifted lead submissions by 124% in 28 days]]></title>
+      <link>https://saswatasg.com/blog/lead-form-overhaul-124</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/lead-form-overhaul-124</guid>
+      <description><![CDATA[A field-by-field form teardown with GA4 events and Clarity — one field caused 23% of drop-offs. The fix raised lead submissions 124% in 28 days.]]></description>
+      <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title><![CDATA[How we cut checkout abandonment from 73.1% to 53.9%]]></title>
       <link>https://saswatasg.com/blog/checkout-abandonment-73-to-54</link>

@@ -1,0 +1,58 @@
+---
+title: "Topshe: voice AI that runs entirely in your browser"
+description: "Wake word, speech-to-text, and a quantised Qwen 2.5 model in-browser via WebAssembly — no server, no API bill, no data left your device."
+slug: "topshe-browser-voice-ai"
+date: 2026-08-22
+updated: 2026-08-22
+pillar: agents
+targetKeyword: "in-browser LLM"
+secondaryKeywords:
+  - "WebAssembly AI"
+  - "on-device voice assistant"
+  - "privacy voice AI"
+anchorProject: topshe
+readingMinutes: 7
+faq:
+  - q: "Can a large language model run on a browser?"
+    a: "Yes for small quantised models. Topshe runs Qwen 2.5 quantised through WebAssembly on a phone; bigger models need a machine."
+  - q: "Why run AI in the browser instead of an API?"
+    a: "Privacy and $0 marginal cost — no prompt leaves the device, no vendor API bill on a quiet day."
+  - q: "Is browser voice AI practical for daily use?"
+    a: "Today: yes for dictating and light tasks. Browser WebAssembly ticks under a second on modern devices; heavy reasoning still offloads."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+Topshe is a voice assistant that never calls home. Wake word to speech-to-text to a quantised Qwen 2.5 LLM execute inside the browser over WebAssembly — no server, no API key, no data leaving the phone. The experiment that cost zero/month taught me where edge AI wins and where it still loses.
+</AnswerBox>
+
+Most people assume a voice AI assistant *must* phone a cloud. For Topshe (Bengali for "sits" — the quiet one), the entire stack runs locally: React 19 shell, Web Speech for input, a quantised Qwen 2.5 model inferring through **WASM**, offline-capable as a PWA.
+
+## Why edge
+
+- **Privacy without a story.** Nothing leaves the device — no transcripts recorded by a vendor
+- **$0/month** with real inference, not an API token funnel
+- **PWA** — works as an app, no install, offline capable
+
+## The honest tradeoffs
+
+- **Model size vs quality.** Quantisation shaves latency but taxes clever summarisation; the assistant is snappier than deep, by design.
+- **Memory ceiling.** Not every mobile device runs a 7B model comfortably in-browser; we size the model to the device.
+- **Wake-word dev.** WASM audio wakes fast, but speaker environments still puzzle it.
+
+## What it demonstrated
+
+Edge LLMs are production-viable for **small systems with clear intents** — a light assistant, a noise tool, a vault-adjacent copilot. They are not (yet) full cloud-grade chat without a compute fallback.
+
+The [recruiter-agent post](/blog/ai-recruiter-agent-build) and Topshe bookend the same taste: I keep reaching for the smallest system that gives the product to the user. Topshe is the smallest.
+
+## What I'd do differently
+
+- **Ship wake-word tuning** before claiming "hands-free" — the demo works, the hallway doesn't.
+- **Benchmark on a mid-tier phone.** We demoed on silicon that flattered the WASM numbers.
+
+The [projects page](/projects) holds the live demo link and the [open-source repo](https://github.com/saswatasg/topshe).
+
+<FAQ items={frontmatter.faq} />

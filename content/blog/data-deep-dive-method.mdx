@@ -1,0 +1,74 @@
+---
+title: "The data deep-dive: 480K sessions to three real problems"
+description: "The repeatable method I used across checkout, category pages, and forms: instrument first, form hypotheses second, never optimize an unmeasured funnel."
+slug: "data-deep-dive-method"
+date: 2026-08-24
+updated: 2026-08-24
+pillar: pm
+targetKeyword: "product analytics deep dive"
+secondaryKeywords:
+  - "GA4 funnel analysis"
+  - "data driven product decisions"
+  - "product analytics framework"
+anchorProject: checkout-case
+readingMinutes: 9
+faq:
+  - q: "What is a product analytics deep dive?"
+    a: "Instrumentation first, funnel reads second; never conclude from an aggregate number alone. That is the whole method."
+  - q: "What tools do analysts use for deep dives?"
+    a: "GA4 custom events, session tools like Clarity, SQL on BigQuery, then a ranked hypothesis list. Frequency beats dazzle."
+  - q: "How long does a good deep dive take?"
+    a: "Two weeks of event plumbing plus a week of synthesis. The checkout teardown found three fixes in that window."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+A deep dive that changes metrics has two phases. First, instrument the funnel until you can name each drop-off. Second, form ranked hypotheses. At Sierra, 480K sessions became three fixable problems in two weeks — because we never diagnosed an aggregate, only a funnel.
+</AnswerBox>
+
+Every week a metric is "just too low" and nobody knows why. The failures happen four steps before the diagnosis: **no events, no recordings, no funnel, no ranked hypotheses** — and then a hunch gets a roadmap slot.
+
+## Phase 1 — Instrument the funnel
+
+You cannot fix a funnel you cannot step through. The deep dive starts with one ask: *name every step.*
+
+- Install step-level events on the surface you care about (view → engages → convert or checkout view → shipping → payment → purchase)
+- Layer on session recordings: heatmaps, rage clicks, scroll depth
+- Put the output in BigQuery so you can interrogate it, not just chart it
+
+Only when you can answer "which step loses the most, and which looks like a single cause" do conclusions become credible.
+
+## Phase 2 — Ranked hypotheses
+
+Aggregate data lies politely; a funnel stops lying. Take the event tables and rank drop-offs:
+
+| Rank | What you're testing |
+| --- | --- |
+| 1 | The step with the biggest unique loss |
+| 2 | The step most likely to be one cause |
+| 3 | The step that is easiest to measure after |
+
+At Sierra this drill surfaced *three distinct* checkout problems — shipping surprise, promo rage-click, payment dead-end — that one aggregate percentage had been hiding.
+
+## The rule that tells this apart from guesswork
+
+- **Two years of aggregate is weaker than two weeks of steps**; instrumentation expands signal, not volume.
+- **Cost estimates are hypotheses too.** Just because a fix is one-line doesn't make it the winner.
+- **Re-read the funnel after shipping**; you only learn from the same instrument.
+
+## Post-mortem notes
+
+- "Cart abandonment" was the trap; the funnel named three different things.
+- Events are facts, recordings are opinions; trust the ones you can replay.
+- Full mechanics in [the checkout teardown](/blog/checkout-abandonment-73-to-54).
+
+## What I'd do differently
+
+- I'd start recordings earlier — we had 480K sessions before our first replay window.
+- I'd version the funnel definition like source code so "did the fix even change the view" is answerable in a ticket, not a debate.
+
+The same discipline appears in [category page analysis](/blog/category-page-redesign-plus34) and in [form decisioning](/blog/lead-form-overhaul-124) — instrument once, fight many.
+
+<FAQ items={frontmatter.faq} />

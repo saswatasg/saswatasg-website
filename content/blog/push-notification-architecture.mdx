@@ -1,0 +1,69 @@
+---
+title: "27 push notification triggers, 5 regions, one architecture"
+description: "Designing a notification system across renewals, transactional states, and conflict logic — with priority tiers and a daily cap users don't hate."
+slug: "push-notification-architecture"
+date: 2026-08-10
+updated: 2026-08-10
+pillar: pm
+targetKeyword: "push notification strategy"
+secondaryKeywords:
+  - "notification architecture"
+  - "mobile push best practices"
+  - "lifecycle messaging"
+anchorProject: livekeeping-notifications
+readingMinutes: 9
+faq:
+  - q: "How many push notification triggers does a product need?"
+    a: "We shipped 27+ across renewals, transactional states, and feature launches — each gated by priority, user state, and geo."
+  - q: "What kills push notification engagement?"
+    a: "Same-day stacking. We enforced a 3-slot daily cap per user and P0-P3 priority tiers so nothing buries a critical alert."
+  - q: "Is push volume more important than relevance?"
+    a: "No. Relevance wins. We geo-segmented five Indian regions into a festival calendar so sends mattered locally."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+A push notification architecture decays into spam without a priority-and-cap system. We designed a lifecycle messaging system with 27+ triggers, P0–P3 priority tiers, a 3-slot daily cap, and 5 geo-regions — for GST-compliance software used by Indian SMBs. The lesson: constrain volume so every send is earned.
+</AnswerBox>
+
+Notifications fail in two ways: they're never sent (a missed renewal alert) or they're sent too much (a blocked uninstall). This system's goal was to make **every ping buy back its own attention** for a B2B SaaS with 50K+ SMBs and real money on the line.
+
+## The 27+ trigger inventory
+
+We mapped the full lifecycle into four buckets:
+
+- **Renewal & billing** — renewal reminders, trial expiry, invoice ready, payment failures
+- **Transactional states** — changes, additions, reversal confirmations
+- **Conflicts & errors** — the compliance system's "we need something from you" moments
+- **Feature & content** — release notes, new-style feature release nudges
+
+Each trigger carried **execution context**: legal requirement, average revenue at risk, and a P0–P3 priority.
+
+## The three rules that made it work
+
+**1. Priority tiers (P0–P3).** The tiers rank what *can* interrupt vs what *may* wait. Billing and compliance errors are P0; a "new report is ready" ping is P3.
+
+**2. Three-slot daily cap.** Only three notifications per user per day, globally. When the message isn't same-day critical, it queues tomorrow. Stacking is the single fastest way to get *blocked and muted*.
+
+**3. Geo-segmented festivals.** India sends greetings-relevant pushes across [five regional festival calendars] rather than one national blast — relevance over reach.
+
+## What the numbers said
+
+- **27+ triggers** mapped and released
+- **P0–P3 priority** tiers consistently honored
+- **3-slot daily cap** — engagement per send held instead of decaying
+- **5 geo-regions** — festival-wave hits instead of diluted numbers
+
+The engagement lift from the AI seasonal feature — [+168% in the Send Greetings work](/case-studies/livekeeping-send-greetings) — only works because users never felt *spammed* in the weeks before.
+
+## What I'd do differently
+
+- **Instrument conflict logic first.** We shipped conflict-resolution rules last; measuring their save-rate earlier would have set target audience.
+
+- **Dry-run the calendar.** A festival calendar on paper collides with Indian weekend sleeps; dry-run weeks shape earlier.
+
+I documented the complete trigger matrix in [the push notification case study](/case-studies/livekeeping-notifications).
+
+<FAQ items={frontmatter.faq} />

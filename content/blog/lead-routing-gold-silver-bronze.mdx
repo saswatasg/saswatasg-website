@@ -1,0 +1,64 @@
+---
+title: "Gold/silver/bronze lead routing that cut days to close"
+description: "Website forms at 63.5% CVR but chat at 4.7%? We built a lead scoring router that sends gold leads to humans and bronze to automation."
+slug: "lead-routing-gold-silver-bronze"
+date: 2026-08-12
+updated: 2026-08-12
+pillar: pm
+targetKeyword: "sales lead routing"
+secondaryKeywords:
+  - "lead management system"
+  - "sales lead qualification"
+  - "lead response time"
+anchorProject: sierra-lead-allocation
+readingMinutes: 8
+faq:
+  - q: "What is a gold-silver-bronze lead scoring system?"
+    a: "A tiered routing model: highest-intent leads (gold) go to top human reps, mid (silver) to a queue, low (bronze) to automation."
+  - q: "Which lead sources are the most valuable?"
+    a: "Ours scored 63.5% CVR for web forms vs 0.4% for the worst source. The point: source masks are not buyer intent on their own."
+  - q: "Does lead routing lower days-to-close?"
+    a: "Yes when humans see the best leads fast. Our system moved gold to the top of the queue with a 5.2 → 3.5 day target."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+Lead routing at Sierra treated every source as equally important — so a 63.5% CVR web-form lead and a 0.4% chat lead competed for the same human time. A gold/silver/bronze system hand off the winner to real humans and pushed the rest to automation, cutting days-to-close from 5.2 toward 3.5.
+</AnswerBox>
+
+A high intent ecommerce lead is the difference between a branded furniture quote and a support-ticket-tier conversation. The failure mode most teams hit: an agent at the mercy of whatever happens to be free, chasing the low-intent flood.
+
+## The data that exposed it
+
+- **Web forms: 63.5% route CVR**
+- **Chat: 4.7% route CVR** (punctual, but lower-intent)
+- **Worst source: 0.4%** — cart abandonment leads — about 751 per quarter consuming agent time
+
+Once you see a 150x spread you can't unsee. The allocation system had to lead with the tiers.
+
+## The system
+
+**Gold** — human + priority queue (best-fit sources, outreach both sales and custom)
+**Silver** — queue pivot: qualified but broad; humans when slot opens
+**Bronze** — automation (nurture sequences, score the reply, promote on signal)
+
+Tiering isn't a static label; leads were **re-scored as they responded** (content = intent(s)).
+
+## Rollout and result
+
+30-day pilot from 10% of traffic to full rollout. Live numbers:
+
+- **Gold source CVR: 63.5%** vs bronze 0.4%
+- **Days to close: 5.2 → 3.5 target (routing winner first)**
+- Conversation reframed from "how many agents do we need" to "who sees what"
+
+## What I'd do differently
+
+- **Instrument the re-scoring sooner.** The tier system only pays in the queue; promote-from-bronze logic came online late.
+- **Track cost of a bronze lead.** We knew the volume before the CAC of pushing bronze through humans; automation became obvious with cost.
+
+The full routing spec — including day-of-week shift logic — is in the [Sierra lead allocation case study](/case-studies/sierra-lead-allocation). The same *tier-and-rout-before-blast* thinking powers [how I fixed a leaking lead form](/blog/lead-form-overhaul-124).
+
+<FAQ items={frontmatter.faq} />

@@ -20,11 +20,14 @@ const slugs = new Map();
 
 const files = readdirSync(CONTENT_DIR).filter((f) => extname(f) === '.mdx');
 
+const parsed = [];
 for (const file of files) {
   const path = resolve(CONTENT_DIR, file);
-  const raw = readFileSync(path, 'utf8');
-  const { data, content } = matter(raw);
+  const { data, content } = matter(readFileSync(path, 'utf8'));
+  parsed.push({ file, data, content });
+}
 
+for (const { file, data } of parsed) {
   if (data.slug !== basename(file, '.mdx')) {
     errors.push(`${file}: frontmatter slug "${data.slug}" does not match filename`);
   }
@@ -32,7 +35,9 @@ for (const file of files) {
     errors.push(`${file}: duplicate slug "${data.slug}" (also used by ${slugs.get(data.slug)})`);
   }
   slugs.set(data.slug, file);
+}
 
+for (const { file, data, content } of parsed) {
   for (const key of REQUIRED) {
     if (data[key] === undefined || data[key] === null || data[key] === '') {
       errors.push(`${file}: missing required frontmatter field "${key}"`);

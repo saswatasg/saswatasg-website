@@ -1,0 +1,70 @@
+---
+title: "Category page redesign that added +34% qualified leads"
+description: "A 4-week sprint on GA4 custom events and Clarity heatmaps turned story-led category journeys into +17% PDP clicks, +34% leads, −16% bounce."
+slug: "category-page-redesign-plus34"
+date: 2026-08-08
+updated: 2026-08-08
+pillar: growth
+targetKeyword: "category page optimization"
+secondaryKeywords:
+  - "landing page UX"
+  - "ecommerce category pages"
+  - "session to product detail click"
+anchorProject: category-discovery
+readingMinutes: 8
+faq:
+  - q: "Why do category pages underperform?"
+    a: "They treat every visitor like an identical customer. Commodity grids ignore intent; okay copy and trust signals drive the product."
+  - q: "What metrics matter for category pages?"
+    a: "Session-to-PDP click, bounce rate, ATC rate, and qualified lead back through the form — not just traffic."
+  - q: "How do you prove a category redesign worked?"
+    a: "Same traffic, better behavior for weeks: +17% PDP clicks and +34% qualified leads without ad-server changes."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+Category pages failed at Sierra because they treated motive like interchangeable. We replaced commodity grids with story-driven journeys in a 4-week sprint, backed by GA4 custom events and Clarity heatmaps. Result: session-to-PDP click +17%, qualified leads +34%, bounce −16%, ATC +27%, all on 1.1M BigQuery events.
+</AnswerBox>
+
+Category pages look simple, but they're the place where buyers decide *"am I in the right store?"* Most stores treat them as static shelves. We treated them as a two-step conversation: **who is this visitor, and which path gets them to a product?**
+
+## Step 1 — Instrument the funnel we didn't have
+
+- **Custom GA4 events** on session start, category view, PDP click, ATC, form start.
+- **Clarity heatmaps + scroll depth** across every category template.
+
+The quiet insight: category clicks were big, but *PDP engagement* after the click was weak. Visitors were "buying" a grid, then abandoning floor noise. The top-of-funnel flow was fine; the storytelling was the leak.
+
+## Step 2 — Replace commodity with story
+
+Each of the redesigned category modules balanced:
+
+1. **A guiding first section** — why to choose this category was the layout, not a paragraph
+2. **Trust signals up top** — guarantees, shipping, and live rating near the first glance
+3. **Intent-filter scaffolding** — the user narrows by aspiration ("feed a family of 6") not by schema variables
+4. **Editorial PDP traction** — richer previews; the grid became teasers for the product story
+
+## Step 3 — Measure like an experiment
+
+We didn't launch "the new design." Each module shipped with a controlled rollout and week-over-week comparisons.
+
+## The numbers
+
+| Metric | Δ |
+| --- | --- |
+| Session→PDP click | **+17%** |
+| Qualified leads | **+34%** |
+| Bounce rate | **−16%** |
+| Add-to-cart rate | **+27%** |
+| Events analyzed | 1.1M (BigQuery) |
+
+## What I'd do differently
+
+- **Ship the editorial layer first.** The story section did more than the grid styling; I'd have inverted the order I built.
+- **Bank more session-to-PDP variants.** We had one strong winner; a second iteration would've run sooner.
+
+This is the deepest writeup for the categories in [the category discovery case study](/case-studies/category-discovery). Paired with a cleanup of the [checkout flow](/blog/checkout-abandonment-73-to-54), it's what made the funnel measureably productive.
+
+<FAQ items={frontmatter.faq} />

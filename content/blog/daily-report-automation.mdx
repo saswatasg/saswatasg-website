@@ -1,0 +1,58 @@
+---
+title: "Daily report automation: 3 sources, 88 rows, 11 AM"
+description: "A Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into one auto-populated report — and what white-collar automation really costs."
+slug: "daily-report-automation"
+date: 2026-08-18
+updated: 2026-08-18
+pillar: pm
+targetKeyword: "report automation"
+secondaryKeywords:
+  - "Google Apps Script"
+  - "data pipeline automation"
+  - "no-code reporting"
+anchorProject: livekeeping-report-automation
+readingMinutes: 7
+faq:
+  - q: "What is report automation in practice?"
+    a: "Rules that pull three sources, map 88 rows, and publish to Sheets — no human copy-paste. It runs on a Google Apps Script cron job."
+  - q: "When does report automation pay off?"
+    a: "When the same 30 minutes of manual work repeats daily. LiveKeeping killed a morning ritual on day one."
+  - q: "Can non-engineers build these pipelines?"
+    a: "Yes. Google Apps Script + connectors covers most team dashboardss; the design, not the code, is where value comes from."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+Daily reporting is 90% ritual, 10% signal. For the team at LiveKeeping we built a Google Apps Script pipeline that unifies Kibana, MongoDB, and GA4 into one auto-populated report — 88 mapped rows, delivered at 11 AM with zero manual steps. The automation wasn't the win; the *agreed shape of the report* was.
+</AnswerBox>
+
+Every analytics team has a morning ritual: open 3 tabs, re-copy ranges, fight a formula, paste into Slack. For a growing B2B SaaS that ritual is a hidden cost — invisible in product metrics, present every single day.
+
+## The pipeline
+
+- **Sources:** Kibana (logs), MongoDB (product), Google Analytics (web events)
+- **A Google Apps Script backend** runs on a schedule, pulls each source via APIs, and **maps every row into one canonical schema**
+- **Outputs:** an auto-populated Sheet at **11 AM** (before the morning sync)
+
+## What made it stick (and what snuck out)
+
+- **The schema came first.** We agreed on the 88 rows as a *decision* document before any script; the script just rendered the decision.
+- **Vendor lock-in was the risk.** Pipelines die when one API changes; each source sat behind a tiny adapter so a Kibana change = one file, not a rewrite.
+- **0 manual steps.** If a human must touch a pipeline daily, it will be touched differently by three humans.
+
+## The result
+
+- **3 sources unified**, **88 rows mapped**
+- **11 AM auto-populate**, 0 manual steps
+- Team on-call removed; spreadsheet became the single truth for stand-up
+
+## What I'd do differently
+
+- **Audit the output contract.** I'd print the Sheet schema on a wall so users stopped asking "which tab is that again?"
+- **Version the pipeline.** Apps Script projects drift; add a version marker the moment it becomes the team's firehose.
+
+Deep dive here: [the daily report automation case study](/case-studies/livekeeping-report-automation). If you live in metrics-heavy B2B, my [compliance gap diagnostic](/blog/e-invoice-adoption-gap) is home data hunting — the same habit of watching the numbers actually flow.
+
+<FAQ items={frontmatter.faq} />

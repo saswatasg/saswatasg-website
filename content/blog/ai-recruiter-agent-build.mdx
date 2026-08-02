@@ -1,0 +1,58 @@
+---
+title: "How I built an AI recruiter agent for LinkedIn outreach"
+description: "766 commits, 6 releases, one self-hosted macOS app. The honest design and failure modes of an AI recruiter agent — research and intros, not spam."
+slug: "ai-recruiter-agent-build"
+date: 2026-08-06
+updated: 2026-08-06
+pillar: agents
+targetKeyword: "AI recruiter agent"
+secondaryKeywords:
+  - "AI LinkedIn outreach"
+  - "personalized outreach automation"
+  - "AI agent for recruiters"
+anchorProject: linkedin-outreach
+readingMinutes: 9
+faq:
+  - q: "Can an AI recruiter agent really work for outreach?"
+    a: "Yes, when it owns research and intro drafts while a human owns sends and replies. My build is 6 releases, 766 commits."
+  - q: "Is automated LinkedIn outreach safe to run?"
+    a: "Keep volume modest and the human in the loop — personalization beats scale. My agent drafts; only people approve."
+  - q: "How do you measure an AI recruiter's quality?"
+    a: "Reply and qualify rates per message variant, not messages sent. The agent earns its place when intros read like a human studied the target."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+An AI recruiter agent is most useful when it owns research, matching, and intro drafting — while a human owns the identity and final sends. I built and ran one in public as a self-hosted macOS app: 6 releases, 766 commits, one-click setup. The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
+</AnswerBox>
+
+Outbound at enterprise B2B scales badly by hand: every prospect deserves research, but no one has the hours. I kept reaching for automation and found that generic pasta-emails actually burn trust with both sides. So I built a runner.
+
+## What it does
+
+- **Target discovery** — describe the roles you're chasing; it finds matching recruiters and hiring managers.
+- **Personalized intros** — research synthesis + a draft written in your tone, referencing the person, not boilerplate.
+- **Follow-up cadence** — it tracks conversations, remembers who last said what, and cues a sane nudge.
+- **Human gate** — nothing sends itself. Everything you send first then approve.
+
+## Design decisions that mattered
+
+- **Fail-closed by default.** The worst thing an outreach experiment can do is spam. The agent switched to strong approval flows early, which killed the "😳 I sent 400 messages" scenario.
+- **Quality data > bigger model.** Personalization came from a small enrichment step per prospect; the LLM just crafted prose. Cheaper and more accurate than a bigger model guessing.
+- **Versioned every prompt.** 766 fixes lived in changelogs, so each release was reproducible. If an intro style overfit yesterday's niche, you could roll it back.
+
+## Where it honestly hits walls
+
+1. **When the target writes back.** The draft must hand off to a human fast — the agent shouldn't "handle" real conversation.
+2. **When volume rises.** Once you scale past permission, you're just reinventing spam. We kept it modest on purpose.
+3. **When tone deviates.** An LLM writes "too polished." Your own voice wins more read receipts than perfect grammar.
+
+## The trade that mattered
+
+The goal is **reply rate on qualified personas** — not messages blasted. I tracked every preview against its reply share and killed variants that under-indexed.
+
+That same agent building discipline — research signal **before** outreach — is the whole thesis of my [Upcore lead scoring work](/case-studies/upcore-lead-scoring). If you're building outreach automation, start there.
+
+<FAQ items={frontmatter.faq} />

@@ -1,0 +1,78 @@
+---
+title: "How a form fix lifted lead submissions by 124% in 28 days"
+description: "A field-by-field form teardown with GA4 events and Clarity — one field caused 23% of drop-offs. The fix raised lead submissions 124% in 28 days."
+slug: "lead-form-overhaul-124"
+date: 2026-08-04
+updated: 2026-08-04
+pillar: growth
+targetKeyword: "lead form conversion optimization"
+secondaryKeywords:
+  - "contact form CRO"
+  - "form abandonment"
+  - "increase lead submissions"
+anchorProject: lead-form
+readingMinutes: 7
+faq:
+  - q: "What's the most common reason a lead form loses submissions?"
+    a: "A single restrictive field. In our data the phone number format check drove 23% of all drop-offs — more than double the next-worst field."
+  - q: "Should you shorten your lead form to convert more?"
+    a: "Length is usually a symptom, not the cause. Inline validation, format hints, and case-specific microcopy beat removing fields."
+  - q: "What tools reveal form drop-offs?"
+    a: "GA4 custom events for field-by-field funnel, Microsoft Clarity for rage clicks and session recordings, then a prioritized fix list."
+---
+
+import AnswerBox from '@/components/blog/AnswerBox';
+import FAQ from '@/components/blog/FAQ';
+
+<AnswerBox>
+Lead forms rarely leak the way you think. We installed field-level GA4 events, watched Clarity sessions, and found one restrictive field — a phone format check — causing 23% of all abandonment, more than twice the next-worst field. Fixing format hints, inline validation, and microcopy lifted submissions +124% in 28 days with zero strict copy removal.
+</AnswerBox>
+
+The marketing team kept asking for *more* traffic. The data said we were paying for traffic and then wasting it — a form that leaked 23% at a single field is a bigger lever than any ad budget increase.
+
+## Don't fix what you can't see
+
+**Before we instrumented anything**, we had one number: the overall form completion rate. Nobody could say *which* field killed the lead — or whether a laptop on mobile even noticed the form.
+
+We configured:
+
+- **GA4 custom events on every field interaction** — touch, focus, error, submit attempt.
+- **Microsoft Clarity recordings + rage-click heatmaps** — 50+ full form sessions across the field sequence.
+- **A field-by-field funnel** from first touch to submit.
+
+## What the layout showed
+
+One pattern appeared in every session:
+
+> The **phone number field** had the highest abandonment — `23%` of users who reached it left at that point. More than double the next-worst field.
+
+The format restriction was the culprit: requesting `+1 (555) 000-0000` on a desktop keyboard, with a silent failure if the input didn't match exactly.
+
+## The three fixes
+
+| Fix | What we did | Why |
+| --- | --- | --- |
+| **Format hints** | Show a masked input and placeholder before touch | Users learned the expected format passively |
+| **Inline validation** | Live correction the moment input is valid, never invalid | Errors never wait for a form-submit failure |
+| **Contextual microcopy** | Case-specific labels ("Work phone" vs "Any phone") | Users understood intent ceiling instead of bouncing |
+
+We rebuilt the static form into **category-specific modules** with Material 3 components and latency fixes — so a "Custom Furniture" visitor saw the fields a custom-quote visitor actually needs.
+
+## The results
+
+| Metric | Before | After |
+| --- | --- | --- |
+| Lead submissions | baseline | **+124%** |
+| Mobile completion time | baseline | **−41%** |
+| Rage clicks | baseline | **−68%** |
+
+The fix shipped in **28 days** end to end. The form had *more* fields per module after the change — shorter was never the point. Correct expectation + correct validation was.
+
+## What I'd do differently
+
+- **Instrument before touching code.** Field-level event first, speculation second — we wasted a week guessing "the form is too long."
+- **Watch three real mobile sessions.** Two weeks of Clarity told us exactly what three month of dashboards didn't.
+
+The full engineering detail lives at [the lead form case study](/case-studies/lead-form).
+
+<FAQ items={frontmatter.faq} />
