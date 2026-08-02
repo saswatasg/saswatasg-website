@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 const SITE = 'https://saswatasg.com';
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
-const BING_HOST = 'www.bing.com';
+const BING_HOST = 'api.indexnow.org';
 
 async function collectUrls() {
   const sitemapPath = resolve(process.cwd(), 'public/sitemap.xml');
