@@ -3,7 +3,7 @@ title: "The data deep-dive: 480K sessions to three real problems"
 description: "The repeatable method I used across checkout, category pages, and forms: instrument first, form hypotheses second, never optimize an unmeasured funnel."
 slug: "data-deep-dive-method"
 date: 2026-06-30
-updated: 2026-06-30
+updated: 2026-08-03
 pillar: pm
 persona: career-pm
 targetKeyword: "product analytics deep dive"
@@ -11,8 +11,7 @@ secondaryKeywords:
   - "GA4 funnel analysis"
   - "data driven product decisions"
   - "product analytics framework"
-anchorProject: checkout-case
-readingMinutes: 15
+anchorProject: cart-checkout
 faq:
   - q: "What is a product analytics deep dive?"
     a: "Instrumentation first, funnel reads second; never conclude from an aggregate number alone. That is the whole method."
@@ -30,7 +29,7 @@ import Figure from '@/components/blog/Figure';
 A deep dive that changes metrics has two phases. First, instrument the funnel until you can name each drop-off. Second, form ranked hypotheses. At Sierra, 480K sessions became three fixable problems in two weeks — because we never diagnosed an aggregate, only a funnel.
 </AnswerBox>
 
-Every week a metric is "just too low" and nobody knows why. The failures happen four steps before the diagnosis: **no events, no recordings, no funnel, no ranked hypotheses** — and then a hunch gets a roadmap slot.
+"Cart abandonment is too high." That sentence sat in our metrics review for months, and everyone nodded, and nothing moved — because an aggregate number is unanswerable. When we finally stepped through 480K sessions properly, "abandonment" turned out to be three completely different problems wearing one trench coat. The failure happens four steps before the diagnosis: **no events, no recordings, no funnel, no ranked hypotheses** — and then a hunch gets a roadmap slot.
 
 ## Phase 1 — Instrument the funnel
 
@@ -57,6 +56,8 @@ Every step gets an event. No "checkout started" aggregate — you need the stair
 
 ### The Clarity setup
 
+[Microsoft Clarity](https://clarity.microsoft.com/) is free and unsampled, which matters more than any premium feature:
+
 - **Recordings on** for 100% of sessions (sampling kills the rare but critical paths)
 - **Heatmaps** on every checkout step URL
 - **Rage-click detection** on form fields, buttons, promo inputs
@@ -64,7 +65,7 @@ Every step gets an event. No "checkout started" aggregate — you need the stair
 
 ### The BigQuery schema
 
-We didn't just chart in GA4. The raw events stream to BigQuery via GA4 export, where we can:
+We didn't just chart in GA4. The raw events stream to BigQuery via the [GA4 BigQuery export](https://support.google.com/analytics/answer/9358801), where we can:
 
 ```sql
 -- Drop-off by step, segmented by device
@@ -76,7 +77,7 @@ SELECT
   COUNT(DISTINCT user_pseudo_id) / LAG(COUNT(DISTINCT user_pseudo_id)) OVER (ORDER BY step_index) as dropoff_rate
 FROM `project.analytics_events`
 WHERE event_name IN ('checkout_step', 'purchase')
-  AND _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
+  AND _TABLE_SUFFIX BETWEEN '20250101' AND '20250131'
 GROUP BY step, device.category, step_index
 ORDER BY step_index;
 ```
@@ -151,7 +152,7 @@ Fill this before you write a single event. If you can't fill the "Evidence neede
 3. **"The dashboard says X."** Dashboards aggregate. The deep dive *disaggregates*. If your dashboard and your deep dive agree, your deep dive failed.
 4. **"We don't have time for recordings."** You don't have time *not* to. 50 sessions = 2 hours. The alternative is guessing for months.
 
-The same discipline appears in [category page analysis](/blog/category-page-redesign-plus34) and in [form decisioning](/blog/lead-form-overhaul-124) — instrument once, fight many.
+**If your dashboard and your deep dive agree, your deep dive failed.** The whole point of disaggregating is to find what the average was hiding.
 
 ## Appendix: The form funnel SQL (from the lead-form fix)
 
@@ -167,7 +168,7 @@ SELECT
 FROM `project.analytics_events`
 WHERE event_name IN ('field_focus', 'field_error', 'field_submit')
   AND form_id = 'lead_capture_v2'
-  AND _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
+  AND _TABLE_SUFFIX BETWEEN '20250101' AND '20250131'
 GROUP BY field_name
 ORDER BY error_rate DESC;
 ```
@@ -189,7 +190,7 @@ SELECT
     COUNT(DISTINCT session_id) as ctr
 FROM `project.analytics_events`
 WHERE event_name IN ('category_view', 'pdp_click')
-  AND _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
+  AND _TABLE_SUFFIX BETWEEN '20250101' AND '20250131'
 GROUP BY category, intent_signal
 ORDER BY ctr DESC;
 ```
@@ -198,6 +199,6 @@ The "buy_now" intent had 3× the CTR of "browse" — which led to the intent-fil
 
 ---
 
-The same discipline appears in [category page analysis](/blog/category-page-redesign-plus34) and in [form decisioning](/blog/lead-form-overhaul-124) — instrument once, fight many.
+The same discipline appears in [category page analysis](/blog/category-page-redesign-plus34) and in [form decisioning](/blog/lead-form-overhaul-124) — instrument once, fight many. The full checkout numbers live in [the cart & checkout case study](/case-studies/cart-checkout).
 
 <FAQ items={frontmatter.faq} />

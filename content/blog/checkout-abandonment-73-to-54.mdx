@@ -3,7 +3,7 @@ title: "How we cut checkout abandonment from 73.1% to 53.9%"
 description: "A 480K-session teardown: three separate checkout problems hidden behind one dashboard number, three targeted fixes, two sprints — −26% abandonment."
 slug: "checkout-abandonment-73-to-54"
 date: 2026-01-27
-updated: 2026-01-27
+updated: 2026-08-03
 pillar: growth
 persona: cro-operator
 targetKeyword: "checkout optimization"
@@ -12,8 +12,7 @@ secondaryKeywords:
   - "checkout abandonment"
   - "checkout UX"
   - "reduce cart abandonment"
-anchorProject: checkout-case
-readingMinutes: 10
+anchorProject: cart-checkout
 faq:
   - q: "What is checkout abandonment rate and how is it calculated?"
     a: "The share of users who start checkout but never buy: (started checkout − completed purchase) ÷ started checkout. Ours sat at 73.1% before instrumentation."
@@ -47,7 +46,7 @@ The team was optimizing on aggregates plus folklore from support tickets. "Coupo
 
 That's the thing about a cart-abandonment problem: **it looks like a single problem.** One dashboard number. One KPI to move. If you try to fix "abandonment" as one thing, you'll ship the wrong fix, again, and the number won't move.
 
-By the way — if you're reading this and thinking "sure, but 73% is normal, Baymard says the industry average is around 70%," you're not wrong, and that's exactly the trap. Baymard's aggregate makes 70%+ look like the status quo. It is the status quo. Which is precisely why the aggregate is useless as a lever: nobody acts on a number everyone already agrees with. The moment we split ours into steps, we stopped optimizing a stat and started fixing encounters.
+By the way — if you're reading this and thinking "sure, but 73% is normal, [Baymard says the industry average is around 70%](https://baymard.com/lists/cart-abandonment-rate)," you're not wrong, and that's exactly the trap. Baymard's aggregate makes 70%+ look like the status quo. It is the status quo. Which is precisely why the aggregate is useless as a lever: nobody acts on a number everyone already agrees with. The moment we split ours into steps, we stopped optimizing a stat and started fixing encounters.
 
 ## The opening scene we almost talked ourselves out of
 
@@ -140,6 +139,6 @@ And the awkward one: **the support-ticket theory was almost a trap.** The "coupo
 2. **Watch 50 real sessions.** Pick 50 recordings, desktop and mobile. Watch where they hesitate, what they reload, and where they abandon. Take notes as you go.
 3. **Fix the three most expensive leaks in isolation.** Cart-page total first, then error recovery, then inline validation. Ship each alone and measure each alone.
 
-Full teardown with the charts and the numbers lives in the [cart & checkout case study](/case-studies/cart-checkout) — and this post is the anchor case behind all my CRO work.
+Full teardown with the charts and the numbers lives in the [cart & checkout case study](/case-studies/cart-checkout) — and this post is the anchor case behind all my CRO work. The general method is written up in [the data deep-dive](/blog/data-deep-dive-method), and the cadence that shipped these fixes is [one fix a week](/blog/one-fix-a-week-cro).
 
 <FAQ items={frontmatter.faq} />

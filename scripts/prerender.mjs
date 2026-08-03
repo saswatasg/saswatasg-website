@@ -24,15 +24,17 @@ const STATIC_ROUTES = [
   '/contact',
 ];
 
+// Strip ALL template SEO tags so the per-route Helmet output (injected below)
+// is the single source of truth. Global flags matter: og:*/twitter:*/robots
+// each appear multiple times in the template. Any future template head tag
+// matching these prefixes will be stripped from every prerendered page.
 const HEAD_STRIP_PATTERNS = [
   /\s*<title>[\s\S]*?<\/title>\s*/i,
-  /\s*<link rel="canonical"[^>]*>\s*/i,
-  /\s*<meta name="description"[^>]*>\s*/i,
-  /\s*<meta property="og:url"[^>]*>\s*/i,
-  /\s*<meta property="og:title"[^>]*>\s*/i,
-  /\s*<meta property="og:description"[^>]*>\s*/i,
-  /\s*<meta name="twitter:title"[^>]*>\s*/i,
-  /\s*<meta name="twitter:description"[^>]*>\s*/i,
+  /\s*<link rel="canonical"[^>]*>\s*/gi,
+  /\s*<meta name="description"[^>]*>\s*/gi,
+  /\s*<meta name="robots"[^>]*>\s*/gi,
+  /\s*<meta property="og:[^"]*"[^>]*>\s*/gi,
+  /\s*<meta name="twitter:[^"]*"[^>]*>\s*/gi,
 ];
 
 function serializeHelmetTags(helmet) {

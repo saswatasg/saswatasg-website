@@ -7,7 +7,7 @@
   <!-- Human column -->
   <rect x="40" y="80" width="350" height="220" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
   <text x="60" y="110" font-size="16" font-weight="bold" fill="#0A0A0A" letter-spacing="1">HUMAN</text>
-  <text x="60" y="144" font-size="16" font-weight="bold" fill="#0A0A0A">Strategy & Judgment</text>
+  <text x="60" y="144" font-size="16" font-weight="bold" fill="#0A0A0A">Strategy &amp; Judgment</text>
   <text x="60" y="178" font-size="14" fill="#0A0A0A">• Define success criteria</text>
   <text x="60" y="206" font-size="14" fill="#0A0A0A">• Choose problems worth solving</text>
   <text x="60" y="234" font-size="14" fill="#0A0A0A">• Approve / reject AI output</text>
@@ -16,7 +16,7 @@
   <!-- AI column -->
   <rect x="410" y="80" width="350" height="220" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
   <text x="430" y="110" font-size="16" font-weight="bold" fill="#0A0A0A" letter-spacing="1">AI</text>
-  <text x="430" y="144" font-size="16" font-weight="bold" fill="#0A0A0A">Execution & Volume</text>
+  <text x="430" y="144" font-size="16" font-weight="bold" fill="#0A0A0A">Execution &amp; Volume</text>
   <text x="430" y="178" font-size="14" fill="#0A0A0A">• Draft specs from transcripts</text>
   <text x="430" y="206" font-size="14" fill="#0A0A0A">• Generate test cases</text>
   <text x="430" y="234" font-size="14" fill="#0A0A0A">• Summarize feedback</text>

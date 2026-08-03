@@ -1,11 +1,18 @@
+import postStats from './postStats.json';
+
 const postModules = import.meta.glob('/content/blog/*.mdx', { eager: true });
 
 export const posts = Object.entries(postModules)
   .map(([filePath, mod]) => {
     const slug = filePath.split('/').pop().replace(/\.mdx$/, '');
+    const stats = postStats[slug] || {};
     return {
       slug,
       ...(mod.frontmatter || {}),
+      // Computed at build time by tools/generate-static-files.mjs — overrides
+      // any hand-authored frontmatter value so reading time stays honest.
+      readingMinutes: stats.readingMinutes ?? mod.frontmatter?.readingMinutes ?? 1,
+      wordCount: stats.wordCount ?? 0,
       component: mod.default,
     };
   })
@@ -55,7 +62,17 @@ export const PILLAR_CTA = {
   },
 };
 
-export function readingTime(mdxSource) {
-  const words = (mdxSource || '').replace(/```[\s\S]*?```/g, ' ').split(/\s+/).length;
-  return Math.max(1, Math.round(words / 220));
+export function toIsoDate(value) {
+  const d = value instanceof Date ? value : new Date(value);
+  return d.toISOString().slice(0, 10);
+}
+
+export function formatDate(value) {
+  const d = value instanceof Date ? value : new Date(value);
+  return d.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 }

@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="800" height="320" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="784" height="304" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="380" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">17:1 & 19:1 — THE GRAVITY PROBLEM</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">17:1 &amp; 19:1 — THE GRAVITY PROBLEM</text>
 
   <!-- E-way bill -->
   <rect x="40" y="70" width="350" height="220" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
   <text x="60" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">E-WAY BILL</text>
   <text x="60" y="130" font-size="32" font-weight="black" fill="#E85D3A">17 : 1</text>
-  <text x="60" y="162" font-size="16" fill="#0A0A0A">Tally : In-app</text>
+  <text x="60" y="162" font-size="14" fill="#0A0A0A">Tally : In-app</text>
   <text x="60" y="200" font-size="14" fill="#0A0A0A" opacity="0.75">Generated where the invoice lives</text>
   <text x="60" y="228" font-size="14" fill="#0A0A0A" opacity="0.75">Tally is the daily driver</text>
   <text x="60" y="256" font-size="14" fill="#0A0A0A" opacity="0.75">In-app → ghost town</text>
@@ -17,7 +17,7 @@
   <rect x="410" y="70" width="350" height="220" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
   <text x="430" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">E-INVOICE</text>
   <text x="430" y="130" font-size="32" font-weight="black" fill="#E85D3A">19 : 1</text>
-  <text x="430" y="162" font-size="16" fill="#0A0A0A">Tally : In-app</text>
+  <text x="430" y="162" font-size="14" fill="#0A0A0A">Tally : In-app</text>
   <text x="430" y="200" font-size="14" fill="#0A0A0A" opacity="0.75">Same workflow gravity</text>
   <text x="430" y="228" font-size="14" fill="#0A0A0A" opacity="0.75">Same substitute behavior</text>
   <text x="430" y="256" font-size="14" fill="#0A0A0A" opacity="0.75">Same root cause</text>

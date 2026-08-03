@@ -31,6 +31,12 @@ function toIsoDate(dateStr) {
   return new Date(dateStr).toISOString().slice(0, 10);
 }
 
+// Search engines discount future-dated lastmod/pubDate values.
+function clampToToday(isoDate) {
+  const today = new Date().toISOString().slice(0, 10);
+  return isoDate > today ? today : isoDate;
+}
+
 function stripMdxToText(mdx) {
   return mdx
     .replace(/^---[\s\S]*?---\s*/m, '')
@@ -52,8 +58,8 @@ async function readPosts() {
       slug: data.slug || file.replace(/\.mdx$/, ''),
       title: data.title,
       description: data.description || '',
-      date: toIsoDate(data.date),
-      updated: toIsoDate(data.updated || data.date),
+      date: clampToToday(toIsoDate(data.date)),
+      updated: clampToToday(toIsoDate(data.updated || data.date)),
       pillar: data.pillar || 'pm',
       content,
     });
@@ -65,7 +71,6 @@ async function writeSitemap(posts) {
   const urlTags = STATIC_PAGES.map(
     (page) => `  <url>
     <loc>${SITE_URL}${page.path === '/' ? '/' : page.path}</loc>
-    <lastmod>${toIsoDate(new Date().toISOString())}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`
@@ -147,6 +152,20 @@ ${postLines}
   console.log('[generate-static-files] wrote llms.txt');
 }
 
+async function writePostStats(posts) {
+  const stats = {};
+  for (const post of posts) {
+    const words = stripMdxToText(post.content).split(/\s+/).filter(Boolean).length;
+    stats[post.slug] = {
+      wordCount: words,
+      readingMinutes: Math.max(1, Math.round(words / 220)),
+    };
+  }
+  const out = path.join(root, 'src', 'data', 'postStats.json');
+  await fs.writeFile(out, `${JSON.stringify(stats, null, 2)}\n`, 'utf-8');
+  console.log('[generate-static-files] wrote src/data/postStats.json');
+}
+
 async function writeLlmsFull(posts) {
   const lines = [`# Saswata S. Sengupta — full content (llms-full.txt)`, ``, `> Source: ${SITE_URL}`, ``];
   for (const post of posts) {
@@ -161,3 +180,4 @@ await writeSitemap(posts);
 await writeFeed(posts);
 await writeLlmsTxt(posts);
 await writeLlmsFull(posts);
+await writePostStats(posts);

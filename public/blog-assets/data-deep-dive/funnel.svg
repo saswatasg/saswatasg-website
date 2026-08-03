@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="800" height="340" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="784" height="324" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="420" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
   <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">DEEP DIVE METHOD — INSTRUMENT → RANK</text>
 
   <!-- Phase 1 -->
   <rect x="40" y="70" width="350" height="240" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
   <text x="60" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PHASE 1: INSTRUMENT</text>
-  <text x="60" y="130" font-size="15" fill="#0A0A0A">✦ Step-level events on every transition</text>
-  <text x="60" y="158" font-size="15" fill="#0A0A0A">✦ Session recordings: Clarity, heatmaps</text>
-  <text x="60" y="186" font-size="15" fill="#0A0A0A">✦ Rage clicks + scroll depth</text>
-  <text x="60" y="214" font-size="15" fill="#0A0A0A">✦ BigQuery for interrogation, not charts</text>
-  <text x="60" y="242" font-size="15" fill="#0A0A0A">✦ Two weeks of plumbing</text>
+  <text x="60" y="130" font-size="12" fill="#0A0A0A">✦ Step-level events on every transition</text>
+  <text x="60" y="158" font-size="12" fill="#0A0A0A">✦ Session recordings: Clarity, heatmaps</text>
+  <text x="60" y="186" font-size="12" fill="#0A0A0A">✦ Rage clicks + scroll depth</text>
+  <text x="60" y="214" font-size="12" fill="#0A0A0A">✦ BigQuery for interrogation, not charts</text>
+  <text x="60" y="242" font-size="12" fill="#0A0A0A">✦ Two weeks of plumbing</text>
   <text x="60" y="282" font-size="13" font-weight="bold" fill="#E85D3A">You can name every drop-off</text>
 
   <!-- Phase 2 -->
@@ -26,5 +26,6 @@
 
   <!-- Rules -->
   <rect x="40" y="320" width="720" height="80" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="60" y="345" font-size="14" font-weight="bold" fill="#0A0A0A">RULES: 2yrs aggregate < 2wks steps • Cost estimates are hypotheses • Re-read funnel after ship • Events=facts, recordings=opinions</text>
+  <text x="400" y="352" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">RULES: 2 yrs of aggregate &lt; 2 wks of step data • Costs are hypotheses</text>
+  <text x="400" y="378" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Re-read the funnel after every ship • Events = facts, recordings = opinions</text>
 </svg>

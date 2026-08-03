@@ -3,7 +3,7 @@ title: "How I built an AI recruiter agent for LinkedIn outreach"
 description: "766 commits, 6 releases, one self-hosted macOS app. The honest design and failure modes of an AI recruiter agent — research and intros, not spam."
 slug: "ai-recruiter-agent-build"
 date: 2026-07-14
-updated: 2026-07-14
+updated: 2026-08-03
 pillar: agents
 persona: local-ai-builder
 targetKeyword: "AI recruiter agent"
@@ -12,7 +12,6 @@ secondaryKeywords:
   - "personalized outreach automation"
   - "AI agent for recruiters"
 anchorProject: linkedin-outreach
-readingMinutes: 15
 faq:
   - q: "Can an AI recruiter agent really work for outreach?"
     a: "Yes, when it owns research and intro drafts while a human owns sends and replies. My build: 766 commits, 6 releases, self-hosted macOS app."
@@ -30,7 +29,7 @@ import Figure from '@/components/blog/Figure';
 An AI recruiter agent is most useful when it owns research, matching, and intro drafting — while a human owns the identity and final sends. I built and ran one in public as a self-hosted macOS app (TGBhunt, 766 commits, 6 releases, Python/Django/Playwright). The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
 </AnswerBox>
 
-Outbound at enterprise B2B scales badly by hand: every prospect deserves research, but no one has the hours. I kept reaching for automation and found that generic outreach burns trust on both sides. So I built a runner that does the reading, not the sending.
+Every automated outreach tool I've seen dies the same death: it scales the *sending* and skips the *reading*. The result is a thousand identical "I came across your profile" messages and a burned domain. So I inverted it — 766 commits later, TGBhunt is an agent that does twenty minutes of research per prospect in three seconds, drafts an intro that proves the research happened, and then **refuses to send anything on its own**. The human gate isn't a compliance afterthought; it's the entire product thesis.
 
 ## What the agent actually does
 
@@ -49,10 +48,10 @@ The system has four moving parts, each designed to keep the human in the loop:
 ## The stack: local-first, no vendor lock-in
 
 - **Python 3.11 + Django** for the orchestrator and web UI
-- **Playwright** for browser automation (LinkedIn session management, scrolling, extraction)
+- **[Playwright](https://playwright.dev/)** for browser automation (LinkedIn session management, scrolling, extraction)
 - **SQLite** for local state — prospects, drafts, conversation history, sent log
 - **PyInstaller** for the one-click macOS .app bundle (~180 MB)
-- **No external LLM API by default** — runs against a local Ollama endpoint or your own key; the enrichment step uses public APIs (Crunchbase, Clearbit free tiers) not an LLM
+- **No external LLM API by default** — runs against a local [Ollama](https://ollama.com/) endpoint or your own key; the enrichment step uses public APIs (Crunchbase, Clearbit free tiers) not an LLM
 
 The whole thing runs on your laptop. Zero cloud bill. Your LinkedIn cookies never leave the machine.
 
@@ -78,6 +77,24 @@ The LLM is the *writer*, not the *researcher*. Here's the enrichment chain per p
 
 This enrichment takes ~3 seconds per prospect and costs ~$0.002 in API calls. The LLM then gets a structured JSON blob and writes the intro. Garbage in, garbage out — the enrichment is the product.
 
+## The prompt design (and what it kept getting wrong)
+
+The drafting prompt went through six released versions. The structure that survived:
+
+1. **Identity block** — who you are, in your own words, 2 sentences max.
+2. **Tone examples** — 5 of your real sent messages (the calibration step below).
+3. **The enrichment JSON** — structured facts only; no free-text summaries, which invite hallucination.
+4. **Hard rules** — no flattery openers, no "I hope this finds you well", exactly one specific reference to the prospect's work, under 90 words, one clear ask.
+
+The failure modes that forced those rules, in order of discovery:
+
+- **v1 flattered.** "Your impressive journey" appeared in 60% of drafts. Banned superlatives about the person; allowed them only about specific work.
+- **v2 hallucinated specifics.** Given a company name, it invented funding rounds. Fixed by feeding *only* the enrichment JSON and instructing "if a field is missing, don't mention the topic."
+- **v3 wrote essays.** 200-word intros read as automated precisely because no busy human writes that much to a stranger. The 90-word cap doubled reply rates on its own.
+- **v4–v5 were tone drift** — too formal, then too breezy. The 5-example calibration block settled it.
+
+**An outreach prompt is an eval problem, not a writing problem.** Every variant got measured against reply rate before it earned the default slot.
+
 ## Where it honestly hits walls
 
 1. **When the target writes back.** The draft must hand off to a human fast — the agent shouldn't "handle" real conversation. The handoff latency is the quality ceiling. I built a "reply notification → open draft → edit → send" flow that takes ~15 seconds.
@@ -99,6 +116,6 @@ The goal is **reply rate on qualified personas** — not messages blasted. I tra
 | Meeting booked / draft | >5% | 8% |
 | Spam reports | 0 | 0 |
 
-That same discipline — research signal **before** outreach — is the whole thesis of my [Upcore lead scoring work](/case-studies/upcore-lead-scoring). If you're building outreach automation, start there: score the lead, then write the message.
+That same discipline — research signal **before** outreach — is the whole thesis of my [Upcore lead scoring work](/case-studies/upcore-lead-scoring). If you're building outreach automation, start there: score the lead, then write the message. And if you want the fully-local end of the same philosophy, [Topshe runs an entire assistant in the browser](/blog/topshe-browser-voice-ai) with the same rule: the agent does the work, the human owns the identity.
 
 <FAQ items={frontmatter.faq} />

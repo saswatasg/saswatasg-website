@@ -1,57 +1,61 @@
-# SEO & Core Web Vitals Implementation Notes
+# SEO & content pipeline
 
-This document outlines the SEO and performance optimizations implemented based on the Lovable.dev brief.
+How this site's SEO actually works, as of the blog overhaul. Supersedes the old Lovable.dev brief notes below this doc previously tracked.
 
-## 1. Meta Tags & Head Optimization (`index.html`)
+## Build pipeline
 
-- **Core SEO:** Added `<title>` and `<meta name="description">` for search engine results pages (SERPs).
-- **Canonical URL:** Specified the preferred version of the homepage URL using `<link rel="canonical">`.
-- **Open Graph:** Implemented `og:` meta tags (`og:type`, `og:site_name`, `og:url`, `og:title`, `og:description`, `og:image`) for rich sharing previews on social platforms like Facebook and LinkedIn.
-    - **Note:** The image `/assets/og/og-image.webp` needs to be created and placed in the `public/assets/og/` directory.
-- **Twitter Cards:** Added `twitter:` meta tags (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`) for optimized sharing previews on Twitter.
-    - **Note:** Uses the same image as Open Graph.
-- **Performance Hints:**
-    - Preconnected to `fonts.gstatic.com` using `<link rel="preconnect">`.
-    - Preloaded the LCP image (`/assets/hero/avatar-160.webp`) using `<link rel="preload" as="image" fetchpriority="high">`.
-    - **Note:** The avatar image `/assets/hero/avatar-160.webp` needs to be created and placed in the `public/assets/hero/` directory.
+```
+npm run build
+  → node tools/validate-posts.mjs       content contract gate (frontmatter, dupes, casing, links)
+  → node tools/generate-static-files.mjs sitemap.xml, feed.xml, llms.txt, llms-full.txt, src/data/postStats.json
+  → vite build                          SPA bundle → dist/
+  → node tools/generate-og-images.mjs   per-post 1200×630 OG PNGs → dist/og/
+  → node scripts/prerender.mjs          SSR every route → dist/<route>/index.html
+  → node scripts/verify-prerender.mjs   SEO assertion gate (fails the build on violations)
+```
 
-**React Considerations:** While these tags are added to the base `index.html`, for a Single Page Application (SPA) built with React, managing head tags dynamically per route (e.g., different titles/descriptions for `/about`, `/projects`) typically requires a library like `react-helmet-async`. The current implementation sets site-wide defaults.
+Every blog post and static route is prerendered to real HTML — this is not a client-only SPA for crawlers.
 
-## 2. LCP & TBT (`src/pages/Home.jsx`)
+## Content contract (`tools/validate-posts.mjs`)
 
-- **Largest Contentful Paint (LCP):** The hero avatar image (`<img>` tag) on the homepage has been explicitly marked as the LCP element.
-    - Switched `src` to `/assets/hero/avatar-160.webp`.
-    - Added `width="160"` and `height="160"` to prevent layout shifts.
-    - Added `fetchpriority="high"` and `loading="eager"` to prioritize its loading.
-- **Total Blocking Time (TBT):** By clearly defining the LCP and ensuring it loads quickly without blocking resources, TBT calculation by tools like PageSpeed Insights should now be possible and hopefully improved.
+Every post in `content/blog/*.mdx` must have:
+- Frontmatter: `title` (≤60 chars), `description` (≤155 chars), `slug` matching the filename, `date`/`updated` (not in the future), `pillar` (`agents`/`growth`/`pm`), `targetKeyword`, `secondaryKeywords`, `anchorProject` (a case-study slug or known project id), `faq` (3–5 items, answers ≤155 chars)
+- Body: `<AnswerBox>`, `<FAQ items={frontmatter.faq} />`, at least one `<Figure>`, no duplicate `<Figure src>`, no duplicate H2 headings or 200+ char paragraphs (catches copy-paste bugs), consistent brand casing (Upcore/LiveKeeping/Sierra/DhanPlan/Topshe), at least one external authority link, valid internal `/blog/*` and `/case-studies/*` links
 
-## 3. Asset Optimization
+`readingMinutes` is **not** hand-authored — it's computed from the post body (220 wpm) by `tools/generate-static-files.mjs` into `src/data/postStats.json`, which `src/data/blogPosts.js` imports and merges onto every post at build time.
 
-- **WebP Conversion:** **Action Required:** Manually convert existing JPEG/PNG images (except those requiring transparency) to the WebP format for better compression and performance. Place them in the appropriate `public/assets/` subdirectories.
-- **Lazy Loading:** Images assumed to be below the fold in components like `About.jsx`, `Experience.jsx`, and `Projects.jsx` should ideally have `loading="lazy"` and `decoding="async"` attributes added to defer their loading until needed. (This requires manual review and addition within the respective components).
-- **Critical CSS:** The brief suggested inlining critical CSS and deferring the main stylesheet. In a Vite/React setup, CSS bundling and loading are handled differently. Vite automatically code-splits CSS and optimizes its loading. Implementing manual critical CSS extraction requires specific Vite plugins or build process adjustments, which is beyond the scope of this initial implementation. The current setup relies on Vite's default optimizations.
+## Images
 
-## 4. Robots & Sitemap
+- Inline diagrams are hand-authored SVGs under `public/blog-assets/<post>/`, rendered via `src/components/blog/Figure.jsx` (explicit `width`/`height` to prevent layout shift, `loading="lazy"`, `decoding="async"`, error fallback).
+- Social share images are **generated**, not hand-made: `tools/generate-og-images.mjs` uses [satori](https://github.com/vercel/satori) + `@resvg/resvg-js` to render a branded 1200×630 PNG per post into `dist/og/<slug>.png`, plus `dist/og/blog.png` for the index. Fonts are vendored at `tools/og/fonts/` (Inter, TTF only — satori doesn't support WOFF2). OG images are referenced as `https://saswatasg.com/og/<slug>.png` from `BlogLayout.jsx`.
 
-- **`public/robots.txt`:** Created to instruct web crawlers. It allows all user agents (`*`), specifies no disallowed paths, sets a crawl delay of 2 seconds, and points to the sitemap location.
-- **`public/sitemap.xml`:** A basic static sitemap was created, including the main pages (`/`, `/about`, `/experience`, `/projects`, `/contact`).
-    - **Note:** For dynamic content (like individual project pages if they have unique URLs under `/projects/`), this sitemap needs to be updated manually or generated dynamically during the build process.
+## Meta & structured data
 
-## 5. Structured Data (`src/pages/Home.jsx`)
+- `src/components/PageMeta.jsx` — site-wide Helmet component (title, description, canonical, RSS autodiscovery, full OG + Twitter set, optional `noindex`). Used by static pages and the blog index.
+- `src/components/blog/BlogLayout.jsx` — per-post Helmet: canonical, OG/Twitter with the generated OG image, `article:published_time`/`article:modified_time`, and JSON-LD for `Article` (with `image`, `wordCount`, `keywords`, `articleSection`) + `BreadcrumbList`. `src/components/blog/FAQ.jsx` emits `FAQPage` JSON-LD.
+- `src/pages/blog/BlogIndex.jsx` emits `Blog` + `ItemList` JSON-LD built from the unfiltered post list (stable across the pillar filter, since only the unfiltered list is prerendered).
+- Unknown `/blog/:slug` renders `noindex` via `PageMeta` (`src/pages/blog/BlogPost.jsx`) — no soft-404s.
 
-- Added JSON-LD structured data of type `Person` to the homepage. This helps search engines understand the content and context of the page, potentially enabling rich results in SERPs.
-- Includes `name`, `jobTitle`, `url`, and `sameAs` properties linking to relevant profiles (update URLs if necessary).
+`scripts/prerender.mjs` strips **all** template OG/Twitter/robots/canonical/description tags (global regex) before injecting the route's Helmet output, so prerendered HTML never ships duplicate or conflicting meta tags.
 
-## 6. Quality Gates & Reporting
+## Discovery files
 
-- **Action Required:** After deployment, run performance and accessibility audits using:
-    - Google PageSpeed Insights (Check Core Web Vitals - LCP, TBT/FID, CLS)
-    - Lighthouse (in Chrome DevTools)
-    - axe DevTools (for accessibility)
-- **Targets:** Aim for the scores specified in the brief (Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 90, SEO = 100, LCP < 1.8s, TBT < 50ms).
-- **Reports:** Save Lighthouse JSON and axe HTML reports in a `/reports/` directory (you'll need to create this directory).
+`tools/generate-static-files.mjs` writes into `public/` (checked in, regenerated on every build):
+- `sitemap.xml` — all static pages + every post, `lastmod` clamped to never exceed today
+- `feed.xml` — RSS 2.0, `pubDate` from frontmatter
+- `llms.txt` / `llms-full.txt` — AI-crawler content dumps
 
-## 7. Code Refactoring
+`public/robots.txt` allows major AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot) and points to the sitemap. `tools/ping-indexnow.mjs` pings Bing IndexNow on `main` pushes (see `.github/workflows/ci.yml`).
 
-- **`src/App.jsx`:** Extracted the interactive background logic (mouse/scroll/touch tracking) into a reusable custom hook `src/hooks/useInteractiveBackground.js`.
-- **`src/index.css`:** Reorganized CSS rules into logical sections (Base, Layout, Homepage, Reusable Components, Page Specific, Responsive) for better maintainability.
+## Verification (`scripts/verify-prerender.mjs`)
+
+Runs as the last build step and fails the build if any prerendered route has: missing/duplicate/oversized title or description, wrong or missing canonical, more than one H1, missing/duplicate `og:type` or `og:image`, a stray `robots` meta on an indexable page, (for posts) a missing OG PNG file, missing `article:published_time`, missing `<time datetime>`, unparsable or incomplete Article JSON-LD, or (for `/blog`) missing `ItemList` JSON-LD. Also validates `404.html` is `noindex`-only and checks `sitemap.xml`/`feed.xml` for missing posts or future-dated entries.
+
+## Local verification
+
+```bash
+npm run build
+npm run preview   # serves dist/ on :3000
+```
+
+Check a specific post's prerendered head: `dist/blog/<slug>/index.html`. Check a generated OG image: `dist/og/<slug>.png`.

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-import { posts, PILLAR_META } from '@/data/blogPosts';
+import { posts, PILLAR_META, formatDate, toIsoDate } from '@/data/blogPosts';
 import { trackEvent } from '@/utils/analytics';
 
 const PILLARS = ['all', 'agents', 'growth', 'pm'];
+const SITE_URL = 'https://saswatasg.com';
 
 const BlogIndex = () => {
   const [pillar, setPillar] = useState('all');
@@ -21,7 +23,31 @@ const BlogIndex = () => {
       <PageMeta
         title="Blog | Saswata S. Sengupta — AI Agents & CRO"
         description="Notes from shipping AI agents and growth products in production — real architecture, real numbers, no invented stats."
+        image={`${SITE_URL}/og/blog.png`}
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            '@id': `${SITE_URL}/blog`,
+            name: 'Saswata S. Sengupta — Blog',
+            description: 'AI agents in production, e-commerce CRO, and AI-era product management — with the numbers.',
+            url: `${SITE_URL}/blog`,
+            author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
+            // Built from the unfiltered list so prerendered output is stable.
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: posts.map((p, i) => ({
+                '@type': 'ListItem',
+                position: i + 1,
+                name: p.title,
+                url: `${SITE_URL}/blog/${p.slug}`,
+              })),
+            },
+          })}
+        </script>
+      </Helmet>
       <div className="max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <span className="inline-block text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-coral text-white mb-4">Blog</span>
         <h1 className="text-3xl md:text-5xl font-display font-black text-ink leading-tight mb-3">
@@ -71,7 +97,7 @@ const BlogIndex = () => {
                     <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-white`}>
                       {pillarMeta.label}
                     </span>
-                    <span className="text-[11px] font-bold text-ink/40">{post.date}</span>
+                    <time dateTime={toIsoDate(post.date)} className="text-[11px] font-bold text-ink/40">{formatDate(post.date)}</time>
                   </div>
                   <h2 className="text-lg md:text-xl font-display font-black text-ink leading-snug group-hover:underline">
                     {post.title}

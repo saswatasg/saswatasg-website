@@ -5,13 +5,16 @@ import AuthorBox from '@/components/blog/AuthorBox';
 import PillarCTA from '@/components/blog/PillarCTA';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import FAQ, { FAQJsonLd } from '@/components/blog/FAQ';
-import { PILLAR_META } from '@/data/blogPosts';
+import { PILLAR_META, formatDate, toIsoDate } from '@/data/blogPosts';
 
 const SITE_URL = 'https://saswatasg.com';
 
 const BlogLayout = ({ post, children }) => {
   const pillarMeta = PILLAR_META[post.pillar] || PILLAR_META.pm;
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
+  const ogImage = `${SITE_URL}/og/${post.slug}.png`;
+  const publishedIso = toIsoDate(post.date);
+  const modifiedIso = toIsoDate(post.updated || post.date);
 
   return (
     <>
@@ -19,15 +22,26 @@ const BlogLayout = ({ post, children }) => {
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
         <link rel="canonical" href={postUrl} />
+        <link rel="alternate" type="application/rss+xml" title="Saswata S. Sengupta — Blog" href={`${SITE_URL}/feed.xml`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:url" content={postUrl} />
-        <meta property="og:image" content="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png" />
+        <meta property="og:site_name" content="Saswata S. Sengupta" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={post.title} />
+        <meta property="article:published_time" content={publishedIso} />
+        <meta property="article:modified_time" content={modifiedIso} />
+        <meta property="article:author" content="Saswata S. Sengupta" />
+        <meta property="article:section" content={pillarMeta.label} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
-        <meta name="twitter:image" content="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png" />
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image:alt" content={post.title} />
         <meta name="author" content="Saswata S. Sengupta" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -35,9 +49,14 @@ const BlogLayout = ({ post, children }) => {
             '@type': 'Article',
             headline: post.title,
             description: post.description,
-            datePublished: post.date,
-            dateModified: post.updated || post.date,
+            image: [ogImage],
+            datePublished: publishedIso,
+            dateModified: modifiedIso,
             inLanguage: 'en-US',
+            wordCount: post.wordCount || undefined,
+            timeRequired: `PT${post.readingMinutes || 5}M`,
+            keywords: [post.targetKeyword, ...(post.secondaryKeywords || [])].filter(Boolean).join(', '),
+            articleSection: pillarMeta.label,
             author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
             publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
             mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
@@ -71,7 +90,11 @@ const BlogLayout = ({ post, children }) => {
           {post.title}
         </h1>
         <p className="text-sm md:text-base font-semibold text-ink/60 mb-6">
-          {post.date} · {post.readingMinutes || 5} min read
+          <time dateTime={publishedIso}>{formatDate(post.date)}</time>
+          {modifiedIso !== publishedIso && (
+            <> · Updated <time dateTime={modifiedIso}>{formatDate(post.updated)}</time></>
+          )}
+          {' '}· {post.readingMinutes || 5} min read
         </p>
 
         <article className="blog-prose">{children}</article>

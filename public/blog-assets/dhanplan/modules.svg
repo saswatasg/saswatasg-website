@@ -1,47 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="800" height="340" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="784" height="324" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="390" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="374" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
   <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">DHANPLAN — 4 MODULES, 28 TESTS, ZERO 401K</text>
 
   <!-- SIP -->
   <rect x="30" y="70" width="175" height="240" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
   <text x="45" y="96" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">SIP</text>
-  <text x="45" y="124" font-size="14" fill="#0A0A0A">Equity growth + inflation</text>
-  <text x="45" y="152" font-size="14" fill="#0A0A0A">Step-up SIP support</text>
-  <text x="45" y="180" font-size="14" fill="#0A0A0A">XIRR output</text>
-  <text x="45" y="208" font-size="14" fill="#0A0A0A">Real-growth per row</text>
-  <text x="45" y="236" font-size="14" fill="#0A0A0A">Inflation-adjusted terms</text>
-  <text x="45" y="264" font-size="14" fill="#0A0A0A">SEBI growth caps</text>
+  <text x="45" y="124" font-size="9.5" fill="#0A0A0A">Equity growth + inflation</text>
+  <text x="45" y="152" font-size="9.5" fill="#0A0A0A">Step-up SIP support</text>
+  <text x="45" y="180" font-size="9.5" fill="#0A0A0A">XIRR output</text>
+  <text x="45" y="208" font-size="9.5" fill="#0A0A0A">Real-growth per row</text>
+  <text x="45" y="236" font-size="9.5" fill="#0A0A0A">Inflation-adjusted terms</text>
+  <text x="45" y="264" font-size="9.5" fill="#0A0A0A">SEBI growth caps</text>
 
   <!-- EPF/PPF -->
   <rect x="215" y="70" width="175" height="240" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="230" y="96" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">EPF & PPF</text>
-  <text x="230" y="124" font-size="14" fill="#0A0A0A">Year caps + interest history</text>
-  <text x="230" y="152" font-size="14" fill="#0A0A0A">Tax: EEE (old) vs new</text>
-  <text x="230" y="180" font-size="14" fill="#0A0A0A">EPF employer+employee</text>
-  <text x="230" y="208" font-size="14" fill="#0A0A0A">PPF 15-yr lock-in</text>
-  <text x="230" y="236" font-size="14" fill="#0A0A0A">Govt rate notifications</text>
+  <text x="230" y="96" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">EPF &amp; PPF</text>
+  <text x="230" y="124" font-size="9.5" fill="#0A0A0A">Year caps + interest history</text>
+  <text x="230" y="152" font-size="9.5" fill="#0A0A0A">Tax: EEE (old) vs new</text>
+  <text x="230" y="180" font-size="9.5" fill="#0A0A0A">EPF employer+employee</text>
+  <text x="230" y="208" font-size="9.5" fill="#0A0A0A">PPF 15-yr lock-in</text>
+  <text x="230" y="236" font-size="9.5" fill="#0A0A0A">Govt rate notifications</text>
 
   <!-- NPS -->
   <rect x="400" y="70" width="175" height="240" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
   <text x="415" y="96" font-size="14" font-weight="bold" fill="#FFFFFF" letter-spacing="1">NPS</text>
-  <text x="415" y="124" font-size="14" fill="#FFFFFF">Tier I / Tier II</text>
-  <text x="415" y="152" font-size="14" fill="#FFFFFF">Asset allocation (E/C/G)</text>
-  <text x="415" y="180" font-size="14" fill="#FFFFFF">Partial withdrawal rules</text>
-  <text x="415" y="208" font-size="14" fill="#FFFFFF">Tax on maturity</text>
-  <text x="415" y="236" font-size="14" fill="#FFFFFF">PFRDA circulars cited</text>
+  <text x="415" y="124" font-size="9.5" fill="#FFFFFF">Tier I / Tier II</text>
+  <text x="415" y="152" font-size="9.5" fill="#FFFFFF">Asset allocation (E/C/G)</text>
+  <text x="415" y="180" font-size="9.5" fill="#FFFFFF">Partial withdrawal rules</text>
+  <text x="415" y="208" font-size="9.5" fill="#FFFFFF">Tax on maturity</text>
+  <text x="415" y="236" font-size="9.5" fill="#FFFFFF">PFRDA circulars cited</text>
 
   <!-- FIRE -->
   <rect x="585" y="70" width="175" height="240" rx="12" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
   <text x="600" y="96" font-size="14" font-weight="bold" fill="#FFFFFF" letter-spacing="1">FIRE</text>
-  <text x="600" y="124" font-size="14" fill="#FFFFFF">Coast / Lean / Fat</text>
-  <text x="600" y="152" font-size="14" fill="#FFFFFF">Real-growth milestone</text>
-  <text x="600" y="180" font-size="14" fill="#FFFFFF">Withdrawal rate (4%?)</text>
-  <text x="600" y="208" font-size="14" fill="#FFFFFF">Inflation wedge per row</text>
-  <text x="600" y="236" font-size="14" fill="#FFFFFF">Retirement age input</text>
+  <text x="600" y="124" font-size="10" fill="#FFFFFF">Coast / Lean / Fat</text>
+  <text x="600" y="152" font-size="10" fill="#FFFFFF">Real-growth milestone</text>
+  <text x="600" y="180" font-size="10" fill="#FFFFFF">Withdrawal rate (4%?)</text>
+  <text x="600" y="208" font-size="10" fill="#FFFFFF">Inflation wedge per row</text>
+  <text x="600" y="236" font-size="10" fill="#FFFFFF">Retirement age input</text>
 
   <!-- Bottom -->
   <rect x="30" y="320" width="740" height="50" rx="10" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="400" y="350" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">4 modules · 28 reconciliation tests · scope rule: 2 public citations or it doesn't ship</text>
+  <text x="400" y="350" font-size="12.5" font-weight="bold" fill="#0A0A0A" text-anchor="middle">4 modules · 28 reconciliation tests · scope rule: 2 public citations or it doesn't ship</text>
 </svg>

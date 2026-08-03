@@ -3,7 +3,7 @@ title: "The cheapest e-commerce CRO: ship one fix a week"
 description: "17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash."
 slug: "one-fix-a-week-cro"
 date: 2026-02-18
-updated: 2026-02-18
+updated: 2026-08-03
 pillar: growth
 persona: cro-operator
 targetKeyword: "ecommerce conversion optimization"
@@ -11,8 +11,7 @@ secondaryKeywords:
   - "ecommerce CRO"
   - "website optimization"
   - "a/b test ecommerce"
-anchorProject: sierra-cro
-readingMinutes: 9
+anchorProject: cart-checkout
 faq:
   - q: "What is conversion rate optimization in ecommerce?"
     a: "Improving the share of store visitors who complete a purchase or submit a lead. One measured fix a week compounds faster than a redesign."
@@ -24,12 +23,13 @@ faq:
 
 import AnswerBox from '@/components/blog/AnswerBox';
 import FAQ from '@/components/blog/FAQ';
+import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
 CRO on a D2C furniture brand wasn't a redesign — it was weekly micro-forensics with a metric attached to each decision. Fix the checkout surprise, fix the form field, fix the search weights, and measure each. One measured fix a week compounds faster and with less risk than one big-bang redesign a quarter.
 </AnswerBox>
 
-Everyone on the team wanted the splashy redesign. Nobody wanted the 17 boring fixes. The splashy redesign was a bet on taste; the boring fixes were a bet on *measurement* — and measurement is the only thing that pays out predictably.
+Everyone on the team wanted the splashy redesign. Nobody wanted the 17 boring fixes. The splashy redesign was a bet on taste; the boring fixes were a bet on *measurement* — and measurement is the only thing that pays out predictably. [Baymard's research](https://baymard.com/lists/cart-abandonment-rate) puts average cart abandonment near 70% — which means every store is sitting on a backlog of small, findable leaks that no single redesign will ever name.
 
 ## What "one fix a week" meant at Sierra
 
@@ -39,6 +39,8 @@ We flattened CRO into a repeatable pipeline, four steps, no heroics involved:
 2. **Form a short hypothesis** from events + sessions, in one sentence.
 3. **Ship the cheapest change that tests it** — not the most impressive one.
 4. **Watch one KPI for two weeks.** Keep it, kill it, or learn from it. No orphan changes.
+
+<Figure src="/blog-assets/one-fix-a-week/cadence.svg" alt="One-fix-a-week cadence: pick a funnel step → one-sentence hypothesis → ship the cheapest change → watch one KPI for two weeks, then repeat" caption="The four-step loop, every Tuesday. The compounding trail is the point — attribution stays clean because each fix owns its delta." />
 
 The whole discipline is step 4. A fix that isn't watched is a guess with a build ticket attached.
 
@@ -91,7 +93,7 @@ Rough numbers, no spreadsheet glamour: one fix at a rough 1–5% lift per test �
 
 That's the whole pitch of the weekly cadence. It's unglamorous, and it pays predictably.
 
-The mechanics behind those fixes are the connected stories: the [category redesign](/blog/category-page-redesign-plus34), the [form teardown](/blog/lead-form-overhaul-124), and the flagship [checkout story](/blog/checkout-abandonment-73-to-54). Read them together — they're the same discipline at three different scales.
+The mechanics behind those fixes are the connected stories: the [category redesign](/blog/category-page-redesign-plus34), the [form teardown](/blog/lead-form-overhaul-124), and the flagship [checkout story](/blog/checkout-abandonment-73-to-54) — with the full numbers in [the cart & checkout case study](/case-studies/cart-checkout). Read them together — they're the same discipline at three different scales.
 
 ## The one-fix cadence, run for real
 

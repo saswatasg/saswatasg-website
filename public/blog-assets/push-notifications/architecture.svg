@@ -1,46 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="800" height="380" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="784" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 435" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="435" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="419" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
   <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">PUSH ARCHITECTURE — 27+ TRIGGERS, 3 RULES, 0 SPAM</text>
 
   <!-- Trigger buckets -->
   <rect x="40" y="70" width="180" height="120" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="55" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">RENEWAL & BILLING</text>
-  <text x="55" y="120" font-size="14" fill="#0A0A0A">Reminders, trial expiry</text>
-  <text x="55" y="144" font-size="14" fill="#0A0A0A">Invoice ready, pay failures</text>
-  <text x="55" y="168" font-size="14" fill="#0A0A0A">P0 — legal requirement</text>
+  <text x="55" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">RENEWAL &amp; BILLING</text>
+  <text x="55" y="120" font-size="11" fill="#0A0A0A">Renewal reminders</text>
+  <text x="55" y="144" font-size="11" fill="#0A0A0A">Invoices, pay failures</text>
+  <text x="55" y="168" font-size="11" fill="#0A0A0A">P0 — legal requirement</text>
 
   <rect x="235" y="70" width="180" height="120" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
   <text x="250" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">TRANSACTIONAL</text>
-  <text x="250" y="120" font-size="14" fill="#0A0A0A">Changes, additions</text>
-  <text x="250" y="144" font-size="14" fill="#0A0A0A">Reversal confirmations</text>
-  <text x="250" y="168" font-size="14" fill="#0A0A0A">P1 — user action</text>
+  <text x="250" y="120" font-size="11" fill="#0A0A0A">Changes, additions</text>
+  <text x="250" y="144" font-size="11" fill="#0A0A0A">Reversal confirmations</text>
+  <text x="250" y="168" font-size="11" fill="#0A0A0A">P1 — user action</text>
 
   <rect x="430" y="70" width="180" height="120" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="445" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">CONFLICTS & ERRORS</text>
-  <text x="445" y="120" font-size="14" fill="#0A0A0A">"We need something"</text>
-  <text x="445" y="144" font-size="14" fill="#0A0A0A">Compliance moments</text>
-  <text x="445" y="168" font-size="14" fill="#0A0A0A">P0 — blocking</text>
+  <text x="445" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">CONFLICTS &amp; ERRORS</text>
+  <text x="445" y="120" font-size="12" fill="#0A0A0A">"We need something"</text>
+  <text x="445" y="144" font-size="12" fill="#0A0A0A">Compliance moments</text>
+  <text x="445" y="168" font-size="12" fill="#0A0A0A">P0 — blocking</text>
 
   <rect x="625" y="70" width="135" height="120" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
   <text x="640" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">FEATURE</text>
-  <text x="640" y="120" font-size="14" fill="#0A0A0A">Release notes</text>
-  <text x="640" y="144" font-size="14" fill="#0A0A0A">Feature nudges</text>
-  <text x="640" y="168" font-size="14" fill="#0A0A0A">P3 — nice to know</text>
+  <text x="640" y="120" font-size="12" fill="#0A0A0A">Release notes</text>
+  <text x="640" y="144" font-size="12" fill="#0A0A0A">Feature nudges</text>
+  <text x="640" y="168" font-size="12" fill="#0A0A0A">P3 — optional</text>
 
   <!-- Three rules -->
   <rect x="40" y="215" width="240" height="130" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
   <text x="55" y="243" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">RULE 1: P0–P3 PRIORITY</text>
-  <text x="55" y="270" font-size="13" fill="#0A0A0A">P0: billing, compliance — interrupt</text>
-  <text x="55" y="294" font-size="13" fill="#0A0A0A">P1: transactional — action</text>
-  <text x="55" y="318" font-size="13" fill="#0A0A0A">P2: conflicts — block</text>
-  <text x="55" y="342" font-size="13" fill="#0A0A0A">P3: features — wait</text>
+  <text x="55" y="270" font-size="12.5" fill="#0A0A0A">P0: billing — interrupt</text>
+  <text x="55" y="294" font-size="12.5" fill="#0A0A0A">P1: transactional — action</text>
+  <text x="55" y="318" font-size="12.5" fill="#0A0A0A">P2: conflicts — block</text>
+  <text x="55" y="342" font-size="12.5" fill="#0A0A0A">P3: features — wait</text>
 
   <rect x="290" y="215" width="240" height="130" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
   <text x="305" y="243" font-size="13" font-weight="bold" fill="#FFFFFF" letter-spacing="1">RULE 2: 3-SLOT DAILY CAP</text>
-  <text x="305" y="270" font-size="13" fill="#FFFFFF">Max 3 notifications/user/day</text>
-  <text x="305" y="294" font-size="13" fill="#FFFFFF">Queue non-critical for tomorrow</text>
+  <text x="305" y="270" font-size="13" fill="#FFFFFF">Max 3 pings/user/day</text>
+  <text x="305" y="294" font-size="13" fill="#FFFFFF">Non-critical → tomorrow</text>
   <text x="305" y="318" font-size="13" fill="#FFFFFF">Stacking = blocked/muted</text>
 
   <rect x="540" y="215" width="240" height="130" rx="12" fill="#6D28D9" stroke="#0A0A0A" stroke-width="4"/>
@@ -51,6 +51,6 @@
 
   <!-- Result -->
   <rect x="40" y="355" width="720" height="60" rx="10" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="400" y="382" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">27+ triggers · P0–P3 · 3-slot cap · 5 regions → engagement held, zero decay</text>
+  <text x="400" y="382" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">27+ triggers · P0–P3 · 3-slot cap · 5 regions → engagement held, zero decay</text>
   <text x="400" y="404" font-size="13" fill="#FFFFFF" opacity="0.75" text-anchor="middle">Constraint is the feature. Volume without cap = spam.</text>
 </svg>
