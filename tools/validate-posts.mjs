@@ -17,7 +17,7 @@ const REQUIRED = [
 const PILLARS = ['agents', 'growth', 'pm'];
 // anchorProject must be a case-study slug or one of these project identifiers
 // (used only for related-post scoring).
-const PROJECT_SLUGS = ['dhanplan', 'topshe', 'filmrisk', 'linkedin-outreach', 'pm-agentic'];
+const PROJECT_SLUGS = ['dhanplan', 'topshe', 'filmrisk', 'tgb-hunt', 'bloghero', 'inventory', 'intent'];
 // Correct casing for brand names; lowercase variants in prose are errors.
 const BRAND_CASING = [
   [/\bupcore\b/, 'Upcore'],

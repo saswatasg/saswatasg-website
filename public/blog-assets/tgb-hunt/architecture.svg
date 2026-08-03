@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="360" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="344" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">TGB HUNT — FOUR STAGES, ONE GATE</text>
+
+  <!-- Stage boxes -->
+  <rect x="40" y="70" width="165" height="140" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="52" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">1. DISCOVERY</text>
+  <text x="52" y="122" font-size="11" fill="#0A0A0A">Describe the role</text>
+  <text x="52" y="140" font-size="11" fill="#0A0A0A">Find matching</text>
+  <text x="52" y="158" font-size="11" fill="#0A0A0A">recruiters / HMs</text>
+  <text x="52" y="184" font-size="10.5" fill="#0A0A0A" opacity="0.7">Company size, funding,</text>
+  <text x="52" y="200" font-size="10.5" fill="#0A0A0A" opacity="0.7">hiring signals</text>
+
+  <rect x="222" y="70" width="165" height="140" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="234" y="96" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">2. ENRICHMENT</text>
+  <text x="234" y="122" font-size="11" fill="#0A0A0A">Profile scrape</text>
+  <text x="234" y="140" font-size="11" fill="#0A0A0A">Company data</text>
+  <text x="234" y="158" font-size="11" fill="#0A0A0A">Shared connections</text>
+  <text x="234" y="184" font-size="10.5" fill="#0A0A0A" opacity="0.7">~3 sec/prospect,</text>
+  <text x="234" y="200" font-size="10.5" fill="#0A0A0A" opacity="0.7">~$0.002 in API calls</text>
+
+  <rect x="404" y="70" width="180" height="140" rx="10" fill="#6D28D9" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="416" y="96" font-size="12" font-weight="bold" fill="#FFFFFF" letter-spacing="1">3. DRAFT INTRO</text>
+  <text x="416" y="122" font-size="11" fill="#FFFFFF">LLM writes from</text>
+  <text x="416" y="140" font-size="11" fill="#FFFFFF">enrichment JSON</text>
+  <text x="416" y="158" font-size="11" fill="#FFFFFF">Your tone, one ask</text>
+  <text x="416" y="184" font-size="10.5" fill="#FFFFFF" opacity="0.85">Under 90 words,</text>
+  <text x="416" y="200" font-size="10.5" fill="#FFFFFF" opacity="0.85">no boilerplate</text>
+
+  <rect x="606" y="70" width="154" height="140" rx="10" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="618" y="96" font-size="12" font-weight="bold" fill="#FFFFFF" letter-spacing="1">4. HUMAN GATE</text>
+  <text x="618" y="122" font-size="11" fill="#FFFFFF">Draft, not a send</text>
+  <text x="618" y="140" font-size="11" fill="#FFFFFF">You approve</text>
+  <text x="618" y="158" font-size="11" fill="#FFFFFF">every message</text>
+  <text x="618" y="184" font-size="10.5" fill="#FFFFFF" opacity="0.85">Nothing sends</text>
+  <text x="618" y="200" font-size="10.5" fill="#FFFFFF" opacity="0.85">itself, ever</text>
+
+  <!-- Arrows -->
+  <line x1="205" y1="140" x2="222" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="222,134 232,140 222,146" fill="#0A0A0A"/>
+  <line x1="387" y1="140" x2="404" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="404,134 414,140 404,146" fill="#0A0A0A"/>
+  <line x1="584" y1="140" x2="606" y2="140" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="606,134 616,140 606,146" fill="#0A0A0A"/>
+
+  <!-- Result strip -->
+  <rect x="40" y="235" width="720" height="95" rx="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="266" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Local-first: Python + Django + Playwright + SQLite, one macOS .app</text>
+  <text x="400" y="290" font-size="13" fill="#FFFFFF" opacity="0.85" text-anchor="middle">Your LinkedIn cookies never leave the machine. No cloud bill.</text>
+  <text x="400" y="312" font-size="13" font-weight="bold" fill="#F59E0B" text-anchor="middle">The human gate isn't a compliance afterthought — it's the entire product thesis</text>
+</svg>

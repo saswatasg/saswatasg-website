@@ -6,7 +6,7 @@
     <description>AI agents in production, e-commerce CRO, and AI-era product management — with the numbers.</description>
     <language>en-us</language>
     <atom:link href="https://saswatasg.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 03 Aug 2026 07:29:39 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 08:24:12 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Topshe: voice AI that runs entirely in your browser]]></title>
       <link>https://saswatasg.com/blog/topshe-browser-voice-ai</link>
@@ -15,17 +15,10 @@
       <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[What an AI-era product manager does all day]]></title>
-      <link>https://saswatasg.com/blog/ai-era-product-manager</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/ai-era-product-manager</guid>
-      <description><![CDATA[AI didn't remove the PM job — it moved the work up the judgment ladder. Specs get faster; decisions, scope, risk reign. Real before/after from Upcore.]]></description>
-      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[How I built an AI recruiter agent for LinkedIn outreach]]></title>
-      <link>https://saswatasg.com/blog/ai-recruiter-agent-build</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/ai-recruiter-agent-build</guid>
-      <description><![CDATA[766 commits, 6 releases, one self-hosted macOS app. The honest design and failure modes of an AI recruiter agent — research and intros, not spam.]]></description>
+      <title><![CDATA[I built my own LinkedIn outreach tool (766 commits later)]]></title>
+      <link>https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent</guid>
+      <description><![CDATA[TGB Hunt: a self-hosted, open-source agent that finds recruiters, drafts intros, and never sends without my approval. 766 commits, GPLv3.]]></description>
       <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
@@ -39,7 +32,7 @@
       <title><![CDATA[The data deep-dive: 480K sessions to three real problems]]></title>
       <link>https://saswatasg.com/blog/data-deep-dive-method</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/data-deep-dive-method</guid>
-      <description><![CDATA[The repeatable method I used across checkout, category pages, and forms: instrument first, form hypotheses second, never optimize an unmeasured funnel.]]></description>
+      <description><![CDATA[The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel.]]></description>
       <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
     </item>
     <item>

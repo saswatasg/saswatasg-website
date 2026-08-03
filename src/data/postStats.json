@@ -1,14 +1,10 @@
 {
   "topshe-browser-voice-ai": {
-    "wordCount": 1237,
+    "wordCount": 1236,
     "readingMinutes": 6
   },
-  "ai-era-product-manager": {
-    "wordCount": 1213,
-    "readingMinutes": 6
-  },
-  "ai-recruiter-agent-build": {
-    "wordCount": 1277,
+  "tgb-hunt-linkedin-outreach-agent": {
+    "wordCount": 1287,
     "readingMinutes": 6
   },
   "dhanplan-retirement-calculator": {
@@ -16,8 +12,8 @@
     "readingMinutes": 4
   },
   "data-deep-dive-method": {
-    "wordCount": 1035,
-    "readingMinutes": 5
+    "wordCount": 917,
+    "readingMinutes": 4
   },
   "ai-send-greetings-168": {
     "wordCount": 1089,
@@ -32,7 +28,7 @@
     "readingMinutes": 4
   },
   "discovery-to-roadmap": {
-    "wordCount": 1116,
+    "wordCount": 1180,
     "readingMinutes": 5
   },
   "push-notification-architecture": {

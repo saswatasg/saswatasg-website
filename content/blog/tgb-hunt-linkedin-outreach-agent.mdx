@@ -1,24 +1,24 @@
 ---
-title: "How I built an AI recruiter agent for LinkedIn outreach"
-description: "766 commits, 6 releases, one self-hosted macOS app. The honest design and failure modes of an AI recruiter agent — research and intros, not spam."
-slug: "ai-recruiter-agent-build"
+title: "I built my own LinkedIn outreach tool (766 commits later)"
+description: "TGB Hunt: a self-hosted, open-source agent that finds recruiters, drafts intros, and never sends without my approval. 766 commits, GPLv3."
+slug: "tgb-hunt-linkedin-outreach-agent"
 date: 2026-07-14
 updated: 2026-08-03
 pillar: agents
 persona: local-ai-builder
-targetKeyword: "AI recruiter agent"
+targetKeyword: "open source linkedin automation"
 secondaryKeywords:
-  - "AI LinkedIn outreach"
-  - "personalized outreach automation"
-  - "AI agent for recruiters"
-anchorProject: linkedin-outreach
+  - "linkedin automation tools"
+  - "self-hosted linkedin agent"
+  - "AI linkedin outreach"
+anchorProject: tgb-hunt
 faq:
-  - q: "Can an AI recruiter agent really work for outreach?"
-    a: "Yes, when it owns research and intro drafts while a human owns sends and replies. My build: 766 commits, 6 releases, self-hosted macOS app."
+  - q: "What is TGB Hunt?"
+    a: "A self-hosted, open-source agent (GPLv3) that finds recruiters for a role I describe, then drafts personalized intros I approve before anything sends."
+  - q: "Why build a LinkedIn outreach tool instead of using an existing SaaS?"
+    a: "SaaS tools optimize for volume, not research. TGB Hunt does 20 minutes of research per prospect in seconds, then still needs my approval to send."
   - q: "Is automated LinkedIn outreach safe to run?"
-    a: "Keep volume modest and the human in the loop — personalization beats scale. My agent drafts; people approve."
-  - q: "How do you measure an AI recruiter's quality?"
-    a: "Reply and qualify rates per message variant, not messages sent. The agent earns its place when intros read like a human studied the target."
+    a: "Keep volume modest and the human in the loop — personalization beats scale. TGB Hunt drafts; I approve every send."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,10 +26,10 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-An AI recruiter agent is most useful when it owns research, matching, and intro drafting — while a human owns the identity and final sends. I built and ran one in public as a self-hosted macOS app (TGBhunt, 766 commits, 6 releases, Python/Django/Playwright). The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
+**TGB Hunt** is a self-hosted, open-source LinkedIn agent I built to find recruiters and hiring managers for roles I'm chasing — not a tool recruiters use to find candidates. It owns research, matching, and intro drafting; a human (me) owns the identity and every send. GPLv3, 766 commits, 6 releases, one macOS app (Python/Django/Playwright). The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
 </AnswerBox>
 
-Every automated outreach tool I've seen dies the same death: it scales the *sending* and skips the *reading*. The result is a thousand identical "I came across your profile" messages and a burned domain. So I inverted it — 766 commits later, TGBhunt is an agent that does twenty minutes of research per prospect in three seconds, drafts an intro that proves the research happened, and then **refuses to send anything on its own**. The human gate isn't a compliance afterthought; it's the entire product thesis.
+Every LinkedIn automation tool I tried dies the same death: it scales the *sending* and skips the *reading*. The result is a thousand identical "I came across your profile" messages and a burned account. So I built my own — 766 commits later, TGB Hunt does twenty minutes of research per prospect in three seconds, drafts an intro that proves the research happened, and then **refuses to send anything on its own**. The human gate isn't a compliance afterthought; it's the entire product thesis.
 
 ## What the agent actually does
 
@@ -43,7 +43,7 @@ The system has four moving parts, each designed to keep the human in the loop:
 
 **Human gate** — nothing sends itself. Every message is a draft until you hit approve. The "😳 I sent 400 messages" scenario is impossible by design.
 
-<Figure src="/blog-assets/ai-recruiter-agent/architecture.svg" alt="AI recruiter agent architecture: discovery → research → draft → human gate → send" caption="Four stages, one gate. The human approves every send." />
+<Figure src="/blog-assets/tgb-hunt/architecture.svg" alt="TGB Hunt architecture: discovery → enrichment → draft intro → human gate → send" caption="Four stages, one gate. The human approves every send." />
 
 ## The stack: local-first, no vendor lock-in
 
