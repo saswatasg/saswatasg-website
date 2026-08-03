@@ -1,35 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="380" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="320" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="304" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">17:1 & 19:1 — THE GRAVITY PROBLEM</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">17:1 & 19:1 — THE GRAVITY PROBLEM</text>
 
   <!-- E-way bill -->
-  <rect x="40" y="90" width="430" height="260" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="60" y="118" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">E-WAY BILL</text>
-  <text x="60" y="152" font-size="18" font-weight="bold" fill="#E85D3A">17 : 1</text>
-  <text x="60" y="180" font-size="14" fill="#0A0A0A">Tally : In-app</text>
-  <text x="60" y="220" font-size="13" fill="#0A0A0A" opacity="0.75">Generated where the invoice lives</text>
-  <text x="60" y="244" font-size="13" fill="#0A0A0A" opacity="0.75">Tally is the daily driver</text>
-  <text x="60" y="268" font-size="13" fill="#0A0A0A" opacity="0.75">In-app feature → ghost town</text>
-  <text x="60" y="310" font-size="12" font-weight="bold" fill="#E85D3A">Gap detected in 2 weeks</text>
+  <rect x="40" y="70" width="350" height="220" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="60" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">E-WAY BILL</text>
+  <text x="60" y="130" font-size="32" font-weight="black" fill="#E85D3A">17 : 1</text>
+  <text x="60" y="162" font-size="16" fill="#0A0A0A">Tally : In-app</text>
+  <text x="60" y="200" font-size="14" fill="#0A0A0A" opacity="0.75">Generated where the invoice lives</text>
+  <text x="60" y="228" font-size="14" fill="#0A0A0A" opacity="0.75">Tally is the daily driver</text>
+  <text x="60" y="256" font-size="14" fill="#0A0A0A" opacity="0.75">In-app → ghost town</text>
 
   <!-- E-Invoice -->
-  <rect x="490" y="90" width="430" height="260" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="510" y="118" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">E-INVOICE</text>
-  <text x="510" y="152" font-size="18" font-weight="bold" fill="#E85D3A">19 : 1</text>
-  <text x="510" y="180" font-size="14" fill="#0A0A0A">Tally : In-app</text>
-  <text x="510" y="220" font-size="13" fill="#0A0A0A" opacity="0.75">Same workflow gravity</text>
-  <text x="510" y="244" font-size="13" fill="#0A0A0A" opacity="0.75">Same substitute behavior</text>
-  <text x="510" y="268" font-size="13" fill="#0A0A0A" opacity="0.75">Same root cause</text>
-  <text x="510" y="310" font-size="12" font-weight="bold" fill="#E85D3A">Same study, same slide</text>
+  <rect x="410" y="70" width="350" height="220" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="430" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">E-INVOICE</text>
+  <text x="430" y="130" font-size="32" font-weight="black" fill="#E85D3A">19 : 1</text>
+  <text x="430" y="162" font-size="16" fill="#0A0A0A">Tally : In-app</text>
+  <text x="430" y="200" font-size="14" fill="#0A0A0A" opacity="0.75">Same workflow gravity</text>
+  <text x="430" y="228" font-size="14" fill="#0A0A0A" opacity="0.75">Same substitute behavior</text>
+  <text x="430" y="256" font-size="14" fill="#0A0A0A" opacity="0.75">Same root cause</text>
 
-  <!-- Arrow/connection -->
-  <line x1="470" y1="220" x2="490" y2="220" stroke="#0A0A0A" stroke-width="4" stroke-dasharray="8,8"/>
-  <text x="480" y="212" font-size="12" font-weight="bold" fill="#0A0A0A" text-anchor="middle">SAME ROOT</text>
+  <!-- Connection -->
+  <line x1="390" y1="180" x2="410" y2="180" stroke="#0A0A0A" stroke-width="4" stroke-dasharray="8,8"/>
+  <text x="400" y="172" font-size="12" font-weight="bold" fill="#0A0A0A" text-anchor="middle">SAME ROOT</text>
 
-  <!-- Bottom insight -->
-  <rect x="40" y="360" width="880" height="80" rx="10" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="480" y="388" font-size="16" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Adoption isn't a feature problem — it's a workflow problem.</text>
-  <text x="480" y="412" font-size="13" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Fix = middleware (Tally sync), not a prettier native UI.</text>
+  <rect x="40" y="300" width="720" height="60" rx="10" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="328" font-size="16" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Adoption isn't a feature problem — it's a workflow problem</text>
+  <text x="400" y="350" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Fix = middleware (Tally sync), not a prettier native UI</text>
 </svg>

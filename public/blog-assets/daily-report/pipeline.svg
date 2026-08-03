@@ -1,53 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="420" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="380" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">DAILY REPORT PIPELINE — 3 SOURCES → 1 SHEET @ 11 AM</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">DAILY REPORT — 3 SOURCES → 1 SHEET @ 11 AM</text>
 
   <!-- Kibana -->
-  <rect x="40" y="90" width="250" height="160" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="60" y="118" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">KIBANA</text>
-  <text x="60" y="148" font-size="13" fill="#0A0A0A">Compliance event logs</text>
-  <text x="60" y="172" font-size="12" fill="#0A0A0A">GST rejection errors</text>
-  <text x="60" y="196" font-size="12" fill="#0A0A0A">Event-level granularity</text>
-  <text x="60" y="220" font-size="12" fill="#0A0A0A" opacity="0.7">REST API → JSON</text>
+  <rect x="40" y="70" width="230" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="55" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">KIBANA</text>
+  <text x="55" y="128" font-size="15" fill="#0A0A0A">Compliance event logs</text>
+  <text x="55" y="156" font-size="15" fill="#0A0A0A">GST rejection errors</text>
+  <text x="55" y="184" font-size="14" fill="#0A0A0A" opacity="0.7">REST API → JSON</text>
 
   <!-- MongoDB -->
-  <rect x="310" y="90" width="250" height="160" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="330" y="118" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">MONGODB</text>
-  <text x="330" y="148" font-size="13" fill="#0A0A0A">User tier counts</text>
-  <text x="330" y="172" font-size="12" fill="#0A0A0A">PRO / PRO+ / Free</text>
-  <text x="330" y="196" font-size="12" fill="#0A0A0A">Active merchant base</text>
-  <text x="330" y="220" font-size="12" fill="#0A0A0A" opacity="0.7">Atlas API / endpoint</text>
+  <rect x="290" y="70" width="230" height="150" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="305" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">MONGODB</text>
+  <text x="305" y="128" font-size="15" fill="#0A0A0A">User tier counts</text>
+  <text x="305" y="156" font-size="15" fill="#0A0A0A">PRO / PRO+ / Free</text>
+  <text x="305" y="184" font-size="14" fill="#0A0A0A" opacity="0.7">Atlas API endpoint</text>
 
   <!-- GA4 -->
-  <rect x="580" y="90" width="250" height="160" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="600" y="118" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">GA4</text>
-  <text x="600" y="148" font-size="13" fill="#0A0A0A">Feature-level engagement</text>
-  <text x="600" y="172" font-size="12" fill="#0A0A0A">Send Greetings, GST search</text>
-  <text x="600" y="196" font-size="12" fill="#0A0A0A">Event-name filtered</text>
-  <text x="600" y="220" font-size="12" fill="#0A0A0A" opacity="0.7">Data API / Apps Script</text>
+  <rect x="540" y="70" width="230" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="555" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">GA4</text>
+  <text x="555" y="128" font-size="15" fill="#0A0A0A">Feature engagement</text>
+  <text x="555" y="156" font-size="15" fill="#0A0A0A">Send Greetings, GST search</text>
+  <text x="555" y="184" font-size="14" fill="#0A0A0A" opacity="0.7">Data API / Apps Script</text>
 
-  <!-- Arrow convergence -->
-  <line x1="290" y1="170" x2="310" y2="170" stroke="#0A0A0A" stroke-width="3"/>
-  <polygon points="310,164 320,170 310,176" fill="#0A0A0A"/>
-  <line x1="560" y1="170" x2="580" y2="170" stroke="#0A0A0A" stroke-width="3"/>
-  <polygon points="580,164 590,170 580,176" fill="#0A0A0A"/>
+  <!-- Convergence -->
+  <line x1="270" y1="145" x2="290" y2="145" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="290,139 300,145 290,151" fill="#0A0A0A"/>
+  <line x1="520" y1="145" x2="540" y2="145" stroke="#0A0A0A" stroke-width="3"/>
+  <polygon points="540,139 550,145 540,151" fill="#0A0A0A"/>
 
-  <!-- Apps Script box -->
-  <rect x="350" y="270" width="260" height="100" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="365" y="298" font-size="14" font-weight="bold" fill="#0A0A0A">GOOGLE APPS SCRIPT</text>
-  <text x="365" y="324" font-size="12" fill="#0A0A0A">Time trigger: 11 AM daily</text>
-  <text x="365" y="344" font-size="12" fill="#0A0A0A">Adapters per source → 1 schema</text>
+  <!-- Apps Script -->
+  <rect x="280" y="245" width="240" height="90" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="295" y="270" font-size="15" font-weight="bold" fill="#0A0A0A">GOOGLE APPS SCRIPT</text>
+  <text x="295" y="296" font-size="14" fill="#0A0A0A">Time trigger: 11 AM daily</text>
+  <text x="295" y="322" font-size="14" fill="#0A0A0A">Adapters → 1 schema</text>
 
   <!-- Output Sheet -->
-  <rect x="650" y="270" width="260" height="100" rx="12" fill="#059669" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="665" y="298" font-size="14" font-weight="bold" fill="#FFFFFF">GOOGLE SHEET</text>
-  <text x="665" y="324" font-size="12" fill="#FFFFFF">88 rows, canonical schema</text>
-  <text x="665" y="344" font-size="12" fill="#FFFFFF">Auto-populated @ 11 AM</text>
+  <rect x="540" y="245" width="240" height="90" rx="12" fill="#059669" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="555" y="270" font-size="15" font-weight="bold" fill="#FFFFFF">GOOGLE SHEET</text>
+  <text x="555" y="296" font-size="14" fill="#FFFFFF">88 rows, canonical</text>
+  <text x="555" y="322" font-size="14" fill="#FFFFFF">Auto @ 11 AM</text>
 
-  <!-- Bottom note -->
-  <rect x="40" y="340" width="880" height="64" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="480" y="368" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">The schema was the decision; the script was just the renderer.</text>
-  <text x="480" y="390" font-size="12" fill="#0A0A0A" opacity="0.75" text-anchor="middle">0 manual steps · team on-call removed · single truth for stand-up</text>
+  <rect x="40" y="300" width="720" height="50" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="400" y="330" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">The schema was the decision; the script was just the renderer</text>
 </svg>

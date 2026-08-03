@@ -1,34 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="380" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="340" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="324" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">DEEP DIVE METHOD — PHASE 1: INSTRUMENT, PHASE 2: RANK</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">DEEP DIVE METHOD — INSTRUMENT → RANK</text>
 
   <!-- Phase 1 -->
-  <rect x="40" y="86" width="430" height="260" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="60" y="114" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PHASE 1: INSTRUMENT THE FUNNEL</text>
-  <text x="60" y="148" font-size="13" fill="#0A0A0A">✦ Step-level events on every transition</text>
-  <text x="60" y="174" font-size="13" fill="#0A0A0A">✦ Session recordings: Clarity / heatmaps</text>
-  <text x="60" y="200" font-size="13" fill="#0A0A0A">✦ Rage clicks + scroll depth</text>
-  <text x="60" y="226" font-size="13" fill="#0A0A0A">✦ BigQuery for interrogation, not charts</text>
-  <text x="60" y="252" font-size="13" fill="#0A0A0A">✦ Two weeks of plumbing</text>
-  <text x="60" y="288" font-size="12" fill="#E85D3A" font-weight="bold">You can name every drop-off</text>
+  <rect x="40" y="70" width="350" height="240" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="60" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PHASE 1: INSTRUMENT</text>
+  <text x="60" y="130" font-size="15" fill="#0A0A0A">✦ Step-level events on every transition</text>
+  <text x="60" y="158" font-size="15" fill="#0A0A0A">✦ Session recordings: Clarity, heatmaps</text>
+  <text x="60" y="186" font-size="15" fill="#0A0A0A">✦ Rage clicks + scroll depth</text>
+  <text x="60" y="214" font-size="15" fill="#0A0A0A">✦ BigQuery for interrogation, not charts</text>
+  <text x="60" y="242" font-size="15" fill="#0A0A0A">✦ Two weeks of plumbing</text>
+  <text x="60" y="282" font-size="13" font-weight="bold" fill="#E85D3A">You can name every drop-off</text>
 
   <!-- Phase 2 -->
-  <rect x="490" y="86" width="430" height="260" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="510" y="114" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PHASE 2: RANKED HYPOTHESES</text>
-  <text x="510" y="148" font-size="13" fill="#0A0A0A">✦ Rank drop-offs by unique loss</text>
-  <text x="510" y="174" font-size="13" fill="#0A0A0A">✦ Rank by single-cause likelihood</text>
-  <text x="510" y="200" font-size="13" fill="#0A0A0A">✦ Rank by measure-after ease</text>
-  <text x="510" y="226" font-size="13" fill="#0A0A0A">✦ Test each independently</text>
-  <text x="510" y="252" font-size="13" fill="#0A0A0A">✦ Stack only what moves the needle</text>
-  <text x="510" y="288" font-size="12" fill="#E85D3A" font-weight="bold">Three fixes, two sprints, no rebuild</text>
+  <rect x="410" y="70" width="350" height="240" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="430" y="98" font-size="15" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PHASE 2: RANK HYPOTHESES</text>
+  <text x="430" y="130" font-size="15" fill="#0A0A0A">✦ Rank by unique revenue loss</text>
+  <text x="430" y="158" font-size="15" fill="#0A0A0A">✦ Rank by single-cause likelihood</text>
+  <text x="430" y="186" font-size="15" fill="#0A0A0A">✦ Rank by measure-after ease</text>
+  <text x="430" y="214" font-size="15" fill="#0A0A0A">✦ Test each independently</text>
+  <text x="430" y="242" font-size="15" fill="#0A0A0A">✦ Stack only what moves needle</text>
+  <text x="430" y="282" font-size="13" font-weight="bold" fill="#E85D3A">Three fixes, two sprints, no rebuild</text>
 
-  <!-- The rules -->
-  <rect x="40" y="360" width="880" height="140" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="60" y="388" font-size="14" font-weight="bold" fill="#0A0A0A">THE RULES THAT SEPARATE METHOD FROM GUESSWORK</text>
-  <text x="60" y="414" font-size="12" fill="#0A0A0A">• Two years of aggregate < two weeks of steps — instrumentation expands signal, not volume.</text>
-  <text x="60" y="434" font-size="12" fill="#0A0A0A">• Cost estimates are hypotheses too — a one-line fix isn't automatically the winner.</text>
-  <text x="60" y="454" font-size="12" fill="#0A0A0A">• Re-read the funnel after shipping — you only learn from the same instrument.</text>
-  <text x="60" y="474" font-size="12" fill="#0A0A0A">• Events are facts; recordings are opinions. Trust the ones you can replay.</text>
+  <!-- Rules -->
+  <rect x="40" y="320" width="720" height="80" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="60" y="345" font-size="14" font-weight="bold" fill="#0A0A0A">RULES: 2yrs aggregate < 2wks steps • Cost estimates are hypotheses • Re-read funnel after ship • Events=facts, recordings=opinions</text>
 </svg>

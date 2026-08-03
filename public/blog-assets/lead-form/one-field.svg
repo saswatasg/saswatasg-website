@@ -1,32 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="420" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="340" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="324" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">FORM DROP-OFF BY FIELD — ONE FIELD OWNS THE LOSS</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">FORM DROP-OFF — ONE FIELD OWNS THE LOSS</text>
 
-  <!-- Name row -->
-  <text x="40" y="128" font-size="15" font-weight="bold" fill="#0A0A0A">Name</text>
-  <rect x="230" y="102" width="42" height="20" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="240" y="117" font-size="12" font-weight="bold" fill="#FFFFFF">8%</text>
+  <!-- Name -->
+  <text x="40" y="110" font-size="18" font-weight="bold" fill="#0A0A0A">Name</text>
+  <rect x="200" y="86" width="50" height="22" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="210" y="102" font-size="14" font-weight="bold" fill="#FFFFFF">8%</text>
 
-  <!-- Phone row -->
-  <text x="40" y="212" font-size="15" font-weight="bold" fill="#E85D3A">Phone ← the killer</text>
-  <rect x="230" y="190" width="120" height="20" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="240" y="205" font-size="12" font-weight="bold" fill="#FFFFFF">23%</text>
-  <polygon points="254,182 272,200 254,218" fill="#0A0A0A"/>
+  <!-- Phone - THE KILLER -->
+  <text x="40" y="170" font-size="18" font-weight="bold" fill="#E85D3A">Phone ← 23% of ALL abandonment</text>
+  <rect x="200" y="146" width="140" height="22" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="210" y="162" font-size="14" font-weight="bold" fill="#FFFFFF">23%</text>
+  <polygon points="220,138 238,156 220,174" fill="#0A0A0A"/>
 
-  <!-- Email row -->
-  <text x="40" y="296" font-size="15" font-weight="bold" fill="#0A0A0A">Email</text>
-  <rect x="230" y="270" width="30" height="20" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="238" y="285" font-size="12" font-weight="bold" fill="#FFFFFF">6%</text>
+  <!-- Email -->
+  <text x="40" y="230" font-size="18" font-weight="bold" fill="#0A0A0A">Email</text>
+  <rect x="200" y="206" width="50" height="22" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="210" y="222" font-size="14" font-weight="bold" fill="#FFFFFF">6%</text>
 
-  <!-- Message row -->
-  <text x="40" y="368" font-size="15" font-weight="bold" fill="#0A0A0A">Message</text>
-  <rect x="230" y="342" width="20" height="20" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="238" y="357" font-size="12" font-weight="bold" fill="#FFFFFF">4%</text>
+  <!-- Message -->
+  <text x="40" y="290" font-size="18" font-weight="bold" fill="#0A0A0A">Message</text>
+  <rect x="200" y="266" width="50" height="22" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="210" y="282" font-size="14" font-weight="bold" fill="#FFFFFF">4%</text>
 
-  <text x="420" y="120" font-size="14" fill="#0A0A0A" opacity="0.7">Field-by-field funnel</text>
-  <text x="420" y="150" font-size="14" fill="#0A0A0A" opacity="0.7">23% of ALL abandonment</text>
-  <text x="420" y="180" font-size="14" font-weight="bold" fill="#0A0A0A">happened at one phone input.</text>
-  <text x="420" y="218" font-size="14" fill="#0A0A0A" opacity="0.7">Double the next-worst field.</text>
+  <!-- Right side insight -->
+  <rect x="370" y="80" width="400" height="230" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="385" y="110" font-size="15" font-weight="bold" fill="#0A0A0A">THE INSIGHT</text>
+  <text x="385" y="145" font-size="16" fill="#0A0A0A" opacity="0.7">Field-by-field funnel</text>
+  <text x="385" y="180" font-size="16" font-weight="bold" fill="#0A0A0A">23% of all abandonment</text>
+  <text x="385" y="210" font-size="16" font-weight="bold" fill="#0A0A0A">happened at one phone input</text>
+  <text x="385" y="245" font-size="16" fill="#0A0A0A" opacity="0.7">Double the next-worst field</text>
+  <text x="385" y="280" font-size="16" fill="#0A0A0A" opacity="0.7">Fix: make phone optional, auto-detect country</text>
 </svg>

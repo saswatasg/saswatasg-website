@@ -1,26 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="460" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="444" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="360" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="344" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">CATEGORY → PDP: THE LEAK WAS NEVER TOP OF FUNNEL</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">CATEGORY → PDP — THE LEAK WAS POST-CLICK</text>
 
-  <!-- top bar -->
-  <rect x="340" y="90" width="280" height="46" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="480" y="119" font-size="16" font-weight="black" fill="#0A0A0A" text-anchor="middle">Category page visits</text>
+  <!-- Funnel -->
+  <rect x="280" y="70" width="240" height="48" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="102" font-size="18" font-weight="black" fill="#0A0A0A" text-anchor="middle">Category visits</text>
 
-  <text x="480" y="168" font-size="16" font-weight="black" fill="#0A0A0A" text-anchor="middle">▼ traffic arrived</text>
+  <text x="400" y="142" font-size="18" font-weight="black" fill="#0A0A0A" text-anchor="middle">▼</text>
 
-  <!-- grid to click -->
-  <rect x="340" y="198" width="280" height="46" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="480" y="227" font-size="16" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Grid click (ok)</text>
+  <rect x="280" y="150" width="240" height="48" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="182" font-size="18" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Grid click (ok)</text>
 
-  <!-- sudden drop -->
-  <rect x="340" y="276" width="280" height="46" rx="10" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="480" y="305" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PDP — bare spec table</text>
-  <text x="960" y="305" text-anchor="end" font-size="13" font-weight="bold" fill="#E85D3A">⇠ dies here</text>
+  <text x="400" y="222" font-size="18" font-weight="black" fill="#E85D3A" text-anchor="middle">▼</text>
 
-  <!-- annotation -->
-  <rect x="40" y="380" width="700" height="54" rx="10" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="60" y="404" font-size="14" font-weight="bold" fill="#0A0A0A">Clicks were fine. Post-click engagement was dead.</text>
-  <text x="60" y="425" font-size="13" fill="#0A0A0A" opacity="0.8">The fix: make the product page say WHO it's for, before the grid is even needed.</text>
+  <rect x="280" y="230" width="240" height="48" rx="10" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="262" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PDP — bare specs</text>
+
+  <!-- Insight box -->
+  <rect x="40" y="300" width="720" height="44" rx="10" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="330" font-size="16" font-weight="bold" fill="#0A0A0A" text-anchor="middle">Clicks were fine. Post-click engagement was dead.</text>
 </svg>

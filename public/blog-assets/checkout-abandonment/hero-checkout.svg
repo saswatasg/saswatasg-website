@@ -1,35 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="420" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="380" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="364" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">CART ABANDONMENT — BEFORE / AFTER</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">CART ABANDONMENT — BEFORE / AFTER</text>
 
-  <!-- BEFORE block -->
-  <rect x="40" y="86" width="300" height="190" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="60" y="121" font-size="14" font-weight="bold" fill="#0A0A0A">BEFORE</text>
-  <text x="60" y="148" font-size="15" fill="#0A0A0A" opacity="0.6">3 months of GA4, no checkout steps</text>
+  <!-- BEFORE -->
+  <rect x="40" y="70" width="340" height="180" rx="10" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="60" y="100" font-size="16" font-weight="bold" fill="#0A0A0A">BEFORE</text>
+  <text x="60" y="130" font-size="15" fill="#0A0A0A" opacity="0.6">3 months GA4, no checkout steps</text>
+  <text x="60" y="210" font-size="56" font-weight="black" fill="#E85D3A">73.1%</text>
 
-  <!-- big number before -->
-  <text x="40" y="260" font-size="64" font-weight="black" fill="#E85D3A">73.1%</text>
-  <rect x="40" y="276" width="292" height="24" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
+  <!-- AFTER -->
+  <rect x="420" y="70" width="340" height="180" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="440" y="100" font-size="16" font-weight="bold" fill="#0A0A0A">AFTER</text>
+  <text x="440" y="130" font-size="15" fill="#0A0A0A" opacity="0.6">2 sprints, 3 targeted fixes</text>
+  <text x="440" y="210" font-size="56" font-weight="black" fill="#059669">53.9%</text>
 
-  <!-- AFTER block -->
-  <rect x="620" y="86" width="300" height="190" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="632" y="121" font-size="14" font-weight="bold" fill="#0A0A0A">AFTER</text>
-  <text x="632" y="148" font-size="15" fill="#0A0A0A" opacity="0.6">2 sprints, 3 targeted fixes</text>
+  <!-- Delta -->
+  <rect x="280" y="270" width="240" height="50" rx="25" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="304" font-size="22" font-weight="bold" fill="#0A0A0A" text-anchor="middle">−26% abandonment</text>
 
-  <!-- big bar after -->
-  <text x="620" y="260" font-size="64" font-weight="black" fill="#059669">53.9%</text>
-  <rect x="620" y="276" width="230" height="24" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
-
-  <!-- center arrow -->
-  <line x1="366" y1="186" x2="592" y2="186" stroke="#0A0A0A" stroke-width="5"/>
-  <polygon points="592,176 612,186 592,196" fill="#0A0A0A"/>
-
-  <!-- delta badge -->
-  <rect x="420" y="226" width="122" height="44" rx="22" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="481" y="256" font-size="18" font-weight="bold" fill="#0A0A0A" text-anchor="middle">−26%</text>
-
-  <text x="40" y="340" font-size="15" fill="#0A0A0A">480,000 sessions analysed — GA4 + Clarity</text>
-  <text x="40" y="372" font-size="15" fill="#0A0A0A" opacity="0.75">+47% mobile CVR · +49% checkout completion · 2 sprints · 0 architecture changes</text>
+  <text x="400" y="350" font-size="14" fill="#0A0A0A" text-anchor="middle">480K sessions · +47% mobile CVR · +49% checkout completion · 0 architecture changes</text>
 </svg>

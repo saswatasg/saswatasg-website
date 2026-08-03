@@ -1,38 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="480" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="464" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="420" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="404" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">THREE TIERS, THREE HANDLERS — ROUTE BY INTENT, NOT BY ARRIVAL</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">THREE TIERS, THREE HANDLERS — ROUTE BY INTENT</text>
 
   <!-- GOLD -->
-  <rect x="40" y="90" width="280" height="150" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="60" y="120" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">GOLD — 63–71% CVR</text>
-  <text x="60" y="148" font-size="15" font-weight="bold" fill="#0A0A0A">Web forms + inbound calls</text>
-  <text x="60" y="176" font-size="13" fill="#0A0A0A" opacity="0.8">→ Leslie (specialist), Larry backup</text>
-  <text x="60" y="198" font-size="13" fill="#0A0A0A" opacity="0.8">Friday = "Leslie Day"</text>
-  <text x="60" y="222" font-size="13" font-weight="bold" fill="#0A0A0A">8–10 leads/day (was 2–3)</text>
+  <rect x="40" y="70" width="230" height="140" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="55" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">GOLD — 63–71% CVR</text>
+  <text x="55" y="124" font-size="15" font-weight="bold" fill="#0A0A0A">Web forms + inbound calls</text>
+  <text x="55" y="152" font-size="14" fill="#0A0A0A" opacity="0.8">→ Leslie (specialist), Larry backup</text>
+  <text x="55" y="180" font-size="14" fill="#0A0A0A" opacity="0.8">Friday = "Leslie Day"</text>
+  <text x="55" y="208" font-size="14" font-weight="bold" fill="#0A0A0A">8–10 leads/day (was 2–3)</text>
 
   <!-- SILVER -->
-  <rect x="340" y="90" width="280" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="360" y="120" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">SILVER — ~30% CVR</text>
-  <text x="360" y="148" font-size="15" font-weight="bold" fill="#0A0A0A">Product inquiries</text>
-  <text x="360" y="176" font-size="13" fill="#0A0A0A" opacity="0.8">→ Angela first, then Mollie</text>
-  <text x="360" y="198" font-size="13" fill="#0A0A0A" opacity="0.8">5-day cadence, category-specific angle</text>
+  <rect x="285" y="70" width="230" height="140" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="300" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">SILVER — ~30% CVR</text>
+  <text x="300" y="124" font-size="15" font-weight="bold" fill="#0A0A0A">Product inquiries</text>
+  <text x="300" y="152" font-size="14" fill="#0A0A0A" opacity="0.8">→ Angela first, then Mollie</text>
+  <text x="300" y="180" font-size="14" fill="#0A0A0A" opacity="0.8">5-day cadence, category angle</text>
 
   <!-- BRONZE -->
-  <rect x="640" y="90" width="280" height="150" rx="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="660" y="120" font-size="13" font-weight="bold" fill="#F5F2EC" letter-spacing="1">BRONZE — <5.5% CVR</text>
-  <text x="660" y="148" font-size="15" font-weight="bold" fill="#F5F2EC">Chat · custom · abandoned cart</text>
-  <text x="660" y="176" font-size="13" fill="#F5F2EC" opacity="0.7">90% → automation, Mollie escalates</text>
-  <text x="660" y="198" font-size="13" fill="#F59E0B">"bulk order / $5K" → GOLD in 30 min</text>
+  <rect x="530" y="70" width="230" height="140" rx="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="545" y="98" font-size="14" font-weight="bold" fill="#F5F2EC" letter-spacing="1">BRONZE — <5.5% CVR</text>
+  <text x="545" y="124" font-size="15" font-weight="bold" fill="#F5F2EC">Chat · custom · abandoned cart</text>
+  <text x="545" y="152" font-size="14" fill="#F5F2EC" opacity="0.7">90% → automation, Mollie escalates</text>
+  <text x="545" y="180" font-size="14" fill="#F59E0B">"bulk order / $5K" → GOLD in 30 min</text>
 
-  <!-- re-score note -->
-  <rect x="40" y="280" width="880" height="66" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="60" y="308" font-size="15" font-weight="bold" fill="#0A0A0A">Re-scored on response, not origin.</text>
-  <text x="60" y="332" font-size="13" fill="#0A0A0A" opacity="0.8">A bronze reply + "custom 12-seater, white oak" promotes itself to the gold handler by signal.</text>
+  <!-- Re-score -->
+  <rect x="40" y="240" width="720" height="60" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="60" y="268" font-size="15" font-weight="bold" fill="#0A0A0A">Re-scored on response, not origin</text>
+  <text x="60" y="294" font-size="14" fill="#0A0A0A" opacity="0.8">A bronze reply + "custom 12-seater, white oak" promotes itself to the gold handler by signal</text>
 
-  <!-- result strip -->
-  <rect x="40" y="380" width="880" height="80" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="480" y="412" font-size="18" font-weight="black" fill="#FFFFFF" text-anchor="middle">random → 90% routing accuracy · days to close 5.2 → 3.5</text>
-  <text x="480" y="442" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">~$2,000 saved per misrouted gold lead</text>
+  <!-- Result -->
+  <rect x="40" y="320" width="720" height="70" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="400" y="352" font-size="18" font-weight="black" fill="#FFFFFF" text-anchor="middle">random → 90% routing accuracy · days to close 5.2 → 3.5</text>
+  <text x="400" y="380" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">~$2,000 saved per misrouted gold lead</text>
 </svg>

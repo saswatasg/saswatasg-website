@@ -1,73 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-  <rect width="960" height="480" fill="#F5F2EC"/>
-  <rect x="8" y="8" width="944" height="464" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="800" height="400" fill="#F5F2EC"/>
+  <rect x="8" y="8" width="784" height="384" fill="none" stroke="#0A0A0A" stroke-width="4"/>
 
-  <text x="40" y="52" font-size="13" font-weight="bold" fill="#E85D3A" letter-spacing="2">27 OCCASIONS × 5 REGIONS — THE RIGHT FESTIVAL, THE RIGHT USER</text>
+  <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">AI SEND GREETINGS — 27 OCCASIONS × 5 REGIONS</text>
 
-  <!-- Pan-India -->
-  <rect x="40" y="90" width="170" height="180" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="60" y="118" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PAN-INDIA</text>
-  <text x="60" y="146" font-size="11" fill="#0A0A0A">Diwali</text>
-  <text x="60" y="164" font-size="11" fill="#0A0A0A">Holi</text>
-  <text x="60" y="182" font-size="11" fill="#0A0A0A">Eid</text>
-  <text x="60" y="200" font-size="11" fill="#0A0A0A">Christmas</text>
-  <text x="60" y="218" font-size="11" fill="#0A0A0A">Gandhi Jayanti</text>
-  <text x="60" y="236" font-size="11" fill="#0A0A0A">Republic Day</text>
-  <text x="60" y="254" font-size="11" fill="#0A0A0A">Independence Day</text>
+  <!-- Region cards -->
+  <rect x="40" y="70" width="150" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="55" y="96" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">PAN-INDIA</text>
+  <text x="55" y="120" font-size="14" fill="#0A0A0A">Diwali, Holi, Eid</text>
+  <text x="55" y="144" font-size="14" fill="#0A0A0A">Christmas, Republic Day</text>
 
-  <!-- South India -->
-  <rect x="226" y="90" width="170" height="180" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="246" y="118" font-size="12" font-weight="bold" fill="#0A0A0A" letter-spacing="1">SOUTH INDIA</text>
-  <text x="246" y="146" font-size="11" fill="#0A0A0A">Pongal</text>
-  <text x="246" y="164" font-size="11" fill="#0A0A0A">Onam</text>
-  <text x="246" y="182" font-size="11" fill="#0A0A0A">Ugadi</text>
-  <text x="246" y="200" font-size="11" fill="#0A0A0A">Vishu</text>
-  <text x="246" y="218" font-size="11" fill="#0A0A0A">Thiruvonam</text>
+  <rect x="210" y="70" width="150" height="150" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="225" y="96" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">SOUTH</text>
+  <text x="225" y="120" font-size="14" fill="#0A0A0A">Pongal, Onam, Ugadi</text>
+  <text x="225" y="144" font-size="14" fill="#0A0A0A">Vishu, Thiruvonam</text>
 
-  <!-- Maharashtra/Goa -->
-  <rect x="412" y="90" width="170" height="180" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="432" y="118" font-size="12" font-weight="bold" fill="#FFFFFF" letter-spacing="1">MAHARASHTRA/GOA</text>
-  <text x="432" y="146" font-size="11" fill="#FFFFFF">Ganesh Chaturthi</text>
-  <text x="432" y="164" font-size="11" fill="#FFFFFF">Gudi Padwa</text>
-  <text x="432" y="182" font-size="11" fill="#FFFFFF">Narali Purnima</text>
+  <rect x="380" y="70" width="150" height="150" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="395" y="96" font-size="13" font-weight="bold" fill="#FFFFFF" letter-spacing="1">MH/GOA</text>
+  <text x="395" y="120" font-size="14" fill="#FFFFFF">Ganesh Chaturthi</text>
+  <text x="395" y="144" font-size="14" fill="#FFFFFF">Gudi Padwa</text>
 
-  <!-- East India -->
-  <rect x="598" y="90" width="170" height="180" rx="12" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="618" y="118" font-size="12" font-weight="bold" fill="#FFFFFF" letter-spacing="1">EAST INDIA</text>
-  <text x="618" y="146" font-size="11" fill="#FFFFFF">Durga Puja</text>
-  <text x="618" y="164" font-size="11" fill="#FFFFFF">Ratha Yatra</text>
-  <text x="618" y="182" font-size="11" fill="#FFFFFF">Vishwakarma Puja</text>
-  <text x="618" y="200" font-size="11" fill="#FFFFFF">Kali Puja</text>
-  <text x="618" y="218" font-size="11" fill="#FFFFFF">Poila Boishakh</text>
+  <rect x="550" y="70" width="150" height="150" rx="12" fill="#059669" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="565" y="96" font-size="13" font-weight="bold" fill="#FFFFFF" letter-spacing="1">EAST</text>
+  <text x="565" y="120" font-size="14" fill="#FFFFFF">Durga Puja, Ratha Yatra</text>
+  <text x="565" y="144" font-size="14" fill="#FFFFFF">Kali Puja, Poila Boishakh</text>
 
-  <!-- Gujarat -->
-  <rect x="784" y="90" width="136" height="180" rx="12" fill="#6D28D9" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="804" y="118" font-size="11" font-weight="bold" fill="#FFFFFF" letter-spacing="1">GUJARAT</text>
-  <text x="804" y="146" font-size="11" fill="#FFFFFF">Navratri</text>
-  <text x="804" y="164" font-size="11" fill="#FFFFFF">Uttarayan</text>
-  <text x="804" y="182" font-size="11" fill="#FFFFFF">Janmashtami</text>
-  <text x="804" y="200" font-size="11" fill="#FFFFFF">Diwali (regional)</text>
+  <rect x="720" y="70" width="64" height="150" rx="12" fill="#6D28D9" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="730" y="96" font-size="11" font-weight="bold" fill="#FFFFFF" letter-spacing="1">GJ</text>
+  <text x="730" y="120" font-size="13" fill="#FFFFFF">Navratri</text>
+  <text x="730" y="144" font-size="13" fill="#FFFFFF">Uttarayan</text>
 
-  <!-- Bottom section: the three parts -->
-  <rect x="40" y="296" width="280" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="60" y="324" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">AI GENERATOR</text>
-  <text x="60" y="352" font-size="12" fill="#0A0A0A">Nano Banana (Gemini 3.1 Flash)</text>
-  <text x="60" y="370" font-size="12" fill="#0A0A0A">15 sec · pre-filled names</text>
-  <text x="60" y="388" font-size="12" fill="#0A0A0A">15+ languages/scripts</text>
-  <text x="60" y="416" font-size="12" fill="#0A0A0A" opacity="0.7">The paint</text>
+  <!-- Three pillars -->
+  <rect x="40" y="250" width="230" height="120" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="60" y="278" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">AI GENERATOR</text>
+  <text x="60" y="306" font-size="14" fill="#0A0A0A">Gemini 3.1 Flash</text>
+  <text x="60" y="334" font-size="14" fill="#0A0A0A">15 sec, 15+ languages</text>
 
-  <rect x="340" y="296" width="280" height="150" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="360" y="324" font-size="13" font-weight="bold" fill="#0A0A0A" letter-spacing="1">CALENDAR</text>
-  <text x="360" y="352" font-size="12" fill="#0A0A0A">27 occasions · 5 regions</text>
-  <text x="360" y="370" font-size="12" fill="#0A0A0A">Mar–Sep 2026 coverage</text>
-  <text x="360" y="388" font-size="12" fill="#0A0A0A">Triggered at workflow moments</text>
-  <text x="360" y="416" font-size="12" fill="#0A0A0A" opacity="0.7">The timing</text>
+  <rect x="290" y="250" width="230" height="120" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="310" y="278" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">CALENDAR</text>
+  <text x="310" y="306" font-size="14" fill="#0A0A0A">27 occasions × 5 regions</text>
+  <text x="310" y="334" font-size="14" fill="#0A0A0A">Triggered at workflow moments</text>
 
-  <rect x="640" y="296" width="280" height="150" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="660" y="324" font-size="13" font-weight="bold" fill="#FFFFFF" letter-spacing="1">EVERGREEN LIBRARY</text>
-  <text x="660" y="352" font-size="12" fill="#FFFFFF">13 types any day</text>
-  <text x="660" y="370" font-size="12" fill="#FFFFFF">Good Morning / Night</text>
-  <text x="660" y="388" font-size="12" fill="#FFFFFF">Thank You, Motivation</text>
-  <text x="660" y="406" font-size="12" fill="#FFFFFF">Payment Reminder (3 tiers)</text>
-  <text x="660" y="424" font-size="12" fill="#FFFFFF" opacity="0.8">The habit</text>
+  <rect x="540" y="250" width="230" height="120" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="3"/>
+  <text x="560" y="278" font-size="14" font-weight="bold" fill="#FFFFFF" letter-spacing="1">EVERGREEN LIBRARY</text>
+  <text x="560" y="306" font-size="14" fill="#FFFFFF">13 types, any day</text>
+  <text x="560" y="334" font-size="14" fill="#FFFFFF">Good Morning → Payment Reminder</text>
 </svg>
