@@ -109,13 +109,16 @@ const RelationshipMagazine = () => {
 
   const handleFile = (file) => {
     if (!file) return;
-    if (!file.name.toLowerCase().endsWith('.txt')) {
-      setErrorMessage('Please upload the WhatsApp .txt export (not the .zip - unzip it first and pick the .txt file inside).');
+    const name = file.name.toLowerCase();
+    const isZip = name.endsWith('.zip');
+    const isTxt = name.endsWith('.txt');
+    if (!isZip && !isTxt) {
+      setErrorMessage('Please upload the .zip file WhatsApp exported, or the .txt chat file if you already unzipped it.');
       setStep('error');
       return;
     }
     setChatFile(file);
-    trackEvent('wa_magazine', 'file_selected');
+    trackEvent('wa_magazine', 'file_selected', isZip ? 'zip' : 'txt');
     detectParticipants(file);
   };
 
@@ -197,32 +200,65 @@ const RelationshipMagazine = () => {
         {step === 'upload' && (
           <motion.div key="upload" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Card className="p-8 md:p-10">
-              <div
-                onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-                onDragLeave={() => setDragOver(false)}
-                onDrop={onDrop}
-                onClick={() => fileInputRef.current?.click()}
-                className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-colors ${
-                  dragOver ? 'border-coral bg-blush' : 'border-ink/30 hover:border-ink/60'
-                }`}
-              >
-                <Upload className="w-8 h-8 text-ink/40 mx-auto mb-3" />
-                <p className="font-bold text-ink text-sm">Drop your WhatsApp .txt export here</p>
-                <p className="text-xs text-ink/50 mt-1">or click to browse</p>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept=".txt"
-                  className="hidden"
-                  onChange={(e) => handleFile(e.target.files?.[0])}
-                />
+              <div className="flex items-center gap-2 mb-4">
+                <FileText className="w-4 h-4 text-coral" />
+                <h2 className="font-bold text-ink text-sm uppercase tracking-wide">How to export your chat</h2>
               </div>
-              <div className="flex items-start gap-2 mt-5 text-xs text-ink/50 font-medium">
-                <ShieldCheck className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                <p>
-                  Export from WhatsApp: open the chat &rarr; contact/group name &rarr; Export Chat &rarr;
-                  "Without Media". Unzip it and upload the .txt file.
-                </p>
+              <ol className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-ink text-white text-[11px] font-black flex items-center justify-center mt-0.5">1</span>
+                  <p className="text-sm text-ink/70 font-medium">Open the chat in WhatsApp, then tap the contact or group name at the top.</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-ink text-white text-[11px] font-black flex items-center justify-center mt-0.5">2</span>
+                  <p className="text-sm text-ink/70 font-medium">Scroll down and tap <span className="font-bold text-ink">Export Chat</span>.</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-coral text-white text-[11px] font-black flex items-center justify-center mt-0.5">3</span>
+                  <div>
+                    <p className="text-sm text-ink/70 font-medium">
+                      Choose{' '}
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-mint/30 border border-black text-ink font-bold text-xs">
+                        Without Media
+                      </span>
+                      {' '}— not "With Media".
+                    </p>
+                    <p className="text-xs text-ink/50 font-medium mt-1">
+                      Faster to export, keeps your photos on your device, and makes for a much smaller file.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-ink text-white text-[11px] font-black flex items-center justify-center mt-0.5">4</span>
+                  <p className="text-sm text-ink/70 font-medium">Save the .zip file WhatsApp gives you, then drop it below — no need to unzip it yourself.</p>
+                </li>
+              </ol>
+
+              <div className="border-t border-ink/10 pt-6">
+                <div
+                  onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+                  onDragLeave={() => setDragOver(false)}
+                  onDrop={onDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-colors ${
+                    dragOver ? 'border-coral bg-blush' : 'border-ink/30 hover:border-ink/60'
+                  }`}
+                >
+                  <Upload className="w-8 h-8 text-ink/40 mx-auto mb-3" />
+                  <p className="font-bold text-ink text-sm">Drop your WhatsApp chat export here</p>
+                  <p className="text-xs text-ink/50 mt-1">.zip (default export) or .txt &mdash; or click to browse</p>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".txt,.zip"
+                    className="hidden"
+                    onChange={(e) => handleFile(e.target.files?.[0])}
+                  />
+                </div>
+                <div className="flex items-start gap-2 mt-5 text-xs text-ink/50 font-medium">
+                  <ShieldCheck className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                  <p>Your export is processed to generate the PDF and deleted immediately after — nothing is stored.</p>
+                </div>
               </div>
             </Card>
           </motion.div>
@@ -250,10 +286,15 @@ const RelationshipMagazine = () => {
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs text-ink/50 font-medium mb-6">
+                  <p className="text-xs text-ink/50 font-medium mb-2">
                     {detected.total_messages.toLocaleString()} messages total, detected correctly? If not, go back and check the export.
                   </p>
-                  <div className="flex items-center justify-center gap-3">
+                  {detected.had_media && (
+                    <p className="text-xs text-ink/50 font-medium mb-4 bg-canvas border border-ink/10 rounded-lg px-3 py-2 inline-block">
+                      This export included media files — they were ignored either way. Exporting "Without Media" next time makes uploads faster.
+                    </p>
+                  )}
+                  <div className={`flex items-center justify-center gap-3 ${detected.had_media ? '' : 'mt-4'}`}>
                     <button onClick={reset} className="text-xs font-bold text-ink/50 hover:text-ink underline underline-offset-2">
                       Use a different file
                     </button>
