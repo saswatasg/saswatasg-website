@@ -5,31 +5,31 @@
   <text x="40" y="44" font-size="16" font-weight="bold" fill="#E85D3A" letter-spacing="2">THREE TIERS, THREE HANDLERS — ROUTE BY INTENT</text>
 
   <!-- GOLD -->
-  <rect x="40" y="70" width="230" height="140" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
+  <rect x="40" y="70" width="230" height="155" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
   <text x="55" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">GOLD — 63–71% CVR</text>
-  <text x="55" y="124" font-size="15" font-weight="bold" fill="#0A0A0A">Web forms + inbound calls</text>
-  <text x="55" y="152" font-size="14" fill="#0A0A0A" opacity="0.8">→ Leslie (specialist), Larry backup</text>
-  <text x="55" y="180" font-size="14" fill="#0A0A0A" opacity="0.8">Friday = "Leslie Day"</text>
-  <text x="55" y="208" font-size="14" font-weight="bold" fill="#0A0A0A">8–10 leads/day (was 2–3)</text>
+  <text x="55" y="124" font-size="12.5" font-weight="bold" fill="#0A0A0A">Web forms + inbound calls</text>
+  <text x="55" y="152" font-size="9.5" fill="#0A0A0A" opacity="0.8">→ Leslie (specialist), Larry backup</text>
+  <text x="55" y="180" font-size="9.5" fill="#0A0A0A" opacity="0.8">Friday = "Leslie Day"</text>
+  <text x="55" y="208" font-size="13" font-weight="bold" fill="#0A0A0A">8–10 leads/day (was 2–3)</text>
 
   <!-- SILVER -->
-  <rect x="285" y="70" width="230" height="140" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
+  <rect x="285" y="70" width="230" height="155" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="4"/>
   <text x="300" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">SILVER — ~30% CVR</text>
   <text x="300" y="124" font-size="15" font-weight="bold" fill="#0A0A0A">Product inquiries</text>
-  <text x="300" y="152" font-size="14" fill="#0A0A0A" opacity="0.8">→ Angela first, then Mollie</text>
-  <text x="300" y="180" font-size="14" fill="#0A0A0A" opacity="0.8">5-day cadence, category angle</text>
+  <text x="300" y="152" font-size="11" fill="#0A0A0A" opacity="0.8">→ Angela first, then Mollie</text>
+  <text x="300" y="180" font-size="11" fill="#0A0A0A" opacity="0.8">5-day cadence, category angle</text>
 
   <!-- BRONZE -->
-  <rect x="530" y="70" width="230" height="140" rx="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="545" y="98" font-size="14" font-weight="bold" fill="#F5F2EC" letter-spacing="1">BRONZE — <5.5% CVR</text>
-  <text x="545" y="124" font-size="15" font-weight="bold" fill="#F5F2EC">Chat · custom · abandoned cart</text>
-  <text x="545" y="152" font-size="14" fill="#F5F2EC" opacity="0.7">90% → automation, Mollie escalates</text>
-  <text x="545" y="180" font-size="14" fill="#F59E0B">"bulk order / $5K" → GOLD in 30 min</text>
+  <rect x="530" y="70" width="230" height="155" rx="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="545" y="98" font-size="14" font-weight="bold" fill="#F5F2EC" letter-spacing="1">BRONZE — &lt;5.5% CVR</text>
+  <text x="545" y="124" font-size="10.5" font-weight="bold" fill="#F5F2EC">Chat · custom · abandoned cart</text>
+  <text x="545" y="152" font-size="9.5" fill="#F5F2EC" opacity="0.7">90% → automation, Mollie escalates</text>
+  <text x="545" y="180" font-size="9.5" fill="#F59E0B">"bulk order / $5K" → GOLD in 30 min</text>
 
   <!-- Re-score -->
   <rect x="40" y="240" width="720" height="60" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="4"/>
   <text x="60" y="268" font-size="15" font-weight="bold" fill="#0A0A0A">Re-scored on response, not origin</text>
-  <text x="60" y="294" font-size="14" fill="#0A0A0A" opacity="0.8">A bronze reply + "custom 12-seater, white oak" promotes itself to the gold handler by signal</text>
+  <text x="60" y="294" font-size="11.5" fill="#0A0A0A" opacity="0.8">A bronze reply + "custom 12-seater, white oak" promotes itself to the gold handler by signal</text>
 
   <!-- Result -->
   <rect x="40" y="320" width="720" height="70" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>

@@ -3,7 +3,7 @@ title: "The 17:1 e-way bill gap: diagnosing B2B adoption"
 description: "Why PRO+ users generated bills in Tally, not in-app — a two-week diagnostic that uncovered a 17:1 gap and changed the roadmap at C-suite level."
 slug: "e-invoice-adoption-gap"
 date: 2026-05-26
-updated: 2026-05-26
+updated: 2026-08-03
 pillar: pm
 persona: career-pm
 targetKeyword: "B2B SaaS adoption diagnosis"
@@ -12,7 +12,6 @@ secondaryKeywords:
   - "user behavior analysis"
   - "B2B product roadmap"
 anchorProject: livekeeping-compliance-gap
-readingMinutes: 15
 faq:
   - q: "What is a product adoption gap diagnosis?"
     a: "A structured investigation of why users ignore a core feature — using data, interviews, and workflow mapping to find the why."
@@ -30,11 +29,11 @@ import Figure from '@/components/blog/Figure';
 At LiveKeeping, PRO+ users generated E-Way Bills in Tally rather than in the app — a 17:1 adoption gap hiding in white noise. A two-week deep-dive diagnosis mapped the real workflow and produced a C-suite narrative so clear it changed the product roadmap.
 </AnswerBox>
 
-A compliance SaaS with 50K+ Indian SMBs lives or dies on **where merchants actually do bookkeeping**. If a critical transaction gets generated in Tally, a native feature is silently dead — and the negative is invisible in a happy-path dashboard.
+For every one merchant generating an e-way bill in our app, seventeen were generating it in Tally. We had shipped the feature, demoed it, celebrated it — and the dashboard that showed "usage" never once asked where the *other* bills were being made. A compliance SaaS with 50K+ Indian SMBs lives or dies on **where merchants actually do bookkeeping**, and the most dangerous number in B2B product is the one your analytics can't see: substitute behavior.
 
 ## The set-up
 
-- Native **e-way bill** generation exists; it's a top-of-funnel "PRO+ feature"
+- Native **[e-way bill](https://ewaybillgst.gov.in/)** generation exists; it's a top-of-funnel "PRO+ feature" (e-way bills are mandatory for goods movement above ₹50,000 under GST)
 - Analytics showed usage, but nothing about *substitute* behavior
 - Support tickets hinted at Tally; nobody quantified it
 
@@ -73,9 +72,7 @@ The triangulation was unambiguous: **the workflow lives in Tally**. Our feature 
 
 ## The gravity problem
 
-<Figure src="/blog-assets/e-invoice-gap/gap.svg" alt="17:1 and 19:1 adoption gaps: in-app vs Tally for e-way bill and e-invoice" caption="17:1 e-way bill gap · 19:1 e-invoice gap. Same gravity, same root cause." />
-
-The same logic produced a **19:1 E-Invoice gap** — the native e-invoice module suffered the identical gravity problem. Two features, same root cause, same magnitude.
+Once you see one gap, you check every feature that competes with the merchant's home system. The [e-invoice](https://einvoice1.gst.gov.in/) module showed a **19:1 gap** by the same measurement — two features, same root cause, same magnitude.
 
 ### Why gravity wins
 
@@ -171,6 +168,8 @@ We didn't push to everyone at once. The rollout:
 - **Report the two numbers together.** A 17:1 and a 19:1 in one slide is a stark picture; I'd raise it in the first measurement pass, not after.
 - **Build the connector as the MVP.** The native feature was never the product; the connector was.
 
-Read the whole story in the [compliance gap case study](/case-studies/livekeeping-compliance-gap). For more on metrics that matter in this exact problem space, see my notes on [product management metrics](/blog/push-notification-architecture).
+**Adoption isn't a feature problem — it's a workflow problem. Users don't switch tools; they extend the one their day already lives in.**
+
+Read the whole story in the [compliance gap case study](/case-studies/livekeeping-compliance-gap). The same instrument-first habit runs through [the data deep-dive method](/blog/data-deep-dive-method), and the lifecycle side of this product is in [the push notification architecture](/blog/push-notification-architecture).
 
 <FAQ items={frontmatter.faq} />

@@ -7,23 +7,23 @@
   <!-- Kibana -->
   <rect x="40" y="70" width="230" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
   <text x="55" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">KIBANA</text>
-  <text x="55" y="128" font-size="15" fill="#0A0A0A">Compliance event logs</text>
-  <text x="55" y="156" font-size="15" fill="#0A0A0A">GST rejection errors</text>
+  <text x="55" y="128" font-size="14" fill="#0A0A0A">Compliance event logs</text>
+  <text x="55" y="156" font-size="14" fill="#0A0A0A">GST rejection errors</text>
   <text x="55" y="184" font-size="14" fill="#0A0A0A" opacity="0.7">REST API → JSON</text>
 
   <!-- MongoDB -->
   <rect x="290" y="70" width="230" height="150" rx="12" fill="#FFF4ED" stroke="#0A0A0A" stroke-width="3"/>
   <text x="305" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">MONGODB</text>
-  <text x="305" y="128" font-size="15" fill="#0A0A0A">User tier counts</text>
-  <text x="305" y="156" font-size="15" fill="#0A0A0A">PRO / PRO+ / Free</text>
+  <text x="305" y="128" font-size="14" fill="#0A0A0A">User tier counts</text>
+  <text x="305" y="156" font-size="14" fill="#0A0A0A">PRO / PRO+ / Free</text>
   <text x="305" y="184" font-size="14" fill="#0A0A0A" opacity="0.7">Atlas API endpoint</text>
 
   <!-- GA4 -->
   <rect x="540" y="70" width="230" height="150" rx="12" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
   <text x="555" y="98" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1">GA4</text>
-  <text x="555" y="128" font-size="15" fill="#0A0A0A">Feature engagement</text>
-  <text x="555" y="156" font-size="15" fill="#0A0A0A">Send Greetings, GST search</text>
-  <text x="555" y="184" font-size="14" fill="#0A0A0A" opacity="0.7">Data API / Apps Script</text>
+  <text x="555" y="128" font-size="12" fill="#0A0A0A">Feature engagement</text>
+  <text x="555" y="156" font-size="12" fill="#0A0A0A">Send Greetings, GST search</text>
+  <text x="555" y="184" font-size="12" fill="#0A0A0A" opacity="0.7">Data API / Apps Script</text>
 
   <!-- Convergence -->
   <line x1="270" y1="145" x2="290" y2="145" stroke="#0A0A0A" stroke-width="3"/>
@@ -34,8 +34,8 @@
   <!-- Apps Script -->
   <rect x="280" y="245" width="240" height="90" rx="12" fill="#F59E0B" stroke="#0A0A0A" stroke-width="4"/>
   <text x="295" y="270" font-size="15" font-weight="bold" fill="#0A0A0A">GOOGLE APPS SCRIPT</text>
-  <text x="295" y="296" font-size="14" fill="#0A0A0A">Time trigger: 11 AM daily</text>
-  <text x="295" y="322" font-size="14" fill="#0A0A0A">Adapters → 1 schema</text>
+  <text x="295" y="296" font-size="13" fill="#0A0A0A">Time trigger: 11 AM daily</text>
+  <text x="295" y="322" font-size="13" fill="#0A0A0A">Adapters → 1 schema</text>
 
   <!-- Output Sheet -->
   <rect x="540" y="245" width="240" height="90" rx="12" fill="#059669" stroke="#0A0A0A" stroke-width="4"/>
@@ -44,5 +44,5 @@
   <text x="555" y="322" font-size="14" fill="#FFFFFF">Auto @ 11 AM</text>
 
   <rect x="40" y="300" width="720" height="50" rx="10" fill="#EEF2FF" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="400" y="330" font-size="14" font-weight="bold" fill="#0A0A0A" text-anchor="middle">The schema was the decision; the script was just the renderer</text>
+  <text x="400" y="330" font-size="9.5" font-weight="bold" fill="#0A0A0A" text-anchor="middle">The schema was the decision; the script was just the renderer</text>
 </svg>

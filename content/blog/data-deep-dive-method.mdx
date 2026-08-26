@@ -1,9 +1,9 @@
 ---
 title: "The data deep-dive: 480K sessions to three real problems"
-description: "The repeatable method I used across checkout, category pages, and forms: instrument first, form hypotheses second, never optimize an unmeasured funnel."
+description: "The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel."
 slug: "data-deep-dive-method"
 date: 2026-06-30
-updated: 2026-06-30
+updated: 2026-08-03
 pillar: pm
 persona: career-pm
 targetKeyword: "product analytics deep dive"
@@ -11,8 +11,7 @@ secondaryKeywords:
   - "GA4 funnel analysis"
   - "data driven product decisions"
   - "product analytics framework"
-anchorProject: checkout-case
-readingMinutes: 15
+anchorProject: cart-checkout
 faq:
   - q: "What is a product analytics deep dive?"
     a: "Instrumentation first, funnel reads second; never conclude from an aggregate number alone. That is the whole method."
@@ -30,7 +29,7 @@ import Figure from '@/components/blog/Figure';
 A deep dive that changes metrics has two phases. First, instrument the funnel until you can name each drop-off. Second, form ranked hypotheses. At Sierra, 480K sessions became three fixable problems in two weeks — because we never diagnosed an aggregate, only a funnel.
 </AnswerBox>
 
-Every week a metric is "just too low" and nobody knows why. The failures happen four steps before the diagnosis: **no events, no recordings, no funnel, no ranked hypotheses** — and then a hunch gets a roadmap slot.
+"Cart abandonment is too high." That sentence sat in our metrics review for months, and everyone nodded, and nothing moved — because an aggregate number is unanswerable. When we finally stepped through 480K sessions properly, "abandonment" turned out to be three completely different problems wearing one trench coat. The failure happens four steps before the diagnosis: **no events, no recordings, no funnel, no ranked hypotheses** — and then a hunch gets a roadmap slot.
 
 ## Phase 1 — Instrument the funnel
 
@@ -42,10 +41,12 @@ You cannot fix a funnel you cannot step through. The deep dive starts with one a
 
 Only when you can answer "which step loses the most, and which looks like a single cause" do conclusions become credible.
 
-### The GA4 event spec we used at Sierra
+### The shape of the events
+
+An event-per-step pattern looks roughly like this — the exact fields vary by funnel, but the principle doesn't:
 
 ```javascript
-// Checkout funnel events
+// Illustrative — one event per checkout step, not one "checkout started" aggregate
 dataLayer.push({ event: 'checkout_start', step: 'cart', step_index: 0, value: cartTotal });
 dataLayer.push({ event: 'checkout_step', step: 'shipping', step_index: 1, option: shippingMethod });
 dataLayer.push({ event: 'checkout_step', step: 'payment', step_index: 2, option: paymentMethod });
@@ -57,6 +58,8 @@ Every step gets an event. No "checkout started" aggregate — you need the stair
 
 ### The Clarity setup
 
+[Microsoft Clarity](https://clarity.microsoft.com/) is free and unsampled, which matters more than any premium feature:
+
 - **Recordings on** for 100% of sessions (sampling kills the rare but critical paths)
 - **Heatmaps** on every checkout step URL
 - **Rage-click detection** on form fields, buttons, promo inputs
@@ -64,10 +67,10 @@ Every step gets an event. No "checkout started" aggregate — you need the stair
 
 ### The BigQuery schema
 
-We didn't just chart in GA4. The raw events stream to BigQuery via GA4 export, where we can:
+Don't just chart in GA4. Stream the raw events to BigQuery via the [GA4 BigQuery export](https://support.google.com/analytics/answer/9358801) so you can interrogate them directly — a drop-off-by-step query, segmented by device, looks roughly like this:
 
 ```sql
--- Drop-off by step, segmented by device
+-- Illustrative — drop-off by step, segmented by device
 SELECT
   step,
   device.category,
@@ -76,12 +79,11 @@ SELECT
   COUNT(DISTINCT user_pseudo_id) / LAG(COUNT(DISTINCT user_pseudo_id)) OVER (ORDER BY step_index) as dropoff_rate
 FROM `project.analytics_events`
 WHERE event_name IN ('checkout_step', 'purchase')
-  AND _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
 GROUP BY step, device.category, step_index
 ORDER BY step_index;
 ```
 
-This SQL is the deep dive. The dashboard is the summary.
+SQL like this is the deep dive. The dashboard is the summary.
 
 ## Phase 2 — Ranked hypotheses
 
@@ -95,26 +97,7 @@ Aggregate data lies politely; a funnel stops lying. Take the event tables and ra
 
 <Figure src="/blog-assets/data-deep-dive/funnel.svg" alt="Deep dive method: instrument funnel → rank drop-offs → test hypotheses" caption="Phase 1: instrument. Phase 2: rank. The funnel names the problem; the ranking picks the fix." />
 
-At Sierra this drill surfaced *three distinct* checkout problems — shipping surprise, promo rage-click, payment dead-end — that one aggregate percentage had been hiding.
-
-### How we validated each hypothesis
-
-**Hypothesis 1: Shipping surprise at step 2**
-- Evidence: 31% dropoff at shipping step; Clarity rage-clicks on "continue" before shipping loads
-- Test: Show total + shipping on cart page
-- Measurement: Shipping-step dropoff after 2 weeks
-
-**Hypothesis 2: Promo rage-clicks**
-- Evidence: 18% of sessions had ≥3 clicks on promo field; zero submissions with invalid codes
-- Test: Inline validation with format hint
-- Measurement: Promo-field rage-clicks after 2 weeks
-
-**Hypothesis 3: Payment dead-end**
-- Evidence: 9% dropoff at payment; "something went wrong" generic error
-- Test: Specific error copy (card type, expiry, network) + retry button
-- Measurement: Payment-step recovery rate after 2 weeks
-
-Each hypothesis got a two-week window. If the metric didn't move, the hypothesis was dead.
+At Sierra this drill surfaced *three distinct* checkout problems — shipping surprise, promo rage-click, payment dead-end — that one aggregate percentage had been hiding. Each got an independent hypothesis, an independent fix, and an independent measurement window, so when the number moved we knew exactly which change owned it. The full breakdown — what each problem looked like in the session recordings, what shipped, and the before/after numbers (73.1% → 53.9% abandonment, +47% mobile CVR, +49% checkout completion) — is in [the checkout teardown](/blog/checkout-abandonment-73-to-54).
 
 ## The rule that tells this apart from guesswork
 
@@ -138,9 +121,7 @@ Each hypothesis got a two-week window. If the metric didn't move, the hypothesis
 
 | Hypothesis | Owner | KPI | Window | Evidence needed | Result | Decision |
 |------------|-------|-----|--------|-----------------|--------|----------|
-| Shipping surprise at step 2 | PM | Shipping-step dropoff | 2 weeks | Clarity rage-clicks ≥30% | Dropoff 31%→12% | Keep |
-| Promo rage-clicks | Eng lead | Promo-field rage-clicks | 2 weeks | ≥3 clicks in 18% sessions | Rage-clicks 68%↓ | Keep |
-| Payment dead-end | Eng lead | Payment-step recovery | 2 weeks | 9% dropoff, generic error | Recovery 40%↑ | Keep |
+| *(one sentence, tied to a specific step)* | *(name)* | *(the one metric that proves it)* | *(fixed, e.g. 2 weeks)* | *(what the recording/event data must show)* | *(fill after the window closes)* | *(keep / kill / iterate)* |
 
 Fill this before you write a single event. If you can't fill the "Evidence needed" column, you don't have a hypothesis — you have a hope.
 
@@ -151,53 +132,8 @@ Fill this before you write a single event. If you can't fill the "Evidence neede
 3. **"The dashboard says X."** Dashboards aggregate. The deep dive *disaggregates*. If your dashboard and your deep dive agree, your deep dive failed.
 4. **"We don't have time for recordings."** You don't have time *not* to. 50 sessions = 2 hours. The alternative is guessing for months.
 
-The same discipline appears in [category page analysis](/blog/category-page-redesign-plus34) and in [form decisioning](/blog/lead-form-overhaul-124) — instrument once, fight many.
+**If your dashboard and your deep dive agree, your deep dive failed.** The whole point of disaggregating is to find what the average was hiding.
 
-## Appendix: The form funnel SQL (from the lead-form fix)
-
-```sql
--- Field-by-field drop-off for lead form
-SELECT
-  field_name,
-  COUNT(DISTINCT user_pseudo_id) as reached,
-  COUNT(DISTINCT CASE WHEN event_name = 'field_error' THEN user_pseudo_id END) as errors,
-  COUNT(DISTINCT CASE WHEN event_name = 'field_submit' THEN user_pseudo_id END) as submitted,
-  COUNT(DISTINCT CASE WHEN event_name = 'field_error' THEN user_pseudo_id END) / 
-    COUNT(DISTINCT user_pseudo_id) as error_rate
-FROM `project.analytics_events`
-WHERE event_name IN ('field_focus', 'field_error', 'field_submit')
-  AND form_id = 'lead_capture_v2'
-  AND _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
-GROUP BY field_name
-ORDER BY error_rate DESC;
-```
-
-This query revealed the phone field at 23% error rate — double the next worst. The fix was inline validation.
-
-## Appendix: The category page deep dive
-
-For the category page redesign, the funnel was different — session → category view → PDP click → ATC → lead. The key insight came from segmenting by *intent*:
-
-```sql
--- Category-to-PDP by intent signal
-SELECT
-  category,
-  intent_signal,  -- 'browse', 'compare', 'buy_now'
-  COUNT(DISTINCT session_id) as sessions,
-  COUNT(DISTINCT CASE WHEN event_name = 'pdp_click' THEN session_id END) as pdp_clicks,
-  COUNT(DISTINCT CASE WHEN event_name = 'pdp_click' THEN session_id END) / 
-    COUNT(DISTINCT session_id) as ctr
-FROM `project.analytics_events`
-WHERE event_name IN ('category_view', 'pdp_click')
-  AND _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
-GROUP BY category, intent_signal
-ORDER BY ctr DESC;
-```
-
-The "buy_now" intent had 3× the CTR of "browse" — which led to the intent-filter scaffolding in the redesign.
-
----
-
-The same discipline appears in [category page analysis](/blog/category-page-redesign-plus34) and in [form decisioning](/blog/lead-form-overhaul-124) — instrument once, fight many.
+The same instrument-first discipline is what found the single worst field in [the lead-form fix](/blog/lead-form-overhaul-124) and the intent-segmentation insight behind [the category-page redesign](/blog/category-page-redesign-plus34) — different funnels, same method. The full checkout numbers live in [the cart & checkout case study](/case-studies/cart-checkout).
 
 <FAQ items={frontmatter.faq} />

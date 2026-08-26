@@ -74,26 +74,27 @@ const pageSpecificMeta = {
   }
 };
 
-const PageMeta = ({ title, description, noindex = false }) => {
+const PageMeta = ({ title, description, noindex = false, image }) => {
   const location = useLocation();
   const currentPath = location.pathname;
-  
+
   const baseMeta = pageSpecificMeta[currentPath] || defaultMeta;
   const finalTitle = title || baseMeta.title;
   const finalDescription = description || baseMeta.description;
 
   const siteUrl = "https://saswatasg.com/";
-  
+
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath || ''}`;
-  
-  const ogImage = "https://i.postimg.cc/k4SXX1GT/Saswata-img1.png";
+
+  const ogImage = image || "https://i.postimg.cc/k4SXX1GT/Saswata-img1.png";
 
   return (
     <Helmet>
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       <link rel="canonical" href={finalUrl} />
+      <link rel="alternate" type="application/rss+xml" title="Saswata S. Sengupta — Blog" href="https://saswatasg.com/feed.xml" />
       {noindex && <meta name="robots" content="noindex" />}
       
       <meta property="og:title" content={finalTitle} />

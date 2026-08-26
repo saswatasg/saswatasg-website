@@ -3,7 +3,7 @@ title: "FilmRisk.AI: scoring film risk with ML and Bayesian priors"
 description: "A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included."
 slug: "film-risk-engine"
 date: 2026-04-15
-updated: 2026-04-15
+updated: 2026-08-03
 pillar: agents
 persona: local-ai-builder
 targetKeyword: "ML movie score model"
@@ -12,7 +12,6 @@ secondaryKeywords:
   - "feature scoring engine"
   - "ML in product"
 anchorProject: filmrisk
-readingMinutes: 15
 faq:
   - q: "Can machine learning predict a movie's box office?"
     a: "Better than a gut call when you quantify priors. We rank roles on 2,200+ films with GBM + Bayesian blending — no one guarantees a hit."
@@ -30,7 +29,7 @@ import Figure from '@/components/blog/Figure';
 FilmRisk.AI scores a film's greenlight risk from 2,200+ Indian films by mixing a gradient-boosted model with Bayesian priors. Prior pulls thin-data predictions back to base rates. We backtest religiously and publish the failure points — because scoring moves money and pretending a model is magic ends careers.
 </AnswerBox>
 
-Most side projects end at "an API collected and a chart made." FilmRisk.AI was different because it has a judgment to render: how risky is a movie's greenlight? Wrong scores are a real cost, so we built-in honesty rails.
+Give a raw ML model a debut director with a Khan attached, and it screams "blockbuster." The base rate says debut directors hit ~15% of the time. One of those two is lying to you, and if you're greenlighting a ₹100Cr film, you'd better know which. FilmRisk.AI exists to render exactly that judgment — and because wrong scores move real money, honesty rails are built into the architecture, not bolted onto the marketing.
 
 ## The 10-component engine
 
@@ -75,12 +74,14 @@ This single mechanism turned "star-driven overconfidence" into "star-weighted ca
 
 ## The stack
 
-- **Python 3.11**, scikit-learn (HistGradientBoostingRegressor), PyMC for priors
+- **Python 3.11**, scikit-learn ([HistGradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)), [PyMC](https://www.pymc.io/) for priors
 - **Streamlit** for the scoring UI — producers paste a film's params, get score + confidence interval
 - **GitHub Actions** runs full backtest on every push; fails if MAE regresses >2%
 - **DVC** for data versioning — the 2,200-film CSV is tracked with SHA
 
 ## The training loop (what actually ran)
+
+Here's the whole pipeline, simplified but structurally faithful — GBM for the likelihood, a hierarchical PyMC model for the priors, and a sample-size-weighted blend at prediction time:
 
 ```python
 # train.py — simplified
@@ -205,19 +206,14 @@ We run the full backtest on every model change — not a held-out slice, the ent
 
 The backtest results are published on the [repo](https://github.com/saswatasg/FilmRisk.AI). Anyone can re-run; no one can re-fake — the sample is pinned with a SHA.
 
-## The stack
-
-- **Python 3.11**, scikit-learn (HistGradientBoostingRegressor), PyMC for priors
-- **Streamlit** for the scoring UI — producers paste a film's params, get score + confidence interval
-- **GitHub Actions** runs full backtest on every push; fails if MAE regresses >2%
-- **DVC** for data versioning — the 2,200-film CSV is tracked with SHA
-
 ## What I'd do differently
 
-- **Ship the API before the blog.** The engine's value is a promptable scoring grid; I papered over it for a pretty UI.
-- **Version the backtest data.** Anyone can re-run, but no one can re-fake — pin the sample SHA.
-- **Add a "producer mode"** — batch score 50 films at once for slate planning.
+- **Ship the API before the UI.** The engine's value is a promptable scoring grid; I papered over it for a pretty Streamlit front-end.
+- **Log prior-vs-likelihood disagreement.** The most interesting films are the ones where the GBM and the prior fight — that disagreement score is a product feature I left in the logs.
+- **Widen beyond Hindi cinema sooner.** The Tamil and Telugu base rates differ enough that the language prior deserved its own hierarchy level from day one.
 
-For PMs: this is what *measure-before-judge* looks like when your product is literally judgment. Pair it with [numbers-led product decisioning](/blog/e-invoice-adoption-gap) for the same muscle in SaaS.
+**A model that can say "I don't know" is worth more than a model that's confidently wrong** — in film, in credit, in anything where a score moves money.
+
+For PMs: this is what *measure-before-judge* looks like when your product is literally judgment. Pair it with [numbers-led product decisioning](/blog/e-invoice-adoption-gap) for the same muscle in SaaS, or see how the same honesty-rails thinking applies to [an in-browser voice agent](/blog/topshe-browser-voice-ai).
 
 <FAQ items={frontmatter.faq} />

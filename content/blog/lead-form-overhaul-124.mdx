@@ -3,7 +3,7 @@ title: "How a form fix lifted lead submissions by 124% in 28 days"
 description: "A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days."
 slug: "lead-form-overhaul-124"
 date: 2026-03-12
-updated: 2026-03-12
+updated: 2026-08-03
 pillar: growth
 persona: cro-operator
 targetKeyword: "lead form conversion optimization"
@@ -12,7 +12,6 @@ secondaryKeywords:
   - "form abandonment"
   - "increase lead submissions"
 anchorProject: lead-form
-readingMinutes: 9
 faq:
   - q: "What's the most common reason a lead form loses submissions?"
     a: "A single restrictive field. Ours was a phone-format check that silently failed — 23% of drop-offs, double the next-worst field."
@@ -72,7 +71,7 @@ The culprit was a **phone number format check** expecting `+1 (555) 000-0000`, o
 | **Inline validation** | Accept the moment the input becomes valid | Errors never wait for a submit failure |
 | **Contextual microcopy** | Case-specific labels ("Work phone" vs "Any phone") | Users understood intent instead of bouncing |
 
-But the deeper fix wasn't a field fix. The form shipped to every visitor with one shape, and shape was part of the leak too. We rebuilt it into **category-specific modules** (Material 3 components + the latency cuts) so a *Custom Furniture* visitor got the exact fields a custom-quote visitor needs. Same form, different face, zero extra load.
+But the deeper fix wasn't a field fix. The form shipped to every visitor with one shape, and shape was part of the leak too. We rebuilt it into **category-specific modules** ([Material 3](https://m3.material.io/) components + the latency cuts) so a *Custom Furniture* visitor got the exact fields a custom-quote visitor needs. Same form, different face, zero extra load.
 
 ## The numbers
 
@@ -90,7 +89,7 @@ The hard part of this project was that every instinct pointed the wrong way. "Sh
 - **Latency set the tone.** Client-side fields took 3–5 seconds to initialize on typical connections. On mobile that felt like the form was broken before the user even looked at it. Fast initialization quietly removed the "this is slow, this is broken" walk-away before a user ever typed.
 - **Expectation beats both.** A user who can see the required format in a placeholder, and gets live "yes, that's right" feedback the moment it's valid, doesn't need to *error* at all. The form stopped producing rejection moments.
 
-That last point is the one worth stealing. Good form design is mostly *removing the moment of rejection*. Every field that can be validated inline should be. Every format that can be shown ahead of typing should be. If you never show a user a red field, you never give them a reason to walk away.
+That last point is the one worth stealing. **Good form design is mostly removing the moment of rejection.** Every field that can be validated inline should be — [web.dev's form best practices](https://web.dev/learn/forms) cover the mechanics. Every format that can be shown ahead of typing should be. If you never show a user a red field, you never give them a reason to walk away.
 
 ## What changes when you ship this on mobile (the real test)
 

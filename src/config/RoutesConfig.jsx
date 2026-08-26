@@ -20,6 +20,10 @@ const Contact = React.lazy(() => import('@/pages/Contact'));
 const BlogIndex = React.lazy(() => import('@/pages/blog/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/blog/BlogPost'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
+// Unlisted lab tool: intentionally NOT in scripts/prerender.mjs's STATIC_ROUTES
+// or tools/generate-static-files.mjs's sitemap, and not linked from nav/footer.
+// See PageMeta noindex inside the page itself + robots.txt Disallow.
+const RelationshipMagazine = React.lazy(() => import('@/pages/lab/RelationshipMagazine'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 20, scale: 0.98 },
@@ -66,6 +70,7 @@ const RoutesConfig = () => {
         <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
         <Route path="/blog" element={<AnimatedPage><BlogIndex /></AnimatedPage>} />
         <Route path="/blog/:slug" element={<AnimatedPage><BlogPost /></AnimatedPage>} />
+        <Route path="/lab/relationship-magazine" element={<AnimatedPage><RelationshipMagazine /></AnimatedPage>} />
         <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
       </Routes>
     </AnimatePresence>

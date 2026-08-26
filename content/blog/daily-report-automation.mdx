@@ -3,7 +3,7 @@ title: "Daily report automation: 3 sources, 88 rows, 11 AM"
 description: "A Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into one auto-populated report — what white-collar automation really costs."
 slug: "daily-report-automation"
 date: 2026-05-19
-updated: 2026-05-19
+updated: 2026-08-03
 pillar: pm
 persona: career-pm
 targetKeyword: "report automation"
@@ -12,7 +12,6 @@ secondaryKeywords:
   - "data pipeline automation"
   - "no-code reporting"
 anchorProject: livekeeping-report-automation
-readingMinutes: 14
 faq:
   - q: "What is report automation in practice?"
     a: "Rules that pull three sources, map 88 rows, and publish to Sheets — no human copy-paste. It runs on a Google Apps Script cron job."
@@ -30,7 +29,7 @@ import Figure from '@/components/blog/Figure';
 Daily reporting is 90% ritual, 10% signal. For the team at LiveKeeping we built a Google Apps Script pipeline that unifies Kibana, MongoDB, and GA4 into one auto-populated report — 88 mapped rows, delivered at 11 AM with zero manual steps. The automation wasn't the win; the *agreed shape of the report* was.
 </AnswerBox>
 
-Every analytics team has a morning ritual: open 3 tabs, re-copy ranges, fight a formula, paste into Slack. For a growing B2B SaaS that ritual is a hidden cost — invisible in product metrics, present every single day.
+Three tabs. One formula fight. One Slack paste. Thirty minutes, every morning, for whoever drew the short straw. Multiply by a working year and the "quick morning report" quietly costs a hundred-plus hours nobody budgeted — invisible in product metrics, present every single day. We killed it in a week with Google Apps Script, and the code was the least interesting part.
 
 ## The pipeline
 
@@ -116,10 +115,10 @@ Before any code, we sat down with the PM, the analyst, and the CTO and agreed on
 
 | Row | Metric | Source | Grain | Owner |
 |-----|--------|--------|-------|-------|
-| 1-12 | GST rejection errors by code | Kibana | Daily | Compliance PM |
-| 13-18 | User tier distribution | MongoDB | Daily | Growth PM |
-| 19-30 | Feature engagement (Send Greetings, GST search, etc.) | GA4 | Daily | Feature PMs |
-| ... | ... | ... | ... | ... |
+| 1–12 | GST rejection errors by code | Kibana | Daily | Compliance PM |
+| 13–18 | User tier distribution | MongoDB | Daily | Growth PM |
+| 19–30 | Feature engagement (Send Greetings, GST search, etc.) | GA4 | Daily | Feature PMs |
+| 31–88 | Tier and region drill-downs of the above | All three | Daily | Shared |
 
 The script just renders this agreement. When a stakeholder asks "why is row 23 that number?", the answer is in the schema doc, not the code.
 
@@ -158,20 +157,7 @@ Three failure modes we've hit:
 
 1. **Kibana token expiry** — token lasts 24h; we added a refresh check before fetch
 2. **MongoDB Data API rate limit** — 100 req/min; we batch the pipeline calls
-3. **GA4 quota exhaustion** — 10k tokens/day; we cache the service account token for 1hr
-
-## The schema: 88 rows as a decision document
-
-Before any code, we sat down with the PM, the analyst, and the CTO and agreed on **exactly what each row means**. The schema doc:
-
-| Row | Metric | Source | Grain | Owner |
-|-----|--------|--------|-------|-------|
-| 1-12 | GST rejection errors by code | Kibana | Daily | Compliance PM |
-| 13-18 | User tier distribution | MongoDB | Daily | Growth PM |
-| 19-30 | Feature engagement (Send Greetings, GST search, etc.) | GA4 | Daily | Feature PMs |
-| ... | ... | ... | ... | ... |
-
-The script just renders this agreement. When a stakeholder asks "why is row 23 that number?", the answer is in the schema doc, not the code.
+3. **GA4 quota exhaustion** — the [GA4 Data API](https://developers.google.com/analytics/devguides/reporting/data/v1/quotas) has daily token quotas; we cache the service account token for 1hr
 
 ## What made it stick (and what snuck out)
 
@@ -200,7 +186,9 @@ The script just renders this agreement. When a stakeholder asks "why is row 23 t
 | **Engineering time (build)** | ~16 hrs | One-time |
 | **Engineering time (maintenance)** | ~30 min/mo | Token refresh, schema tweaks |
 
-The "free" tier covers us completely. The real cost is the *design time* — agreeing on the 88 rows took 3 meetings, 2 hours each.
+The "free" tier covers us completely — [Apps Script quotas](https://developers.google.com/apps-script/guides/services/quotas) allow far more runtime than a 15-minute daily job needs. The real cost is the *design time* — agreeing on the 88 rows took 3 meetings, 2 hours each.
+
+**Automation doesn't remove the work. It removes the daily disagreement about what the work means.** That's the part worth paying for.
 
 ## What I'd do differently
 

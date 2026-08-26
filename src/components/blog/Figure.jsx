@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Figure = ({ src, alt, caption, max }) => (
-  <figure className="my-8">
-    <img
-      src={src}
-      alt={alt || caption || ''}
-      loading="lazy"
-      className="blog-figure-img"
-      style={max ? { maxWidth: max } : undefined}
-    />
-    {caption && <figcaption className="blog-figcaption">{caption}</figcaption>}
-  </figure>
-);
+// All blog diagrams are authored on an 800-wide canvas; intrinsic width/height
+// only reserve aspect-ratio space (CSS keeps width:100%; height:auto), which
+// prevents layout shift while the image loads.
+const Figure = ({ src, alt, caption, max, width = 800, height = 400 }) => {
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <figure className="my-8">
+      {failed ? (
+        <div className="blog-figure-fallback" role="img" aria-label={alt || caption || 'Figure unavailable'}>
+          {alt || caption || 'Figure unavailable'}
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt || caption || ''}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+          className="blog-figure-img"
+          style={max ? { maxWidth: max } : undefined}
+          onError={() => setFailed(true)}
+        />
+      )}
+      {caption && <figcaption className="blog-figcaption">{caption}</figcaption>}
+    </figure>
+  );
+};
 
 export default Figure;

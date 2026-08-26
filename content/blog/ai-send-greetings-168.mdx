@@ -3,7 +3,7 @@ title: "AI image greetings lifted feature engagement by 168%"
 description: "A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168% at LiveKeeping."
 slug: "ai-send-greetings-168"
 date: 2026-06-18
-updated: 2026-06-18
+updated: 2026-08-03
 pillar: growth
 persona: cro-operator
 targetKeyword: "AI feature engagement"
@@ -12,7 +12,6 @@ secondaryKeywords:
   - "Gemini image generation"
   - "India SMB SaaS"
 anchorProject: livekeeping-send-greetings
-readingMinutes: 14
 faq:
   - q: "What makes an AI feature actually used?"
     a: "Crawl-through, not novelty: a one-line image generation fused into an existing habit (sending festival wishes) beat a lobby feature."
@@ -30,7 +29,7 @@ import Figure from '@/components/blog/Figure';
 A dormant "Send Greetings" feature became a +168% engagement story when we fused Google's Nano Banana (Gemini Flash image) into it. The unlock was geo-segmentation: 27 festivals across five Indian regions, surfaced at the right moment in the merchant's existing workflow. The AI did the artwork; the calendar did the work.
 </AnswerBox>
 
-Soft SaaS features die by neglect. **Send Greetings in LiveKeeping PRO+** was exactly that: technically present, practically unused. The teams kept shipping heavy, but the light portal was dark.
+The feature had been live for years. Average usage: 0.2 cards per active user per month — statistically, decoration. Eighteen months later the same feature was at 3.4 cards per user, engagement up 168%, and the thing that changed wasn't a redesign or a re-launch. **Send Greetings in LiveKeeping PRO+** got two ingredients: an image model that could render Bengali script without tofu boxes, and a festival calendar that knew a Kolkata trader and a Pune shopkeeper don't celebrate the same week.
 
 ## Why it sat unused
 
@@ -67,7 +66,7 @@ We chose Nano Banana for three reasons:
 2. **Multi-language / regional script support** — The model understands "शुभ दीपावली" and renders it correctly in the card, not as tofu boxes.
 3. **Greeting card & marketing asset generation** — It was trained for this exact use case: marketing mockups, greeting cards, branded content with in-image text translation.
 
-The integration: a thin wrapper around the Gemini API, cached responses for repeated occasion+language combos, fallback to a pre-rendered template if the API fails. Total integration: ~400 lines of TypeScript.
+The integration: a thin wrapper around the [Gemini image generation API](https://ai.google.dev/gemini-api/docs/image-generation), cached responses for repeated occasion+language combos, fallback to a pre-rendered template if the API fails. Total integration: ~400 lines of TypeScript.
 
 ## The calendar: 27 occasions, 5 regions, zero national blasts
 
@@ -103,7 +102,7 @@ We didn't ship the final version on day one. We tested:
 | Image model | Stable Diffusion | Nano Banana | Nano Banana | +180% quality rating |
 | Timing | Morning only | Morning + invoice | Both | +45% daily active |
 
-The notification banner was the single biggest win. Users don't navigate to features — features must navigate to users.
+The notification banner was the single biggest win. **Users don't navigate to features — features must navigate to users.**
 
 ## The prompt engineering (what actually worked)
 

@@ -12,9 +12,21 @@ const CASE_STUDY_SLUGS = [
 
 const REQUIRED = [
   'title', 'description', 'slug', 'date', 'updated', 'pillar',
-  'targetKeyword', 'secondaryKeywords', 'anchorProject', 'readingMinutes', 'faq',
+  'targetKeyword', 'secondaryKeywords', 'anchorProject', 'faq',
 ];
 const PILLARS = ['agents', 'growth', 'pm'];
+// anchorProject must be a case-study slug or one of these project identifiers
+// (used only for related-post scoring).
+const PROJECT_SLUGS = ['dhanplan', 'topshe', 'filmrisk', 'tgb-hunt', 'bloghero', 'inventory', 'intent'];
+// Correct casing for brand names; lowercase variants in prose are errors.
+const BRAND_CASING = [
+  [/\bupcore\b/, 'Upcore'],
+  [/\blivekeeping\b/, 'LiveKeeping'],
+  [/\bLivekeeping\b/, 'LiveKeeping'],
+  [/\bsierra\b/, 'Sierra'],
+  [/\bdhanplan\b/, 'DhanPlan'],
+  [/\btopshe\b/, 'Topshe'],
+];
 const errors = [];
 const slugs = new Map();
 
@@ -64,6 +76,17 @@ for (const { file, data, content } of parsed) {
   if (!Number.isNaN(date) && !Number.isNaN(updated) && updated < date) {
     errors.push(`${file}: updated (${data.updated}) is before date (${data.date})`);
   }
+  const endOfToday = new Date().setHours(23, 59, 59, 999);
+  if (!Number.isNaN(date) && date > endOfToday) {
+    errors.push(`${file}: date "${data.date}" is in the future — search engines discount future dates`);
+  }
+  if (!Number.isNaN(updated) && updated > endOfToday) {
+    errors.push(`${file}: updated "${data.updated}" is in the future`);
+  }
+
+  if (data.anchorProject && !CASE_STUDY_SLUGS.includes(data.anchorProject) && !PROJECT_SLUGS.includes(data.anchorProject)) {
+    errors.push(`${file}: anchorProject "${data.anchorProject}" is neither a case-study slug nor a known project id`);
+  }
 
   const faq = data.faq;
   if (faq !== undefined) {
@@ -86,6 +109,54 @@ for (const { file, data, content } of parsed) {
   }
   if (!content.includes('FAQ')) {
     errors.push(`${file}: post must include <FAQ items={frontmatter.faq} />`);
+  }
+
+  // Body without code fences — code samples are exempt from prose checks.
+  const prose = content.replace(/```[\s\S]*?```/g, '');
+
+  // Duplicate H2 headings (the class of copy-paste bug that shipped twice).
+  const h2s = [...prose.matchAll(/^##\s+(.+)$/gm)].map((m) => m[1].trim().toLowerCase());
+  const seenH2 = new Set();
+  for (const h of h2s) {
+    if (seenH2.has(h)) errors.push(`${file}: duplicate H2 heading "${h}" — section pasted twice?`);
+    seenH2.add(h);
+  }
+
+  // Duplicate long paragraphs.
+  const paras = prose.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p.length >= 200 && !p.startsWith('|'));
+  const seenPara = new Set();
+  for (const p of paras) {
+    const key = p.toLowerCase().replace(/\s+/g, ' ');
+    if (seenPara.has(key)) errors.push(`${file}: a 200+ char paragraph appears twice ("${p.slice(0, 60)}…")`);
+    seenPara.add(key);
+  }
+
+  // Duplicate <Figure src> within one post.
+  const figSrcs = [...content.matchAll(/<Figure[^>]*src="([^"]+)"/g)].map((m) => m[1]);
+  const seenFig = new Set();
+  for (const src of figSrcs) {
+    if (seenFig.has(src)) errors.push(`${file}: figure ${src} is rendered more than once`);
+    seenFig.add(src);
+  }
+  if (figSrcs.length === 0) {
+    errors.push(`${file}: post has no <Figure> — every post needs at least one diagram`);
+  }
+
+  // Brand casing in prose (links/paths/slugs are lowercase by design).
+  const proseNoLinks = prose
+    .replace(/\]\([^)]*\)/g, ']')
+    .replace(/https?:\/\/\S+/g, '')
+    .replace(/\bgithub\.com\/\S+/g, '')
+    .replace(/src="[^"]*"/g, '');
+  for (const [re, correct] of BRAND_CASING) {
+    const m = proseNoLinks.match(re);
+    if (m) errors.push(`${file}: brand casing — "${m[0]}" should be "${correct}"`);
+  }
+
+  // At least one external authority link.
+  const externalLinks = [...content.matchAll(/\]\((https?:\/\/[^)]+)\)/g)].map((m) => m[1]);
+  if (externalLinks.length < 1) {
+    errors.push(`${file}: no external links — add at least one authoritative source`);
   }
 
   const linkRe = /\]\((\/[^)\s#]+)(?:#[^)\s]*)?\)/g;

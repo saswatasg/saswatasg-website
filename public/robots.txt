@@ -1,19 +1,25 @@
 User-agent: *
 Allow: /
+Disallow: /lab/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /lab/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /lab/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /lab/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /lab/
 
 User-agent: CCBot
 Allow: /
+Disallow: /lab/
 
 Sitemap: https://saswatasg.com/sitemap.xml
