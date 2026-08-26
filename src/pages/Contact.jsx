@@ -233,23 +233,23 @@ const Contact = () => {
               <ExternalLink className="w-4 h-4 text-ink/30 flex-shrink-0 group-hover:text-ink transition-colors" />
             </motion.a>
 
+          </div>
+        </div>
+
+        <div id="support-payment" className="mt-8 scroll-mt-24">
           <RazorpayCheckout
-            amount={100}
+            amount={50000}
             onSuccess={(paymentData) => {
               trackEvent('payment', 'success', paymentData);
-              alert('Payment successful! Payment ID: ' + paymentData.razorpay_payment_id);
             }}
             onError={(error) => {
               trackEvent('payment', 'failed', error);
-              alert('Payment failed: ' + error);
             }}
             onClose={() => {
               trackEvent('payment', 'cancelled');
             }}
-            buttonText={"Support"}
+            buttonText="Pay ₹500 — Support"
           />
-
-          </div>
         </div>
       </div>
     </>
