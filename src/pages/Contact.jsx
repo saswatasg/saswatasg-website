@@ -4,6 +4,7 @@ import PageMeta from '@/components/PageMeta';
 import ContactForm from '@/components/contact/ContactForm';
 import { openScheduleBooking } from '@/utils/openCalendar';
 import { trackEvent } from '@/utils/analytics';
+import RazorpayCheckout from '@/components/payments/RazorpayCheckout';
 import { ArrowRight, Calendar, Sparkles, Clock, MapPin, Heart, MessageSquare, Linkedin, Instagram, Github, ExternalLink } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -231,6 +232,22 @@ const Contact = () => {
               </div>
               <ExternalLink className="w-4 h-4 text-ink/30 flex-shrink-0 group-hover:text-ink transition-colors" />
             </motion.a>
+
+          <RazorpayCheckout
+            amount={100}
+            onSuccess={(paymentData) => {
+              trackEvent('payment', 'success', paymentData);
+              alert('Payment successful! Payment ID: ' + paymentData.razorpay_payment_id);
+            }}
+            onError={(error) => {
+              trackEvent('payment', 'failed', error);
+              alert('Payment failed: ' + error);
+            }}
+            onClose={() => {
+              trackEvent('payment', 'cancelled');
+            }}
+            buttonText={"Support"}
+          />
 
           </div>
         </div>
