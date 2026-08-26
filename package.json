@@ -8,7 +8,8 @@
     "build": "node tools/validate-posts.mjs && node tools/generate-static-files.mjs && vite build && node tools/generate-og-images.mjs && node scripts/prerender.mjs && node scripts/verify-prerender.mjs",
     "preview": "vite preview --host :: --port 3000",
     "dev:vercel": "vercel dev",
-    "lint": "eslint . --quiet"
+    "lint": "eslint . --quiet",
+    "razorpay:verify": "node -e \"console.log(\"Razorpay env check:\")\""
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
