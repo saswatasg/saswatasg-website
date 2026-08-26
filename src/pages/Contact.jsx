@@ -4,7 +4,6 @@ import PageMeta from '@/components/PageMeta';
 import ContactForm from '@/components/contact/ContactForm';
 import { openScheduleBooking } from '@/utils/openCalendar';
 import { trackEvent } from '@/utils/analytics';
-import RazorpayCheckout from '@/components/payments/RazorpayCheckout';
 import { ArrowRight, Calendar, Sparkles, Clock, MapPin, Heart, MessageSquare, Linkedin, Instagram, Github, ExternalLink } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -236,21 +235,6 @@ const Contact = () => {
           </div>
         </div>
 
-        <div id="support-payment" className="mt-8 scroll-mt-24">
-          <RazorpayCheckout
-            amount={50000}
-            onSuccess={(paymentData) => {
-              trackEvent('payment', 'success', paymentData);
-            }}
-            onError={(error) => {
-              trackEvent('payment', 'failed', error);
-            }}
-            onClose={() => {
-              trackEvent('payment', 'cancelled');
-            }}
-            buttonText="Pay ₹500 — Support"
-          />
-        </div>
       </div>
     </>
   );

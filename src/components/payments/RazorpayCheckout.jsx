@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const FALLBACK_KEY = 'rzp_test_TULGGQSc6LJM77';
+const FALLBACK_KEY = 'YOUR_RAZORPAY_KEY_ID';
 const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || FALLBACK_KEY;
 
 function loadRazorpayScript() {
