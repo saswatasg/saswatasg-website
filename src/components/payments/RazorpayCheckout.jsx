@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const FALLBACK_KEY = 'YOUR_RAZORPAY_KEY_ID';
-const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || FALLBACK_KEY;
+const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
 function loadRazorpayScript() {
   return new Promise((resolve, reject) => {
@@ -40,6 +39,10 @@ export default function RazorpayCheckout({
 
   const openCheckout = async () => {
     if (disabled) return;
+    if (!RAZORPAY_KEY_ID) {
+      setError('Payment is temporarily unavailable. Please try again later.');
+      return;
+    }
     setLoading(true);
     setError(null);
     try {

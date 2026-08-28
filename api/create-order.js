@@ -12,8 +12,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Amount must be at least 100 paise (₹1)' });
   }
 
-  const keyId = process.env.RAZORPAY_KEY_ID || process.env.VITE_RAZORPAY_KEY_ID || 'YOUR_RAZORPAY_KEY_ID';
-  const keySecret = process.env.RAZORPAY_KEY_SECRET || 'YOUR_RAZORPAY_SECRET';
+  const keyId = process.env.RAZORPAY_KEY_ID || process.env.VITE_RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
   if (!keyId || !keySecret) {
     return res.status(500).json({ error: 'Server configuration error: missing Razorpay credentials' });
