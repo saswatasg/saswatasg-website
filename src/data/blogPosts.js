@@ -17,7 +17,7 @@ export const posts = Object.entries(postModules)
     };
   })
   .filter((post) => post.title && post.date)
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+  .sort((a, b) => new Date(b.updated || b.date) - new Date(a.updated || a.date) || new Date(b.date) - new Date(a.date));
 
 export const postsBySlug = Object.fromEntries(posts.map((post) => [post.slug, post]));
 

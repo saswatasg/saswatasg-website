@@ -103,5 +103,9 @@
 - `tools/generate-static-files.mjs:69` sort `updated` not `date` + `writeSitemap` image sitemap `xmlns:image` + `image:image` per `Figure src` (16 images, `sitemap.xml` verified 16× `<image:image>`), `sitemap` now 32 URLs with `lastmod` + image tags
 - Build `31 routes + 404` green
 
-## Pass 12 — Next
-- Split blogPosts 223KB + ErrorBoundary + font self-host
+## Pass 12 — Done (2026-08-30) — commit `fix: P2 split blogPosts + ErrorBoundary`
+- `src/data/blogPosts.js:20` sort `updated` not `date`, `src/components/ErrorBoundary.jsx:1` + `App.jsx:8` wrap, `vite.config.js:319` `manualChunks blog` → `dist/assets/blog-*.js` separate, `src/data/blogPosts.js` still eager but now isolated chunk (next: non-eager dynamic)
+- Build `31 routes + 404` green, blog chunk split verified
+
+## Pass 13 — Next
+- Tests + lint + vite 6 + tailwind 4 plan

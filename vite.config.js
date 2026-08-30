@@ -317,6 +317,7 @@ export default defineConfig({
 			output: {
 				manualChunks: {
 					vendor: ['react', 'react-dom', 'framer-motion', 'react-router-dom'],
+					blog: ['./src/data/blogPosts.js'],
 				}
 			}
 		}
