@@ -284,6 +284,11 @@ logger.error = (msg, options) => {
 
 export default defineConfig({
 	customLogger: logger,
+	test: {
+		globals: false,
+		environment: 'node',
+		include: ['tests/**/*.test.js'],
+	},
 	plugins: [
 		mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm], rehypePlugins: [rehypeWrapTables] }),
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), selectionModePlugin()] : []),

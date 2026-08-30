@@ -103,9 +103,15 @@
 - `tools/generate-static-files.mjs:69` sort `updated` not `date` + `writeSitemap` image sitemap `xmlns:image` + `image:image` per `Figure src` (16 images, `sitemap.xml` verified 16× `<image:image>`), `sitemap` now 32 URLs with `lastmod` + image tags
 - Build `31 routes + 404` green
 
-## Pass 12 — Done (2026-08-30) — commit `fix: P2 split blogPosts + ErrorBoundary`
+## Pass 12 — Done (2026-08-30) — commit `d8ba505`
 - `src/data/blogPosts.js:20` sort `updated` not `date`, `src/components/ErrorBoundary.jsx:1` + `App.jsx:8` wrap, `vite.config.js:319` `manualChunks blog` → `dist/assets/blog-*.js` separate, `src/data/blogPosts.js` still eager but now isolated chunk (next: non-eager dynamic)
 - Build `31 routes + 404` green, blog chunk split verified
 
-## Pass 13 — Next
-- Tests + lint + vite 6 + tailwind 4 plan
+## Pass 13 — Done (2026-08-30) — commit `fix: P2 tests + lint + vite 6 plan`
+- `package.json:7` `test` → `vitest run` + `test:watch`, `vitest 1.6.0` (Node 20 compat), `tests/verify-payment.test.js:1` HMAC `timingSafeEqual` 4 tests + `tests/pay.test.js:1` `parseAmountParam` 4 tests + `tests/validate-posts.test.js:1` 15 posts contract 2 tests → `10 passed`
+- `eslint.config.mjs:7` re-enable `no-unused-vars:warn`, remove `jsx-uses-vars:off`, remove `vite.config.js` from ignores, add `vite.config+tests` node globals (`Buffer/process/__dirname`), `vite 4.4.5→4.5.14` already, `react-router 6.16→6.30.6`, `ci.yml:31` `npm test` step
+- Build `31 routes + 404` green, `npm run lint` 0 errors, `npm test` 10 passed
+- Deferred: `vite 6` (breaking, Node 22 required) + `tailwind 4` + `playwright` smoke + `supabase` RLS
+
+## Pass 14 — Next
+- Marketing proof + sitemap growth + roadmap + ROI calculator

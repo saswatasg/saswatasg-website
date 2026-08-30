@@ -34,6 +34,9 @@ jobs:
       - name: Audit (high only)
         run: npm audit --audit-level=high || true
 
+      - name: Tests
+        run: npm test
+
       - name: Build + prerender + verify
         run: npm run build
 

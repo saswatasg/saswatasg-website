@@ -4,7 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 
 export default [
-	{ ignores: ['node_modules/**', 'dist/**', 'build/**', 'vite.config.js'] },
+	{ ignores: ['node_modules/**', 'dist/**', 'build/**'] },
 	{
 		files: ['**/*.js', '**/*.jsx'],
 		plugins: { react, 'react-hooks': reactHooks, import: importPlugin },
@@ -29,13 +29,12 @@ export default [
 			// Non-critical rules - disabled since code works fine without them
 			'react/prop-types': 'off',
 			'react/no-unescaped-entities': 'off',
-			'react/display-name': 'off', // Non-critical, component works without displayName
-			'react/jsx-uses-react': 'off', // Not needed in React 17+, non-critical
-			'react/react-in-jsx-scope': 'off', // Not needed in React 17+, non-critical
-			'react/jsx-uses-vars': 'off', // Non-critical, code works fine
-			'react/jsx-no-comment-textnodes': 'off', // Non-critical, comments could be visible if put inside the JSX, most cases are just rendering text like '///'
+			'react/display-name': 'off',
+			'react/jsx-uses-react': 'off',
+			'react/react-in-jsx-scope': 'off',
+			'react/jsx-no-comment-textnodes': 'off',
 
-			'no-unused-vars': 'off', // Non-critical, code works fine with unused vars
+			'no-unused-vars': 'warn',
 			'import/no-named-as-default': 'off', // Can cause runtime import errors, usually fine to leave as is
 			'import/no-named-as-default-member': 'off', // Can cause runtime import errors
 
@@ -49,6 +48,6 @@ export default [
 			'import/no-cycle': 'off', // AI rarely makes this error, and the rule is very slow to run
 		},
 	},
-	{ files: ['tools/**/*.js', 'tailwind.config.js'], languageOptions: { globals: globals.node } },
+	{ files: ['tools/**/*.js', 'tailwind.config.js', 'vite.config.js', 'tests/**/*.js'], languageOptions: { globals: { ...globals.node, __dirname: 'readonly', Buffer: 'readonly', process: 'readonly' } } },
 	{ files: ['api/**/*.js'], languageOptions: { globals: globals.node } },
 ];
