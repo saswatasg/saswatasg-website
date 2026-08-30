@@ -23,6 +23,7 @@ const STATIC_ROUTES = [
   '/case-studies/livekeeping-report-automation',
   '/contact',
   '/pay',
+  '/roadmap',
 ];
 
 // Strip ALL template SEO tags so the per-route Helmet output (injected below)

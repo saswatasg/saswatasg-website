@@ -5,6 +5,7 @@
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/pay", "destination": "/index.html" },
     { "source": "/pay/:path*", "destination": "/index.html" },
+    { "source": "/roadmap", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

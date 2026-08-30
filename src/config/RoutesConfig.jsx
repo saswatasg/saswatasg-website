@@ -18,6 +18,7 @@ const LiveKeepingNotifications = React.lazy(() => import('@/pages/case-studies/L
 const LiveKeepingReportAutomation = React.lazy(() => import('@/pages/case-studies/LiveKeepingReportAutomation'));
 const Contact = React.lazy(() => import('@/pages/Contact'));
 const Pay = React.lazy(() => import('@/pages/Pay'));
+const Roadmap = React.lazy(() => import('@/pages/Roadmap'));
 const BlogIndex = React.lazy(() => import('@/pages/blog/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/blog/BlogPost'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
@@ -70,6 +71,7 @@ const RoutesConfig = () => {
         <Route path="/case-studies/livekeeping-report-automation" element={<AnimatedPage><LiveKeepingReportAutomation /></AnimatedPage>} />
         <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
         <Route path="/pay" element={<AnimatedPage><Pay /></AnimatedPage>} />
+        <Route path="/roadmap" element={<AnimatedPage><Roadmap /></AnimatedPage>} />
         <Route path="/blog" element={<AnimatedPage><BlogIndex /></AnimatedPage>} />
         <Route path="/blog/:slug" element={<AnimatedPage><BlogPost /></AnimatedPage>} />
         <Route path="/lab/relationship-magazine" element={<AnimatedPage><RelationshipMagazine /></AnimatedPage>} />

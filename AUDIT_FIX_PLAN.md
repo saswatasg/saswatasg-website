@@ -113,5 +113,8 @@
 - Build `31 routes + 404` green, `npm run lint` 0 errors, `npm test` 10 passed
 - Deferred: `vite 6` (breaking, Node 22 required) + `tailwind 4` + `playwright` smoke + `supabase` RLS
 
-## Pass 14 — Next
-- Marketing proof + sitemap growth + roadmap + ROI calculator
+## Pass 14 — Done (2026-08-30) — commit `fix: P2 marketing proof + sitemap + roadmap + ROI`
+- `src/components/home/TestimonialCarousel.jsx:4` verifiable `linkedin` + `company` + `Linkedin` icon, `tools/generate-static-files.mjs:15` `changefreq yearly→monthly` for 9 case studies + 15 posts, `tools/generate-static-files.mjs:100` `feed.xml` +9 case studies `category Case Study`, `src/pages/Roadmap.jsx:1` `Now/Next/Later` + `RoiCalculator` sessions×AOV×0.26, `RoutesConfig:20` `/roadmap` + `prerender:25` + `generate-static:25` 0.6 weekly + `vercel.json:6` + `Footer:42` `Roadmap`
+- Build `32 URLs` sitemap (16 images) + `32 routes` (roadmap) + `404` green
+
+## All 14 passes complete — audit closed 2026-08-30. Remaining deferred: font `@fontsource` self-host, `import.meta.glob` non-eager, `playwright` smoke, `tailwind 4`.

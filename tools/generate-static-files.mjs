@@ -12,17 +12,18 @@ const STATIC_PAGES = [
   { path: '/projects', priority: 0.7, changefreq: 'weekly' },
   { path: '/blog', priority: 0.9, changefreq: 'weekly' },
   { path: '/case-studies', priority: 0.8, changefreq: 'monthly' },
-  { path: '/case-studies/cart-checkout', priority: 0.7, changefreq: 'yearly' },
-  { path: '/case-studies/category-discovery', priority: 0.7, changefreq: 'yearly' },
-  { path: '/case-studies/lead-form', priority: 0.7, changefreq: 'yearly' },
-  { path: '/case-studies/upcore-lead-scoring', priority: 0.7, changefreq: 'yearly' },
-  { path: '/case-studies/sierra-lead-allocation', priority: 0.6, changefreq: 'yearly' },
-  { path: '/case-studies/livekeeping-compliance-gap', priority: 0.7, changefreq: 'yearly' },
-  { path: '/case-studies/livekeeping-send-greetings', priority: 0.6, changefreq: 'yearly' },
-  { path: '/case-studies/livekeeping-notifications', priority: 0.6, changefreq: 'yearly' },
-  { path: '/case-studies/livekeeping-report-automation', priority: 0.6, changefreq: 'yearly' },
+  { path: '/case-studies/cart-checkout', priority: 0.7, changefreq: 'monthly' },
+  { path: '/case-studies/category-discovery', priority: 0.7, changefreq: 'monthly' },
+  { path: '/case-studies/lead-form', priority: 0.7, changefreq: 'monthly' },
+  { path: '/case-studies/upcore-lead-scoring', priority: 0.7, changefreq: 'monthly' },
+  { path: '/case-studies/sierra-lead-allocation', priority: 0.6, changefreq: 'monthly' },
+  { path: '/case-studies/livekeeping-compliance-gap', priority: 0.7, changefreq: 'monthly' },
+  { path: '/case-studies/livekeeping-send-greetings', priority: 0.6, changefreq: 'monthly' },
+  { path: '/case-studies/livekeeping-notifications', priority: 0.6, changefreq: 'monthly' },
+  { path: '/case-studies/livekeeping-report-automation', priority: 0.6, changefreq: 'monthly' },
   { path: '/contact', priority: 0.5, changefreq: 'yearly' },
   { path: '/pay', priority: 0.3, changefreq: 'monthly' },
+  { path: '/roadmap', priority: 0.6, changefreq: 'weekly' },
 ];
 
 const BLOG_DIR = path.join(root, 'content', 'blog');
@@ -85,7 +86,7 @@ async function writeSitemap(posts) {
     urlTags.push(`  <url>
     <loc>${SITE_URL}/blog/${post.slug}</loc>
     <lastmod>${post.updated}</lastmod>
-    <changefreq>yearly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
 ${imageTags ? imageTags + '\n' : ''}  </url>`);
   }
@@ -100,17 +101,38 @@ ${urlTags.join('\n')}
 }
 
 async function writeFeed(posts) {
-  const items = posts
-    .map(
-      (post) => `    <item>
+  const caseStudies = [
+    { slug: 'cart-checkout', title: 'Cart & Checkout — –26% abandonment' },
+    { slug: 'category-discovery', title: 'Category Pages — +17% conversion' },
+    { slug: 'lead-form', title: 'Lead Form Overhaul — +105% submissions' },
+    { slug: 'upcore-lead-scoring', title: 'AI Lead Scoring — 71.63% close rate' },
+    { slug: 'sierra-lead-allocation', title: 'Lead Allocation — Gold/Silver/Bronze' },
+    { slug: 'livekeeping-compliance-gap', title: 'Compliance Gap — 17:1 Tally vs LiveKeeping' },
+    { slug: 'livekeeping-send-greetings', title: 'Send Greetings + Nano Banana AI' },
+    { slug: 'livekeeping-notifications', title: 'Push Notification Architecture' },
+    { slug: 'livekeeping-report-automation', title: 'Daily Report Automation' },
+  ];
+  const postItems = posts.map(
+    (post) => `    <item>
       <title><![CDATA[${post.title}]]></title>
       <link>${SITE_URL}/blog/${post.slug}</link>
       <guid isPermaLink="true">${SITE_URL}/blog/${post.slug}</guid>
       <description><![CDATA[${post.description}]]></description>
+      <category>Blog</category>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     </item>`
-    )
-    .join('\n');
+  );
+  const caseStudyItems = caseStudies.map(
+    (cs) => `    <item>
+      <title><![CDATA[${cs.title}]]></title>
+      <link>${SITE_URL}/case-studies/${cs.slug}</link>
+      <guid isPermaLink="true">${SITE_URL}/case-studies/${cs.slug}</guid>
+      <description><![CDATA[Case study: ${cs.title}]]></description>
+      <category>Case Study</category>
+      <pubDate>${new Date().toUTCString()}</pubDate>
+    </item>`
+  );
+  const items = [...postItems, ...caseStudyItems].join('\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

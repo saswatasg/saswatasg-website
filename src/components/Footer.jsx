@@ -40,6 +40,7 @@ function Footer() {
                 { to: '/blog', label: 'Blog' },
                 { to: '/contact', label: 'Contact' },
                 { to: '/pay', label: 'Pay' },
+                { to: '/roadmap', label: 'Roadmap' },
               ].map((link) => (
                 <li key={link.label}>
                   <Link to={link.to} onClick={() => trackEvent('footer', 'page_link', link.label)} className="text-sm text-white/60 hover:text-white font-medium transition-colors">
