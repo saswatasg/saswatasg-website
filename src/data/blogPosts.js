@@ -13,7 +13,6 @@ export const posts = Object.entries(postModules)
       // any hand-authored frontmatter value so reading time stays honest.
       readingMinutes: stats.readingMinutes ?? mod.frontmatter?.readingMinutes ?? 1,
       wordCount: stats.wordCount ?? 0,
-      component: mod.default,
     };
   })
   .filter((post) => post.title && post.date)

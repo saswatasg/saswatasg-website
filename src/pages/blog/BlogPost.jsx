@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import BlogLayout from '@/components/blog/BlogLayout';
 import PageMeta from '@/components/PageMeta';
 import { postsBySlug } from '@/data/blogPosts';
 import { trackEvent } from '@/utils/analytics';
+
+const postModules = import.meta.glob('/content/blog/*.mdx');
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -30,11 +32,21 @@ const BlogPost = () => {
     );
   }
 
-  const PostContent = post.component;
+  const PostContent = React.lazy(postModules[`/content/blog/${slug}.mdx`]);
 
   return (
     <BlogLayout post={post}>
-      <PostContent />
+      <Suspense
+        fallback={
+          <div className="animate-pulse space-y-4 py-8">
+            <div className="h-8 bg-ink/10 rounded-xl w-3/4" />
+            <div className="h-4 bg-ink/10 rounded w-full" />
+            <div className="h-4 bg-ink/10 rounded w-5/6" />
+          </div>
+        }
+      >
+        <PostContent />
+      </Suspense>
     </BlogLayout>
   );
 };
