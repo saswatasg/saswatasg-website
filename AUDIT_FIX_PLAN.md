@@ -46,5 +46,10 @@
 - `public/.htaccess` deleted (Vercel-ignored, Hostinger legacy)
 - Build `31 routes + 404` green
 
-## Pass 2 — Next
-- API guardrails (create-order / verify-payment / chat)
+## Pass 2 — Done (2026-08-30) — commit `fix: P0 API guardrails`
+- `api/create-order.js:1` `zod` `amount 100..5000000 paise (₹50k)` + `currency INR` whitelist + `receipt` regex `^[A-Za-z0-9_-]+$` + 2KB body guard + in-memory 10/min IP limit; `api/verify-payment.js:1` `zod` + `timingSafeEqual` + 20/min limit + 2KB guard; `api/chat.js:1` `message 2KB` + `history 6×2KB/8KB` cap + 429 + body 8KB guard + email/phone/name length + `totalChars>8000→400`
+- `package.json:45` `zod 4.5.4` added
+- Build `31 routes + 404` green
+
+## Pass 3 — Next
+- Package `/pay` as sellable offer

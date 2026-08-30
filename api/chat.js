@@ -21,9 +21,31 @@ CONTACT:
 - GitHub: github.com/saswatasg
 - Location: Kolkata, India`;
 
+const rateMap = new Map();
+function isRateLimited(req, limit = 10, windowMs = 60_000) {
+  const ip = (req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.headers['x-real-ip'] || 'unknown');
+  const now = Date.now();
+  const entry = rateMap.get(ip);
+  if (!entry || now > entry.reset) {
+    rateMap.set(ip, { count: 1, reset: now + windowMs });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > limit;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const bodyStr = JSON.stringify(req.body || {});
+  if (bodyStr.length > 8192) {
+    return res.status(413).json({ error: 'Payload too large' });
+  }
+
+  if (isRateLimited(req)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again in a minute.' });
   }
 
   const { action } = req.body;
@@ -41,21 +63,29 @@ async function handleChat(req, res) {
   if (!message || typeof message !== 'string' || message.trim().length === 0) {
     return res.status(400).json({ error: 'Message is required' });
   }
+  if (message.length > 2000) {
+    return res.status(400).json({ error: 'Message too long (max 2000 chars)' });
+  }
+  if (!Array.isArray(history)) {
+    return res.status(400).json({ error: 'Invalid history' });
+  }
 
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
   if (!GEMINI_API_KEY) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const contents = history.map((msg) => ({
+  // Cap history: last 6, each text 2KB, total 8KB
+  const cappedHistory = history.slice(-6).map((msg) => ({
     role: msg.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: msg.text }],
+    parts: [{ text: String(msg.text || '').slice(0, 2000) }],
   }));
+  const totalChars = cappedHistory.reduce((acc, m) => acc + (m.parts[0].text.length || 0), 0) + message.length;
+  if (totalChars > 8000) {
+    return res.status(400).json({ error: 'History too large' });
+  }
 
-  contents.push({
-    role: 'user',
-    parts: [{ text: message }],
-  });
+  const contents = [...cappedHistory, { role: 'user', parts: [{ text: message.slice(0, 2000) }] }];
 
   try {
     const response = await fetch(
@@ -65,20 +95,15 @@ async function handleChat(req, res) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents,
-          systemInstruction: {
-            parts: [{ text: SYSTEM_PROMPT }],
-          },
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 256,
-          },
+          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          generationConfig: { temperature: 0.7, maxOutputTokens: 256 },
         }),
       }
     );
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Gemini API error:', response.status, errorText);
+      console.error('Gemini API error:', response.status, errorText.slice(0, 500));
       return res.status(502).json({ error: 'AI service error' });
     }
 
@@ -95,19 +120,27 @@ async function handleChat(req, res) {
 async function handleEnd(req, res) {
   const { name, phone, messages: rawMessages, sessionId } = req.body;
 
-  if (!name || !rawMessages) {
-    return res.status(400).json({ error: 'Name and messages are required' });
+  if (!name || typeof name !== 'string' || name.trim().length === 0 || name.length > 100) {
+    return res.status(400).json({ error: 'Name is required (max 100 chars)' });
+  }
+  if (!Array.isArray(rawMessages) || rawMessages.length === 0 || rawMessages.length > 50) {
+    return res.status(400).json({ error: 'Messages array required (max 50)' });
+  }
+  if (phone && (typeof phone !== 'string' || phone.length > 20)) {
+    return res.status(400).json({ error: 'Invalid phone' });
   }
 
   const transcript = rawMessages
-    .map((m) => `[${m.role.toUpperCase()}] ${m.text}`)
-    .join('\n');
+    .slice(-50)
+    .map((m) => `[${String(m.role || 'unknown').toUpperCase().slice(0, 20)}] ${String(m.text || '').slice(0, 2000)}`)
+    .join('\n')
+    .slice(0, 8000);
 
   const emailBody = `New Chat Session Ended
 
-Name: ${name}
-Phone: ${phone || 'Not provided'}
-Session ID: ${sessionId || 'N/A'}
+Name: ${String(name).slice(0, 100)}
+Phone: ${phone ? String(phone).slice(0, 20) : 'Not provided'}
+Session ID: ${String(sessionId || 'N/A').slice(0, 100)}
 Total Messages: ${rawMessages.length}
 
 --- Transcript ---
@@ -119,18 +152,18 @@ ${transcript}
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        _subject: `Chat Transcript - ${name}`,
+        _subject: `Chat Transcript - ${String(name).slice(0, 50)}`,
         _template: 'table',
         _captcha: 'false',
-        name,
-        phone: phone || 'Not provided',
-        session_id: sessionId || 'N/A',
-        message: emailBody,
+        name: String(name).slice(0, 100),
+        phone: phone ? String(phone).slice(0, 20) : 'Not provided',
+        session_id: String(sessionId || 'N/A').slice(0, 100),
+        message: emailBody.slice(0, 8000),
       }),
     });
 
     if (!response.ok) {
-      console.error('FormSubmit error:', await response.text());
+      console.error('FormSubmit error:', (await response.text()).slice(0, 500));
     }
 
     return res.status(200).json({ success: true });
