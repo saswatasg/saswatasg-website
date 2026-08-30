@@ -48,6 +48,6 @@ export default [
 			'import/no-cycle': 'off', // AI rarely makes this error, and the rule is very slow to run
 		},
 	},
-	{ files: ['tools/**/*.js', 'tailwind.config.js', 'vite.config.js', 'tests/**/*.js'], languageOptions: { globals: { ...globals.node, __dirname: 'readonly', Buffer: 'readonly', process: 'readonly' } } },
+	{ files: ['tools/**/*.js', 'tailwind.config.js', 'vite.config.js', 'tests/**/*.js', 'playwright.config.js'], languageOptions: { globals: { ...globals.node, __dirname: 'readonly', Buffer: 'readonly', process: 'readonly' } } },
 	{ files: ['api/**/*.js'], languageOptions: { globals: globals.node } },
 ];
