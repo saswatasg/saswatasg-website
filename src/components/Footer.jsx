@@ -25,7 +25,7 @@ function Footer() {
               Saswata
             </Link>
             <p className="text-sm text-white/60 font-medium mt-2 max-w-[200px]">
-              Product Manager shipping outcomes that move revenue.
+              Product Manager — shipping outcomes, not features.
             </p>
           </div>
           <div>

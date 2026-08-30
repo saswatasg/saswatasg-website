@@ -119,7 +119,7 @@ const ContactForm = () => {
                 {isSubmitting ? (
                   <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
                 ) : (
-                  <>Send Message <ArrowRight className="w-4 h-4" /></>
+                  <>Send — reply within 24h <ArrowRight className="w-4 h-4" /></>
                 )}
               </button>
             </div>

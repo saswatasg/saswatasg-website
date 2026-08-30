@@ -29,9 +29,9 @@ const Header = () => {
     <>
       <header className="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
         <div className="max-w-[1200px] mx-auto w-full flex items-center justify-between px-4 md:px-6 h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2" aria-label="Home">
+          <Link to="/" className="flex items-center gap-2" aria-label="Saswata Sengupta — Home">
             <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200">
-              Home
+              Saswata
             </span>
           </Link>
 
@@ -45,7 +45,7 @@ const Header = () => {
                   `px-3 py-1.5 text-sm font-bold rounded-lg border-2 transition-all ${
                     (isActive || (item.path === '/case-studies' && location.pathname.startsWith('/case-studies')))
                       ? 'bg-ink text-white border-black'
-                      : 'text-ink/60 border-transparent hover:text-ink hover:border-black'
+                      : 'text-ink border-transparent hover:text-ink hover:border-black'
                   }`
                 }
               >
@@ -68,7 +68,7 @@ const Header = () => {
                 onClick={() => { trackEvent('navigation', 'book_a_call'); openScheduleBooking(); }}
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
               >
-                Book a Call
+                Book 30-min teardown — no deck
               </button>
             </div>
           </div>
@@ -78,9 +78,9 @@ const Header = () => {
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
           <div className="flex items-center justify-between px-4 h-14">
-            <Link to="/" className="flex items-center gap-2" aria-label="Home">
+            <Link to="/" className="flex items-center gap-2" aria-label="Saswata Sengupta — Home">
               <span className="font-display font-black text-base text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black inline-block hover:scale-105 transition-all duration-200">
-                Home
+                Saswata
               </span>
             </Link>
 
@@ -129,7 +129,7 @@ const Header = () => {
               className="bg-ink text-white rounded-lg border-2 border-black px-4 py-3 text-sm font-bold text-center mt-2 hover:bg-white hover:text-ink transition-all duration-200 flex items-center justify-center gap-2 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
             >
               <Calendar className="w-4 h-4" />
-              Book a Call
+              Book 30-min teardown — no deck
             </button>
           </nav>
         </SheetContent>

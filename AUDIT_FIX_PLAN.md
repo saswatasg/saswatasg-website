@@ -63,11 +63,18 @@
 - `src/components/Marquee.jsx:1` + `src/components/Stickman.jsx:1` + `src/components/home/HeroSection.jsx:1` `useReducedMotion` gate: Marquee `x 0%` when reduced, Stickman roaming/idle/quirky/bored intervals + `y/rotate` + `whileHover` disabled, Hero auto-advance + progress bar `5s→0` disabled
 - Build `31 routes + 404` green
 
-## Pass 5 — Done (2026-08-30) — commit `fix: P0 rotate secrets + bump deps + gitleaks CI`
+## Pass 5 — Done (2026-08-30) — commit `dc93453`
 - `package.json:61` `react-router-dom 6.16→6.30.6` (GHSA-2w69) + `vite 4.4.5→4.5.14` + `npm audit fix` 19→4 vulns (remaining 3 moderate 1 high requires breaking, deferred)
 - `.github/workflows/ci.yml:16` `fetch-depth:0` + `gitleaks/gitleaks-action@v2` secret scan + `npm audit --audit-level=high || true` step, `node 22` already aligned
 - History `rzp_live` → `YOUR_RAZORPAY_*` purged in `14949f5` + `8b2cec0`, `vercel env add` done for prod/preview/dev, `.env.example` placeholder, **next: regenerate live pair in Razorpay Dashboard → update Vercel + local `.env` → dismiss GitGuardian as Revoked**
 - Build `31 routes + 404` green
 
-## Pass 6 — Next
-- Copy header + CTA outcome contracts + 404 + tagline single-source
+## Pass 6 — Done (2026-08-30) — commit `fix: P0 copy header + CTA contracts + 404 + tagline`
+- `src/components/Header.jsx:32` `Home` → `Saswata` + `Book a Call` → `Book 30-min teardown — no deck` (desktop + mobile), `aria-label` fix, `text-ink/60→ink` contrast
+- `src/components/contact/ContactForm.jsx:20` `Send Message` → `Send — reply within 24h`, helpers + `aria-invalid/describedby`, toasts `Got it — I’ll read today…` / `Couldn’t send — email saswatasg@gmail.com`
+- `src/pages/NotFound.jsx:1` brutalist `This page doesn't exist — like an uninstrumented funnel` + metrics `73%→54%, 17:1, +124%` + dual CTA `See the work` / `Back to home`
+- `src/components/Footer.jsx:28` tagline unified to `Product Manager — shipping outcomes, not features.` (`PageMeta.jsx:6`)
+- Build `31 routes + 404` green
+
+## Pass 7 — Next
+- Hreflang + sitemap lastmod + OG self-host + Publisher Org + case-study schema
