@@ -94,8 +94,8 @@ const PageMeta = ({ title, description, noindex = false, image }) => {
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       <link rel="canonical" href={finalUrl} />
-      <link rel="alternate" href={finalUrl} hreflang="en" />
-      <link rel="alternate" href={finalUrl} hreflang="x-default" />
+      <link rel="alternate" href={finalUrl} hrefLang="en" />
+      <link rel="alternate" href={finalUrl} hrefLang="x-default" />
       <link rel="alternate" type="application/rss+xml" title="Saswata S. Sengupta — Blog" href="https://saswatasg.com/feed.xml" />
       {noindex && <meta name="robots" content="noindex" />}
       

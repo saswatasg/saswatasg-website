@@ -23,8 +23,8 @@ const BlogLayout = ({ post, children }) => {
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
         <link rel="canonical" href={postUrl} />
-        <link rel="alternate" href={postUrl} hreflang="en" />
-        <link rel="alternate" href={postUrl} hreflang="x-default" />
+        <link rel="alternate" href={postUrl} hrefLang="en" />
+        <link rel="alternate" href={postUrl} hrefLang="x-default" />
         <link rel="alternate" type="application/rss+xml" title="Saswata S. Sengupta — Blog" href={`${SITE_URL}/feed.xml`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
