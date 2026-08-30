@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthorBox from '@/components/blog/AuthorBox';
 import PillarCTA from '@/components/blog/PillarCTA';
 import RelatedPosts from '@/components/blog/RelatedPosts';
+import EmailCapture from '@/components/blog/EmailCapture';
 import FAQ, { FAQJsonLd } from '@/components/blog/FAQ';
 import { PILLAR_META, formatDate, toIsoDate } from '@/data/blogPosts';
 
@@ -104,6 +105,7 @@ const BlogLayout = ({ post, children }) => {
         <article className="blog-prose">{children}</article>
 
         <AuthorBox />
+        <EmailCapture pillar={post.pillar} source={`blog:${post.slug}`} />
         <PillarCTA pillar={post.pillar} />
         <RelatedPosts post={post} />
       </div>

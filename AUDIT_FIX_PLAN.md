@@ -87,5 +87,10 @@
 - `src/utils/analytics.js:1` `getUTM()` + `gtag` dual push + `generate_lead`/`purchase` conversion, `openCalendar.js:17` `buildScheduleUrl()` UTM append + `calendar loaded` on iframe `load` + `message` booked listener + cleanup, `ContactForm.jsx:7` `getUTM` + Supabase `contact_submissions` insert (best-effort) + `_utm_*` in formsubmit + `field_error`/`validation_failed` + `value 1`, `PillarCTA.jsx:7` `pillar_cta_viewed` on mount + `cta_clicked_by_pillar`, `HeroSection.jsx:185` removed `auto_advance` noise
 - Build `31 routes + 404` green
 
-## Pass 9 — Next
-- Email capture + PillarCTA fix + Supabase backend
+## Pass 9 — Done (2026-08-30) — commit `fix: P1 email capture + PillarCTA fix + Supabase backend`
+- `src/data/blogPosts.js:56` `pm` CTA `Follow on LinkedIn` → `Book a call` + LinkedIn, `growth` body `Book 15-min teardown — no deck`, `src/components/blog/PillarCTA.jsx:7` `pillar_cta_viewed` + `cta_clicked_by_pillar`
+- `api/subscribe.js:1` `zod email` + `rate 5/min IP` + `Supabase email_subscribers` insert (pillar/source/utm) + `23505` already-subscribed → success, `src/components/blog/EmailCapture.jsx:1` brutalist card with `CRO Checklist / RFP / Teardown` per pillar, `getUTM` + `trackEvent` submit/success/failed, `BlogLayout.jsx:106` below `AuthorBox` + `BlogIndex.jsx:60` below pillar filters (source `blog:slug` / `blog_index`)
+- Build `31 routes + 404` green (post sizes +2KB for capture)
+
+## Pass 10 — Next
+- Copy tighten + stale dates

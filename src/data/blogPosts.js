@@ -46,19 +46,20 @@ export const PILLAR_CTA = {
     href: '/projects',
   },
   growth: {
-    title: 'Need the same treatment on your store?',
-    body: 'Want the numbers from this post on your checkout? Let\'s talk — no deck, no push. Or follow the work on LinkedIn.',
+    title: 'Want these numbers on your store?',
+    body: 'Book a 15-min teardown — no deck, no push. I’ll map your leak in one call.',
     ctas: [
       { label: 'Book a call', href: null, action: 'book' },
       { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/sss99/', external: true },
     ],
   },
   pm: {
-    title: 'More on building products with AI',
-    body: 'Follow along on LinkedIn for the day-to-day of shipping AI agents and growth products in production.',
-    label: 'Follow on LinkedIn',
-    href: 'https://www.linkedin.com/in/sss99/',
-    external: true,
+    title: 'Want a teardown of your AI workflow?',
+    body: 'Book a 15-min call — no deck, no push. Or follow the daily shipping notes on LinkedIn.',
+    ctas: [
+      { label: 'Book a call', href: null, action: 'book' },
+      { label: 'Follow on LinkedIn', href: 'https://www.linkedin.com/in/sss99/', external: true },
+    ],
   },
 };
 
