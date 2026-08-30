@@ -4,7 +4,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { Loader2, ArrowRight } from 'lucide-react';
-import { trackEvent } from '@/utils/analytics';
+import { trackEvent, getUTM } from '@/utils/analytics';
+import { supabase } from '@/lib/supabaseClient';
 import { cn } from '@/lib/utils';
 
 const ContactForm = () => {
@@ -21,6 +22,7 @@ const ContactForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (value && !emailRegex.test(value)) {
       setEmailError('That email won’t deliver — check the domain (e.g., ana@company.com)');
+      trackEvent('contact_form', 'field_error', 'email');
       return false;
     }
     setEmailError('');
@@ -42,11 +44,31 @@ const ContactForm = () => {
     e.preventDefault();
     if (!isFormValid) {
       trackEvent('contact_form', 'validation_failed');
+      if (!name.trim()) trackEvent('contact_form', 'field_error', 'name');
+      if (!email.trim() || emailError) trackEvent('contact_form', 'field_error', 'email');
+      if (message.trim().length < 10) trackEvent('contact_form', 'field_error', 'message');
       return;
     }
-    trackEvent('contact_form', 'submit', name);
+    const utm = getUTM();
+    trackEvent('contact_form', 'submit', name, 1);
     setIsSubmitting(true);
     let error = null;
+    // Try Supabase first (owned store) — best-effort, never blocks formsubmit
+    try {
+      await supabase.from('contact_submissions').insert([
+        {
+          name: name.slice(0, 100),
+          email: email.slice(0, 100),
+          phone: phone.slice(0, 20),
+          message: message.slice(0, 2000),
+          utm_source: utm.utm_source || null,
+          utm_medium: utm.utm_medium || null,
+          utm_campaign: utm.utm_campaign || null,
+          referrer: utm.referrer || null,
+          landing_page: utm.landing_page || null,
+        },
+      ]);
+    } catch (_) {}
     try {
       const res = await fetch('https://formsubmit.co/ajax/saswatasg@gmail.com', {
         method: 'POST',
@@ -60,6 +82,10 @@ const ContactForm = () => {
           _replyto: email,
           _template: 'table',
           _captcha: 'false',
+          _utm_source: utm.utm_source || '',
+          _utm_medium: utm.utm_medium || '',
+          _utm_campaign: utm.utm_campaign || '',
+          _referrer: utm.referrer || '',
         }),
       });
       if (!res.ok) error = new Error('Failed to send');
@@ -70,7 +96,7 @@ const ContactForm = () => {
     if (error) {
       toast({ title: 'Couldn’t send — FormSubmit hiccup.', description: 'Email me directly: saswatasg@gmail.com', variant: 'destructive', duration: 5000 });
     } else {
-      trackEvent('contact_form', 'success');
+      trackEvent('contact_form', 'success', undefined, 1);
       toast({ title: 'Got it — I’ll read this today and reply within 24h.', description: 'If urgent, book directly above.', duration: 5000 });
       setName(''); setEmail(''); setPhone(''); setMessage(''); setEmailError('');
     }

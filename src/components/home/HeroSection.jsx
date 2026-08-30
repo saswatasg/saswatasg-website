@@ -181,11 +181,7 @@ const HeroSection = () => {
   useEffect(() => {
     if (slidePaused || shouldReduceMotion) return;
     const timer = setInterval(() => {
-      setSlideIndex((prev) => {
-        const next = (prev + 1) % slides.length;
-        trackEvent('hero_slideshow', 'auto_advance', slides[next].id);
-        return next;
-      });
+      setSlideIndex((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
   }, [slidePaused, shouldReduceMotion]);

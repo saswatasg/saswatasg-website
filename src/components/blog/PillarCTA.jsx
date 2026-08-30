@@ -7,6 +7,9 @@ import { openScheduleBooking } from '@/utils/openCalendar';
 const PillarCTA = ({ pillar }) => {
   const cta = PILLAR_CTA[pillar] || PILLAR_CTA.pm;
   const ctas = cta.ctas || [{ label: cta.label, href: cta.href, external: cta.external }];
+  React.useEffect(() => {
+    trackEvent('blog', 'pillar_cta_viewed', pillar);
+  }, [pillar]);
 
   return (
     <aside className="border-2 border-black rounded-2xl bg-ink text-white p-6 md:p-8 my-10">
@@ -18,7 +21,8 @@ const PillarCTA = ({ pillar }) => {
             <button
               key={c.label}
               onClick={() => {
-                trackEvent('blog', 'pillar_cta', `${pillar}:${c.label}`);
+                trackEvent('blog', 'pillar_cta_clicked', `${pillar}:${c.label}`);
+                trackEvent('blog', 'cta_clicked_by_pillar', pillar);
                 openScheduleBooking();
               }}
               className="inline-flex items-center gap-2 bg-coral text-white rounded-lg border-2 border-white px-4 py-2.5 text-sm font-bold hover:bg-white hover:text-ink transition-colors"
@@ -31,7 +35,7 @@ const PillarCTA = ({ pillar }) => {
               key={c.label}
               href={c.href}
               {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              onClick={() => trackEvent('blog', 'pillar_cta', `${pillar}:${c.label}`)}
+              onClick={() => { trackEvent('blog', 'pillar_cta_clicked', `${pillar}:${c.label}`); trackEvent('blog', 'cta_clicked_by_pillar', pillar); }}
               className="inline-flex items-center gap-2 bg-coral text-white rounded-lg border-2 border-white px-4 py-2.5 text-sm font-bold hover:bg-white hover:text-ink transition-colors"
             >
               {c.label} <ArrowRight className="w-4 h-4" />

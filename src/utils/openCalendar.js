@@ -1,4 +1,16 @@
-const SCHEDULE_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3wx11wN9wr9kdE7TBGU3impXZ4_MkcsGh6NsUD7F854Fnr5XsJnsR2mnPQ-K1IFLGydbxR_KKZ?gv=true';
+import { trackEvent, getUTM } from '@/utils/analytics';
+
+const BASE_SCHEDULE_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3wx11wN9wr9kdE7TBGU3impXZ4_MkcsGh6NsUD7F854Fnr5XsJnsR2mnPQ-K1IFLGydbxR_KKZ?gv=true';
+
+function buildScheduleUrl() {
+  try {
+    const utm = getUTM();
+    const url = new URL(BASE_SCHEDULE_URL);
+    Object.entries(utm).forEach(([k, v]) => { if (v && k.startsWith('utm_')) url.searchParams.set(k, v); });
+    return url.toString();
+  } catch (_) { return BASE_SCHEDULE_URL; }
+}
+const SCHEDULE_URL = BASE_SCHEDULE_URL;
 
 const loadingMessages = [
   { text: 'Finding the perfect time slot...', icon: 'calendar' },
@@ -60,7 +72,7 @@ export function openScheduleBooking() {
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#fff',
   });
-  closeBtn.onclick = () => overlay.remove();
+  closeBtn.onclick = () => { overlay.remove(); window.removeEventListener('message', onCalendarMessage); };
   closeBtn.setAttribute('aria-label', 'Close');
 
   header.appendChild(title);
@@ -180,7 +192,7 @@ export function openScheduleBooking() {
 
   // --- Iframe ---
   const iframe = document.createElement('iframe');
-  iframe.src = SCHEDULE_URL;
+  iframe.src = buildScheduleUrl();
   iframe.title = 'Book an appointment';
   Object.assign(iframe.style, {
     width: '100%', height: 'calc(100% - 53px)', border: 'none',
@@ -189,6 +201,7 @@ export function openScheduleBooking() {
   iframe.setAttribute('allow', 'calendar *');
 
   iframe.addEventListener('load', () => {
+    try { trackEvent('calendar', 'loaded'); } catch (_) {}
     // Smooth transition: fade out loader, show iframe
     loadingEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
     loadingEl.style.opacity = '0';
@@ -201,6 +214,19 @@ export function openScheduleBooking() {
       iframe.style.animation = 'lfadeIn 0.3s ease';
     }, 400);
   });
+
+  // Best-effort: Google Calendar sends postMessage on booking; also detect URL change containing "booked"
+  const onCalendarMessage = (e) => {
+    try {
+      const origin = e.origin || '';
+      const data = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+      if (origin.includes('calendar.google.com') && /booked|appointment|confirmed/i.test(data)) {
+        trackEvent('calendar', 'booked');
+        window.removeEventListener('message', onCalendarMessage);
+      }
+    } catch (_) {}
+  };
+  window.addEventListener('message', onCalendarMessage);
 
   // Fallback: iframe fails to load within 12s, show a message
   const loadTimeout = setTimeout(() => {
@@ -221,6 +247,7 @@ export function openScheduleBooking() {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
       overlay.remove();
+      window.removeEventListener('message', onCalendarMessage);
       clearInterval(msgInterval);
       clearTimeout(loadTimeout);
     }
@@ -229,6 +256,7 @@ export function openScheduleBooking() {
   const onKeyDown = (e) => {
     if (e.key === 'Escape') {
       overlay.remove();
+      window.removeEventListener('message', onCalendarMessage);
       clearInterval(msgInterval);
       clearTimeout(loadTimeout);
       document.removeEventListener('keydown', onKeyDown);

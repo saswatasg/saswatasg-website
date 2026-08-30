@@ -83,5 +83,9 @@
 - `tools/generate-og-images.mjs:130` `fs.rm` before `mkdir` — dup ` * 2.png` cleaned, `dist/og` 16 files only
 - Build `31 routes + 404` green, `grep hreflang 2`, `sitemap lastmod 2026-08-30`
 
-## Pass 8 — Next
-- Analytics funnel + UTM
+## Pass 8 — Done (2026-08-30) — commit `fix: P1 analytics funnel + UTM`
+- `src/utils/analytics.js:1` `getUTM()` + `gtag` dual push + `generate_lead`/`purchase` conversion, `openCalendar.js:17` `buildScheduleUrl()` UTM append + `calendar loaded` on iframe `load` + `message` booked listener + cleanup, `ContactForm.jsx:7` `getUTM` + Supabase `contact_submissions` insert (best-effort) + `_utm_*` in formsubmit + `field_error`/`validation_failed` + `value 1`, `PillarCTA.jsx:7` `pillar_cta_viewed` on mount + `cta_clicked_by_pillar`, `HeroSection.jsx:185` removed `auto_advance` noise
+- Build `31 routes + 404` green
+
+## Pass 9 — Next
+- Email capture + PillarCTA fix + Supabase backend
