@@ -54,6 +54,13 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <Link
+              to="/pay"
+              onClick={() => trackEvent('navigation', 'pay')}
+              className="px-4 py-2 text-sm font-black rounded-lg border-2 border-black bg-white text-ink hover:bg-lemon transition-colors min-h-[44px] inline-flex items-center"
+            >
+              Pay
+            </Link>
             <div className="relative inline-flex group">
               <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <button
@@ -111,6 +118,13 @@ const Header = () => {
                     {item.name}
                   </NavLink>
                 ))}
+                <Link
+                  to="/pay"
+                  onClick={() => { trackEvent('navigation', 'mobile_pay'); setIsOpen(false); }}
+                  className="bg-white text-ink rounded-lg border-2 border-black px-4 py-3 text-sm font-black text-center mt-2 hover:bg-lemon transition-colors flex items-center justify-center gap-2 w-full"
+                >
+                  Pay
+                </Link>
                 <button
                   onClick={() => { trackEvent('navigation', 'mobile_book_a_call'); openScheduleBooking(); setIsOpen(false); }}
                   className="bg-ink text-white rounded-lg border-2 border-black px-4 py-3 text-sm font-bold text-center mt-2 hover:bg-white hover:text-ink transition-all duration-200 flex items-center justify-center gap-2 w-full"

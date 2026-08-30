@@ -46,10 +46,16 @@
 - `public/.htaccess` deleted (Vercel-ignored, Hostinger legacy)
 - Build `31 routes + 404` green
 
-## Pass 2 — Done (2026-08-30) — commit `fix: P0 API guardrails`
-- `api/create-order.js:1` `zod` `amount 100..5000000 paise (₹50k)` + `currency INR` whitelist + `receipt` regex `^[A-Za-z0-9_-]+$` + 2KB body guard + in-memory 10/min IP limit; `api/verify-payment.js:1` `zod` + `timingSafeEqual` + 20/min limit + 2KB guard; `api/chat.js:1` `message 2KB` + `history 6×2KB/8KB` cap + 429 + body 8KB guard + email/phone/name length + `totalChars>8000→400`
+## Pass 2 — Done (2026-08-30) — commit `fix: P0 API guardrails` `b0acad2`
+- `api/create-order.js:1` `zod` `amount 100..5_000_000 paise (₹50k)` + `currency INR` whitelist + `receipt` regex `^[A-Za-z0-9_-]+$` + 2KB body guard + in-memory 10/min IP limit; `api/verify-payment.js:1` `zod` + `timingSafeEqual` + 20/min limit + 2KB guard; `api/chat.js:1` `message 2KB` + `history 6×2KB/8KB` cap + 429 + body 8KB guard + email/phone/name length + `totalChars>8000→400`
 - `package.json:45` `zod 4.5.4` added
 - Build `31 routes + 404` green
 
-## Pass 3 — Next
-- Package `/pay` as sellable offer
+## Pass 3 — Done (2026-08-30) — commit `fix: P0 package /pay as sellable offer`
+- `src/pages/Pay.jsx:1` tiers Audit ₹25k (3d, 5 fixes, Loom) + Sprint ₹1.2L (14d, implement 3) + Custom field; `handleTierClick` sets `?amount=` + scroll; locked `?amount=&locked=1` still works; Terms/Refund line + guarantee; confirmation `paymentId` + next steps
+- `src/components/Header.jsx:8` Pay link added desktop + `mobile_pay` in `AnimatePresence` menu
+- `tools/generate-static-files.mjs:24` `/pay` 0.3 monthly → `public/sitemap.xml` 32 URLs (verify 31 routes + pay prerendered)
+- Build `32 URLs` sitemap + `31 routes + 404` green
+
+## Pass 4 — Next
+- Mobile nav + a11y + reduced-motion

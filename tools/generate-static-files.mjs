@@ -22,6 +22,7 @@ const STATIC_PAGES = [
   { path: '/case-studies/livekeeping-notifications', priority: 0.6, changefreq: 'yearly' },
   { path: '/case-studies/livekeeping-report-automation', priority: 0.6, changefreq: 'yearly' },
   { path: '/contact', priority: 0.5, changefreq: 'yearly' },
+  { path: '/pay', priority: 0.3, changefreq: 'monthly' },
 ];
 
 const BLOG_DIR = path.join(root, 'content', 'blog');

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import PageMeta from '@/components/PageMeta';
 import RazorpayCheckout from '@/components/payments/RazorpayCheckout';
-import { Lock, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Lock, ArrowLeft, CheckCircle2, ShieldCheck, Clock, FileText, BadgeCheck, MessageCircle } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics';
 
 function parseAmountParam(v) {
@@ -11,6 +11,27 @@ function parseAmountParam(v) {
   if (!Number.isFinite(n) || n < 1) return null;
   return Math.floor(n);
 }
+
+const TIERS = [
+  {
+    name: 'Teardown Audit',
+    price: 25000,
+    tag: 'Most popular',
+    timeline: '3 days',
+    for: 'Stores doing ₹10L+/mo',
+    includes: ['45-min Loom teardown', '5 fixes ranked by ROI', 'Notion doc + next steps', 'Async Q&A (7 days)'],
+    cta: 'Pay ₹25,000',
+  },
+  {
+    name: '2-Week Sprint',
+    price: 120000,
+    tag: 'Implementation',
+    timeline: '14 days',
+    for: 'Teams ready to ship',
+    includes: ['Everything in Audit', 'Implement top 3 fixes', 'GA4 instrumentation', 'Before/after report + Slack'],
+    cta: 'Pay ₹1,20,000',
+  },
+];
 
 export default function Pay() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,19 +46,24 @@ export default function Pay() {
 
   const handleAmountChange = (e) => {
     if (isLocked) return;
-    const val = e.target.value.replace(/[^0-9]/g, '');
-    // prevent leading zeros, allow empty
-    const cleaned = val.replace(/^0+/, '') || (val === '' ? '' : '0');
-    // Actually simpler: keep as typed without leading zero stripping for UX
-    setAmount(e.target.value.replace(/[^0-9]/g, ''));
-    const n = Number(e.target.value.replace(/[^0-9]/g, ''));
+    const cleaned = e.target.value.replace(/[^0-9]/g, '');
+    setAmount(cleaned);
+    const n = Number(cleaned);
     if (Number.isFinite(n) && n >= 1) {
-      setSearchParams({ ...(isLocked ? { locked: '1' } : {}), amount: String(Math.floor(n)) }, { replace: true });
-    } else if (e.target.value === '') {
+      setSearchParams({ amount: String(Math.floor(n)) }, { replace: true });
+    } else if (cleaned === '') {
       const params = new URLSearchParams(searchParams);
       params.delete('amount');
       setSearchParams(params, { replace: true });
     }
+  };
+
+  const handleTierClick = (price) => {
+    setAmount(String(price));
+    setSearchParams({ amount: String(price) }, { replace: true });
+    trackEvent('pay', 'tier_click', `₹${price}`);
+    document.getElementById('pay-amount')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('pay-amount')?.focus();
   };
 
   if (successData) {
@@ -56,6 +82,7 @@ export default function Pay() {
               <p className="font-mono text-sm font-bold text-ink mt-1 break-all">{successData.paymentId}</p>
               <p className="text-xs font-bold text-ink/50 mt-3 flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> Secured by Razorpay • Receipt sent to your email if provided</p>
             </div>
+            <p className="text-xs font-bold text-ink/40 mt-4">What’s next? I’ll confirm within 24h and share next steps. Questions? <a href="mailto:saswatasg@gmail.com" className="underline text-ink">saswatasg@gmail.com</a></p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/" className="px-6 py-3 rounded-xl bg-ink text-white border-2 border-black font-black text-sm text-center" style={{ boxShadow: '4px 4px 0px 0px #0A0A0A' }}>Back to home</Link>
               <Link to="/contact" className="px-6 py-3 rounded-xl bg-white text-ink border-2 border-black font-black text-sm text-center">Contact</Link>
@@ -68,18 +95,42 @@ export default function Pay() {
 
   return (
     <>
-      <PageMeta title="Pay — Saswata Sengupta" description="Secure payment via Razorpay — UPI, Cards, Net Banking." />
-      <div className="max-w-[520px] mx-auto px-4 md:px-6 pt-28 md:pt-32 pb-16">
+      <PageMeta title="Pay — Saswata Sengupta" description="Pay for Teardown Audit (₹25k), 2-Week Sprint (₹1.2L) or custom amount. Secure via Razorpay — UPI, Cards, Net Banking." />
+      <div className="max-w-[760px] mx-auto px-4 md:px-6 pt-28 md:pt-32 pb-16">
+        <div className="text-center mb-8">
+          <h1 className="font-display font-black text-3xl md:text-4xl text-ink tracking-tight">Pay Saswata</h1>
+          <p className="text-sm font-medium text-ink/60 mt-2 max-w-[600px] mx-auto">Consulting, teardown or sprint — pick a package or set a custom amount. All payments are secured by Razorpay. Receipt auto-emailed.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
+          {TIERS.map((tier) => (
+            <div key={tier.name} className="bg-white border-2 border-black rounded-2xl p-6 flex flex-col" style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-display font-black text-base text-ink">{tier.name}</h3>
+                <span className={`text-[10px] font-black px-2 py-1 rounded-lg border-2 border-black ${tier.price === 25000 ? 'bg-lemon text-ink' : 'bg-white text-ink'}`}>{tier.tag}</span>
+              </div>
+              <p className="text-2xl font-black text-ink">₹{tier.price.toLocaleString('en-IN')}</p>
+              <p className="text-xs font-bold text-ink/50 flex items-center gap-1 mt-1"><Clock className="w-3 h-3" /> {tier.timeline} • {tier.for}</p>
+              <ul className="mt-4 space-y-1.5 flex-1">
+                {tier.includes.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm font-medium text-ink/70"><BadgeCheck className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />{item}</li>
+                ))}
+              </ul>
+              <button
+                onClick={() => handleTierClick(tier.price)}
+                className="mt-5 w-full bg-ink text-white border-2 border-black rounded-xl py-3 font-black text-sm hover:bg-coral hover:text-white transition-colors"
+              >
+                {tier.cta}
+              </button>
+            </div>
+          ))}
+        </div>
+
         <div className="bg-white border-2 border-black rounded-2xl p-6 md:p-8" style={{ boxShadow: '8px 8px 0px 0px #0A0A0A' }}>
-          <h1 className="font-display font-black text-2xl text-ink">Complete your payment</h1>
+          <h2 className="font-display font-black text-lg text-ink flex items-center gap-2"><FileText className="w-5 h-5" /> Custom amount {isLocked && <span className="inline-flex items-center gap-1 text-xs bg-ink text-white px-2 py-1 rounded-lg border-2 border-black"><Lock className="w-3 h-3" /> Locked</span>}</h2>
           <p className="text-sm font-medium text-ink/60 mt-1">
-            {isLocked ? 'This payment link has a fixed amount. You can pay directly below.' : 'Enter the amount you’d like to pay and continue securely.'}
+            {isLocked ? `This link is fixed at ₹${effectiveAmount}. You can pay directly below.` : 'Agreed on a custom amount? Enter it here — or use /pay?amount=5000&locked=1 to share a locked link.'}
           </p>
-          {isLocked && (
-            <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-black bg-ink text-white px-2.5 py-1 rounded-lg border-2 border-black">
-              <Lock className="w-3 h-3" /> Amount locked at ₹{effectiveAmount}
-            </p>
-          )}
 
           <div className="mt-6">
             <label htmlFor="pay-amount" className="text-xs font-black tracking-widest text-ink/50">AMOUNT (INR)</label>
@@ -96,13 +147,13 @@ export default function Pay() {
                 className="w-full pl-9 pr-4 py-4 rounded-xl border-2 border-black bg-canvas text-xl font-black text-ink placeholder:text-ink/30 focus:outline-none focus:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
               />
             </div>
-            {!isLocked && <p className="text-xs font-bold text-ink/40 mt-2">Minimum ₹1 • No extra charges</p>}
+            {!isLocked && <p className="text-xs font-bold text-ink/40 mt-2">Minimum ₹1 • Razorpay fees shown at checkout • GST where applicable</p>}
           </div>
 
           <div className="mt-6">
             <RazorpayCheckout
               amount={canPay ? effectiveAmount * 100 : 100}
-              buttonText={canPay ? `Pay ₹${effectiveAmount}` : 'Enter an amount'}
+              buttonText={canPay ? `Pay ₹${effectiveAmount.toLocaleString('en-IN')}` : 'Enter an amount'}
               disabled={!canPay}
               onSuccess={(resp) => {
                 trackEvent('pay', 'success', `₹${effectiveAmount}`);
@@ -113,8 +164,17 @@ export default function Pay() {
               onClose={() => trackEvent('pay', 'cancel', `₹${effectiveAmount}`)}
             />
             <p className="text-xs font-bold text-ink/40 text-center mt-3 flex items-center justify-center gap-1">
-              <ShieldCheck className="w-3 h-3" /> 100% secure • UPI • Cards • Net Banking • Wallets
+              <ShieldCheck className="w-3 h-3" /> Secure • UPI • Cards • Net Banking • Wallets
             </p>
+            <p className="text-xs font-bold text-ink/40 text-center mt-2">Questions? <a href="mailto:saswatasg@gmail.com" className="underline">saswatasg@gmail.com</a> • Refunds within 7 days of receipt • <Link to="/contact" className="underline">Contact</Link> for Terms</p>
+          </div>
+        </div>
+
+        <div className="mt-6 bg-canvas border-2 border-black rounded-xl p-4 flex items-start gap-3">
+          <MessageCircle className="w-5 h-5 text-ink mt-0.5" />
+          <div>
+            <p className="text-sm font-black text-ink">Not sure what you need?</p>
+            <p className="text-sm font-medium text-ink/60">Book a 30-min teardown first — no deck, no pitch. <button onClick={() => { trackEvent('pay', 'book_teardown'); window.dispatchEvent(new CustomEvent('openCalendar')); }} className="underline font-black text-ink">Book a call</button> or <Link to="/contact" className="underline">contact me</Link>.</p>
           </div>
         </div>
 
