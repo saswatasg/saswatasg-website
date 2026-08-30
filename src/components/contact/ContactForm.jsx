@@ -20,7 +20,7 @@ const ContactForm = () => {
   const validateEmail = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (value && !emailRegex.test(value)) {
-      setEmailError('Please enter a valid email');
+      setEmailError('That email won’t deliver — check the domain (e.g., ana@company.com)');
       return false;
     }
     setEmailError('');
@@ -40,7 +40,10 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      trackEvent('contact_form', 'validation_failed');
+      return;
+    }
     trackEvent('contact_form', 'submit', name);
     setIsSubmitting(true);
     let error = null;
@@ -65,10 +68,10 @@ const ContactForm = () => {
     }
     setIsSubmitting(false);
     if (error) {
-      toast({ title: 'Uh oh! Something went wrong.', description: 'There was a problem with your request. Please try again.', variant: 'destructive', duration: 5000 });
+      toast({ title: 'Couldn’t send — FormSubmit hiccup.', description: 'Email me directly: saswatasg@gmail.com', variant: 'destructive', duration: 5000 });
     } else {
       trackEvent('contact_form', 'success');
-      toast({ title: 'Message Sent!', description: 'Thanks for reaching out. I\'ll get back to you soon!', duration: 5000 });
+      toast({ title: 'Got it — I’ll read this today and reply within 24h.', description: 'If urgent, book directly above.', duration: 5000 });
       setName(''); setEmail(''); setPhone(''); setMessage(''); setEmailError('');
     }
   };
@@ -82,17 +85,31 @@ const ContactForm = () => {
     >
       <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 w-full max-w-2xl mx-auto">
         <h2 className="text-xl font-display font-black text-ink mb-1">Send me a message</h2>
-        <p className="text-sm text-ink/70 font-medium mb-8">I'll get back to you as soon as possible.</p>
+        <p className="text-sm text-ink/70 font-medium mb-8">Average reply: 6h · No newsletter, no spam · I reply within 24h</p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required aria-label="Your name" className="rounded-lg border-2 border-black" />
-            <Input type="email" placeholder="Your email" value={email} onChange={(e) => { setEmail(e.target.value); if (emailError) validateEmail(e.target.value); }} onBlur={handleEmailBlur} required aria-label="Your email" className={cn("rounded-lg border-2 border-black", emailError && "border-red-500")} />
+            <div>
+              <label htmlFor="contact-name" className="text-xs font-black tracking-widest text-ink/70">NAME *</label>
+              <Input id="contact-name" type="text" placeholder="What should I call you?" value={name} onChange={(e) => setName(e.target.value)} required aria-required="true" className="mt-1 rounded-lg border-2 border-black" />
+              <p className="text-[11px] font-bold text-ink/50 mt-1">What should I call you?</p>
+            </div>
+            <div>
+              <label htmlFor="contact-email" className="text-xs font-black tracking-widest text-ink/70">EMAIL *</label>
+              <Input id="contact-email" type="email" placeholder="ana@company.com" value={email} onChange={(e) => { setEmail(e.target.value); if (emailError) validateEmail(e.target.value); }} onBlur={handleEmailBlur} required aria-required="true" aria-invalid={!!emailError} aria-describedby={emailError ? "email-error" : "email-hint"} className={cn("mt-1 rounded-lg border-2 border-black", emailError && "border-red-500 focus-visible:ring-red-500")} />
+              {emailError ? <p id="email-error" role="alert" className="text-red-600 text-xs font-bold mt-1">{emailError}</p> : <p id="email-hint" className="text-[11px] font-bold text-ink/50 mt-1">Work email is fine — I only reply, never market.</p>}
+            </div>
           </div>
-          {emailError && <p className="text-red-500 text-xs font-bold">{emailError}</p>}
-          <Input type="tel" placeholder="Your phone (optional)" value={phone} onChange={handlePhoneChange} aria-label="Your phone" className="rounded-lg border-2 border-black" />
-          <Textarea placeholder="Your message... (min 10 characters)" rows={5} value={message} onChange={handleMessageChange} required aria-label="Your message" className="rounded-xl border-2 border-black" />
-          <div className="text-xs font-bold text-ink/40 text-right">{message.length} / {MAX_MESSAGE_LENGTH} characters</div>
+          <div>
+            <label htmlFor="contact-phone" className="text-xs font-black tracking-widest text-ink/70">PHONE <span className="font-bold text-ink/40">(optional)</span></label>
+            <Input id="contact-phone" type="tel" placeholder="+91 90000 00000" value={phone} onChange={handlePhoneChange} aria-describedby="phone-hint" className="mt-1 rounded-lg border-2 border-black" />
+            <p id="phone-hint" className="text-[11px] font-bold text-ink/50 mt-1">Digits, spaces, + and - only • Only if you want a callback.</p>
+          </div>
+          <div>
+            <label htmlFor="contact-message" className="text-xs font-black tracking-widest text-ink/70">MESSAGE *</label>
+            <Textarea id="contact-message" placeholder="The number that won't move — and what you've tried (min 10 chars)" rows={5} value={message} onChange={handleMessageChange} required aria-required="true" className="mt-1 rounded-xl border-2 border-black" />
+            <div className="text-xs font-bold text-ink/60 text-right mt-1">{message.length} / {MAX_MESSAGE_LENGTH}</div>
+          </div>
 
           <div className="flex justify-end pt-4">
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const tags = [
   'B2B SaaS', 'Product Discovery', 'GA4 Analytics', 'A/B Testing',
@@ -8,6 +8,7 @@ const tags = [
 
 const Marquee = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const infinite = [...tags, ...tags, ...tags, ...tags];
 
   return (
@@ -21,17 +22,17 @@ const Marquee = () => {
     >
       <motion.div
         className="flex whitespace-nowrap gap-3"
-        animate={{ x: isPaused ? '0%' : ['0%', '-50%'] }}
+        animate={shouldReduceMotion ? { x: '0%' } : { x: isPaused ? '0%' : ['0%', '-50%'] }}
         transition={{
-          duration: isPaused ? 0 : 30,
-          repeat: isPaused ? 0 : Infinity,
+          duration: shouldReduceMotion || isPaused ? 0 : 30,
+          repeat: shouldReduceMotion || isPaused ? 0 : Infinity,
           ease: 'linear',
         }}
       >
         {infinite.map((tag, i) => (
           <motion.span
             key={i}
-            whileHover={{ scale: 1.1, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
             className="inline-flex items-center px-3 py-1 rounded-lg bg-coral text-ink text-xs font-bold border-2 border-black cursor-pointer"
           >
             {tag}

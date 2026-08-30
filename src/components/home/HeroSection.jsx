@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Calendar, Star, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
 import { openScheduleBooking } from '@/utils/openCalendar';
 import { trackEvent } from '@/utils/analytics';
@@ -174,11 +174,12 @@ const slides = [
   ];
 
 const HeroSection = () => {
+  const shouldReduceMotion = useReducedMotion();
   const [slideIndex, setSlideIndex] = useState(0);
   const [slidePaused, setSlidePaused] = useState(false);
 
   useEffect(() => {
-    if (slidePaused) return;
+    if (slidePaused || shouldReduceMotion) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => {
         const next = (prev + 1) % slides.length;
@@ -187,7 +188,7 @@ const HeroSection = () => {
       });
     }, 5000);
     return () => clearInterval(timer);
-  }, [slidePaused]);
+  }, [slidePaused, shouldReduceMotion]);
 
   return (
     <section className="w-full pt-20 md:pt-24 lg:pt-28">

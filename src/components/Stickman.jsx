@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
 const pageMessages = {
@@ -57,6 +57,7 @@ const danceMsgs = [
 ];
 
 const Stickman = () => {
+  const shouldReduceMotion = useReducedMotion();
   const location = useLocation();
   const pathKey = Object.keys(pageMessages).find((p) => location.pathname === p || (p !== '/' && location.pathname.startsWith(p))) || '';
   const msgs = pageMessages[pathKey] || defaultMessages;
@@ -161,15 +162,17 @@ const Stickman = () => {
   }, [mouse, quirky, bored]);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     const idle = setInterval(() => {
       if (!bubble.show) {
         showBubble(msgs.idle[Math.floor(Math.random() * msgs.idle.length)], 5000);
       }
     }, 10000);
     return () => clearInterval(idle);
-  }, [bubble.show, showBubble]);
+  }, [bubble.show, showBubble, shouldReduceMotion]);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     const roam = setInterval(() => {
       const maxX = typeof window !== 'undefined' ? window.innerWidth - 160 : 400;
       const maxY = typeof window !== 'undefined' ? window.innerHeight - 200 : 400;
@@ -189,6 +192,7 @@ const Stickman = () => {
   }, []);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     quirkyTimer.current = setInterval(() => {
       if (Date.now() - lastActive.current > 15000 && !roaming) {
         if (Math.random() < 0.4) {
@@ -210,6 +214,7 @@ const Stickman = () => {
   }, [roaming, bored, showBubble]);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     boredomTimer.current = setInterval(() => {
       if (Date.now() - lastActive.current > 25000 && !roaming && !quirky) {
         setBored(true);
@@ -290,20 +295,22 @@ const Stickman = () => {
           : { y: 120, opacity: 0, scale: 0.5 }
       }
       style={{ pointerEvents: 'auto' }}
-      whileHover={{ scale: 1.08, transition: { duration: 0.2 } }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.08, transition: { duration: 0.2 } }}
     >
       <motion.div
         onClick={handleClick}
         animate={
-          squish
-            ? { scaleX: 0.8, scaleY: 1.2, rotate: [0, -3, 3, 0], transition: { duration: 0.25 } }
-            : roaming
-              ? { y: [0, -4, 0], transition: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' } }
-              : bodyWiggle
-                ? { rotate: [0, -4, 4, -2, 2, 0], transition: { duration: 0.6 } }
-                : bored
-                  ? { y: [0, 2, 0], transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' } }
-                  : { y: [0, -5, 0], transition: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' } }
+          shouldReduceMotion
+            ? {}
+            : squish
+              ? { scaleX: 0.8, scaleY: 1.2, rotate: [0, -3, 3, 0], transition: { duration: 0.25 } }
+              : roaming
+                ? { y: [0, -4, 0], transition: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' } }
+                : bodyWiggle
+                  ? { rotate: [0, -4, 4, -2, 2, 0], transition: { duration: 0.6 } }
+                  : bored
+                    ? { y: [0, 2, 0], transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' } }
+                    : { y: [0, -5, 0], transition: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' } }
         }
         style={{
           transform: `scaleX(${flip}) rotate(${lean}deg) translate(${translate.x}px, ${translate.y}px)`,

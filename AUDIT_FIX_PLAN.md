@@ -57,5 +57,11 @@
 - `tools/generate-static-files.mjs:24` `/pay` 0.3 monthly → `public/sitemap.xml` 32 URLs (verify 31 routes + pay prerendered)
 - Build `32 URLs` sitemap + `31 routes + 404` green
 
-## Pass 4 — Next
-- Mobile nav + a11y + reduced-motion
+## Pass 4 — Done (2026-08-30) — commit `fix: P0 mobile nav + a11y + reduced-motion`
+- `src/components/Header.jsx:1` `Sheet` (`Radix Dialog`) with `aria-expanded/controls`, `SheetTrigger/SheetContent/SheetClose` focus trap + Esc + backdrop + `focus-visible:ring-ink`, desktop `Pay` secondary CTA kept
+- `src/components/contact/ContactForm.jsx:20` visible `<label>` + `aria-invalid/describedby` + `role=alert` for `emailError`, helper `Work email is fine — I only reply`, success `Got it — I’ll read today and reply within 24h`, `isFormValid` validation_failed tracking, `text-ink/70` contrast fix
+- `src/components/Marquee.jsx:1` + `src/components/Stickman.jsx:1` + `src/components/home/HeroSection.jsx:1` `useReducedMotion` gate: Marquee `x 0%` when reduced, Stickman roaming/idle/quirky/bored intervals + `y/rotate` + `whileHover` disabled, Hero auto-advance + progress bar `5s→0` disabled
+- Build `31 routes + 404` green
+
+## Pass 5 — Next
+- Rotate secrets + deps + gitleaks CI
