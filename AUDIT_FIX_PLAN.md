@@ -1,0 +1,50 @@
+# Audit Fix Plan — saswatasg.com
+**Source:** 6-team audit (Product, UI/UX, Tech, Marketing, SEO, Copy) 30 Aug 2026 — `8b2cec0` green (31 routes + 404) | Stack Vite 4 + React 18 + MDX 3 + Vercel SSR
+
+> Rule: **1 pointer per pass** — ship, verify `npm run build`, push, re-audit.
+
+## Pass Order (P0 → P2)
+
+### P0 — Ship this week (revenue + security + a11y + SEO parity)
+| Pass | Pointer | Owner | Files | Effort | Success |
+|---|---|---|---|---|---|
+| **1** | **Security headers + SPA fallback + Node alignment + .htaccess cleanup** | Tech + SEO | `vercel.json:1`, `public/.htaccess:1`, `.nvmrc:1`, `.github/workflows/ci.yml:19`, `package.json:3` | S | `curl -I https://saswatasg.com` shows `Strict-Transport`, `X-Frame`, `X-Content-Type`, `Referrer`, `Permissions-Policy`, `CSP`; deep link `/blog/:slug` refresh 200; `node -v` = CI = `.nvmrc` |
+| **2** | **API guardrails (create-order / verify-payment / chat)** — `zod` validate `amount 100..500000 INR only`, `currency INR` whitelist, `receipt` regex, `locked` server-enforced, `timingSafeEqual`, rate-limit (Upstash or in-memory 10/min IP), `chat` history 6×2KB cap + 429 | Tech | `api/create-order.js:8`, `api/verify-payment.js:28`, `api/chat.js:38`, `src/pages/Pay.jsx:18` | M | `npm test` HMAC + pay amount fuzz passes; `verify-payment` timingSafe; `chat` 1000-history → 429 |
+| **3** | **Package `/pay` as sellable offer** — 3 tiers (Audit ₹25k / Sprint ₹1.2L / Custom) + What's included + timeline + guarantee + Terms/Refund/Privacy, `?amount=&locked=1` already works (`Pay.jsx:18`) keep it, add `noindex` decision + sitemap 0.3, header secondary CTA `Header.jsx:8` | Product + Marketing | `src/pages/Pay.jsx:74`, `src/components/Footer.jsx:42`, `tools/generate-static-files.mjs:8`, `src/components/Header.jsx:8` | M | `/pay` has tiers, footer+header link, `noindex` or sitemap entry, pay CTA clicks +3× |
+| **4** | **Mobile nav + a11y + reduced-motion** — `Sheet` (`src/components/ui/sheet.jsx:13`) with `aria-expanded/controls/focus trap/Esc/backdrop`, `ContactForm` `aria-invalid/describedby` + visible `<label>`, `text-ink/40→70` contrast, `useReducedMotion` gate for `HeroSection:294` + `Stickman` + `Marquee` | UI/UX | `src/components/Header.jsx:91`, `src/components/contact/ContactForm.jsx:88`, `src/index.css:75`, `src/components/home/HeroSection.jsx:11` | M | Lighthouse a11y ≥95, keyboard trap passes, `prefers-reduced-motion` disables motion |
+| **5** | **Rotate secrets + deps + gitleaks CI** — Razorpay live pair already purged to `YOUR_` in `14949f5` but must regenerate in Dashboard + `vercel env rm/add` + `gitleaks` pre-commit + `ci.yml` secret scan, bump `esbuild≤0.24.2` + `react-router 6.30.6` GHSA-2w69 | Tech | `.env.example:4`, `api/*:15`, `.github/workflows/ci.yml:25`, `package.json:44` | S | `git log -p | grep rzp_live` empty on `main`, `npm audit` high 0, `gitleaks` passes |
+| **6** | **Copy header + CTA outcome contracts + 404 + tagline single-source** — `Header Home→Saswata` `Header.jsx:32`, `Book a Call → Book 30-min teardown — no deck` `Header.jsx:60`/`Contact.jsx:108`, `Send → Send — reply within 24h` `ContactForm.jsx:101`, `NotFound` brutalist `NotFound.jsx:25`, `Footer Pay` tagline unify `PageMeta.jsx:6` | Copy | `src/components/Header.jsx:32`, `src/pages/Contact.jsx:67`, `src/pages/NotFound.jsx:25`, `src/components/Footer.jsx:28` | S | Header shows `Saswata`, all primary CTAs have outcome, 404 → `/case-studies` CTR up |
+
+### P1 — CTR / Pipeline (next 2 weeks)
+| Pass | Pointer |
+|---|---|
+| **7** | **Hreflang + sitemap lastmod + OG self-host + Publisher Org + case-study schema** — `PageMeta.jsx:96` + `BlogLayout.jsx:24` `hreflang en/x-default`, `tools/generate-static-files.mjs:71` `lastmod` on all URLs, `src/pages/Pay.jsx:46` `noindex`, `public/og/default.png` local, `BlogLayout.jsx:61` `Organization` + `WebSite SearchAction`, duplicate `dist/og/* 2.png` clean + `fs.rm` in `tools/generate-og-images.mjs:130` |
+| **8** | **Analytics funnel** — `calendar_loaded/booked` via `openCalendar.js:128` `postMessage`, `form_field_error`, `blog_cta_viewed/clicked_by_pillar`, UTM persist to Supabase, deprecate `hero_slideshow:auto_advance` `HeroSection.jsx:185` noise, add `value` param |
+| **9** | **Email capture + PillarCTA fix + Supabase backend** — `BlogLayout.jsx:100` + `BlogIndex.jsx:60` capture → `/api/subscribe` (ConvertKit/Brevo), `blogPosts.js:58` `growth` → `Book a call` (not LinkedIn), sync `ContactForm.jsx:48` `formsubmit.co` → Supabase insert + `utm/referrer` |
+| **10** | **Copy tighten** — `lead-form-overhaul 62→48` words `AnswerBox`, add FAQ `How long to +124%? 28 days`, kill `CI pipelines` jargon `one-fix-a-week-cro.mdx:19`, split `About.jsx:89` 58w → 3, `HeroSection.jsx:240` split |
+| **11** | **Image sitemap + llms + stale dates** — `stripMdxToText:40` strip `^import`, stagger `updated` (not all `2026-08-03`), sort by `updated` not `date`, add `<image:image>` for each `Figure src` |
+
+### P2 — Scale (4-8 weeks)
+| Pass | Pointer |
+|---|---|
+| **12** | **Split blogPosts 223KB** — `import.meta.glob` non-eager + per-post dynamic `BlogPost.jsx:33`, `manualChunks blog`, self-host fonts `font-display:swap`, `ErrorBoundary` `App.jsx` |
+| **13** | **Tests + lint + deps major** — `vitest` for `validate-posts` + `verify-payment` HMAC + `Pay parseAmount`, `playwright` smoke `/pay locked disables input`, re-enable `no-unused-vars:warn` `eslint.config.mjs:35`, `vite 4→6`, `tailwind 4` plan |
+| **14** | **Marketing proof + sitemap growth** — verifiable testimonials (LinkedIn + logo), `changefreq monthly`, add `Case Study` to `feed.xml`, publish `Now/Next/Later` roadmap + ROI calculator lead magnet (DhanPlan widget) |
+
+## Current Status
+- `8b2cec0` live, `31 routes + 404` green, `/pay` footer-only `Footer.jsx:42`, live Razorpay env in Vercel prod/preview/dev (set 30 Aug), history purged to `YOUR_RAZORPAY_*` (old `09db66d` stale log).
+- This file is the single source of truth. Update checklist per pass.
+
+## How to use
+1. Pick next Pass row, implement pointer, `npm run build` must pass `verify-prerender`, push, tick box here.
+2. 1 pointer per pass — no batching.
+3. After each pass, re-run `tools/validate-posts.mjs` + `scripts/verify-prerender.mjs` + `npm audit --audit-level=high`.
+
+## Pass 1 — Done (2026-08-30) — commit `fix: P0 security headers + SPA fallback + Node 22 + remove .htaccess`
+- `vercel.json:4` rewrites catch-all `/(.*)→/index.html` + headers `HSTS/X-Frame/X-Content-Type/Referrer/Permissions/CSP` + `/assets` & `/og` immutable cache
+- `ci.yml:19` `node 20→22` matches `.nvmrc:1`
+- `public/.htaccess` deleted (Vercel-ignored, Hostinger legacy)
+- Build `31 routes + 404` green
+
+## Pass 2 — Next
+- API guardrails (create-order / verify-payment / chat)
