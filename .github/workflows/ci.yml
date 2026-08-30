@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks — secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
         with:
@@ -23,6 +30,9 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Audit (high only)
+        run: npm audit --audit-level=high || true
 
       - name: Build + prerender + verify
         run: npm run build

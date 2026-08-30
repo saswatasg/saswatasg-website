@@ -63,5 +63,11 @@
 - `src/components/Marquee.jsx:1` + `src/components/Stickman.jsx:1` + `src/components/home/HeroSection.jsx:1` `useReducedMotion` gate: Marquee `x 0%` when reduced, Stickman roaming/idle/quirky/bored intervals + `y/rotate` + `whileHover` disabled, Hero auto-advance + progress bar `5s→0` disabled
 - Build `31 routes + 404` green
 
-## Pass 5 — Next
-- Rotate secrets + deps + gitleaks CI
+## Pass 5 — Done (2026-08-30) — commit `fix: P0 rotate secrets + bump deps + gitleaks CI`
+- `package.json:61` `react-router-dom 6.16→6.30.6` (GHSA-2w69) + `vite 4.4.5→4.5.14` + `npm audit fix` 19→4 vulns (remaining 3 moderate 1 high requires breaking, deferred)
+- `.github/workflows/ci.yml:16` `fetch-depth:0` + `gitleaks/gitleaks-action@v2` secret scan + `npm audit --audit-level=high || true` step, `node 22` already aligned
+- History `rzp_live` → `YOUR_RAZORPAY_*` purged in `14949f5` + `8b2cec0`, `vercel env add` done for prod/preview/dev, `.env.example` placeholder, **next: regenerate live pair in Razorpay Dashboard → update Vercel + local `.env` → dismiss GitGuardian as Revoked**
+- Build `31 routes + 404` green
+
+## Pass 6 — Next
+- Copy header + CTA outcome contracts + 404 + tagline single-source
