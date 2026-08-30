@@ -127,6 +127,7 @@ const fonts = [
   { name: 'Inter', weight: 800, style: 'normal', data: await fs.readFile(path.join(FONT_DIR, 'Inter-800.ttf')) },
 ];
 
+await fs.rm(OUT_DIR, { recursive: true, force: true });
 await fs.mkdir(OUT_DIR, { recursive: true });
 
 const files = (await fs.readdir(BLOG_DIR)).filter((f) => f.endsWith('.mdx'));

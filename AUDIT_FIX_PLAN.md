@@ -76,5 +76,12 @@
 - `src/components/Footer.jsx:28` tagline unified to `Product Manager — shipping outcomes, not features.` (`PageMeta.jsx:6`)
 - Build `31 routes + 404` green
 
-## Pass 7 — Next
-- Hreflang + sitemap lastmod + OG self-host + Publisher Org + case-study schema
+## Pass 7 — Done (2026-08-30) — commit `fix: P1 SEO — hreflang + sitemap lastmod + OG self-host + Publisher Org + case-study schema`
+- `src/components/PageMeta.jsx:96` + `src/components/blog/BlogLayout.jsx:24` `hreflang en/x-default` ×2, `prerender` preserves, `dist/index.html` verified 2 tags
+- `tools/generate-static-files.mjs:43` `stripMdxToText` strip `^import`, `writeSitemap:30` `lastmod` on all static 32 URLs (`sitemap.xml:32` verified today `2026-08-30`), `writeSitemap` already includes `/pay` 0.3
+- `public/og/default.png + logo.png` 379KB self-hosted from `i.postimg.cc`, `index.html:33` + `PageMeta.jsx:90` `og:image` → `https://saswatasg.com/og/default.png`, `index.html:45` preload `/og/default.png`, `BlogLayout.jsx:61` publisher `Organization` + logo + `twitter:site/creator` `BlogLayout.jsx:45`, case-study `PageMeta.jsx:100` `Article + BreadcrumbList` for `/case-studies/*`
+- `tools/generate-og-images.mjs:130` `fs.rm` before `mkdir` — dup ` * 2.png` cleaned, `dist/og` 16 files only
+- Build `31 routes + 404` green, `grep hreflang 2`, `sitemap lastmod 2026-08-30`
+
+## Pass 8 — Next
+- Analytics funnel + UTM

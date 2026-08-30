@@ -22,6 +22,8 @@ const BlogLayout = ({ post, children }) => {
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
         <link rel="canonical" href={postUrl} />
+        <link rel="alternate" href={postUrl} hreflang="en" />
+        <link rel="alternate" href={postUrl} hreflang="x-default" />
         <link rel="alternate" type="application/rss+xml" title="Saswata S. Sengupta — Blog" href={`${SITE_URL}/feed.xml`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
@@ -42,6 +44,8 @@ const BlogLayout = ({ post, children }) => {
         <meta name="twitter:description" content={post.description} />
         <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:image:alt" content={post.title} />
+        <meta name="twitter:site" content="@saswatasg" />
+        <meta name="twitter:creator" content="@saswatasg" />
         <meta name="author" content="Saswata S. Sengupta" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -58,7 +62,7 @@ const BlogLayout = ({ post, children }) => {
             keywords: [post.targetKeyword, ...(post.secondaryKeywords || [])].filter(Boolean).join(', '),
             articleSection: pillarMeta.label,
             author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
-            publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
+            publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Saswata S. Sengupta', logo: { '@type': 'ImageObject', url: `${SITE_URL}/og/logo.png` } },
             mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
           })}
         </script>

@@ -41,6 +41,7 @@ function clampToToday(isoDate) {
 function stripMdxToText(mdx) {
   return mdx
     .replace(/^---[\s\S]*?---\s*/m, '')
+    .replace(/^import .*$/gm, ' ')
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/[#>*\-`|[\]()!]/g, ' ')
@@ -69,9 +70,11 @@ async function readPosts() {
 }
 
 async function writeSitemap(posts) {
+  const today = clampToToday(new Date().toISOString().slice(0, 10));
   const urlTags = STATIC_PAGES.map(
     (page) => `  <url>
     <loc>${SITE_URL}${page.path === '/' ? '/' : page.path}</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`

@@ -87,13 +87,15 @@ const PageMeta = ({ title, description, noindex = false, image }) => {
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath || ''}`;
 
-  const ogImage = image || "https://i.postimg.cc/k4SXX1GT/Saswata-img1.png";
+  const ogImage = image || "https://saswatasg.com/og/default.png";
 
   return (
     <Helmet>
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       <link rel="canonical" href={finalUrl} />
+      <link rel="alternate" href={finalUrl} hreflang="en" />
+      <link rel="alternate" href={finalUrl} hreflang="x-default" />
       <link rel="alternate" type="application/rss+xml" title="Saswata S. Sengupta — Blog" href="https://saswatasg.com/feed.xml" />
       {noindex && <meta name="robots" content="noindex" />}
       
@@ -113,6 +115,33 @@ const PageMeta = ({ title, description, noindex = false, image }) => {
       <meta name="twitter:image:alt" content="Saswata S. Sengupta — Product Manager" />
       <meta name="twitter:site" content="@saswatasg" />
       <meta name="twitter:creator" content="@saswatasg" />
+      {currentPath.startsWith('/case-studies/') && currentPath !== '/case-studies' && (
+        <>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: finalTitle,
+              description: finalDescription,
+              image: [ogImage],
+              author: { '@type': 'Person', '@id': 'https://saswatasg.com/#person', name: 'Saswata S. Sengupta' },
+              publisher: { '@type': 'Organization', '@id': 'https://saswatasg.com/#organization', name: 'Saswata S. Sengupta', logo: { '@type': 'ImageObject', url: 'https://saswatasg.com/og/logo.png' } },
+              mainEntityOfPage: { '@type': 'WebPage', '@id': finalUrl },
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saswatasg.com/' },
+                { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://saswatasg.com/case-studies' },
+                { '@type': 'ListItem', position: 3, name: finalTitle, item: finalUrl },
+              ],
+            })}
+          </script>
+        </>
+      )}
     </Helmet>
   );
 };
