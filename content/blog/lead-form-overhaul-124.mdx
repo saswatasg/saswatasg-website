@@ -3,7 +3,7 @@ title: "How a form fix lifted lead submissions by 124% in 28 days"
 description: "A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days."
 slug: "lead-form-overhaul-124"
 date: 2026-03-12
-updated: 2026-08-03
+updated: 2026-08-29
 pillar: growth
 persona: cro-operator
 targetKeyword: "lead form conversion optimization"
@@ -19,6 +19,8 @@ faq:
     a: "Length is a symptom, not the cause. Inline validation, format hints and case-specific microcopy beat removing fields."
   - q: "What tools reveal form drop-offs?"
     a: "GA4 custom events for a field-by-field funnel, Microsoft Clarity for rage clicks and recordings, then a prioritized fix list."
+  - q: "How long to see the +124% lift?"
+    a: "28 days after instrumentation — 14 days to measure, 14 to ship and validate."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,7 +28,7 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-Lead forms rarely leak the way you think — and "the form is too long" is almost always a red herring. We installed field-level GA4 events, watched Clarity sessions, and found one restrictive field whose silent failure drove 23% of all drop-offs — double the next-worst culprit. Format hints, inline validation and case-specific microcopy lifted lead submissions +124% in 28 days, and we ended up with *more* fields than before.
+Lead forms leak at one field, not from length. A hidden phone-format rule drove 23% of drop-offs. Mask + inline validation + intent labels lifted submissions 124% in 28 days — with more fields, not fewer.
 </AnswerBox>
 
 The marketing ask was the sane one: *more traffic*. The team wanted a bigger top of funnel. The data said we'd been paying for traffic and then spilling a big slice of it on the walk to the callback — a form with a 23% leak at one field is a bigger lever than any ad-budget increase. But I had to prove the leak existed before I could ask for the fix.

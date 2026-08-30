@@ -92,5 +92,12 @@
 - `api/subscribe.js:1` `zod email` + `rate 5/min IP` + `Supabase email_subscribers` insert (pillar/source/utm) + `23505` already-subscribed → success, `src/components/blog/EmailCapture.jsx:1` brutalist card with `CRO Checklist / RFP / Teardown` per pillar, `getUTM` + `trackEvent` submit/success/failed, `BlogLayout.jsx:106` below `AuthorBox` + `BlogIndex.jsx:60` below pillar filters (source `blog:slug` / `blog_index`)
 - Build `31 routes + 404` green (post sizes +2KB for capture)
 
-## Pass 10 — Next
-- Copy tighten + stale dates
+## Pass 10 — Done (2026-08-30) — commit `fix: P1 copy tighten + stale dates`
+- `content/blog/lead-form-overhaul-124.mdx:28` `AnswerBox 62→48` words `Lead forms leak at one field… 124% in 28 days — with more fields, not fewer`, `faq:22` +Q4 `How long to see +124%? 28 days — 14 to measure, 14 to ship`
+- `content/blog/one-fix-a-week-cro.mdx:19` `CI pipelines → before/after cohorts on 15K+ weekly sessions, not paired A/B tests`
+- `src/pages/About.jsx:89` 58w → 3 p `A year and a half at Sierra…` + `At LiveKeeping…` + `Now at Upcore…`, `src/components/home/HeroSection.jsx:236` `3+ years…` → `Cut checkout 73%→54% at Sierra…` + `B.Tech (Mech) + IIT Jodhpur MBA`
+- `content/blog/lead-form-overhaul-124.mdx:6` `2026-08-03→2026-08-29`, `one-fix-a-week-cro.mdx:6` `→2026-08-30`, `sitemap.xml` lastmod staggered, `postStats.json` regen
+- Build `31 routes + 404` green
+
+## Pass 11 — Next
+- Image sitemap + llms + stale dates guard

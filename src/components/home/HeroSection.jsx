@@ -234,7 +234,10 @@ const HeroSection = () => {
                 </motion.p>
 
                 <motion.p variants={childVariants} className="mt-3 text-ink/70 text-sm md:text-base">
-                   3+ years across AI agents (Upcore), D2C e-commerce (73% → 54% checkout fix at Sierra Living Concepts), and B2B SaaS (LiveKeeping/IndiaMART). B.Tech (Mech) + IIT Jodhpur MBA. Currently building discovery-to-deployment workflows for enterprise AI agents.
+                  Cut checkout abandonment 73%→54% at Sierra. Ran compliance diagnostics at LiveKeeping/IndiaMART. Now building AI discovery-to-deployment at Upcore.
+                </motion.p>
+                <motion.p variants={childVariants} className="mt-2 text-ink/70 text-sm md:text-base">
+                  B.Tech (Mech) + IIT Jodhpur MBA.
                 </motion.p>
 
                 <motion.div variants={childVariants} className="flex flex-wrap gap-2 md:gap-3 mt-5">

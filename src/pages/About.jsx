@@ -86,7 +86,13 @@ function About() {
               </p>
 
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                At Sierra Living Concepts, I spent a year and a half inside a D2C furniture business, watching how people shop for things that cost real money — sofas, beds, dining sets — and rebuilt the experience around what their behaviour was actually telling us. At LiveKeeping, I landed inside a compliance software company and found a gap nobody had flagged: users were bypassing the product entirely for a workaround. I traced it through the data, surfaced it to leadership, and watched it turn into a company-wide initiative. Now at Upcore, I'm working on something newer — building how enterprises discover and deploy AI agents, from first conversation to production.
+                A year and a half at Sierra Living Concepts. D2C furniture — sofas to dining sets, real money, real hesitation. I rebuilt the journey around what clicks and scrolls were actually saying.
+              </p>
+              <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
+                At LiveKeeping, I landed inside a compliance product and found a gap nobody had flagged: users bypassing it for a workaround. I traced it through data, surfaced it to leadership, and watched it become a company-wide initiative.
+              </p>
+              <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
+                Now at Upcore, I’m building how enterprises discover and deploy AI agents — from first conversation to production.
               </p>
 
               <div className="flex flex-wrap gap-2 mt-5">
