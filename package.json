@@ -11,6 +11,7 @@
     "lint": "eslint . --quiet",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "razorpay:verify": "node -e \"console.log(\"Razorpay env check:\")\""
   },
   "dependencies": {
@@ -72,6 +73,7 @@
     "zod": "^4.5.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^20.8.3",
     "@types/react": "^18.2.15",
