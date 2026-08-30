@@ -66,7 +66,7 @@ async function readPosts() {
       content,
     });
   }
-  return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  return posts.sort((a, b) => new Date(b.updated) - new Date(a.updated) || new Date(b.date) - new Date(a.date));
 }
 
 async function writeSitemap(posts) {
@@ -80,16 +80,18 @@ async function writeSitemap(posts) {
   </url>`
   );
   for (const post of posts) {
+    const images = [...post.content.matchAll(/src="(\/blog-assets\/[^"]+)"/g)].map((m) => m[1]);
+    const imageTags = images.map((src) => `    <image:image><image:loc>${SITE_URL}${src}</image:loc></image:image>`).join('\n');
     urlTags.push(`  <url>
     <loc>${SITE_URL}/blog/${post.slug}</loc>
     <lastmod>${post.updated}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
-  </url>`);
+${imageTags ? imageTags + '\n' : ''}  </url>`);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urlTags.join('\n')}
 </urlset>
 `;

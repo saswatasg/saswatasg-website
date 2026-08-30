@@ -99,5 +99,9 @@
 - `content/blog/lead-form-overhaul-124.mdx:6` `2026-08-03→2026-08-29`, `one-fix-a-week-cro.mdx:6` `→2026-08-30`, `sitemap.xml` lastmod staggered, `postStats.json` regen
 - Build `31 routes + 404` green
 
-## Pass 11 — Next
-- Image sitemap + llms + stale dates guard
+## Pass 11 — Done (2026-08-30) — commit `fix: P1 image sitemap + updated sort`
+- `tools/generate-static-files.mjs:69` sort `updated` not `date` + `writeSitemap` image sitemap `xmlns:image` + `image:image` per `Figure src` (16 images, `sitemap.xml` verified 16× `<image:image>`), `sitemap` now 32 URLs with `lastmod` + image tags
+- Build `31 routes + 404` green
+
+## Pass 12 — Next
+- Split blogPosts 223KB + ErrorBoundary + font self-host
