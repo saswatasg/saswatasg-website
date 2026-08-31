@@ -110,26 +110,41 @@ const Stickman = () => {
   }, []);
 
   useEffect(() => {
-    const onMouse = (e) => setMouse({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', onMouse);
-    const onScroll = () => {
-      const sy = window.scrollY;
-      const delta = sy - prevScrollY.current;
-      if (Math.abs(delta) > 30 && !roaming && !quirky) {
-        setQuirky('excite');
-        lastActive.current = Date.now();
-        setBored(false);
-        showBubble(scrollMsgs[Math.floor(Math.random() * scrollMsgs.length)], 1800);
-        setTimeout(() => setQuirky(null), 600);
-      }
-      prevScrollY.current = sy;
+    if (shouldReduceMotion || window.innerWidth < 768) return;
+    let ticking = false;
+    const onMouse = (e) => {
+      if (ticking || document.hidden) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setMouse({ x: e.clientX, y: e.clientY });
+        ticking = false;
+      });
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('mousemove', onMouse, { passive: true });
+    let scrollTicking = false;
+    const onScroll = () => {
+      if (scrollTicking || document.hidden) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        const sy = window.scrollY;
+        const delta = sy - prevScrollY.current;
+        if (Math.abs(delta) > 30 && !roaming && !quirky) {
+          setQuirky('excite');
+          lastActive.current = Date.now();
+          setBored(false);
+          showBubble(scrollMsgs[Math.floor(Math.random() * scrollMsgs.length)], 1800);
+          setTimeout(() => setQuirky(null), 600);
+        }
+        prevScrollY.current = sy;
+        scrollTicking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('mousemove', onMouse);
       window.removeEventListener('scroll', onScroll);
     };
-  }, [roaming, quirky, showBubble]);
+  }, [roaming, quirky, showBubble, shouldReduceMotion]);
 
   useEffect(() => {
     if (!ref.current) return;

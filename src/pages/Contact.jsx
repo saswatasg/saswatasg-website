@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PageMeta from '@/components/PageMeta';
-import ContactForm from '@/components/contact/ContactForm';
+const ContactForm = React.lazy(() => import('@/components/contact/ContactForm'));
 import { openScheduleBooking } from '@/utils/openCalendar';
 import { trackEvent } from '@/utils/analytics';
 import { ArrowRight, Calendar, Sparkles, Clock, MapPin, Heart, MessageSquare, Linkedin, Instagram, Github, ExternalLink } from 'lucide-react';
@@ -126,7 +126,9 @@ const Contact = () => {
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-5 gap-6">
           <div className="lg:col-span-3">
-            <ContactForm />
+            <React.Suspense fallback={<div className="h-64 bg-white border-2 border-black rounded-2xl animate-pulse" />}>
+              <ContactForm />
+            </React.Suspense>
           </div>
 
           <div className="lg:col-span-2 space-y-5">
