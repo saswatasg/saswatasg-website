@@ -120,14 +120,17 @@ const roles = [
     company: "Upcore Technologies",
     period: "April 2026 – Present",
     type: "Full-time",
-    context: "Leading product discovery and solution architecture at the intersection of AI agents and enterprise workflows.",
+    context: "Leading product discovery and solution architecture at the intersection of AI agents and enterprise workflows — directing a 6-developer pod from discovery through deployment.",
     tags: ["AI Agents", "Product Discovery", "Solution Architecture", "Enterprise", "Market Intelligence"],
     achievements: [
+      { text: "Sourced $146K+ in pipeline across 15+ clients via three outbound pipelines — webinar engine, data-driven LinkedIn outreach, and enterprise discovery sprints.", icon: <DollarSign className="w-4 h-4" />, metric: "$146K+ / 15+" },
       { text: "Overhauled webinar sales engine — designed full-funnel landing page and email sequence; scaled registrations to 478 sign-ups/month (up 51% from baseline).", icon: <Target className="w-4 h-4" />, metric: "+51%" },
       { text: "Transitioned enterprise outreach from manual LinkedIn prospecting to data-driven outbounding with lead scoring and capacity planning for 3 BDRs — optimized cost-to-book by 36%.", icon: <DollarSign className="w-4 h-4" />, metric: "-36%" },
+      { text: "Built a 5-layer feature adoption guardrail framework — drove native-module adoption from 40% to 100% for targeted workflows across the agent platform.", icon: <CheckCircle2 className="w-4 h-4" />, metric: "40% → 100%" },
+      { text: "Ran discovery practice across the org — synthesised a 500+ response buyer survey into prioritised agentic AI opportunities.", icon: <Search className="w-4 h-4" />, metric: "500+ survey" },
       { text: "Performed discovery with 20+ prospective enterprise clients across 12 verticals, top-3 high-impact agentic AI opportunities.", icon: <Map className="w-4 h-4" />, metric: "20+" },
       { text: "Produced a 16-page 'State of AI Agents' report covering market sizing, tooling landscape, adoption maturity curve, and 8+ case studies across industries.", icon: <FileText className="w-4 h-4" />, metric: "16 pages" },
-      { text: "Built revenue model and pricing strategy for AI agent services and partnered with CEO on securing pre-seed funding.", icon: <DollarSign className="w-4 h-4" /> },
+      { text: "Built revenue model and pricing strategy for AI agent services.", icon: <DollarSign className="w-4 h-4" /> },
       { text: "Built market intelligence across verticals — tracking agentic AI tooling, competitor positioning, and industry-specific automation trends.", icon: <Brain className="w-4 h-4" /> }
     ],
     caseStudies: [
@@ -135,9 +138,21 @@ const roles = [
     ]
   },
   {
+    title: "Freelance Product & Growth Consultant",
+    company: "Independent · Caffena & Diwan Interiors",
+    period: "May 2025 – Dec 2025",
+    type: "Freelance",
+    context: "Advised D2C and service brands on funnel architecture, paid acquisition, and lead-gen systems while working full-time at Sierra.",
+    tags: ["Growth Consulting", "Performance Marketing", "CRO", "Lead Gen"],
+    achievements: [
+      { text: "Caffena — rebuilt the coffee brand's acquisition funnel: revenue scaled from ₹1.62L to ₹5.78L monthly (+357%) with ROAS improving from 1.8× to 5.77×.", icon: <TrendingUp className="w-4 h-4" />, metric: "+357% / ROAS 5.77" },
+      { text: "Diwan Interiors — lead-gen engine producing 478–523 qualified leads/month at a ₹277–293 cost-per-lead.", icon: <Target className="w-4 h-4" />, metric: "478–523 leads/mo" }
+    ]
+  },
+  {
     title: "Associate Product Manager",
     company: "LiveKeeping (An IndiaMART Company)",
-    period: "January 2026 – April 2026",
+    period: "Jan 2026 – Mar 2026",
     type: "Full-time",
     context: "Led B2B SaaS analytics and feature adoption initiatives for Indian SMBs.",
     tags: ["Fintech", "B2B SaaS", "GST Compliance", "Analytics", "Notifications"],
@@ -157,9 +172,9 @@ const roles = [
   {
     title: "Product Manager (Growth)",
     company: "Sierra Living Concepts",
-    period: "May 2024 – January 2026",
+    period: "May 2024 – Dec 2025",
     type: "Full-time",
-    context: "Owned the product growth roadmap for a US-based D2C furniture brand — from UX optimisation to revenue-driving features. (Transitioned internally to LiveKeeping in Jan 2026)",
+    context: "Owned the product growth roadmap for a US-based D2C furniture brand — from UX optimisation to revenue-driving features.",
     tags: ["D2C", "E-Commerce", "UX", "Analytics", "A/B Testing"],
     achievements: [
       { text: "Redesigned landing flows — bounce rate dropped from 41.04% to 32.54%", icon: <TrendingUp className="w-4 h-4" />, metric: "-20.7%" },
@@ -270,7 +285,7 @@ function Experience() {
               {[
                 { year: '2026', title: 'AI Agent Product Management', company: 'Upcore Technologies', desc: 'Leading enterprise AI agent discovery and market strategy.' },
                 { year: '2026', title: 'Associate PM — B2B SaaS', company: 'LiveKeeping (IndiaMART)', desc: 'Diagnosed 17:1 adoption gap. Built notification architecture from scratch.' },
-                { year: '2024–26', title: 'Product Manager (Growth)', company: 'Sierra Living Concepts', desc: 'Reduced checkout abandonment 26%. Drove +105% lead submissions. 70+ product rollouts.' },
+                { year: '2024–25', title: 'Product Manager (Growth)', company: 'Sierra Living Concepts', desc: 'Reduced checkout abandonment 26%. Drove +105% lead submissions. 70+ product rollouts.' },
                 { year: '2023', title: 'Marketing & Sales Intern', company: 'Mozo Hunt', desc: 'Boosted enrollments 24%. Awarded Certificate of Excellence.' },
                 { year: '2022–24', title: 'MBA — Marketing & Analytics', company: 'IIT Jodhpur', desc: 'CAT 97.69 percentile. Product foundations and strategic thinking.' },
                 { year: '2017–21', title: 'B.Tech — Mechanical Engineering', company: 'Jalpaiguri Government Engineering College', desc: 'Systems thinking and engineering problem-solving foundation.' },

@@ -102,8 +102,8 @@ async function writeFeed(posts) {
   const caseStudies = [
     { slug: 'cart-checkout', title: 'Cart & Checkout — –26% abandonment' },
     { slug: 'category-discovery', title: 'Category Pages — +17% conversion' },
-    { slug: 'lead-form', title: 'Lead Form Overhaul — +105% submissions' },
-    { slug: 'upcore-lead-scoring', title: 'AI Lead Scoring — 71.63% close rate' },
+    { slug: 'lead-form', title: 'Lead Form Overhaul — +124% submissions' },
+    { slug: 'upcore-lead-scoring', title: 'AI Lead Scoring — 75+ priority threshold' },
     { slug: 'sierra-lead-allocation', title: 'Lead Allocation — Gold/Silver/Bronze' },
     { slug: 'livekeeping-compliance-gap', title: 'Compliance Gap — 17:1 Tally vs LiveKeeping' },
     { slug: 'livekeeping-send-greetings', title: 'Send Greetings + Nano Banana AI' },

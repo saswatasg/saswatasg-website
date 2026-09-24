@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, Award, GraduationCap, Briefcase, FileText } from 'lucide-react';
+import { MapPin, Award, GraduationCap, Briefcase, FileText, Trophy, ShieldCheck, Code2, PenTool, Heart } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { trackEvent } from '@/utils/analytics';
 
@@ -86,7 +86,7 @@ function About() {
               </p>
 
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                A year and a half at Sierra Living Concepts. D2C furniture — sofas to dining sets, real money, real hesitation. I rebuilt the journey around what clicks and scrolls were actually saying.
+                Twenty months at Sierra Living Concepts. D2C furniture — sofas to dining sets, real money, real hesitation. I rebuilt the journey around what clicks and scrolls were actually saying.
               </p>
               <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
                 At LiveKeeping, I landed inside a compliance product and found a gap nobody had flagged: users bypassing it for a workaround. I traced it through data, surfaced it to leadership, and watched it become a company-wide initiative.
@@ -111,7 +111,7 @@ function About() {
             <div className="mt-8 bg-blush border-2 border-black rounded-xl p-5">
               <h2 className="text-xs font-bold text-ink/60 uppercase tracking-wider mb-2">Beyond Work</h2>
               <p className="text-sm font-medium text-ink/70 leading-relaxed">
-                I explore digital products with genuine curiosity, cook, shoot photography, watch films analytically, and mentor early-career PMs.
+                I explore digital products with genuine curiosity, cook, shoot photography, watch films analytically, and mentor 5–6 early-career PMs.
               </p>
               <p className="text-xs font-medium text-ink/45 mt-2">
                 Growth work lives at{' '}
@@ -148,7 +148,7 @@ function About() {
               </span>
               <h3 className="font-display font-black text-base md:text-lg text-ink">Indian Institute of Technology Jodhpur</h3>
               <p className="text-sm font-bold text-ink/80 mt-1">MBA — Marketing & Analytics</p>
-              <p className="text-xs font-bold text-ink/50 mt-1">2022 – 2024</p>
+              <p className="text-xs font-bold text-ink/50 mt-1">2022 – 2024 · 71.7%</p>
               <span className="px-2.5 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mt-3 inline-block">CAT 2021 · 97.69 Percentile</span>
             </motion.div>
             <motion.div
@@ -161,9 +161,75 @@ function About() {
               </span>
               <h3 className="font-display font-black text-base md:text-lg text-ink">Jalpaiguri Government Engineering College</h3>
               <p className="text-sm font-bold text-ink/80 mt-1">B.Tech — Mechanical Engineering</p>
-              <p className="text-xs font-bold text-ink/50 mt-1">2017 – 2021</p>
+              <p className="text-xs font-bold text-ink/50 mt-1">2017 – 2021 · 77.2%</p>
               <p className="text-xs text-ink/60 mt-2">Foundation in systems thinking and engineering problem-solving</p>
             </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6"
+        >
+          <h2 className="text-sm font-bold text-ink/60 uppercase tracking-wider mb-3">Achievements & Certifications</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+            <motion.div
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="bg-sky border-2 border-black rounded-2xl p-6 md:p-8"
+              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
+            >
+              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
+                <Trophy className="w-4 h-4 text-ink" />
+              </span>
+              <h3 className="font-display font-black text-base md:text-lg text-ink">Achievements</h3>
+              <ul className="mt-3 space-y-2 text-sm font-medium text-ink/70">
+                <li className="flex items-start gap-2"><Award className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Tata Imagination Challenge — National Semi-finalist</li>
+                <li className="flex items-start gap-2"><Award className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Mathematics Olympiad — Gold Medal</li>
+              </ul>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="bg-mint border-2 border-black rounded-2xl p-6 md:p-8"
+              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
+            >
+              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
+                <ShieldCheck className="w-4 h-4 text-ink" />
+              </span>
+              <h3 className="font-display font-black text-base md:text-lg text-ink">Certifications</h3>
+              <ul className="mt-3 space-y-2 text-sm font-medium text-ink/70">
+                <li className="flex items-start gap-2"><Code2 className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Anthropic — 20 courses (Claude & applied AI)</li>
+                <li className="flex items-start gap-2"><PenTool className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Google Skillshop — 2026</li>
+                <li className="flex items-start gap-2"><Heart className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Zoho CRM Administrator</li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6"
+        >
+          <div className="bg-white border-2 border-black rounded-2xl p-6 md:p-8"
+            style={{ boxShadow: '6px 6px 0px 0px #625BF6' }}>
+            <h2 className="text-xs font-bold text-ink/60 uppercase tracking-wider mb-3">Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {[
+                'Product Discovery', 'Shipping & Execution', 'Data & Analytics', 'GA4', 'GTM',
+                'Looker Studio', 'Microsoft Clarity', 'A/B Testing', 'Cross-functional Leadership',
+                'AI Agent Architecture', 'B2B GTM', 'D2C E-commerce', 'CRO', 'Growth Strategy',
+                'Sales Ops', 'Pricing & Revenue Modelling', 'User Research', 'Roadmapping'
+              ].map((skill) => (
+                <span key={skill} className="px-2.5 py-1 rounded-lg text-xs font-bold bg-canvas text-ink border-2 border-black">
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -171,9 +237,7 @@ function About() {
           <div className="relative inline-flex group">
             <div className="absolute inset-0 rounded-lg border-2 border-black bg-purple translate-x-[3px] translate-y-[3px]" />
             <a
-              href="https://drive.google.com/file/d/1z4QJfKgGbVUGM1N3tXtTfPlamug49gGY/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/assets/resume.pdf"
               onClick={() => trackEvent('about', 'download_resume')}
               className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-5 py-2.5 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
             >

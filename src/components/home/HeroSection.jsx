@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Calendar, Star, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
+import { Calendar, Star, FileText, Play, Pause } from 'lucide-react';
 import { openScheduleBooking } from '@/utils/openCalendar';
 import { trackEvent } from '@/utils/analytics';
 
@@ -93,7 +93,7 @@ const slides = [
                 <p className="text-[10px] font-bold text-ink/60">Rejection rate</p>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-mint/30 border border-black p-2.5">
-                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">160%</div>
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">168%</div>
                 <p className="text-[10px] font-bold text-ink/60">Feature lift</p>
               </motion.div>
             </div>
@@ -124,50 +124,47 @@ const slides = [
     },
     {
       id: 'upcore',
-      title: 'Role & Scope',
+      title: 'Revenue & Scale',
       cardBg: 'bg-blush',
       company: 'Upcore Technologies',
       companyColor: 'text-coral-dark',
       content: (
         <div className="flex flex-col gap-2.5 h-full">
+          <div className="bg-white border-2 border-black rounded-xl p-4 -rotate-[0.3deg] group-hover:rotate-0 transition-all duration-200">
+            <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$146K+</div>
+            <p className="text-xs text-ink/60 font-bold mb-2">pipeline sourced</p>
+            <div className="flex gap-1.5">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-blush/40 border border-black p-1.5 text-center">
+                <div className="text-sm font-black text-ink">15+</div>
+                <p className="text-[9px] font-bold text-ink/60">Clients</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-lemon/40 border border-black p-1.5 text-center">
+                <div className="text-sm font-black text-ink">478</div>
+                <p className="text-[9px] font-bold text-ink/60">Sign-ups/mo</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-mint/30 border border-black p-1.5 text-center">
+                <div className="text-sm font-black text-ink">−36%</div>
+                <p className="text-[9px] font-bold text-ink/60">Cost-to-book</p>
+              </motion.div>
+            </div>
+          </div>
           <div className="grid grid-cols-2 gap-2">
             {[
-              { icon: <Search className="w-5 h-5" />, label: 'Discovery', bg: 'bg-blush' },
-              { icon: <FileText className="w-5 h-5" />, label: 'Briefing', bg: 'bg-sky' },
-              { icon: <Route className="w-5 h-5" />, label: 'Roadmap', bg: 'bg-lemon' },
-              { icon: <Rocket className="w-5 h-5" />, label: 'GTM', bg: 'bg-mint' },
-            ].map((step, i) => (
+              { value: '20+', label: 'Enterprise discovery calls' },
+              { value: '12', label: 'Verticals mapped' },
+              { value: '16 pages', label: 'State of AI Agents report' },
+              { value: '75+', label: 'Lead scoring threshold' },
+            ].map((g, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.15 } }}
-                className={`${step.bg} border-2 border-black rounded-xl p-3.5 text-center`}
+                whileHover={{ scale: 1.05, backgroundColor: '#ffffff' }}
+                className="bg-white border-2 border-black rounded-xl p-2.5"
               >
-                <span className="w-10 h-10 rounded-xl bg-white border-2 border-black flex items-center justify-center text-ink mx-auto mb-1.5">
-                  {step.icon}
-                </span>
-                <p className="text-xs font-black text-ink">{step.label}</p>
+                <div className="text-lg font-black text-ink">{g.value}</div>
+                <p className="text-[10px] font-bold text-ink/60">{g.label}</p>
               </motion.div>
             ))}
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            {['Enterprise Clients', 'AI Products', '12 Verticals', 'GTM', 'Growth', 'Market Intelligence'].map((tag, i) => (
-              <motion.span
-                key={i}
-                whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
-                className="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-white border-2 border-black"
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex items-center justify-center gap-2 bg-purple/20 border-2 border-black rounded-xl p-2"
-          >
-            <Target className="w-3 h-3 text-purple" />
-            <span className="text-[10px] font-bold text-purple">AI agentic product strategy</span>
-            <Layers className="w-3 h-3 text-purple" />
-          </motion.div>
         </div>
       ),
     },

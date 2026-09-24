@@ -18,11 +18,11 @@ const pageSpecificMeta = {
   },
   '/about': {
     title: "About Me | Saswata S. Sengupta — Product Manager",
-    description: "Product Manager across B2B SaaS, D2C, and e-commerce. B.Tech (Mech) + IIT Jodhpur MBA. Product discovery, growth, and data analytics."
+    description: "PM across B2B SaaS, D2C, and e-commerce. B.Tech (Mech, 77.2%) + IIT Jodhpur MBA (71.7%, CAT 97.69). Discovery, growth, analytics."
   },
   '/experience': {
     title: "Professional Background | Saswata S. Sengupta",
-    description: "Product management experience across Upcore Technologies (AI agents), Sierra Living Concepts (D2C), and LiveKeeping (B2B SaaS)."
+    description: "PM experience across Upcore (AI agents), Sierra Living (D2C), LiveKeeping (B2B SaaS), and freelance growth consulting."
   },
   '/work': {
     title: "Work | Saswata S. Sengupta — Case Studies & Product Work",
@@ -40,13 +40,13 @@ const pageSpecificMeta = {
     title: "Case Study: Category Pages — +17% | Saswata S. Sengupta",
     description: "How a 4-week GA4 + Clarity audit fixed 30+ UX issues and lifted session-to-PDP-click conversion by 17% at Sierra Living Concepts."
   },
-  '/case-studies/lead-form': {
-    title: "Case Study: Lead Form Overhaul — +105% | Saswata S. Sengupta",
-    description: "How I rebuilt Sierra Living Concepts' lead form with Material 3 components, contextual microcopy, and latency fixes — submissions up 105%."
-  },
   '/case-studies/upcore-lead-scoring': {
-    title: "AI Lead Scoring Case Study — 71.63% Close Rate",
-    description: "How I built an AI-powered lead scoring and routing engine at Upcore Technologies that drove close rate from 52% to 71.63%."
+    title: "Two-Stage Lead Scoring Case Study — 75+ Priority Threshold",
+    description: "How I built an AI-powered two-stage lead scoring and routing engine at Upcore Technologies — 9+9 signals, 75+ priority threshold, 24hr contact SLA."
+  },
+  '/case-studies/lead-form': {
+    title: "Case Study: Lead Form Overhaul — +124% | Saswata S. Sengupta",
+    description: "Rebuilt Sierra Living Concepts' lead form with Material 3 — original UX work +105%; full rebuild +124% in 28 days."
   },
   '/case-studies/sierra-lead-allocation': {
     title: "Lead Allocation & Routing | Saswata S. Sengupta",

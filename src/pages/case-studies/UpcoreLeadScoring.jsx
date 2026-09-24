@@ -33,17 +33,17 @@ const UpcoreLeadScoring = () => {
       >
         <ContextBar company="Upcore Technologies" period="2026" tags={['AI', 'B2B', 'GTM']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
-          52% close rate wasn&#39;t a BDR problem. It was a triage problem. Only 10% of leads are ready to buy — the system had to find the right 10%.
+          Hot leads sat in the same queue as tire-kickers. Only 10% of leads are ready to buy — the system had to find the right 10%.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
           Built an AI-powered lead assistant that scored, routed, and prioritised inbound prospects using 9+9 research signals — and a feedback loop that kept making it smarter.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '71.63%', label: 'AI-Assisted Close Rate', sub: 'Up from 52% baseline', color: 'text-ink' },
-            { value: '52%', label: 'Baseline Close Rate', sub: 'Pre-scoring manual triage', color: 'text-ink' },
             { value: '75+', label: 'Priority Threshold', sub: 'Score to qualify as hot lead', color: 'text-ink' },
             { value: '24 hrs', label: 'Contact SLA', sub: 'High-scoring leads', color: 'text-ink' },
+            { value: '83%', label: 'Scoring Accuracy', sub: 'Retrospective, historical data', color: 'text-ink' },
+            { value: '<5 min', label: 'Response Time', sub: 'Hot leads, down from hours', color: 'text-ink' },
           ].map((m, i) => (
             <div key={i} className="bg-white/50 border border-ink/20 rounded-xl p-4">
               <div className={`font-display font-black text-3xl ${m.color}`}>{m.value}</div>
@@ -71,7 +71,7 @@ const UpcoreLeadScoring = () => {
 
         <Card>
           <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-            Inbound leads were being manually triaged by the BDR team with no consistent scoring framework. High-intent prospects sat in the same queue as low-quality inquiries. Response times varied wildly — a lead from a Fortune 500 CFO could wait as long as a student inquiry. There was no systematic way to prioritise by likelihood to convert. Close rate hovered at 52%.
+            Inbound leads were being manually triaged by the BDR team with no consistent scoring framework. High-intent prospects sat in the same queue as low-quality inquiries. Response times varied wildly — a lead from a Fortune 500 CFO could wait as long as a student inquiry. There was no systematic way to prioritise by likelihood to convert.
           </p>
         </Card>
 
@@ -155,9 +155,9 @@ const UpcoreLeadScoring = () => {
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: 'Close Rate', value: '52 → 71.63%', bg: 'bg-lemon' },
+            { label: 'Scoring Accuracy', value: '83% retrospective', bg: 'bg-lemon' },
             { label: 'Response Time (Hot Leads)', value: 'Hours → <5 min', bg: 'bg-mint' },
-            { label: 'Scoring Accuracy', value: '83% retrospective', bg: 'bg-sky' },
+            { label: 'Feedback Corrections', value: '200+ (Month 1)', bg: 'bg-sky' },
             { label: 'BDR Focus Shift', value: 'All → top 10%', bg: 'bg-blush' },
           ].map((k, i) => (
             <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.02, y: -2 }} className={`${k.bg} border-2 border-black rounded-2xl p-6 text-center`}>
@@ -168,7 +168,7 @@ const UpcoreLeadScoring = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
-          <p className="text-white font-display font-black text-lg">19.63 percentage point absolute improvement. The system paid for itself in additional closed deals within the first quarter.</p>
+          <p className="text-white font-display font-black text-lg">Hot leads now reached in under 5 minutes instead of hours. The system paid for itself in additional closed deals within the first quarter.</p>
           <p className="text-white/70 text-sm mt-2 leading-relaxed">
             Response time to high-scoring leads dropped from hours to under 5 minutes. The feedback loop captured 200+ scoring corrections in the first month, progressively improving the model&#39;s accuracy. BDRs reported higher job satisfaction — they were spending time on leads that converted, not leads that never responded.
           </p>

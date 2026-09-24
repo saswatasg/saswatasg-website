@@ -213,9 +213,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.a
-              href="https://drive.google.com/file/d/1cRaGUx3cvEYShMD67zLQIK4UxdPi6p-o/view"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/assets/resume.pdf"
               onClick={() => trackEvent('contact', 'download_resume')}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

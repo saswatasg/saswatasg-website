@@ -108,8 +108,8 @@ const ContactPanel = ({ custom }) => {
         <div className="mt-6">
           <p className="mb-3 font-medium text-ink text-sm">Quick Links</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <a href="https://drive.google.com/file/d/1cRaGUx3cvEYShMD67zLQIK4UxdPi6p-o/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center gap-3 justify-start">
-              <FileText className="h-4 w-4" /> My resume <ExternalLink className="h-4 w-4 ml-auto" />
+            <a href="/assets/resume.pdf" className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center gap-3 justify-start">
+              <FileText className="h-4 w-4" /> My resume <Download className="h-4 w-4 ml-auto" />
             </a>
             <a href="/assets/Saswata_Sengupta.vcf" download className="bg-white border-2 border-ink text-ink rounded-pill px-4 py-2.5 text-sm font-medium uppercase tracking-wide hover:bg-ink hover:text-white transition-all duration-200 inline-flex items-center gap-3 justify-start">
               <Download className="h-4 w-4" /> Save Contact

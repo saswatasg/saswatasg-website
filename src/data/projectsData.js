@@ -89,7 +89,7 @@ export const allProjects = [
     title: "Two-Stage Lead Scoring — 9 Research Signals Before Outreach",
     description: "Only 10% of leads are ready to buy. Built the B2B GTM framework that identifies which 10% — scoring prospects on 9 intent signals and 9 potential signals before a single outreach message is sent.",
     tags: ["B2B GTM", "Lead Scoring", "Enterprise", "Sales Ops"],
-    result: "9+9 scoring signals · 75+ priority threshold · 24hr contact SLA · Close rate: 52% → 71.63%",
+    result: "9+9 scoring signals · 75+ priority threshold · 24hr contact SLA · 83% scoring accuracy",
     caseStudyLink: "/case-studies/upcore-lead-scoring"
   },
   {
@@ -180,9 +180,9 @@ export const allProjects = [
   {
     company: 'upcore', companyName: 'Upcore Technologies',
     title: "Revenue Model & Pricing Strategy",
-    description: "Built the revenue architecture and tiered pricing model for Upcore's AI agent services. Partnered with the CEO on financial modelling and the investor narrative as part of pre-seed fundraising preparation.",
-    tags: ["Pricing Strategy", "Revenue Modelling", "Fundraising", "GTM"],
-    result: "Revenue model · Pre-seed fundraising support"
+    description: "Built the revenue architecture and tiered pricing model for Upcore's AI agent services, partnering with the CEO on financial modelling and the investor narrative.",
+    tags: ["Pricing Strategy", "Revenue Modelling", "GTM", "Strategy"],
+    result: "Revenue model · Tiered pricing strategy"
   },
   {
     company: 'upcore', companyName: 'Upcore Technologies',

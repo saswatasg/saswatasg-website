@@ -36,7 +36,7 @@ const LeadForm = () => {
           2.14% conversion. 3&#8208;5 second latency. Rage clicks on every submission. The form wasn&#39;t broken — it was punishing.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
-          Static form. Zero conditional logic. No inline validation. Rebuilt into category-specific modules with Material 3. No traffic changes — pure UX architecture.
+          Static form. Zero conditional logic. No inline validation. Rebuilt into category-specific modules with Material 3. No traffic changes — pure UX architecture. Original form-UX work had already lifted submissions +105%; this full Material-3 rebuild in 28 days took it to +124%.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
