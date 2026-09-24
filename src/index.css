@@ -8,8 +8,6 @@
 
 @layer base {
   :root {
-    --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
-    --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
     --background: 40 5% 97%;
     --foreground: 0 0% 4%;
     --card: 0 0% 100%;

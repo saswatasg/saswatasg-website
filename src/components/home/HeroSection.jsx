@@ -1,312 +1,363 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Calendar, Star, Target, Layers, GitBranch, Lightbulb, ArrowRight, Search, FileText, Route, Rocket, Play, Pause } from 'lucide-react';
 import { openScheduleBooking } from '@/utils/openCalendar';
 import { trackEvent } from '@/utils/analytics';
 
-const FACE_SRC = 'https://i.postimg.cc/k4SXX1GT/Saswata-img1.png';
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
 
-const TYPEWRITER_TEXT =
-  "I find the problem nobody's measuring — then ship the fix that moves the number. 73%→54% checkout, a 17:1 compliance gap, AI agents at Upcore. What should we look at?";
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
-const METRICS = [
-  { value: '$594K', label: 'monthly revenue impact' },
-  { value: '73%→54%', label: 'checkout abandonment' },
-  { value: '17:1', label: 'compliance gap found' },
-  { value: '+124%', label: 'lead submissions' },
-  { value: '70+', label: 'product changes shipped' },
-];
-
-function useTypewriter(text, speed = 38, startDelay = 600, enabled = true) {
-  const [displayed, setDisplayed] = useState(enabled ? '' : text);
-  const [done, setDone] = useState(!enabled);
-
-  useEffect(() => {
-    if (!enabled) {
-      setDisplayed(text);
-      setDone(true);
-      return undefined;
-    }
-    let interval;
-    let timeout;
-    let i = 0;
-    setDisplayed('');
-    setDone(false);
-    timeout = setTimeout(() => {
-      interval = setInterval(() => {
-        i += 1;
-        setDisplayed(text.slice(0, i));
-        if (i >= text.length) {
-          clearInterval(interval);
-          setDone(true);
-        }
-      }, speed);
-    }, startDelay);
-    return () => {
-      clearTimeout(timeout);
-      clearInterval(interval);
-    };
-  }, [text, speed, startDelay, enabled]);
-
-  return { displayed, done };
-}
-
-function CopyIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-      <rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.4" />
-      <rect x="1" y="1" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.4" />
-    </svg>
-  );
-}
+const slides = [
+    {
+      id: 'sierra',
+      title: 'Revenue Impact',
+      cardBg: 'bg-mint',
+      company: 'Sierra Living Concepts',
+      companyColor: 'text-purple',
+      content: (
+        <div className="flex flex-col gap-3">
+          <div className="bg-white border-2 border-black rounded-xl p-4 -rotate-[0.3deg] group-hover:rotate-0 transition-all duration-200">
+            <div className="text-3xl md:text-4xl font-display font-black tracking-tighter text-ink">$594K</div>
+            <p className="text-xs text-ink/60 font-bold mb-2">monthly revenue impact</p>
+            <div className="flex gap-1.5">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-coral/30 border border-black p-1.5 text-center">
+                <div className="text-sm font-black text-ink">53.9%</div>
+                <p className="text-[9px] font-bold text-ink/60">Checkout</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-lemon/40 border border-black p-1.5 text-center">
+                <div className="text-sm font-black text-ink">$152K</div>
+                <p className="text-[9px] font-bold text-ink/60">Pricing</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex-1 rounded-lg bg-purple/20 border border-black p-1.5 text-center">
+                <div className="text-sm font-black text-ink">$113K</div>
+                <p className="text-[9px] font-bold text-ink/60">CRM</p>
+              </motion.div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { value: '70+', label: 'Products shipped' },
+              { value: '73%→54%', label: 'Cart abandonment' },
+              { value: '+105%', label: 'Lead submissions' },
+              { value: '71.6%', label: 'AI close rate' },
+            ].map((g, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05, backgroundColor: '#ffffff' }}
+                className="bg-white border-2 border-black rounded-xl p-2.5"
+              >
+                <div className="text-lg font-black text-ink">{g.value}</div>
+                <p className="text-[10px] font-bold text-ink/60">{g.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'livekeeping',
+      title: 'Adoption Impact',
+      cardBg: 'bg-sky',
+      company: 'LiveKeeping (IndiaMART)',
+      companyColor: 'text-ink/70',
+      content: (
+        <div className="flex flex-col gap-2.5">
+          <div className="bg-white border-2 border-black rounded-xl p-3.5 transition-all duration-200 space-y-2.5">
+            <p className="text-[10px] font-bold text-ink/50 uppercase tracking-wider text-center">Found users bypassing core compliance features</p>
+            <div className="grid grid-cols-2 gap-2">
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-indigo/20 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">17:1</div>
+                <p className="text-[10px] font-bold text-ink/60">E-Way Bill gap</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-coral/30 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">19:1</div>
+                <p className="text-[10px] font-bold text-ink/60">E-Invoice gap</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-lemon/40 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">−58%</div>
+                <p className="text-[10px] font-bold text-ink/60">Rejection rate</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} className="text-center rounded-lg bg-mint/30 border border-black p-2.5">
+                <div className="text-xl md:text-2xl font-display font-black tracking-tighter text-ink">160%</div>
+                <p className="text-[10px] font-bold text-ink/60">Feature lift</p>
+              </motion.div>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-1.5 items-center justify-center">
+            {[
+              { value: 'CEO', label: 'Escalation' },
+              { value: 'PRO+', label: 'Plan focus' },
+              { value: '27+', label: 'Triggers' },
+              { value: '5', label: 'Regions' },
+              { value: 'C-suite', label: 'Reporting' },
+            ].map((b, i) => (
+              <motion.span
+                key={i}
+                whileHover={{ scale: 1.08, rotate: [0, -2, 2, 0], transition: { duration: 0.15 } }}
+                className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border-2 border-black ${
+                  i < 3
+                    ? 'bg-white text-ink'
+                    : 'bg-ink/5 text-ink/50 border-ink/30'
+                }`}
+              >
+                {b.value} {b.label}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'upcore',
+      title: 'Role & Scope',
+      cardBg: 'bg-blush',
+      company: 'Upcore Technologies',
+      companyColor: 'text-coral-dark',
+      content: (
+        <div className="flex flex-col gap-2.5 h-full">
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { icon: <Search className="w-5 h-5" />, label: 'Discovery', bg: 'bg-blush' },
+              { icon: <FileText className="w-5 h-5" />, label: 'Briefing', bg: 'bg-sky' },
+              { icon: <Route className="w-5 h-5" />, label: 'Roadmap', bg: 'bg-lemon' },
+              { icon: <Rocket className="w-5 h-5" />, label: 'GTM', bg: 'bg-mint' },
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.15 } }}
+                className={`${step.bg} border-2 border-black rounded-xl p-3.5 text-center`}
+              >
+                <span className="w-10 h-10 rounded-xl bg-white border-2 border-black flex items-center justify-center text-ink mx-auto mb-1.5">
+                  {step.icon}
+                </span>
+                <p className="text-xs font-black text-ink">{step.label}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {['Enterprise Clients', 'AI Products', '12 Verticals', 'GTM', 'Growth', 'Market Intelligence'].map((tag, i) => (
+              <motion.span
+                key={i}
+                whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0], transition: { duration: 0.15 } }}
+                className="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-white border-2 border-black"
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="flex items-center justify-center gap-2 bg-purple/20 border-2 border-black rounded-xl p-2"
+          >
+            <Target className="w-3 h-3 text-purple" />
+            <span className="text-[10px] font-bold text-purple">AI agentic product strategy</span>
+            <Layers className="w-3 h-3 text-purple" />
+          </motion.div>
+        </div>
+      ),
+    },
+  ];
 
 const HeroSection = () => {
   const shouldReduceMotion = useReducedMotion();
-  const animateMotion = !shouldReduceMotion;
-  const { displayed, done } = useTypewriter(TYPEWRITER_TEXT, 38, 600, animateMotion);
-
-  const [pillsVisible, setPillsVisible] = useState(!animateMotion);
-  const [copied, setCopied] = useState(false);
-  const faceRef = useRef(null);
-  const rafRef = useRef(null);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [slidePaused, setSlidePaused] = useState(false);
 
   useEffect(() => {
-    if (!animateMotion) return undefined;
-    const t = setTimeout(() => setPillsVisible(true), 400);
-    return () => clearTimeout(t);
-  }, [animateMotion]);
-
-  // Mouse parallax on the face layer
-  useEffect(() => {
-    if (!animateMotion) return undefined;
-    let targetX = 0;
-    let targetY = 0;
-    let curX = 0;
-    let curY = 0;
-
-    const onMouseMove = (e) => {
-      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
-      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-      targetX = nx * 18;
-      targetY = ny * 12;
-    };
-
-    const tick = () => {
-      curX += (targetX - curX) * 0.08;
-      curY += (targetY - curY) * 0.08;
-      if (faceRef.current) {
-        faceRef.current.style.transform = `translate3d(${curX}px, ${curY}px, 0) scale(1.06)`;
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [animateMotion]);
-
-  const copyEmail = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText('saswatasg@gmail.com');
-      setCopied(true);
-      trackEvent('hero_cta', 'copy_email');
-      setTimeout(() => setCopied(false), 1500);
-    } catch (_) {
-      /* clipboard unavailable */
-    }
-  }, []);
-
-  const pillBase =
-    'inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-200 min-h-[36px]';
+    if (slidePaused || shouldReduceMotion) return;
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slidePaused, shouldReduceMotion]);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden" aria-label="Introduction">
-      {/* Face background layer — mouse parallax */}
-      <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
-        <div
-          ref={faceRef}
-          className="absolute inset-0 will-change-transform"
-          style={{
-            transform: 'translate3d(0,0,0) scale(1.06)',
-            transformOrigin: '70% 30%',
-          }}
+    <section className="w-full pt-20 md:pt-24 lg:pt-28">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+        <motion.div
+          className="grid lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <img
-            src={FACE_SRC}
-            alt=""
-            className="w-full h-full object-cover"
-            style={{ objectPosition: '70% 20%' }}
-            loading="eager"
-            width="800"
-            height="800"
-          />
-        </div>
-        {/* Soft scrim so left text stays readable */}
-        <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/85 to-canvas/10 md:to-transparent" />
-        <div className="absolute inset-0 bg-canvas/20 md:bg-transparent" />
-        {/* Subtle grain */}
-        <div
-          className="absolute inset-0 opacity-[0.07] mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          }}
-        />
-        {/* Ambient drift when motion allowed */}
-        {animateMotion && (
           <motion.div
-            className="absolute inset-0"
-            animate={{ opacity: [0.5, 0.7, 0.5] }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              background:
-                'radial-gradient(ellipse 60% 50% at 75% 30%, rgba(232,93,58,0.12), transparent 70%)',
-            }}
-          />
-        )}
-      </div>
-
-      {/* Hero content */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-end md:justify-center pb-12 md:pb-0 px-5 sm:px-8 md:px-10 pt-28">
-        <div className="max-w-xl">
-          {/* Blurred intro label */}
-          <h1
-            className="pointer-events-none select-none mb-5 sm:mb-6"
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(18px, 4vw, 26px)',
-              lineHeight: 1.3,
-              fontWeight: 400,
-              color: '#000',
-              filter: animateMotion ? 'blur(4px)' : 'none',
-            }}
+            variants={childVariants}
+            whileHover={{ scale: 1.005, transition: { duration: 0.2 } }}
+            className="lg:col-span-2 bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden lg:h-[480px]"
+            style={{ boxShadow: '10px 10px 0px 0px #E85D3A' }}
           >
-            Hey, I'm Saswata,
-            <br />
-            Product Manager — B2B SaaS, AI &amp; growth systems
-          </h1>
-
-          {/* Typewriter */}
-          <p
-            className="text-black mb-5 sm:mb-6"
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(18px, 4vw, 26px)',
-              lineHeight: 1.35,
-              fontWeight: 400,
-              minHeight: '54px',
-            }}
-            aria-live="polite"
-          >
-            {displayed}
-            {!done && (
-              <span
-                className="inline-block w-[2px] h-[1.1em] bg-black align-middle ml-[2px]"
-                style={{ animation: 'blink 1s step-end infinite' }}
-                aria-hidden="true"
-              />
-            )}
-          </p>
-
-          {/* Action pills */}
-          <div
-            className="flex flex-wrap gap-y-1"
-            style={{
-              opacity: pillsVisible ? 1 : 0,
-              transform: pillsVisible ? 'translateY(0)' : 'translateY(8px)',
-              transition: 'opacity 0.4s ease, transform 0.4s ease',
-            }}
-          >
-            <Link
-              to="/work"
-              onClick={() => trackEvent('hero_cta', 'see_work')}
-              className={pillBase}
-            >
-              See case studies
-            </Link>
-            <a
-              href="/assets/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent('hero_cta', 'download_resume')}
-              className={pillBase}
-            >
-              Download resume
-            </a>
-            <button
-              type="button"
-              onClick={() => {
-                trackEvent('hero_cta', 'lets_talk');
-                openScheduleBooking();
-              }}
-              className={pillBase}
-            >
-              Let's talk
-            </button>
-            <Link
-              to="/blog"
-              onClick={() => trackEvent('hero_cta', 'read_blog')}
-              className={pillBase}
-            >
-              Read the blog
-            </Link>
-            <button
-              type="button"
-              onClick={copyEmail}
-              className="inline-flex items-center justify-center gap-2 sm:gap-3 text-white bg-transparent border border-white rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap hover:bg-white hover:text-black transition-colors duration-200 min-h-[36px]"
-              aria-label="Copy email address"
-            >
-              <span>
-                Reach me:{' '}
-                <span className="underline underline-offset-1">saswatasg@gmail.com</span>
-              </span>
-              <CopyIcon />
-              {copied && <span className="text-[11px] opacity-70">copied</span>}
-            </button>
-          </div>
-
-          {/* Compact metric strip */}
-          <motion.div
-            initial={animateMotion ? { opacity: 0, y: 10 } : false}
-            animate={animateMotion ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.9, duration: 0.4 }}
-            className="flex flex-wrap gap-2 mt-6"
-          >
-            {METRICS.map((m) => (
-              <div
-                key={m.label}
-                className="bg-white/90 backdrop-blur-sm border-2 border-black rounded-xl px-3 py-2"
-                style={{ boxShadow: '3px 3px 0px 0px #0A0A0A' }}
-              >
-                <div className="text-sm md:text-base font-display font-black text-ink leading-none">
-                  {m.value}
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 relative z-10">
+              <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
+                <div className="w-36 h-36 md:w-44 md:h-44 overflow-hidden rounded-2xl border-2 border-black rotate-[-1deg] mx-auto md:mx-0" style={{ boxShadow: '6px 6px 0px 0px #E85D3A' }}>
+                  <img
+                    src="https://i.postimg.cc/k4SXX1GT/Saswata-img1.png"
+                    alt="Saswata S. Sengupta"
+                    loading="eager"
+                    fetchPriority="high"
+                    width="176"
+                    height="176"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-[10px] font-bold text-ink/55 mt-1 leading-tight">{m.label}</p>
+                <motion.div variants={childVariants} className="flex flex-wrap items-center justify-center md:justify-start gap-2 mt-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black">
+                    <Star className="w-3 h-3 text-coral" fill="currentColor" />
+                    Product Manager
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-coral text-ink text-[10px] font-bold border-2 border-black">
+                    AI & Growth
+                  </span>
+                </motion.div>
+                <motion.h1 variants={childVariants} className="text-ink text-2xl md:text-3xl font-display font-black tracking-tighter leading-none mt-3">
+                  Saswata S. Sengupta
+                </motion.h1>
               </div>
-            ))}
+
+              <div className="md:col-span-2">
+                <motion.p variants={childVariants} className="text-base md:text-lg text-ink/60 font-display font-bold tracking-tight">
+                  I find the problem nobody's measuring, then ship the fix that moves the number that matters.
+                </motion.p>
+
+                <motion.p variants={childVariants} className="mt-3 text-ink/70 text-sm md:text-base">
+                  Cut checkout abandonment 73%→54% at Sierra. Ran compliance diagnostics at LiveKeeping/IndiaMART. Now building AI discovery-to-deployment at Upcore.
+                </motion.p>
+                <motion.p variants={childVariants} className="mt-2 text-ink/70 text-sm md:text-base">
+                  B.Tech (Mech) + IIT Jodhpur MBA.
+                </motion.p>
+
+                <motion.div variants={childVariants} className="flex flex-wrap gap-2 md:gap-3 mt-5">
+                  <div className="relative inline-flex group">
+                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
+                    <button
+              onClick={() => { trackEvent('hero_cta', 'lets_talk'); openScheduleBooking(); }}
+              className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold inline-flex items-center gap-1.5 md:gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+            >
+              <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4" aria-hidden="true" />
+              Let's talk
+                    </button>
+                  </div>
+                  <div className="relative inline-flex group">
+                    <div className="absolute inset-0 rounded-lg border-2 border-black bg-lemon translate-x-[3px] translate-y-[3px]" />
+                    <Link
+                      onClick={() => trackEvent('hero_cta', 'see_work')}
+                      to="/work"
+                      className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-3 md:px-4 py-2 text-xs md:text-sm font-bold min-h-[44px] inline-flex items-center gap-1.5 md:gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+                    >
+                      <FileText className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                      See the work
+                    </Link>
+                  </div>
+                </motion.div>
+
+                <motion.div variants={childVariants} className="flex flex-wrap gap-2 mt-6">
+                  {['B2B SaaS', 'D2C', 'E-Commerce', 'AI Products', 'Product Discovery', 'Analytics'].map((tag) => (
+                    <motion.span
+                      key={tag}
+                      whileHover={{ scale: 1.08, rotate: [0, -2, 2, 0], transition: { duration: 0.2 } }}
+                      className="px-2.5 py-1 rounded-lg text-xs font-bold bg-canvas text-ink border-2 border-black cursor-default"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+
+            <div className="absolute -top-6 -right-4 w-12 h-12 bg-coral border-2 border-black rounded-lg rotate-12 hidden md:block" />
+            <div className="absolute top-12 right-4 w-8 h-8 bg-lemon border-2 border-black rounded-lg -rotate-6 hidden md:block" />
+            <div className="absolute -bottom-8 -left-4 w-16 h-16 rounded-full bg-canvas border-2 border-black hidden md:block" />
           </motion.div>
 
-          {/* Credentials line */}
-          <motion.p
-            initial={animateMotion ? { opacity: 0 } : false}
-            animate={animateMotion ? { opacity: 1 } : {}}
-            transition={{ delay: 1.1, duration: 0.4 }}
-            className="mt-5 text-xs font-bold text-ink/50"
+          <motion.div
+            variants={childVariants}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className={`${slides[slideIndex].cardBg} group border-2 border-black rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden h-[480px] transition-colors duration-500`}
+            style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}
           >
-            PM at Upcore · ex-LiveKeeping (IndiaMART) · ex-Sierra · B.Tech + IIT Jodhpur MBA
-          </motion.p>
-        </div>
-      </div>
+            <motion.div
+              key={slideIndex + (slidePaused ? '-paused' : '')}
+              initial={{ width: slidePaused ? 'auto' : '0%' }}
+              animate={{ width: '100%' }}
+              transition={slidePaused ? { duration: 0 } : { duration: 5, ease: 'linear' }}
+              className="absolute top-0 left-0 h-1 bg-ink/80"
+            />
+            <div className="relative z-10 flex-1 flex flex-col">
+              <div className="flex items-center justify-between mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black group-hover:scale-105 transition-transform duration-200">
+                  {slides[slideIndex].title}
+                </span>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={slides[slideIndex].company}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.25 }}
+                    className={`text-[10px] font-bold ${slides[slideIndex].companyColor} group-hover:underline decoration-dotted underline-offset-2 transition-all duration-200`}
+                  >
+                    {slides[slideIndex].company}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
 
-      <style>{`
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-      `}</style>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={slideIndex}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -30 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex-1 min-h-[200px]"
+                    aria-live="polite"
+                  >
+                    {slides[slideIndex].content}
+                  </motion.div>
+                </AnimatePresence>
+
+              <div className="flex items-center justify-center gap-2 pt-4">
+                <motion.button
+                  onClick={() => { trackEvent('hero_slideshow', slidePaused ? 'play' : 'pause'); setSlidePaused(!slidePaused); }}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
+                  className="w-5 h-5 rounded-full bg-white border border-black flex items-center justify-center hover:bg-canvas transition-colors"
+                  aria-label={slidePaused ? 'Play slideshow' : 'Pause slideshow'}
+                >
+                  {slidePaused ? <Play className="w-2.5 h-2.5 text-ink" /> : <Pause className="w-2.5 h-2.5 text-ink" />}
+                </motion.button>
+                {slides.map((_, i) => (
+                  <motion.button
+                    key={i}
+                    onClick={() => { trackEvent('hero_slideshow', 'dot_nav', slides[i].id, i); setSlideIndex(i); }}
+                    whileHover={{ scale: 1.5 }}
+                    whileTap={{ scale: 0.8 }}
+                    className={`w-2.5 h-2.5 rounded-full border border-black transition-all duration-300 ${
+                      i === slideIndex ? 'bg-ink scale-110' : 'bg-white hover:bg-ink/30'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-purple/60 border-2 border-black rounded-lg -rotate-12 hidden md:block group-hover:rotate-[-8deg] group-hover:scale-110 transition-all duration-300" />
+          </motion.div>
+        </motion.div>
+
+
+      </div>
     </section>
   );
 };

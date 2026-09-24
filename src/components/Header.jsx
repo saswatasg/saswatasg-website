@@ -29,7 +29,7 @@ const Header = () => {
       <header className="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
         <div className="max-w-[1200px] mx-auto w-full flex items-center justify-between px-4 md:px-6 h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2" aria-label="Saswata Sengupta — Home">
-            <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200" style={{ fontFamily: 'var(--font-heading)' }}>
+            <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200">
               Saswata
               <span className="ml-1 text-sm select-none" style={{ letterSpacing: '-0.02em' }}>✳︎</span>
             </span>
