@@ -19,6 +19,7 @@ const companyBadgeColors = {
   upcore: 'bg-ink text-white',
   livekeeping: 'bg-lemon text-ink',
   sierra: 'bg-sky text-ink',
+  freelance: 'bg-coral text-ink',
 };
 
 const ProjectCard = ({ title, description, tags, result, index, caseStudyLink, company, companyName }) => {
@@ -40,8 +41,10 @@ const ProjectCard = ({ title, description, tags, result, index, caseStudyLink, c
         <span className={`text-[10px] font-black px-2 py-0.5 rounded border-2 border-black ${companyBadgeColors[company] || 'bg-white text-ink/60'}`}>
           {companyName}
         </span>
-        {caseStudyLink && (
-          <span className="text-[9px] font-black text-purple uppercase tracking-wider">Case Study</span>
+        {caseStudyLink ? (
+          <span className="text-[9px] font-black text-purple uppercase tracking-wider bg-purple/10 px-1.5 py-0.5 rounded border border-purple/30">Case study →</span>
+        ) : (
+          <span className="text-[9px] font-black text-ink/40 uppercase tracking-wider bg-white/50 px-1.5 py-0.5 rounded border border-ink/15">Shipped highlight</span>
         )}
       </div>
 

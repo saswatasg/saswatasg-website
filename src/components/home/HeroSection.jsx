@@ -53,7 +53,7 @@ const slides = [
             {[
               { value: '70+', label: 'Products shipped' },
               { value: '73%→54%', label: 'Cart abandonment' },
-              { value: '+105%', label: 'Lead submissions' },
+              { value: '+124%', label: 'Lead submissions' },
               { value: '71.6%', label: 'AI close rate' },
             ].map((g, i) => (
               <motion.div
@@ -100,11 +100,10 @@ const slides = [
           </div>
           <div className="flex flex-wrap gap-1.5 items-center justify-center">
             {[
-              { value: 'CEO', label: 'Escalation' },
-              { value: 'PRO+', label: 'Plan focus' },
+              { value: '50K+', label: 'SMB users' },
               { value: '27+', label: 'Triggers' },
               { value: '5', label: 'Regions' },
-              { value: 'C-suite', label: 'Reporting' },
+              { value: 'Exec', label: 'Dashboards' },
             ].map((b, i) => (
               <motion.span
                 key={i}
@@ -151,8 +150,8 @@ const slides = [
           <div className="grid grid-cols-2 gap-2">
             {[
               { value: '20+', label: 'Enterprise discovery calls' },
-              { value: '12', label: 'Verticals mapped' },
-              { value: '16 pages', label: 'State of AI Agents report' },
+              { value: '83%', label: 'Scoring accuracy' },
+              { value: '<5 min', label: 'Hot-lead response' },
               { value: '75+', label: 'Lead scoring threshold' },
             ].map((g, i) => (
               <motion.div

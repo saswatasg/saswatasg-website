@@ -239,6 +239,20 @@ export const allProjects = [
     description: "Event-driven iterations on media gallery, variants, and micro-copy, informed by GA4 custom events and Clarity behavior data.",
     tags: ["GA4", "PDP UX", "Product Management", "UX Research"],
     result: "Add-to-cart rate: +27% · Page engagement time: +22%"
+  },
+  {
+    company: 'freelance', companyName: 'Freelance · Caffena',
+    title: "Acquisition Funnel Rebuild — Coffee D2C",
+    description: "Rebuilt the coffee brand's full acquisition funnel — landing pages, offer architecture, and paid media creative testing — while working full-time at Sierra.",
+    tags: ["Growth Consulting", "Performance Marketing", "CRO", "D2C"],
+    result: "Revenue: ₹1.62L → ₹5.78L/mo (+357%) · ROAS: 1.8× → 5.77×"
+  },
+  {
+    company: 'freelance', companyName: 'Freelance · Diwan Interiors',
+    title: "Lead-Gen Engine — Home Interiors",
+    description: "Designed and ran a always-on lead-generation engine for a home interiors brand — offer positioning, landing flow, and qualification filters.",
+    tags: ["Lead Gen", "Growth Consulting", "Funnel Design", "India D2C"],
+    result: "478–523 qualified leads/mo · CPL: ₹277–293"
   }
 ];
 
@@ -247,6 +261,7 @@ export const FILTERS = [
   { id: 'upcore', label: 'Upcore', icon: Brain },
   { id: 'livekeeping', label: 'LiveKeeping', icon: Rocket },
   { id: 'sierra', label: 'Sierra Living Concepts', icon: Armchair },
+  { id: 'freelance', label: 'Freelance' },
 ];
 
 export const softwareSchema = openSourceProjects

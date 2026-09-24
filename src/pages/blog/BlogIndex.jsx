@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-import EmailCapture from '@/components/blog/EmailCapture';
 import { posts, PILLAR_META, formatDate, toIsoDate } from '@/data/blogPosts';
 import { trackEvent } from '@/utils/analytics';
 
@@ -71,8 +70,6 @@ const BlogIndex = () => {
             </button>
           ))}
         </div>
-
-        <EmailCapture pillar={pillar} source="blog_index" />
 
         {filtered.length === 0 && (
           <div className="border-2 border-dashed border-ink/30 rounded-2xl p-10 text-center text-sm font-bold text-ink/50">

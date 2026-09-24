@@ -26,7 +26,7 @@ const pageSpecificMeta = {
   },
   '/work': {
     title: "Work | Saswata S. Sengupta — Case Studies & Product Work",
-    description: "Nine case studies with published metrics, plus product work across Upcore, LiveKeeping, and Sierra — problem, approach, and outcome."
+    description: "Featured case studies, nine deep-dives with metrics, product highlights across Upcore/LiveKeeping/Sierra, and open-source builds."
   },
   '/contact': {
     title: "Contact | Saswata S. Sengupta",

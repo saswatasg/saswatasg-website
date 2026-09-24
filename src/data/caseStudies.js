@@ -22,6 +22,7 @@ const caseStudies = [
   {
     id: 'cart-checkout',
     slug: 'cart-checkout',
+    featured: true,
     company: 'Sierra Living Concepts',
     year: 'D2C E-Commerce',
     title: 'From 73% to 54%: The Cart & Checkout Fix That Outperformed Wayfair',
@@ -102,6 +103,7 @@ const caseStudies = [
   {
     id: 'lead-form',
     slug: 'lead-form',
+    featured: true,
     company: 'Sierra Living Concepts',
     year: 'Form Optimization',
     title: 'Lead Form Overhaul: +124% Without a Single New Visitor',
@@ -162,6 +164,7 @@ const caseStudies = [
   {
     id: 'upcore-lead-scoring',
     slug: 'upcore-lead-scoring',
+    featured: true,
     company: 'Upcore Technologies',
     year: 'B2B GTM · Framework',
     title: 'Two-Stage Lead Scoring: 9 Signals Before the First Outreach',
