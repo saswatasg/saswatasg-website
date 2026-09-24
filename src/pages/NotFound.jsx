@@ -35,7 +35,7 @@ const NotFound = () => {
             <div className="relative inline-flex group">
               <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <Link
-                to="/case-studies"
+                to="/work"
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 text-sm font-black inline-flex items-center gap-2 min-h-[44px] transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
               >
                 <Search className="w-4 h-4" />

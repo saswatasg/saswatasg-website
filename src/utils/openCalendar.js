@@ -58,7 +58,7 @@ export function openScheduleBooking() {
   });
 
   const title = document.createElement('span');
-  title.textContent = 'Book a Call';
+  title.textContent = "Let's talk — free, no pitch";
   Object.assign(title.style, {
     color: '#fff', fontWeight: '700', fontSize: '16px',
   });

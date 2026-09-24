@@ -9,8 +9,7 @@ const ROUTES = [
   '/',
   '/about',
   '/experience',
-  '/projects',
-  '/case-studies',
+  '/work',
   '/case-studies/cart-checkout',
   '/case-studies/category-discovery',
   '/case-studies/lead-form',
@@ -100,7 +99,7 @@ for (const route of ROUTES) {
     fail(route, `description is ${description.length} chars (>155)`);
   }
 
-  const hasInternalNavLinks = ['/about', '/case-studies'].every((link) => html.includes(`href="${link}"`));
+  const hasInternalNavLinks = ['/about', '/work'].every((link) => html.includes(`href="${link}"`));
   if (!hasInternalNavLinks) fail(route, 'nav links not found in served HTML');
 
   // Single-source meta: exactly one og:type/og:image, correct per route type.

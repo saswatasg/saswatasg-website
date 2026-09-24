@@ -7,10 +7,9 @@ import { trackEvent } from '@/utils/analytics';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 
 const navItems = [
-  { name: 'About', path: '/about' },
+  { name: 'Work', path: '/work' },
   { name: 'Experience', path: '/experience' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Case Studies', path: '/case-studies' },
+  { name: 'About', path: '/about' },
   { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
 ];
@@ -30,8 +29,9 @@ const Header = () => {
       <header className="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
         <div className="max-w-[1200px] mx-auto w-full flex items-center justify-between px-4 md:px-6 h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2" aria-label="Saswata Sengupta — Home">
-            <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200">
+            <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200" style={{ fontFamily: 'var(--font-heading)' }}>
               Saswata
+              <span className="ml-1 text-sm select-none" style={{ letterSpacing: '-0.02em' }}>✳︎</span>
             </span>
           </Link>
 
@@ -43,7 +43,7 @@ const Header = () => {
                 onClick={() => trackEvent('navigation', 'nav_click', item.name)}
                 className={({ isActive }) =>
                   `px-3 py-1.5 text-sm font-bold rounded-lg border-2 transition-all ${
-                    (isActive || (item.path === '/case-studies' && location.pathname.startsWith('/case-studies')))
+                    (isActive || (item.path === '/work' && (location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/projects'))))
                       ? 'bg-ink text-white border-black'
                       : 'text-ink border-transparent hover:text-ink hover:border-black'
                   }`
@@ -61,7 +61,7 @@ const Header = () => {
                 onClick={() => { trackEvent('navigation', 'book_a_call'); openScheduleBooking(); }}
                 className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
               >
-                Book 30-min teardown — no deck
+                Let's talk
               </button>
             </div>
           </div>
@@ -113,7 +113,7 @@ const Header = () => {
               className="bg-ink text-white rounded-lg border-2 border-black px-4 py-3 text-sm font-bold text-center mt-2 hover:bg-white hover:text-ink transition-all duration-200 flex items-center justify-center gap-2 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
             >
               <Calendar className="w-4 h-4" />
-              Book 30-min teardown — no deck
+              Let's talk
             </button>
           </nav>
         </SheetContent>

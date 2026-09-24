@@ -18,7 +18,7 @@ const LeadForm = () => {
     >
       <PageMeta />
       <Link
-        to="/case-studies"
+        to="/work"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink mb-8 transition-colors group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

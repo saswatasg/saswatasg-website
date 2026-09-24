@@ -35,7 +35,7 @@ const BottomNav = ({ prev, next }) => {
         <div />
       )}
       <Link
-        to="/case-studies"
+        to="/work"
         className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/50 hover:text-ink transition-colors group"
       >
         All Case Studies

@@ -113,6 +113,18 @@ function About() {
               <p className="text-sm font-medium text-ink/70 leading-relaxed">
                 I explore digital products with genuine curiosity, cook, shoot photography, watch films analytically, and mentor early-career PMs.
               </p>
+              <p className="text-xs font-medium text-ink/45 mt-2">
+                Growth work lives at{' '}
+                <a
+                  href="https://www.thegrowthbench.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('about', 'growth_bench')}
+                  className="underline underline-offset-2 text-ink/60 hover:text-ink transition-colors"
+                >
+                  The Growth Bench →
+                </a>
+              </p>
             </div>
           </div>
         </motion.div>

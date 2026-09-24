@@ -104,9 +104,9 @@ const Contact = () => {
           >
             <div className="relative inline-flex group">
               <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
-              <button onClick={() => { trackEvent('contact', 'book_a_meeting'); openScheduleBooking(); }} className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]">
+              <button onClick={() => { trackEvent('contact', 'lets_talk'); openScheduleBooking(); }} className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]">
                 <Calendar size={18} />
-                Book a Meeting
+                Let's talk
                 <ArrowRight size={18} />
               </button>
             </div>
@@ -233,6 +233,19 @@ const Contact = () => {
               </div>
               <ExternalLink className="w-4 h-4 text-ink/30 flex-shrink-0 group-hover:text-ink transition-colors" />
             </motion.a>
+
+            <p className="text-xs font-medium text-ink/40 px-1">
+              Looking for growth/CRO consulting instead of hiring?{' '}
+              <a
+                href="https://www.thegrowthbench.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('contact', 'growth_bench')}
+                className="underline underline-offset-2 text-ink/60 hover:text-ink transition-colors"
+              >
+                The Growth Bench ↗
+              </a>
+            </p>
 
           </div>
         </div>

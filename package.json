@@ -11,8 +11,7 @@
     "lint": "eslint . --quiet",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
-    "razorpay:verify": "node -e \"console.log(\"Razorpay env check:\")\""
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
@@ -55,7 +54,6 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.292.0",
     "next-themes": "^0.4.6",
-    "razorpay": "^2.9.8",
     "react": "^18.2.0",
     "react-day-picker": "^9.14.0",
     "react-dom": "^18.2.0",

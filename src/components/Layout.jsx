@@ -3,8 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Stickman from '@/components/Stickman';
-import ChatBot from '@/components/WhatsAppChat';
 import WhatsAppModal from '@/components/WhatsAppModal';
 import CaseStudyPopup from '@/components/CaseStudyPopup';
 import { Toaster } from '@/components/ui/toaster';
@@ -49,8 +47,6 @@ const Layout = ({ children }) => {
       <main id="main-content" className="flex-grow flex flex-col">
         {children}
       </main>
-      <Stickman />
-      <ChatBot />
       <WhatsAppModal />
       <AnimatePresence>
         {popupSlug && (

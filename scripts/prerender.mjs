@@ -10,8 +10,7 @@ const STATIC_ROUTES = [
   '/',
   '/about',
   '/experience',
-  '/projects',
-  '/case-studies',
+  '/work',
   '/case-studies/cart-checkout',
   '/case-studies/category-discovery',
   '/case-studies/lead-form',
@@ -22,7 +21,6 @@ const STATIC_ROUTES = [
   '/case-studies/livekeeping-notifications',
   '/case-studies/livekeeping-report-automation',
   '/contact',
-  '/pay',
   '/roadmap',
 ];
 

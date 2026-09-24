@@ -43,8 +43,4 @@ export function trackEvent(category, action, label = null, value = null) {
   if (category === 'contact_form' && action === 'success' && typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'generate_lead', { method: 'contact_form', value: 1 });
   }
-  if (category === 'pay' && action === 'success' && typeof window !== 'undefined' && window.gtag) {
-    const numValue = typeof value === 'number' ? value : Number(String(label).replace(/[^0-9]/g, '')) || 0;
-    window.gtag('event', 'purchase', { currency: 'INR', value: numValue, items: [{ item_name: 'Payment', quantity: 1 }] });
-  }
 }

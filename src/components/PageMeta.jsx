@@ -24,17 +24,13 @@ const pageSpecificMeta = {
     title: "Professional Background | Saswata S. Sengupta",
     description: "Product management experience across Upcore Technologies (AI agents), Sierra Living Concepts (D2C), and LiveKeeping (B2B SaaS)."
   },
-  '/projects': {
-    title: "Projects | Saswata S. Sengupta — Product Work",
-    description: "Product work across B2B SaaS and D2C — every project grounded in a real problem, a real approach, and a real outcome."
+  '/work': {
+    title: "Work | Saswata S. Sengupta — Case Studies & Product Work",
+    description: "Nine case studies with published metrics, plus product work across Upcore, LiveKeeping, and Sierra — problem, approach, and outcome."
   },
   '/contact': {
     title: "Contact | Saswata S. Sengupta",
     description: "Get in touch with Saswata S. Sengupta for collaborations, opportunities, or just to say hello."
-  },
-  '/case-studies': {
-    title: "Case Studies | Saswata S. Sengupta",
-    description: "Nine product decisions, explained in full — problem, diagnosis, options, outcome, and what I'd do differently."
   },
   '/case-studies/cart-checkout': {
     title: "Case Study: Cart & Checkout — –26% | Saswata S. Sengupta",
@@ -135,7 +131,7 @@ const PageMeta = ({ title, description, noindex = false, image }) => {
               '@type': 'BreadcrumbList',
               itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saswatasg.com/' },
-                { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://saswatasg.com/case-studies' },
+                { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://saswatasg.com/work' },
                 { '@type': 'ListItem', position: 3, name: finalTitle, item: finalUrl },
               ],
             })}

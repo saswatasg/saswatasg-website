@@ -7,6 +7,7 @@ const About = React.lazy(() => import('@/pages/About'));
 const Experience = React.lazy(() => import('@/pages/Experience'));
 const Projects = React.lazy(() => import('@/pages/Projects'));
 const CaseStudies = React.lazy(() => import('@/pages/CaseStudies'));
+const Work = React.lazy(() => import('@/pages/Work'));
 const CaseStudyCartCheckout = React.lazy(() => import('@/pages/case-studies/CartCheckout'));
 const CaseStudyCategoryDiscovery = React.lazy(() => import('@/pages/case-studies/CategoryDiscovery'));
 const CaseStudyLeadForm = React.lazy(() => import('@/pages/case-studies/LeadForm'));
@@ -17,7 +18,6 @@ const LiveKeepingSendGreetings = React.lazy(() => import('@/pages/case-studies/L
 const LiveKeepingNotifications = React.lazy(() => import('@/pages/case-studies/LiveKeepingNotifications'));
 const LiveKeepingReportAutomation = React.lazy(() => import('@/pages/case-studies/LiveKeepingReportAutomation'));
 const Contact = React.lazy(() => import('@/pages/Contact'));
-const Pay = React.lazy(() => import('@/pages/Pay'));
 const Roadmap = React.lazy(() => import('@/pages/Roadmap'));
 const BlogIndex = React.lazy(() => import('@/pages/blog/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/blog/BlogPost'));
@@ -58,6 +58,7 @@ const RoutesConfig = () => {
         <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
         <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
         <Route path="/experience" element={<AnimatedPage><Experience /></AnimatedPage>} />
+        <Route path="/work" element={<AnimatedPage><Work /></AnimatedPage>} />
         <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
         <Route path="/case-studies" element={<AnimatedPage><CaseStudies /></AnimatedPage>} />
         <Route path="/case-studies/cart-checkout" element={<AnimatedPage><CaseStudyCartCheckout /></AnimatedPage>} />
@@ -70,7 +71,6 @@ const RoutesConfig = () => {
         <Route path="/case-studies/livekeeping-notifications" element={<AnimatedPage><LiveKeepingNotifications /></AnimatedPage>} />
         <Route path="/case-studies/livekeeping-report-automation" element={<AnimatedPage><LiveKeepingReportAutomation /></AnimatedPage>} />
         <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-        <Route path="/pay" element={<AnimatedPage><Pay /></AnimatedPage>} />
         <Route path="/roadmap" element={<AnimatedPage><Roadmap /></AnimatedPage>} />
         <Route path="/blog" element={<AnimatedPage><BlogIndex /></AnimatedPage>} />
         <Route path="/blog/:slug" element={<AnimatedPage><BlogPost /></AnimatedPage>} />

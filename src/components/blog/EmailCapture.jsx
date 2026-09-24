@@ -3,10 +3,10 @@ import { Mail, ArrowRight, Check } from 'lucide-react';
 import { trackEvent, getUTM } from '@/utils/analytics';
 
 const LEAD_MAGNETS = {
-  growth: { title: 'CRO Checklist — 17 fixes', desc: 'The 17-point checklist from the 73%→54% teardown. Same format, new numbers.' },
+  growth: { title: 'CRO Checklist — 17 fixes', desc: 'The 17-point checklist from the 73%→54% checkout fix. Same format, new numbers.' },
   agents: { title: 'AI Agent RFP Template', desc: 'The RFP I use for agent discovery — scope, eval, and pricing.' },
   pm: { title: 'AI Workflow Teardown Template', desc: 'The template I use to map AI workflows before writing a spec.' },
-  all: { title: '1 teardown/week', desc: 'Same format, new numbers — real before/after, no fluff.' },
+  all: { title: 'New posts by email', desc: 'One email when something ships — real before/after, no fluff.' },
 };
 
 export default function EmailCapture({ pillar = 'all', source = 'blog' }) {
@@ -53,7 +53,7 @@ export default function EmailCapture({ pillar = 'all', source = 'blog' }) {
         </div>
         <div>
           <p className="font-display font-black text-ink">You’re in — check your email</p>
-          <p className="text-sm font-medium text-ink/60">I’ll send the first teardown within a day. No spam, unsubscribe anytime.</p>
+          <p className="text-sm font-medium text-ink/60">First email lands within a day. No spam, unsubscribe anytime.</p>
         </div>
       </div>
     );
@@ -90,7 +90,7 @@ export default function EmailCapture({ pillar = 'all', source = 'blog' }) {
         </button>
       </form>
       {error && <p className="text-xs font-bold text-red-600 mt-2">{error}</p>}
-      <p className="text-xs font-bold text-ink/40 mt-2">No spam, unsubscribe anytime. I only email teardowns.</p>
+      <p className="text-xs font-bold text-ink/40 mt-2">No spam, unsubscribe anytime. Subscribe for new posts.</p>
     </div>
   );
 }

@@ -9,10 +9,12 @@
 - [About](https://saswatasg.com/about): bio, education (IIT Jodhpur MBA), resume
 - [Experience](https://saswatasg.com/experience): Upcore, Sierra Living Concepts, LiveKeeping
 - [Blog](https://saswatasg.com/blog): AI agents in production, e-commerce CRO, AI-era product management
-- [Projects](https://saswatasg.com/projects): LinkedIn Outreach Agent (LinkedIn outreach agent), BlogHero (SEO pipeline), FilmRisk.AI (Bollywood risk model, 2,200+ films), Inventory Leveling Agent (MRP), Topshe (in-browser voice AI, Feluda's assistant), DhanPlan (dhanplan.in), Intent (launching 2027)
-- [Case Studies](https://saswatasg.com/case-studies): 9 product deep-dives with published metrics
+- [Work](https://saswatasg.com/work): case studies and product work in one place
+- [Case study deep-dives](https://saswatasg.com/case-studies/cart-checkout): checkout 73%→54% and 8 more with published metrics
 
 ## Blog posts
+- [The cheapest e-commerce CRO: ship one fix a week](https://saswatasg.com/blog/one-fix-a-week-cro): 17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash.
+- [How a form fix lifted lead submissions by 124% in 28 days](https://saswatasg.com/blog/lead-form-overhaul-124): A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days.
 - [Topshe: voice AI that runs entirely in your browser](https://saswatasg.com/blog/topshe-browser-voice-ai): Named after Feluda's assistant, Topshe runs Qwen 2.5 in-browser via WebAssembly — wake word, research and planning tools, zero data leaves.
 - [I built my own LinkedIn outreach tool (766 commits later)](https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent): TGB Hunt: a self-hosted, open-source agent that finds recruiters, drafts intros, and never sends without my approval. 766 commits, GPLv3.
 - [DhanPlan: a retirement calculator that speaks Indian finance](https://saswatasg.com/blog/dhanplan-retirement-calculator): Building a calculator where SIP/EPF/PPF/NPS and FIRE are first-class citizens — product choices from projections to inflation. Design, scope, and tests.
@@ -25,8 +27,6 @@
 - [FilmRisk.AI: scoring film risk with ML and Bayesian priors](https://saswatasg.com/blog/film-risk-engine): A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included.
 - [Category page redesign that added +34% qualified leads](https://saswatasg.com/blog/category-page-redesign-plus34): Story-led category journeys beat commodity grids: +17% PDP clicks, +34% qualified leads, −16% bounce in a 4-week sprint at Sierra.
 - [Gold/silver/bronze lead routing that cut days to close](https://saswatasg.com/blog/lead-routing-gold-silver-bronze): Sierra routed every lead the same way until the data said otherwise: web forms 63.5% CVR, cart abandonment 0.4%. A tiered router fixed the queue.
-- [How a form fix lifted lead submissions by 124% in 28 days](https://saswatasg.com/blog/lead-form-overhaul-124): A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days.
-- [The cheapest e-commerce CRO: ship one fix a week](https://saswatasg.com/blog/one-fix-a-week-cro): 17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash.
 - [How we cut checkout abandonment from 73.1% to 53.9%](https://saswatasg.com/blog/checkout-abandonment-73-to-54): A 480K-session teardown: three separate checkout problems hidden behind one dashboard number, three targeted fixes, two sprints — −26% abandonment.
 
 ## Facts

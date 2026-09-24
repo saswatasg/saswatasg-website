@@ -9,9 +9,8 @@ const STATIC_PAGES = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
   { path: '/about', priority: 0.8, changefreq: 'monthly' },
   { path: '/experience', priority: 0.8, changefreq: 'monthly' },
-  { path: '/projects', priority: 0.7, changefreq: 'weekly' },
+  { path: '/work', priority: 0.9, changefreq: 'weekly' },
   { path: '/blog', priority: 0.9, changefreq: 'weekly' },
-  { path: '/case-studies', priority: 0.8, changefreq: 'monthly' },
   { path: '/case-studies/cart-checkout', priority: 0.7, changefreq: 'monthly' },
   { path: '/case-studies/category-discovery', priority: 0.7, changefreq: 'monthly' },
   { path: '/case-studies/lead-form', priority: 0.7, changefreq: 'monthly' },
@@ -22,7 +21,6 @@ const STATIC_PAGES = [
   { path: '/case-studies/livekeeping-notifications', priority: 0.6, changefreq: 'monthly' },
   { path: '/case-studies/livekeeping-report-automation', priority: 0.6, changefreq: 'monthly' },
   { path: '/contact', priority: 0.5, changefreq: 'yearly' },
-  { path: '/pay', priority: 0.3, changefreq: 'monthly' },
   { path: '/roadmap', priority: 0.6, changefreq: 'weekly' },
 ];
 
@@ -165,8 +163,8 @@ async function writeLlmsTxt(posts) {
 - [About](https://saswatasg.com/about): bio, education (IIT Jodhpur MBA), resume
 - [Experience](https://saswatasg.com/experience): Upcore, Sierra Living Concepts, LiveKeeping
 - [Blog](https://saswatasg.com/blog): AI agents in production, e-commerce CRO, AI-era product management
-- [Projects](https://saswatasg.com/projects): LinkedIn Outreach Agent (LinkedIn outreach agent), BlogHero (SEO pipeline), FilmRisk.AI (Bollywood risk model, 2,200+ films), Inventory Leveling Agent (MRP), Topshe (in-browser voice AI, Feluda's assistant), DhanPlan (dhanplan.in), Intent (launching 2027)
-- [Case Studies](https://saswatasg.com/case-studies): 9 product deep-dives with published metrics
+- [Work](https://saswatasg.com/work): case studies and product work in one place
+- [Case study deep-dives](https://saswatasg.com/case-studies/cart-checkout): checkout 73%→54% and 8 more with published metrics
 
 ## Blog posts
 ${postLines}
